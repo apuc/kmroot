@@ -1,0 +1,5 @@
+#!/bin/bash
+
+find /tmp/ssi_cache -type f -delete
+
+exit 0

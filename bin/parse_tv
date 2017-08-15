@@ -1,0 +1,5 @@
+#!/bin/bash
+
+/usr/bin/php /var/www/kino.mania/kmroot/html_demo/app.tv.php  > /dev/null 2>&1
+
+exit 0

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+indexer --config /etc/sphinxsearch/sphinx.conf --rotate --all
+
+exit 0

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+indexer film --config /etc/sphinxsearch/sphinx.conf --buildstops /var/www/kino.mania/kmroot/sphinx_/dict_f.txt 5000000 --buildfreqs
+indexer person --config /etc/sphinxsearch/sphinx.conf --buildstops /var/www/kino.mania/kmroot/sphinx_/dict_p.txt 5000000 --buildfreqs
+cat /var/www/kino.mania/kmroot/sphinx_/dict_f.txt /var/www/kino.mania/kmroot/sphinx_/dict_p.txt > /var/www/kino.mania/kmroot/sphinx_/dict.txt
+php /var/www/kino.mania/kmroot/sphinx_/suggest.php --builddict < /var/www/kino.mania/kmroot/sphinx_/dict.txt > /var/www/kino.mania/kmroot/sphinx_/dict.sql
+mysql -u fg.kmmain -pfjT94HGF4jde3 --default-character-set=utf8  kmmain < /var/www/kino.mania/kmroot/sphinx_/dict.sql
+indexer --config /etc/sphinxsearch/sphinx.conf suggest --rotate
+
+exit 0
