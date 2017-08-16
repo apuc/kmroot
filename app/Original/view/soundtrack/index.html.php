@@ -4,6 +4,7 @@
  * @var array $genre
  * @var array $popular
  * @var array $list
+ * @var $options \Kinomania\System\Options\Options
  */
 use Kinomania\Original\Key\Film\Soundtrack as Soundtrack;
 ?>
@@ -13,9 +14,9 @@ use Kinomania\Original\Key\Film\Soundtrack as Soundtrack;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Саундтреки к фильмам: более 5 000 саундтреков к фильмам, мультфильмам, мюзиклам и сериалам | KINOMANIA.RU</title>
-    <meta name="description" content="Саундтреки к фильмам: новые и популярные саундтреки к фильмам и сериалам на KINOMANIA.RU. KINOMANIA.RU – все о мире кино и жизни актеров."/>
-    <meta name="keywords" content="саундтрек, фильм, саундтрек к фильмам, саундтреки, soundtrack"/>
+    <title><?=$options->get('seo_soundtracks_title');?></title>
+    <meta name="description" content="<?=$options->get('seo_soundtracks_description');?>"/>
+    <meta name="keywords" content="<?=$options->get('seo_soundtracks_keywords');?>"/>
 
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:image" content="" />
@@ -38,7 +39,7 @@ use Kinomania\Original\Key\Film\Soundtrack as Soundtrack;
             <section class="outer-section clear outer-content">
                 <!-- Контент -->
                 <content class="page-section-content section-content content-outer outer-vert col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                    <h1 class="pagetitle soundtracks-pagetitle">Саундтреки</h1>
+                    <h1 class="pagetitle soundtracks-pagetitle"><?=$options->get('seo_soundtracks_h1');?></h1>
                     <div class="outer-selection-trailers">
                         <div data-type-openclose-button="open_close" data-type-openclose-class="active" class="button__selection-trailers"><span>Подбор по параметрам</span></div>
                         <div class="selection-trailers">

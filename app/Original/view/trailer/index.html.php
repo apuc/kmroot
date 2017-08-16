@@ -2,6 +2,7 @@
 /**
  * @var string $static
  * @var array $genre
+ * @var $options \Kinomania\System\Options\Options
  */
 use Kinomania\Original\Key\Film\Film;
 use Kinomania\Original\Key\Person\Trailer as Trailer;
@@ -12,9 +13,9 @@ use Kinomania\Original\Key\Person\Trailer as Trailer;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Трейлеры фильмов | KINOMANIA.RU</title>
-    <meta name="description" content="Трейлеры фильмов: новые трейлеры к фильмам, мультфильмам, российским и зарубежным сериалам. KINOMANIA.RU – все о мире кино и жизни актеров."/>
-    <meta name="keywords" content="трейлер, trailer, тизер, скачивание, онлайн"/>
+    <title><?=$options->get('seo_trailers_title');?></title>
+    <meta name="description" content="<?=$options->get('seo_trailers_description');?>"/>
+    <meta name="keywords" content="<?=$options->get('seo_trailers_keywords');?>"/>
 
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:image" content="" />
@@ -49,7 +50,7 @@ use Kinomania\Original\Key\Person\Trailer as Trailer;
             <section class="outer-section clear outer-content">
                 <!-- Контент -->
                 <content class="page-section-content section-content content-outer outer-vert col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                    <h1 class="pagetitle trailers-pagetitle">Трейлеры</h1>
+                    <h1 class="pagetitle trailers-pagetitle"><?=$options->get('seo_trailers_h1');?></h1>
                     <div class="outer-selection-trailers">
                         <div data-type-openclose-button="open_close" data-type-openclose-class="active" class="button__selection-trailers"><span>Подбор по параметрам</span></div>
                         <div class="selection-trailers">
