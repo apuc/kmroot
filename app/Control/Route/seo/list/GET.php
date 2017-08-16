@@ -1,5 +1,5 @@
 <?php
-namespace Control\Route_seo_main;
+namespace Control\Route_seo_list;
 use Kinomania\Control\Controller\AdminController;
 use Kinomania\Control\Template\Menu;
 use Kinomania\System\Options\Options;
@@ -19,7 +19,7 @@ class GET extends AdminController
             'options' => new Options()
         ]);
         $this->setTitle('Настройка СЕО для главной');
-        $this->setTemplate('seo/main/index.html.php');
+        $this->setTemplate('seo/list/index.html.php');
     }
 
 }

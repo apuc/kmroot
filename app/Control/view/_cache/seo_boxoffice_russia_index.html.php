@@ -283,7 +283,7 @@
 </style>
 
 <div class="content-heading">
-    Настройка СЕО для страницы SHORTS
+    Настройка СЕО для страницы сборы в РФ
 </div>
 
 <div class="row">
@@ -305,25 +305,25 @@
                                 <tr>
                                     <td>Title</td>
                                     <td>
-                                        <input type="text" name="title" value="<?= $options->get('seo_shorts_title') ?>" class="form-control">
+                                        <input type="text" name="title" value="<?= $options->get('seo_boxoffice_russia_title') ?>" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Description</td>
                                     <td>
-                                        <input type="text" name="description" value="<?= $options->get('seo_shorts_description') ?>" class="form-control">
+                                        <input type="text" name="description" value="<?= $options->get('seo_boxoffice_russia_description') ?>" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Keywords</td>
                                     <td>
-                                        <input type="text" name="keywords" value="<?= $options->get('seo_shorts_keywords') ?>" class="form-control">
+                                        <input type="text" name="keywords" value="<?= $options->get('seo_boxoffice_russia_keywords') ?>" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>H1</td>
                                     <td>
-                                        <input type="text" name="h1" value="<?= $options->get('seo_shorts_h1') ?>" class="form-control">
+                                        <input type="text" name="h1" value="<?= $options->get('seo_boxoffice_russia_h1') ?>" class="form-control">
                                     </td>
                                 </tr>
                             </table>

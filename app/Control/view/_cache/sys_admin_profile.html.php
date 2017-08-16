@@ -263,74 +263,50 @@
         <div class="content-wrapper animated fadeInLeft">
             <?php
 /**
- * Created by PhpStorm.
- * User: apuc0
- * Date: 09.08.2017
- * Time: 22:23
- * @var $options \Kinomania\System\Options\Options
+ * @var \Dspbee\Core\Request $request
+ * @var \Kinomania\Control\Admin\Item $admin
+ * @var array $groupList
  */
 ?>
 
-<link rel="stylesheet" href="/vendor/cms/datatable-bootstrap/css/dataTables.alternative.min.css">
-<style>
-    .link {
-        position: relative;
-        top: 1px;
-    }
-    .dataTables_wrapper table tr td {
-        border: 0;
-    }
-</style>
 
-<div class="content-heading">
-    Настройка СЕО для страницы SHORTS
-</div>
+<div class="content-heading">Редактировать профиль</div>
 
 <div class="row">
     <div class="col-lg-10 col-sm-12 col-xs-12">
         <div class="panel panel-default">
             <div class="panel-wrapper">
                 <div class="panel-body">
-                    <form method="post">
-                        <div class="dataTables_wrapper">
-                            <table class="table table-responsive">
-                                <colgroup>
-                                    <col width="50px">
-                                    <col width="auto">
-                                </colgroup>
-                                <tr>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <td>Title</td>
-                                    <td>
-                                        <input type="text" name="title" value="<?= $options->get('seo_shorts_title') ?>" class="form-control">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Description</td>
-                                    <td>
-                                        <input type="text" name="description" value="<?= $options->get('seo_shorts_description') ?>" class="form-control">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Keywords</td>
-                                    <td>
-                                        <input type="text" name="keywords" value="<?= $options->get('seo_shorts_keywords') ?>" class="form-control">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>H1</td>
-                                    <td>
-                                        <input type="text" name="h1" value="<?= $options->get('seo_shorts_h1') ?>" class="form-control">
-                                    </td>
-                                </tr>
-                            </table>
+                    <form method="post" id="validateForm">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" value="<?= $admin->email() ?>" id="email" class="form-control" placeholder="Email" />
                         </div>
-                        <br />
-                        <input type="hidden" name="handler" value="save" />
+                        <div class="form-group">
+                            <label for="name">Имя</label>
+                            <input type="text" name="name" value="<?= $admin->name() ?>" id="name" class="form-control" placeholder="Имя" />
+                        </div>
+                        <div class="form-group">
+                            <label for="surname">Фамилия</label>
+                            <input type="text" name="surname" value="<?= $admin->surname() ?>" id="surname" class="form-control" placeholder="Фамилия" />
+                        </div>
+                        <div class="form-group">
+                            <label for="userId">ID аккаунта на сайте</label>
+                            <input type="text" name="userId" value="<?= $admin->userId() ?>" id="userId" class="form-control" placeholder="ID пользователя" />
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Пароль</label>
+                            <input type="password" name="password" value="" id="password" class="form-control" placeholder="Оставьте пустым если не хотите изменять пароль" />
+                        </div>
+                        <div class="form-group">
+                            <label for="password_re">Пароль еще раз</label>
+                            <input type="password" name="password_re" value="" id="password_re" class="form-control" />
+                        </div>
+
                         <input type="submit" class="btn btn-primary" value="Сохранить" />
+
+                        <input type="hidden" name="id" value="<?= $admin->id() ?>" />
+                        <input type="hidden" name="handler" value="edit" />
                     </form>
                 </div>
             </div>
@@ -338,6 +314,54 @@
     </div>
 </div>
 
+<script src="/vendor/cms/_js/jquery.validate.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#validateForm").validate({
+            rules: {
+                email: {
+                    required: true,
+                    email: true,
+                    remote: '?handler=checkEmail&id=<?= $admin->id() ?>'
+                },
+                name: {
+                    required: true
+                },
+                userId: {
+                    remote: '?handler=checkUserId&id=<?= $admin->id() ?>'
+                },
+                password: {
+                    minlength: 3
+                },
+                password_re: {
+                    minlength: 3,
+                    equalTo: "#password"
+                }
+            },
+            messages: {
+                email: {
+                    required: "Введите email",
+                    email: "Ошибка в email",
+                    remote: "Email уже зарегистрирован"
+                },
+                name: {
+                    required: "Введите имя"
+                },
+                userId: {
+                    remote: "Этот ID уже связан с другим аккаунтом"
+                },
+                password: {
+                    minlength: "Слишком короткий пароль"
+                },
+                password_re: {
+                    minlength: "Слишком короткий пароль",
+                    equalTo: "Пароли должны совпадать"
+                }
+            }
+        });
+    });
+</script>
         </div>
     </section>
 
