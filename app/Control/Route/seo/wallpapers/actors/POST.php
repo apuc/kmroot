@@ -6,7 +6,7 @@
  * Time: 22:56
  */
 
-namespace Control\Route_seo_actors;
+namespace Control\Route_seo_wallpapers_actors;
 
 use Kinomania\Control\Controller\AdminController;
 use Kinomania\System\Options\Options;
@@ -20,7 +20,7 @@ class POST extends AdminController
         $options->set('seo_actors_title', !empty($_POST['title']) ? $_POST['title'] : 'ОБОИ К АКТЕРАМ | KINOMANIA.RU');
         $options->set('seo_actors_description', !empty($_POST['description']) ? $_POST['description'] : 'Большая коллекция фотографий и обоев с самыми популярными актерами кино и сериалов на KINOMANIA.RU. KINOMANIA.RU – все о мире кино и жизни актеров."');
         $options->set('seo_actors_keywords', !empty($_POST['keywords']) ? $_POST['keywords'] : 'обои, рабочий стол, wallpaper, скачать, актеры');
-        $options->set('seo_actors_h1', !empty($_POST['h1']) ? $_POST['h1'] : 'KINOMANIA.RU');
+        $options->set('seo_actors_h1', !empty($_POST['h1']) ? $_POST['h1'] : 'Обои к актерам');
 
         $this->successMessage('Изменения сохранены');
         $this->setRedirect();

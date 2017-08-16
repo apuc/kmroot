@@ -2,6 +2,7 @@
 /**
  * @var array $list
  * @var string $static
+ * @var $options \Kinomania\System\Options\Options
  */
 use Kinomania\Original\Key\News\Preview as News;
 ?>
@@ -11,9 +12,9 @@ use Kinomania\Original\Key\News\Preview as News;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>KINOMANIA.RU :: BOOOM!!</title>
-    <meta name="description" content="Архив новостей: все новости о мире кино и жизни актеров"/>
-    <meta name="keywords" content="кино, новости, актеры, фильмы, кадры, рецензия, обои, ролик, саундтрек"/>
+    <title><?= $options->get('seo_movie_memorial_title') ?></title>
+    <meta name="description" content="<?= $options->get('seo_movie_memorial_description') ?>"/>
+    <meta name="keywords" content="<?= $options->get('seo_movie_memorial_keywords') ?>"/>
 
     <meta property="og:title" content="BOOOM!!" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
@@ -34,7 +35,7 @@ use Kinomania\Original\Key\News\Preview as News;
         <div class="main-content-other-page clear">
             <content class="page-section-content section-content content-outer outer-vert col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <div class="row-news-list">
-                    <h1 class="pagetitle">BOOOM!!</h1>
+                    <h1 class="pagetitle"><?= $options->get('seo_movie_memorial_h1') ?></h1>
                     <div class="description">
                         Все то, что вы никогда не увидите на больших экранах, но мы это обожаем: смешные пародии и рекламные ролики со звездами, крутые фотосессии, отрывки из лучших телевизионных шоу, музыкальные клипы с известными актерами от именитых режиссеров, первые кадры самых ожидаемых проектов, «кухня» главных блокбастеров — это настоящий киноманский Boom!!!
                     </div>

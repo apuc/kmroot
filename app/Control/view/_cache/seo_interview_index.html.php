@@ -283,7 +283,7 @@
 </style>
 
 <div class="content-heading">
-    Настройка СЕО для главной
+    Настройка СЕО для страницы интервью
 </div>
 
 <div class="row">

@@ -6,6 +6,7 @@
  * @var string static
  * @var int $month
  * @var int $year
+ * @var $options \Kinomania\System\Options\Options
  */
 use Kinomania\Original\Key\Film\Release as Release;
 ?>
@@ -15,8 +16,8 @@ use Kinomania\Original\Key\Film\Release as Release;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>График премьер фильмов на KINOMANIA.RU</title>
-    <meta name="description" content="График премьер фильмов на KINOMANIA.RU"/>
+    <title><?=$options->get('seo_releases_russia_title')?></title>
+    <meta name="description" content="<?=$options->get('seo_releases_russia_description');?>"/>
 
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
@@ -56,7 +57,7 @@ use Kinomania\Original\Key\Film\Release as Release;
                             <li><a href="/releases/usa/">ПРЕМЬЕРЫ США</a></li>
                         </ul>
                     </div>
-                    <h1 class="pagetitle pagetitle-two">ГРАФИК ПРЕМЬЕР РФ</h1>
+                    <h1 class="pagetitle pagetitle-two"><?=$options->get('seo_releases_russia_h1');?></h1>
                     <div class="row-releases">
                         <div class="row-outside row-outside-releases bg-color-one row-outside-art clear">
                             <div class="inner-outside ">

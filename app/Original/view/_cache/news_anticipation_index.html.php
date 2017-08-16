@@ -2,6 +2,7 @@
 /**
  * @var array $list
  * @var string $static
+ * @var $options \Kinomania\System\Options\Options
  */
 use Kinomania\Original\Key\News\Preview as News;
 ?>
@@ -11,9 +12,9 @@ use Kinomania\Original\Key\News\Preview as News;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>KINOMANIA.RU :: Ожидания</title>
-    <meta name="description" content="Кино- и телепроекты ближайшего будущего, о которых есть что сказать уже сейчас, в рубрике &quot;Ожидания&quot;. Самая интересная и актуальная информация о новинках мирового кинопроката и многое другое из мира кино на сайте KINOMANIA.RU."/>
-    <meta name="keywords" content="Кинопроекты и телепроекты ближайшего будущего, о которых есть что сказать уже сейчас"/>
+    <title><?= $options->get('seo_anticipation_title') ?></title>
+    <meta name="description" content="<?= $options->get('seo_anticipation_description') ?>"/>
+    <meta name="keywords" content="<?= $options->get('seo_anticipation_keywords') ?>"/>
 
     <meta property="og:title" content="Ожидания" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
@@ -223,7 +224,7 @@ use Kinomania\Original\Key\News\Preview as News;
         <div class="main-content-other-page clear">
             <content class="page-section-content section-content content-outer outer-vert col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <div class="row-news-list">
-                    <h1 class="pagetitle">Ожидания</h1>
+                    <h1 class="pagetitle"><?= $options->get('seo_anticipation_h1') ?></h1>
                     <div class="description description-border">
                         «Киномания» рассказывает о главных премьерах ближайшего (и не очень) будущего. В рубрике «Ожидания» — статьи о сериалах и фильмах с мировыми  звездами и от известных режиссеров, подборки трейлеров, списки must-see проектов. Мы знаем, что вы будете смотреть совсем скоро. И нам есть, что об этом рассказать уже сейчас.
                     </div>

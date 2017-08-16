@@ -20,7 +20,7 @@ class POST extends AdminController
         $options->set('seo_boxoffice_russia_title', !empty($_POST['title']) ? $_POST['title'] : 'Кассовые сборы фильмов в прокате России (Box-office)');
         $options->set('seo_boxoffice_russia_description', !empty($_POST['description']) ? $_POST['description'] : 'Кассовые сборы фильмов в прокате России.');
         $options->set('seo_boxoffice_russia_keywords', !empty($_POST['keywords']) ? $_POST['keywords'] : 'Кассовые сборы фильмов, Box-office, касса, лидерв проката, РФ');
-        $options->set('seo_boxoffice_russia_h1', !empty($_POST['h1']) ? $_POST['h1'] : 'KINOMANIA.RU');
+        $options->set('seo_boxoffice_russia_h1', !empty($_POST['h1']) ? $_POST['h1'] : 'Сборы в РФ');
 
         $this->successMessage('Изменения сохранены');
         $this->setRedirect();

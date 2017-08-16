@@ -283,7 +283,7 @@
 </style>
 
 <div class="content-heading">
-    Настройка СЕО для страницы ТВ
+    Настройка СЕО для страницы ОБОИ К АКТРИСАМ
 </div>
 
 <div class="row">
@@ -305,25 +305,25 @@
                                 <tr>
                                     <td>Title</td>
                                     <td>
-                                        <input type="text" name="title" value="<?= $options->get('seo_tv_title') ?>" class="form-control">
+                                        <input type="text" name="title" value="<?= $options->get('seo_actresses_title') ?>" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Description</td>
                                     <td>
-                                        <input type="text" name="description" value="<?= $options->get('seo_tv_description') ?>" class="form-control">
+                                        <input type="text" name="description" value="<?= $options->get('seo_actresses_description') ?>" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Keywords</td>
                                     <td>
-                                        <input type="text" name="keywords" value="<?= $options->get('seo_tv_keywords') ?>" class="form-control">
+                                        <input type="text" name="keywords" value="<?= $options->get('seo_actresses_keywords') ?>" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>H1</td>
                                     <td>
-                                        <input type="text" name="h1" value="<?= $options->get('seo_tv_h1') ?>" class="form-control">
+                                        <input type="text" name="h1" value="<?= $options->get('seo_actresses_h1') ?>" class="form-control">
                                     </td>
                                 </tr>
                             </table>

@@ -2,6 +2,7 @@
 /**
  * @var array $list
  * @var string $static
+ * @var $options \Kinomania\System\Options\Options
  */
 use Kinomania\Original\Key\News\Preview as News;
 ?>
@@ -11,9 +12,9 @@ use Kinomania\Original\Key\News\Preview as News;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>KINOMANIA.RU :: Рецензии</title>
-    <meta name="description" content="Все рецензии"/>
-    <meta name="keywords" content="рецензия, рецензия на фильм, отзыв"/>
+    <title><?= $options->get('seo_reviews_title') ?></title>
+    <meta name="description" content="<?= $options->get('seo_reviews_description') ?>"/>
+    <meta name="keywords" content="<?= $options->get('seo_reviews_keywords') ?>"/>
 
     <meta property="og:title" content="Рецензии" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
@@ -34,7 +35,7 @@ use Kinomania\Original\Key\News\Preview as News;
         <div class="main-content-other-page clear">
             <content class="page-section-content section-content content-outer outer-vert col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <div class="row-news-list">
-                    <h1 class="pagetitle">Рецензии</h1>
+                    <h1 class="pagetitle"><?= $options->get('seo_reviews_h1') ?></h1>
                     <div class="description">
                         Мнения авторитетных критиков и постоянных авторов «Киномании» о новинках проката. Рецензии на самое важное кино этой недели, которое можно посмотреть в кинотеатрах прямо сейчас.
                     </div>

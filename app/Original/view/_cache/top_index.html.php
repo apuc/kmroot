@@ -2,6 +2,7 @@
 /**
  * @var array $date
  * @var string $static
+ * @var $options Kinomania\System\Options\Options
  */
 
 use Kinomania\Original\Key\News\Preview as News;
@@ -12,8 +13,8 @@ use Kinomania\Original\Key\News\Preview as News;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Подборки киномании</title>
-    <meta name="description" content="Подборки киномании"/>
+    <title><?= $options->get('seo_top_title') ?></title>
+    <meta name="description" content="<?= $options->get('seo_top_description') ?>"/>
 
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
@@ -224,7 +225,7 @@ use Kinomania\Original\Key\News\Preview as News;
                 <!-- Контент -->
                 <content class="page-section-content section-content content-outer content-top--padding col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="row-news-list">
-                        <h1 class="pagetitle">Подборки киномании</h1>
+                        <h1 class="pagetitle"><?= $options->get('seo_top_h1') ?></h1>
                         <div class="description">
                             Что посмотреть сегодня или на выходных? Выбирайте фильмы из тематических подборок «Киномании». Лучшие комедии о шпионах, самые страшные фильмы о домах с привидениями, отличное французское кино, о котором вы даже не слышали, самые кассовые экранизации триллеров и лучшие призеры международных кинофестивалей — любую ленту из наших списков можно смело включать в планы на вечер.
                         </div>

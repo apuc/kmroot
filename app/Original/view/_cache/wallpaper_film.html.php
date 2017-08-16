@@ -4,6 +4,7 @@
  * @var array $genre
  * @var array $popular
  * @var array $list
+ * @var $options \Kinomania\System\Options\Options
  */
 use Kinomania\Original\Key\Film\Film;
 use Kinomania\Original\Key\Film\Wallpaper as Wallpaper;
@@ -14,9 +15,9 @@ use Kinomania\Original\Key\Film\Wallpaper as Wallpaper;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Обои для рабочего стола: фильмы | KINOMANIA.RU</title>
-    <meta name="description" content="Большая коллекция фотографий и обоев с самыми популярными актерами кино и сериалов на KINOMANIA.RU. KINOMANIA.RU – все о мире кино и жизни актеров."/>
-    <meta name="keywords" content="обои, рабочий стол, wallpaper, скачать, фильмы"/>
+    <title><?= $options->get('seo_films_title') ?></title>
+    <meta name="description" content="<?= $options->get('seo_films_description') ?>"/>
+    <meta name="keywords" content="<?= $options->get('seo_films_keywords') ?>"/>
 
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
@@ -237,7 +238,7 @@ use Kinomania\Original\Key\Film\Wallpaper as Wallpaper;
                         </div>
                     </div>
 
-                    <h1 class="pagetitle soundtracks-pagetitle">Обои к фильмам</h1>
+                    <h1 class="pagetitle soundtracks-pagetitle"><?= $options->get('seo_films_h1') ?></h1>
                     <div class="outer-selection-trailers">
                         <div data-type-openclose-button="open_close" data-type-openclose-class="active" class="button__selection-trailers"><span>Подбор по параметрам</span></div>
                         <div class="selection-trailers">

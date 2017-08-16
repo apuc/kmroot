@@ -4,6 +4,7 @@ namespace Original\Route_boxoffice_usa;
 use Dspbee\Bundle\Debug\Wrap;
 use Kinomania\Original\Controller\DefaultController;
 use Kinomania\Original\Logic\Boxoffice\Boxoffice;
+use Kinomania\System\Options\Options;
 
 class GET extends DefaultController
 {
@@ -23,7 +24,8 @@ class GET extends DefaultController
         }
 
         $this->addData([
-            'list' => $list
+            'list' => $list,
+			'options' => new Options()
         ]);
 
         $this->setTemplate('boxoffice/usa.html.php');

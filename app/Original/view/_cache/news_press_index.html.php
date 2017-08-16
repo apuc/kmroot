@@ -2,6 +2,7 @@
 /**
  * @var array $list
  * @var string $static
+ * @var $options \Kinomania\System\Options\Options
  */
 use Kinomania\Original\Key\News\Preview as News;
 ?>
@@ -12,9 +13,9 @@ use Kinomania\Original\Key\News\Preview as News;
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <title>KINOMANIA.RU :: Пресс-обзор</title>
-    <meta name="description" content="Статьи в зарубежной прессе о новинках американского кинопроката в рубрике «Пресс-обзор». Самая интересная и актуальная информация о новинках мирового кинопроката и многое другое из мира кино на сайте KINOMANIA.RU."/>
-    <meta name="keywords" content="зарубежная пресса о новинках американского кинопроката"/>
+    <title><?= $options->get('seo_press_review_title') ?></title>
+    <meta name="description" content="<?= $options->get('seo_press_review_description') ?>"/>
+    <meta name="keywords" content="<?= $options->get('seo_press_review_keywords') ?>"/>
 
     <meta property="og:title" content="Пресс-обзор" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
@@ -224,7 +225,7 @@ use Kinomania\Original\Key\News\Preview as News;
         <div class="main-content-other-page clear">
             <content class="page-section-content section-content content-outer outer-vert col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <div class="row-news-list">
-                    <h1 class="pagetitle">Пресс-обзор</h1>
+                    <h1 class="pagetitle"><?= $options->get('seo_press_review_h1') ?></h1>
                     <div class="description description-border">
                         Что пишут журналисты о премьерах: пресс-обзор российских и зарубежных СМИ с цитатами уважаемых кинокритиков и блогеров. Калейдоскоп чужих мнений о фильмах, который поможет вам составить свое собственное.
                     </div>

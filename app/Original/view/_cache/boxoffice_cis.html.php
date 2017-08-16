@@ -1,6 +1,7 @@
 <?php
 /**
  * @var array $list
+ * @var $options \Kinomania\System\Options\Options
  */
 ?>
 <!doctype html>
@@ -9,9 +10,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Кассовые сборы фильмов в прокате СНГ (Box-office)</title>
-    <meta name="description" content="Кассовые сборы фильмов в прокате СНГ"/>
-    <meta name="keywords" content="Кассовые сборы фильмов, Box-office, касса, лидерв проката"/>
+    <title><?= $options->get('seo_boxoffice_cis_title') ?></title>
+    <meta name="description" content="<?= $options->get('seo_boxoffice_cis_description') ?>"/>
+    <meta name="keywords" content="<?= $options->get('seo_boxoffice_cis_keywords') ?>"/>
 
     <meta property="og:title" content="Кассовые сборы фильмов в прокате СНГ (Box-office)" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
@@ -228,7 +229,7 @@
                                 <li><a href="/boxoffice/usa/">СБОРЫ В США</a></li>
                             </ul>
                         </div>
-                        <h1 class="pagetitle pagetitle-two">Бокс-Офис</h1>
+                        <h1 class="pagetitle pagetitle-two"><?= $options->get('seo_boxoffice_cis_h1') ?></h1>
                         <div class="table-page-caption clear">
                             <div class="table-page-caption-item1">
                                 ЛИДЕРЫ ПРОКАТА ЗА УИКЕНД <?= $list['date_from'] ?> — <?= $list['date_to'] ?>

@@ -2,6 +2,7 @@
 /**
  * @var array $list
  * @var string $static
+ * @var $options \Kinomania\System\Options\Options
  */
 use Kinomania\Original\Key\News\Preview as News;
 ?>
@@ -11,8 +12,8 @@ use Kinomania\Original\Key\News\Preview as News;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>KINOMANIA.RU :: Инсайд</title>
-    <meta name="description" content="Блог сайта - новый функционал, планы, обсуждения"/>
+    <title><?= $options->get('seo_inside_title') ?></title>
+    <meta name="description" content="<?= $options->get('seo_inside_description') ?>"/>
 
     <meta property="og:title" content="Инсайд" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
@@ -33,7 +34,7 @@ use Kinomania\Original\Key\News\Preview as News;
         <div class="main-content-other-page clear">
             <content class="page-section-content section-content content-outer outer-vert col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <div class="row-news-list">
-                    <h1 class="pagetitle">Инсайд</h1>
+                    <h1 class="pagetitle"><?= $options->get('seo_inside_h1') ?></h1>
                     <div class="description description-border">
                         Блог сайта - новый функционал, планы, обсуждения.
                     </div>
