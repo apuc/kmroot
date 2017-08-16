@@ -75,9 +75,10 @@ class Menu
                 'title' => 'SEO',
                 'icon' => 'fa fa-code',
                 'items' => [
-                    'seo/main' => 'Главная',
-                    'seo/news' => 'Новости',
-                    'seo/top_films' => 'Топ фильмов',
+                	'seo/list' => '',
+					/*'seo/main' => 'Главная',
+					'seo/news' => 'Новости',
+					'seo/top_films' => 'Топ фильмов',
                     'seo/trailers' => 'Трейлеры',
 					'seo/tv' => 'ТВ',
 					'seo/releases/russia' => 'График премьер РФ',
@@ -101,8 +102,8 @@ class Menu
 					'seo/boxoffice' => 'Бокс-офис',
 					'seo/boxoffice/russia' => 'Сборы в РФ',
 					'seo/boxoffice/cis' => 'Сборы в СНГ',
-					'seo/boxoffice/usa' => 'Сборы в США',
-                ]
+					'seo/boxoffice/usa' => 'Сборы в США',*/
+				],
             ],
             'sys' => [
                 'title' => 'Система',
