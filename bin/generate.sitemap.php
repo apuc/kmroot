@@ -1,11 +1,11 @@
 <?php
 set_time_limit(0);
 
-$db = mysqli_connect("127.0.0.1", "fg.kmmain", "fjT94HGF4jde3", "kmmain");
+$db = mysqli_connect("127.0.0.1", "root", "", "kmmain");
 $db->query("SET NAMES 'UTF8'");
 setTimeZone($db);
 
-$db_2 = mysqli_connect("127.0.0.1", "fg.kmmain", "fjT94HGF4jde3", "kmmain");
+$db_2 = mysqli_connect("127.0.0.1", "root", "", "kmmain");
 $db_2->query("SET NAMES 'UTF8'");
 setTimeZone($db_2);
 

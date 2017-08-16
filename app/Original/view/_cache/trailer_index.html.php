@@ -12,7 +12,7 @@ use Kinomania\Original\Key\Person\Trailer as Trailer;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Трейлеры фильмов | KINOMANIA.RU 3</title>
+    <title>Трейлеры фильмов | KINOMANIA.RU</title>
     <meta name="description" content="Трейлеры фильмов: новые трейлеры к фильмам, мультфильмам, российским и зарубежным сериалам. KINOMANIA.RU – все о мире кино и жизни актеров."/>
     <meta name="keywords" content="трейлер, trailer, тизер, скачивание, онлайн"/>
 

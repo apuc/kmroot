@@ -29,17 +29,17 @@ class Comment extends IBase
         $this->db_to->close();
         $this->db_to_2->close();
 
-        $this->db_from = mysqli_connect("127.0.0.1", "fg.kmmain", "fjT94HGF4jde3", "kinomania");
+        $this->db_from = mysqli_connect("127.0.0.1", "root", "", "kinomania");
         $this->db_from->query("SET NAMES 'UTF8'");
         setTimeZone($this->db_from);
-        $this->db_from_2 = mysqli_connect("127.0.0.1", "fg.kmmain", "fjT94HGF4jde3", "kinomania");
+        $this->db_from_2 = mysqli_connect("127.0.0.1", "root", "", "kinomania");
         $this->db_from_2->query("SET NAMES 'UTF8'");
         setTimeZone($this->db_from_2);
 
-        $this->db_to = mysqli_connect("127.0.0.1", "fg.kmmain", "fjT94HGF4jde3", "kmmain");
+        $this->db_to = mysqli_connect("127.0.0.1", "root", "", "kmmain");
         $this->db_to->query("SET NAMES 'UTF8'");
         setTimeZone($this->db_to);
-        $this->db_to_2 = mysqli_connect("127.0.0.1", "fg.kmmain", "fjT94HGF4jde3", "kmmain");
+        $this->db_to_2 = mysqli_connect("127.0.0.1", "root", "", "kmmain");
         $this->db_to_2->query("SET NAMES 'UTF8'");
         setTimeZone($this->db_to_2);
     }

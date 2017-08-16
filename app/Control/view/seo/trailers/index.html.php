@@ -20,7 +20,7 @@
 </style>
 
 <div class="content-heading">
-    Настройка СЕО для главной
+    Настройка СЕО для страницы трейлеры
 </div>
 
 <div class="row">

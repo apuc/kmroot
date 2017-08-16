@@ -1,10 +1,10 @@
 <?php
-$db_from = mysqli_connect("127.0.0.1", "fg.kmmain", "fjT94HGF4jde3", "kinomania");
+$db_from = mysqli_connect("127.0.0.1", "root", "", "kinomania");
 $db_from->query("SET NAMES 'UTF8'");
 setTimeZone($db_from);
 
 
-$db_to = mysqli_connect("127.0.0.1", "fg.kmmain", "fjT94HGF4jde3", "kmmain");
+$db_to = mysqli_connect("127.0.0.1", "root", "", "kmmain");
 $db_to->query("SET NAMES 'UTF8'");
 setTimeZone($db_to);
 
