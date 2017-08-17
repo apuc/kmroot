@@ -15,6 +15,8 @@ use Kinomania\Original\Key\News\Preview as News;
     <meta name="description" content="Тематические подборки фильмов, приуроченные к громким и ожидаемым премьерам, в рубрике «В десятку». Самая интересная и актуальная информация о новинках мирового кинопроката и многое другое из мира кино на сайте KINOMANIA.RU."/>
     <meta name="keywords" content="тематические подборки фильмов в десятку"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/article/in_ten"/>
+
     <meta property="og:title" content="В десятку" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />

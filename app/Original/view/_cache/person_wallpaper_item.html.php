@@ -27,6 +27,7 @@ use Kinomania\Original\Key\Person\Wallpaper as Wallpaper;
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/people/<?= $id ?>/wallpapers/<?= $wallpaperId ?>" />
     <meta property="og:description" content="<?= $min[Person::TITLE] ?> Только лучшие обои"/>
+	<link rel="canonical" href="http://www.kinomania.ru/people/<?= $id ?>/wallpapers/<?= $wallpaperId ?>"/>
 
     <?php
 /**

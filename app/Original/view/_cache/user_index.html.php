@@ -15,6 +15,8 @@ use Kinomania\Original\Key\User\User;
     <title>Профиль пользователя <?= $login ?></title>
     <meta name="description" content="Профиль пользователя на сайте KINOMANIA.RU"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/user/<?= $login ?>"/>
+
     <meta property="og:title" content="Профиль пользователя <?= $login ?>" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />

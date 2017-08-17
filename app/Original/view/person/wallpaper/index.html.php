@@ -20,6 +20,8 @@ use Kinomania\Original\Key\Person\Wallpaper as Wallpaper;
     <meta name="keywords" content="<?= $min[Person::TITLE] ?> обои высокое качество разрешение"/>
     <meta name="og:image" content="<?= $list[0][Wallpaper::IMAGE] ?> "/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/people/<?= $id ?>/wallpapers"/>
+
     <meta property="og:title" content="<?= $min[Person::TITLE] ?> обои для рабочего стола" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />

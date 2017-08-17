@@ -20,6 +20,8 @@ use Kinomania\Original\Key\Person\Photo as Photo;
     <meta name="description" content="<?= $min[Person::TITLE] ?> фото #<?= $photoId ?> (все фотографии) на KINOMANIA.RU. Фильмография, биография, обои, факты, новости и многое другое о звёздах мирового кинематографа." />
     <meta name="keywords" content="<?= $min[Person::NAME_RU] ?> <?= $min[Person::NAME_ORIGIN] ?> фото фотографии" />
 
+	<link rel="canonical" href="http://www.kinomania.ru/people/<?= $id ?>/photos/<?= $photoId ?>"/>
+
     <meta property="og:title" content="<?= $min[Person::TITLE] ?> фото актера #<?= $photoId ?>" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />

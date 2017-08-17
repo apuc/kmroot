@@ -16,6 +16,8 @@ use Kinomania\Original\Key\News\Preview as News;
     <meta name="description" content="<?= $options->get('seo_anticipation_description') ?>"/>
     <meta name="keywords" content="<?= $options->get('seo_anticipation_keywords') ?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/article/anticipation"/>
+
     <meta property="og:title" content="Ожидания" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />

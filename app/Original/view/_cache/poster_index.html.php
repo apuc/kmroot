@@ -25,7 +25,7 @@ use Kinomania\Original\Key\Film\Poster as Poster;
     <meta property="og:url" content="http://www.kinomania.ru/posters" />
     <meta property="og:title" content="Постеры к фильмам" />
     <meta property="og:description" content="Постеры к фильмам: огромная коллекция постеров к фильмам, мультфильмам, сериалам и мюзиклам."/>
-
+	<link rel="canonical" href="http://www.kinomania.ru/posters"/>
     <?php
 /**
  * @var string $static

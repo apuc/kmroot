@@ -15,6 +15,8 @@ use Kinomania\Original\Key\Award\Award as Award;
     <title><?= $item[Award::NAME_RU] ?> - все номинанты и победители на KINOMANIA.RU</title>
     <meta name="description" content="<?= $item[Award::NAME_RU] ?> - все номинанты и победители на KINOMANIA.RU"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/awards/<?= $item[Award::CODE] ?>"/>
+
     <meta property="og:title" content="<?= $item[Award::NAME_RU] ?>" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />

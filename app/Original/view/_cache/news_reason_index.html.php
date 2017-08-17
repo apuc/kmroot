@@ -15,6 +15,8 @@ use Kinomania\Original\Key\News\Preview as News;
     <meta name="description" content="Самые животрепещущие информационные поводы, дарящие возможность вспомнить то, о чём не стоит забывать, в рубрике «Был бы повод...». Наиболее интересная и актуальная информация о классике и новинках мирового кино и многое другое на сайте KINOMANIA.RU."/>
     <meta name="keywords" content="был бы повод"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/article/reason"/>
+
     <meta property="og:title" content="Был бы повод..." />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />

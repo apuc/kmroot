@@ -16,6 +16,8 @@ use Kinomania\Original\Key\Award\Award as Award;
     <meta name="description" content="<?= $options->get('seo_awards_description') ?>"/>
     <meta name="keywords" content="<?= $options->get('seo_awards_keywords') ?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/awards"/>
+
     <meta property="og:title" content="Кинонаграды и кинофестивали | KINOMANIA.RU" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />

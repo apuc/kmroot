@@ -13,8 +13,9 @@ class SeoList
 
     const LIST = [
         'seo/main' => 'Главная',
+		'seo/billboard' => 'Афиша',
         'seo/news' => 'Новости',
-        'seo/top_films' => 'Топ фильмов',
+        'seo/top/films' => 'Топ фильмов',
         'seo/trailers' => 'Трейлеры',
         'seo/tv' => 'ТВ',
         'seo/releases/russia' => 'График премьер РФ',
@@ -25,6 +26,7 @@ class SeoList
         'seo/press_review' => 'Пресс-обзор',
         'seo/anticipation' => 'Ожидания',
         'seo/inside' => 'Инсайд',
+		'seo/art' => 'Арткиномания',
         'seo/awards' => 'Фестивали и премии',
         'seo/movie_memorial' => 'BOOOM!!',
         'seo/scripts' => 'Все сценарии',
@@ -47,14 +49,19 @@ class SeoList
             'urlAdmin' => 'seo/main',
             'label' => 'Главная',
         ],
+		[
+			'url' => '/billboard',
+			'urlAdmin' => 'seo/billboard',
+			'label' => 'Афиша',
+		],
         [
             'url' => '/news',
             'urlAdmin' => 'seo/news',
             'label' => 'Новости',
         ],
 		[
-			'url' => '/top_films',
-			'urlAdmin' => 'seo/top_films',
+			'url' => '/top/films',
+			'urlAdmin' => 'seo/top/films',
 			'label' => 'Топ фильмов',
 		],
 		[
@@ -106,6 +113,11 @@ class SeoList
 			'url' => '/inside',
 			'urlAdmin' => 'seo/inside',
 			'label' => 'Инсайд',
+		],
+		[
+			'url' => '/art',
+			'urlAdmin' => 'seo/art',
+			'label' => 'Арткиномания',
 		],
 		[
 			'url' => '/awards',

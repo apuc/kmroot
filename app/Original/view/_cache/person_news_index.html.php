@@ -19,6 +19,8 @@ use Kinomania\Original\Key\Person\Award as Award;
     <meta name="description" content="<?= $min[Person::TITLE] ?>: новости на KINOMANIA.RU. Фильмография, биография, факты, новости и многое другое о звёздах мирового кинематографа."/>
     <meta name="keywords" content="<?= $min[Person::TITLE] ?> новости"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/people/<?= $id ?>/news"/>
+
     <meta property="og:title" content="<?= $min[Person::TITLE] ?> новости" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />

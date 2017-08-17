@@ -29,6 +29,7 @@ use Kinomania\Original\Key\Film\Film;
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/film/<?= $id ?>/reviews" />
+	<link rel="canonical" href="http://www.kinomania.ru/film/<?= $id ?>/reviews"/>
 
     <?php
 /**

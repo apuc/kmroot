@@ -1,5 +1,5 @@
 <?php
-namespace Control\Route_seo_top_films;
+namespace Control\Route_seo_art;
 use Kinomania\Control\Controller\AdminController;
 use Kinomania\Control\Template\Menu;
 use Kinomania\System\Options\Options;
@@ -18,8 +18,8 @@ class GET extends AdminController
         $this->addData([
             'options' => new Options()
         ]);
-        $this->setTitle('Настройка СЕО для страницы ЛУЧШИХ ФИЛЬМОВ');
-        $this->setTemplate('seo/top-films/index.html.php');
+        $this->setTitle('Настройка СЕО для главной');
+        $this->setTemplate('seo/art/index.html.php');
     }
 
 }

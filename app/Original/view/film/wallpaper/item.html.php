@@ -29,7 +29,7 @@ use Kinomania\Original\Key\Person\Wallpaper as Wallpaper;
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/film/<?= $id ?>/wallpapers<?= $wallpaperId ?>/wallpaper_<?= $width ?>x<?= $height ?>" />
-
+	<link rel="canonical" href="http://www.kinomania.ru/film/<?= $id ?>/wallpapers<?= $wallpaperId ?>/wallpaper_<?= $width ?>x<?= $height ?>"/>
     <!-- include section/head.html.php -->
 
     <style>

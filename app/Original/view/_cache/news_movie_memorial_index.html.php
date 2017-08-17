@@ -22,6 +22,8 @@ use Kinomania\Original\Key\News\Preview as News;
     <meta property="og:url" content="http://www.kinomania.ru/article/movie_memorial" />
     <meta property="og:description" content="Архив новостей: все новости о мире кино и жизни актеров"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/article/movie_memorial"/>
+
     <?php
 /**
  * @var string $static
