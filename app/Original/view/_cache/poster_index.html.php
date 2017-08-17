@@ -19,13 +19,15 @@ use Kinomania\Original\Key\Film\Poster as Poster;
     <meta name="description" content="<?= $options->get('seo_posters_description') ?>"/>
     <meta name="keywords" content="<?= $options->get('seo_posters_keywords') ?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/posters"/>
+
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:image" content="" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/posters" />
     <meta property="og:title" content="Постеры к фильмам" />
     <meta property="og:description" content="Постеры к фильмам: огромная коллекция постеров к фильмам, мультфильмам, сериалам и мюзиклам."/>
-	<link rel="canonical" href="http://www.kinomania.ru/posters"/>
+
     <?php
 /**
  * @var string $static

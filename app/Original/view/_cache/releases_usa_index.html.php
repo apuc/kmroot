@@ -20,7 +20,7 @@ use Kinomania\Original\Key\Film\Release as Release;
     <meta name="description" content="<?=$options->get('seo_releases_usa_description');?>"/>
 
 	<link rel="canonical" href="http://www.kinomania.ru/releases/usa"/>
-
+	
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/releases/usa" />

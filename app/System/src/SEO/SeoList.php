@@ -85,7 +85,7 @@ class SeoList
 			'label' => 'График премьер США',
 		],
 		[
-		'url' => '/shorts',
+		'url' => '/article/shorts',
 		'urlAdmin' => 'seo/shorts',
 		'label' => 'SHORTS',
 		],
@@ -95,22 +95,22 @@ class SeoList
 			'label' => 'Рецензии',
 		],
 		[
-			'url' => '/interview',
+			'url' => '/article/interview',
 			'urlAdmin' => 'seo/interview',
 			'label' => 'Интервью',
 		],
 		[
-			'url' => '/press_review',
+			'url' => '/article/press_review',
 			'urlAdmin' => 'seo/press_review',
 			'label' => 'Пресс-обзор',
 		],
 		[
-			'url' => '/anticipation',
+			'url' => '/article/anticipation',
 			'urlAdmin' => 'seo/anticipation',
 			'label' => 'Ожидания',
 		],
 		[
-			'url' => '/inside',
+			'url' => '/article/inside',
 			'urlAdmin' => 'seo/inside',
 			'label' => 'Инсайд',
 		],
@@ -125,7 +125,7 @@ class SeoList
 			'label' => 'Фестивали и премии',
 		],
 		[
-			'url' => '/movie_memorial',
+			'url' => '/article/movie_memorial',
 			'urlAdmin' => 'seo/movie_memorial',
 			'label' => 'BOOOM!!',
 		],
@@ -170,7 +170,7 @@ class SeoList
 			'label' => 'Подборки киномании',
 		],
 		[
-			'url' => '/boxoffice',
+			'url' => '/article/boxoffice',
 			'urlAdmin' => 'seo/boxoffice',
 			'label' => 'Бокс-офис',
 		],
