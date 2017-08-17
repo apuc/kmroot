@@ -13,8 +13,8 @@ use Kinomania\Original\Key\News\News;
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title><?= $item[News::TITLE_HTML] ?></title>
+	
+	<title><?= $item[News::TITLE_HTML] ?></title>
     <meta name="description" content="<?= $item[News::ANONS_STRIPED] ?>" />
 
     <link rel="canonical" href="http://www.kinomania.ru/news/<?= $id ?>/"/>
@@ -25,7 +25,7 @@ use Kinomania\Original\Key\News\News;
     <meta property="og:image" content="http:<?= $item[News::IMAGE] ?>" />
     <?php endif ?>
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="http://www.kinomania.ru/news/<?= $id ?>" />
+    <meta property="og:url" content="http://www.kinomania.ru/news/<?= $id ?>/" />
     <meta property="og:description" content="<?= $item[News::ANONS_STRIPED] ?>"/>
 
     <?php

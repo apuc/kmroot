@@ -26,7 +26,7 @@ use Kinomania\Original\Key\Film\TV as TV;
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:image" content="<?= $item[Film::IMAGE_ORG] ?>" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://www.kinomania.ru/film/<?= $id ?>" />
+    <meta property="og:url" content="http://www.kinomania.ru/film/<?= $id ?>/" />
     <meta property="og:description" content="<?= $item[Film::TITLE] ?> : cамая свежая и полная информация о <?php if ('' == $item[Film::TYPE]): ?>фильме<?php else: ?>сериале<?php endif ?>"/>
 
     <?php
