@@ -5,11 +5,6 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)\?*$ app.php/$1 [L,QSA]
 
-RewriteCond %{REQUEST_URI} !(.html)
-RewriteCond %{REQUEST_URI} !(.jpg)
-RewriteCond %{REQUEST_URI} !(.*)/$
-RewriteRule ^(.*)$ http://www.kmroot/$1/ [L,R=301]
-
 
 
 

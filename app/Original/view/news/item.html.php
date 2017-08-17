@@ -17,7 +17,7 @@ use Kinomania\Original\Key\News\News;
 	<title><?= $item[News::TITLE_HTML] ?></title>
     <meta name="description" content="<?= $item[News::ANONS_STRIPED] ?>" />
 
-    <link rel="canonical" href="http://www.kinomania.ru/news/<?= $id ?>/"/>
+    <link rel="canonical" href="http://www.kinomania.ru/news/<?= $id ?>"/>
 
     <meta property="og:title" content="<?= $item[News::TITLE] ?>" />
     <meta property="og:site_name" content="KINOMANIA.RU" />

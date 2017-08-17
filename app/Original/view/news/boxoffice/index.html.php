@@ -16,6 +16,8 @@ use Kinomania\Original\Key\News\Preview as News;
     <meta name="description" content="<?= $options->get('seo_boxoffice_description') ?>"/>
     <meta name="keywords" content="<?= $options->get('seo_boxoffice_keywords') ?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/article/boxoffice"/>
+	
     <meta property="og:title" content="Бокс-офис" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />

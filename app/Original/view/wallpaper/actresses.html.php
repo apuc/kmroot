@@ -18,6 +18,8 @@ use Kinomania\Original\Key\Film\Wallpaper as Wallpaper;
     <meta name="description" content="<?= $options->get('seo_actresses_description') ?>"/>
     <meta name="keywords" content="<?= $options->get('seo_actresses_keywords') ?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/wallpapers/actresses"/>
+
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/wallpapers/actresses" />

@@ -17,6 +17,8 @@ use Kinomania\Original\Key\Person\Trailer as Trailer;
     <meta name="description" content="<?=$options->get('seo_trailers_description');?>"/>
     <meta name="keywords" content="<?=$options->get('seo_trailers_keywords');?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/trailers"/>
+
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:image" content="" />
     <meta property="og:type" content="website" />

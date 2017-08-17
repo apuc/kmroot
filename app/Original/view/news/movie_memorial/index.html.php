@@ -16,6 +16,8 @@ use Kinomania\Original\Key\News\Preview as News;
     <meta name="description" content="<?= $options->get('seo_movie_memorial_description') ?>"/>
     <meta name="keywords" content="<?= $options->get('seo_movie_memorial_keywords') ?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/article/movie_memorial"/>
+
     <meta property="og:title" content="BOOOM!!" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />

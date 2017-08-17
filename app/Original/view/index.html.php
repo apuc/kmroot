@@ -13,6 +13,8 @@
     <link rel="image_src" href="<?= \Kinomania\System\Config\Server::STATIC[0] ?>/app/img/design/logo3.png" />
     <meta name="keywords" content="<?= $options->get('seo_main_keywords') ?>" />
 
+	<link rel="canonical" href="http://www.kinomania.ru"/>
+
     <meta property="og:title" content="Новинки кино | KINOMANIA.RU" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:image" content="<?= \Kinomania\System\Config\Server::STATIC[0] ?>/app/img/design/logo3.png" />

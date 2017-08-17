@@ -12,6 +12,8 @@
     <title>Афиша Москвы - все кинотеатры, расписание, фильмы</title>
     <meta name="description" content="Подробная афиша кинотеатров Москвы"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/billboard"/>
+
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/billboard" />

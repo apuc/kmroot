@@ -18,6 +18,8 @@ use Kinomania\Original\Key\Person\Photo as Photo;
     <meta name="description" content="<?= $options->get('seo_photos_description') ?>"/>
     <meta name="keywords" content="<?= $options->get('seo_photos_keywords') ?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/photos"/>
+
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/photos" />

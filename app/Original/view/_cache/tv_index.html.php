@@ -23,6 +23,7 @@ use Kinomania\Original\Key\TV\Film as Film;
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/tv" />
     <meta property="og:title" content="ТВ программа" />
+	<link rel="canonical" href="http://www.kinomania.ru/tv"/>
 
     <?php
 /**

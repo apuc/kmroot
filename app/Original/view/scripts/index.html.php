@@ -17,6 +17,8 @@ use Kinomania\Original\Key\Film\Script as Script;
     <title><?= $options->get('seo_scripts_title') ?></title>
     <meta name="description" content="<?= $options->get('seo_scripts_description') ?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/scripts"/>
+
     <meta property="og:title" content="Сценарии к фильмам" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />

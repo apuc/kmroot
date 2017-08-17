@@ -18,6 +18,8 @@ use Kinomania\Original\Key\Film\Soundtrack as Soundtrack;
     <meta name="description" content="<?=$options->get('seo_soundtracks_description');?>"/>
     <meta name="keywords" content="<?=$options->get('seo_soundtracks_keywords');?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/soundtracks"/>
+
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:image" content="" />
     <meta property="og:type" content="website" />

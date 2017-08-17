@@ -14,10 +14,12 @@
     <meta name="description" content="<?= $options->get('seo_boxoffice_russia_description') ?>"/>
     <meta name="keywords" content="<?= $options->get('seo_boxoffice_russia_keywords') ?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/boxoffice/russia"/>
+
     <meta property="og:title" content="Кассовые сборы фильмов в прокате России (Box-office)" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://www.kinomania.ru/boxoffice/cis" />
+    <meta property="og:url" content="http://www.kinomania.ru/boxoffice/russia" />
     <meta property="og:description" content="Кассовые сборы фильмов в прокате России"/>
 
     <?php

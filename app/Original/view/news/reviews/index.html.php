@@ -16,6 +16,8 @@ use Kinomania\Original\Key\News\Preview as News;
     <meta name="description" content="<?= $options->get('seo_reviews_description') ?>"/>
     <meta name="keywords" content="<?= $options->get('seo_reviews_keywords') ?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/reviews"/>
+
     <meta property="og:title" content="Рецензии" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />

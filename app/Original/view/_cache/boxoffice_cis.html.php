@@ -14,6 +14,8 @@
     <meta name="description" content="<?= $options->get('seo_boxoffice_cis_description') ?>"/>
     <meta name="keywords" content="<?= $options->get('seo_boxoffice_cis_keywords') ?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/boxoffice/cis"/>
+
     <meta property="og:title" content="Кассовые сборы фильмов в прокате СНГ (Box-office)" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />

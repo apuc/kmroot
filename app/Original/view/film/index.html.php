@@ -19,7 +19,7 @@ use Kinomania\Original\Key\Film\TV as TV;
     <meta name="description" content="Самая свежая и полная информация о <?php if ('' == $item[Film::TYPE]): ?>фильме<?php else: ?>сериале<?php endif ?> <?= $item[Film::TITLE] ?>: Истории на сайте KINOMANIA.RU. Обзоры новых фильмов, трейлеры, биографии актёров, обои на рабочий стол и многое другое из мира кино." />
     <meta name="keywords" content="<?= $item[Film::NAME_RU] ?> <?= $item[Film::NAME_ORIGIN] ?> <?php if ('' == $item[Film::TYPE]): ?>фильм<?php else: ?>сериал<?php endif ?> смотреть онлайн трейлер актеры" />
 
-    <link rel="canonical" href="http://www.kinomania.ru/film/<?= $id ?>/"/>
+    <link rel="canonical" href="http://www.kinomania.ru/film/<?= $id ?>"/>
 
 
     <meta property="og:title" content="<?= $item[Film::TITLE] ?> : всё о <?php if ('' == $item[Film::TYPE]): ?>фильме<?php else: ?>сериале<?php endif ?> | Обои, трейлеры, фотографии, фильмография, биография, факты, новости" />
