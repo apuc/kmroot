@@ -21,7 +21,7 @@ use Kinomania\Original\Key\Person\TV as TV;
     <meta name="description" content="<?= $item[Person::TITLE] ?> : всё о персоне на сайте KINOMANIA.RU. Обои, фотографии, фильмография, биография, факты, новости и многое другое о звёздах мирового кинематографа" />
     <meta name="Personwords" content="<?= $item[Person::NAME_RU] ?> обои, фотографии, биография, факты, фильмография, новости" />
 
-    <link rel="canonical" href="http://www.kinomania.ru/people/<?= $id ?>"/>
+    <link rel="canonical" href="http://www.kinomania.ru/people/<?= $id ?>/"/>
 
     <meta property="og:title" content="<?= $item[Person::TITLE] ?> : всё о персоне | Обои, фотографии, фильмография, биография, факты, новости" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
