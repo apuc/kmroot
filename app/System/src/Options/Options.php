@@ -2,7 +2,7 @@
 
 namespace Kinomania\System\Options;
 
-use Kinomania\System\Common\TRepository;
+//use Kinomania\System\Common\TRepository;
 
 /**
  * Created by PhpStorm.
@@ -10,14 +10,14 @@ use Kinomania\System\Common\TRepository;
  * Date: 09.08.2017
  * Time: 21:43
  */
-class Options
+class Options extends Model_Options
 {
 
-    use TRepository;
+    //use TRepository;
 
     public function get($key)
     {
-        $result = $this->mysql()->query("SELECT * FROM `options` WHERE `key` LIKE '{$key}' LIMIT 1");
+    	$result = $this->query_get($key);
         if ($result) {
             $value = '';
             while ($row = $result->fetch_assoc()) {
@@ -32,10 +32,10 @@ class Options
     {
         if ($this->get($key)) {
             // Есть данные
-            $this->mysql()->query("UPDATE `options` SET `value` = '{$value}' WHERE `key` LIKE '{$key}'");
+            $this->query_set($key,$value);
         } else {
             // нет данных
-            $this->mysql()->query("INSERT INTO `options` (`key`, `value`) VALUES ('{$key}', '{$value}')");
+            $this->query_insert($key,$value);
         }
     }
 

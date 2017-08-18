@@ -31,7 +31,7 @@ use Kinomania\Original\Key\Film\Film;
     <meta property="og:url" content="http://www.kinomania.ru/film/<?= $id ?>/reviews" />
 	<link rel="canonical" href="http://www.kinomania.ru/film/<?= $id ?>/reviews"/>
 
-    <?php
+	<?php
 /**
  * @var string $static
  */

@@ -30,7 +30,6 @@ use Kinomania\Original\Key\Film\Film;
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/film/<?= $id ?>/people" />
 	<link rel="canonical" href="http://www.kinomania.ru/film/<?= $id ?>/people"/>
-
     <?php
 /**
  * @var string $static
