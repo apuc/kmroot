@@ -20,12 +20,13 @@ use Kinomania\Original\Key\Person\Wallpaper as Wallpaper;
     <meta name="keywords" content="<?= $min[Person::TITLE] ?> обои высокое качество разрешение"/>
     <meta name="og:image" content="<?= $list[0][Wallpaper::IMAGE] ?> "/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/people/<?= $id ?>/wallpapers"/>
+
     <meta property="og:title" content="<?= $min[Person::TITLE] ?> обои для рабочего стола" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/people/<?= $id ?>/wallpapers" />
     <meta property="og:description" content="<?= $min[Person::TITLE] ?> обои для рабочего стола все размеры до FULL-HD "/>
-	<link rel="canonical" href="http://www.kinomania.ru/people/<?= $id ?>/wallpapers"/>
 
     <?php
 /**
@@ -142,6 +143,7 @@ use Kinomania\Original\Key\Person\Wallpaper as Wallpaper;
                                     <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                                     <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                                     <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                                <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                                     <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                                 </ul>
                             </li>
@@ -203,6 +205,7 @@ use Kinomania\Original\Key\Person\Wallpaper as Wallpaper;
                         <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                         <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                         <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                    <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                         <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                     </ul>
                 </li>

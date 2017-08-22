@@ -1,6 +1,7 @@
 <?php
 /**
- * @var $options \Kinomania\System\Options\Options
+ * @var $options Kinomania\System\Options\Options
+ *
  */
 ?>
 <!doctype html>

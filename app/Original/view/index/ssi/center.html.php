@@ -2,10 +2,12 @@
 /**
  * @var array $list
  */
+
+
 ?>
 <div class="parent-sticker">
     <div class="bxslider" style="visibility: hidden;">
-        <?php foreach ($list as $item): ?>
+        <?php foreach ($list1 as $item): ?>
             <div class="item">
                 <div class="inner-section clear row">
                     <div class="center-section-preview col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">

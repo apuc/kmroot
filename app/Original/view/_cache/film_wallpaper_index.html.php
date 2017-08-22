@@ -28,7 +28,6 @@ use Kinomania\Original\Key\Person\Wallpaper as Wallpaper;
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/film/<?= $id ?>/wallpapers" />
 	<link rel="canonical" href="http://www.kinomania.ru/film/<?= $id ?>/wallpapers"/>
-
     <?php
 /**
  * @var string $static
@@ -155,6 +154,7 @@ use Kinomania\Original\Key\Person\Wallpaper as Wallpaper;
                                     <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                                     <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                                     <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                                <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                                     <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                                 </ul>
                             </li>
@@ -216,6 +216,7 @@ use Kinomania\Original\Key\Person\Wallpaper as Wallpaper;
                         <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                         <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                         <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                    <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                         <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                     </ul>
                 </li>

@@ -104,7 +104,7 @@ use Kinomania\Original\Key\Film\Soundtrack as Soundtrack;
                     <div class="close">
                         <span href="#" class="mobile-nav-button__close">Закрыть</span>
                         <ul class="mobile-nav-list clear">
-                            <li><a href="/billboard/">СМОТРЕТЬ</a>
+                            <li><a href="/billboard/">СМО</a>
                                 <ul class="nav-list-dop">
                                     <!-- <li><a href="/billboard/">АФИША</a></li> -->
                                     <li><a href="/tv/">ТВ</a></li>
