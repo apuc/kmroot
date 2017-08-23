@@ -1,5 +1,5 @@
 <?php
-namespace Control\Route_seo_actresses;
+namespace Control\Route_seo_wallpapers_actors;
 use Kinomania\Control\Controller\AdminController;
 use Kinomania\Control\Template\Menu;
 use Kinomania\System\Options\Options;
@@ -18,8 +18,8 @@ class GET extends AdminController
         $this->addData([
             'options' => new Options()
         ]);
-        $this->setTitle('Настройка СЕО для страницы ОБОИ К АКТРИСАМ');
-        $this->setTemplate('seo/actresses/index.html.php');
+        $this->setTitle('Настройка СЕО для страницы ОБОИ К АКТЕРАМ');
+        $this->setTemplate('seo/wallpapers/actors/index.html.php');
     }
 
 }

@@ -4,6 +4,7 @@
  * @var array $genre
  * @var array $popular
  * @var array $list
+ * @var $options \Kinomania\System\Options\Options
  */
 use Kinomania\Original\Key\Film\Film;
 use Kinomania\Original\Key\Film\Poster as Poster;
@@ -14,9 +15,9 @@ use Kinomania\Original\Key\Film\Poster as Poster;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Постеры к фильмам | KINOMANIA.RU</title>
-    <meta name="description" content="Постеры к фильмам: огромная коллекция постеров к фильмам, мультфильмам, сериалам и мюзиклам. KINOMANIA.RU – все о мире кино и жизни актеров."/>
-    <meta name="keywords" content="постер, poster, коллекция постеров"/>
+    <title><?= $options->get('seo_posters_title') ?></title>
+    <meta name="description" content="<?= $options->get('seo_posters_description') ?>"/>
+    <meta name="keywords" content="<?= $options->get('seo_posters_keywords') ?>"/>
 
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:image" content="" />
@@ -228,7 +229,7 @@ use Kinomania\Original\Key\Film\Poster as Poster;
             <section class="outer-section clear outer-content">
                 <!-- Контент -->
                 <content class="page-section-content section-content content-outer outer-vert col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                    <h1 class="pagetitle soundtracks-pagetitle">Постеры</h1>
+                    <h1 class="pagetitle soundtracks-pagetitle"><?= $options->get('seo_posters_h1') ?></h1>
                     <div class="outer-selection-trailers">
                         <div data-type-openclose-button="open_close" data-type-openclose-class="active" class="button__selection-trailers"><span>Подбор по параметрам</span></div>
                         <div class="selection-trailers">

@@ -6,6 +6,7 @@ use Kinomania\Original\Controller\DefaultController;
 use Kinomania\Original\Logic\Releases\Releases;
 use Kinomania\System\Data\Country;
 use Kinomania\System\Data\Genre;
+use Kinomania\System\Options\Options;
 
 class GET extends DefaultController
 {
@@ -30,7 +31,8 @@ class GET extends DefaultController
             'genre' => Genre::RU,
             'country' => Country::RU,
             'month' => date('n'),
-            'year' => date('Y')
+            'year' => date('Y'),
+			'options' => new Options()
         ]);
 
         $this->setTemplate('releases/russia/index.html.php');

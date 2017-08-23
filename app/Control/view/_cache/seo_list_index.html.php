@@ -314,35 +314,8 @@ use Kinomania\System\SEO\SeoList;
                                         <td><a href="/control/<?= $item['urlAdmin'] ?>" class="btn btn-info">Редактировать</a></td>
                                     </tr>
                                 <?php endforeach; ?>
-								<!--<tr>
-                                    <td>Title</td>
-                                    <td>
-                                        <input type="text" name="title" value="<?=$options->get('seo_main_title')?>" class="form-control">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Description</td>
-                                    <td>
-                                        <input type="text" name="description" value="<?=$options->get('seo_main_description')?>" class="form-control">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Keywords</td>
-                                    <td>
-                                        <input type="text" name="keywords" value="<?=$options->get('seo_main_keywords')?>" class="form-control">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>H1</td>
-                                    <td>
-                                        <input type="text" name="h1" value="<?=$options->get('seo_main_h1')?>" class="form-control">
-                                    </td>
-                                </tr>-->
 							</table>
 						</div>
-						<br/>
-						<!--<input type="hidden" name="handler" value="save" />
-						<input type="submit" class="btn btn-primary" value="Сохранить" />-->
 					</form>
 				</div>
 			</div>

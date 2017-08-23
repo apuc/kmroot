@@ -15,6 +15,8 @@
     <title><?= $options->get('seo_tf_title') ?></title>
     <meta name="description" content="<?= $options->get('seo_tf_description') ?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/top/films"/>
+
     <!-- include section/head.html.php -->
 </head>
 <body>

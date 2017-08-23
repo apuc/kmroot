@@ -4,6 +4,7 @@ namespace Original\Route_people_D_news;
 use Dspbee\Bundle\Debug\Wrap;
 use Kinomania\Original\Controller\PersonController;
 use Kinomania\Original\Logic\Person\News;
+use Kinomania\System\Debug\Debug;
 
 class GET extends PersonController
 {
@@ -15,19 +16,23 @@ class GET extends PersonController
             $min = $this->getMin($numList[0]);
 
             if ([] != $min) {
-                $this->redis = new \Redis();
-                $this->redisStatus = $this->redis->connect('127.0.0.1');
+                //$this->redis = new \Redis();
+                //$this->redisStatus = $this->redis->connect('127.0.0.1');
+                //
+                //$key = 'person:' . $numList[0] . ':news';
+                //if (!Wrap::$debugEnabled && $this->redisStatus && $this->redis->exists($key)) {
+                //    $list = unserialize($this->redis->get($key));
+                //} else {
+                //    $list = (new News())->get($numList[0]);
+                //
+                //    if (!Wrap::$debugEnabled && [] != $list && $this->redisStatus) {
+                //        $this->redis->set($key, serialize($list), 600); // 10 min
+                //    }
+                //}
 
-                $key = 'person:' . $numList[0] . ':news';
-                if (!Wrap::$debugEnabled && $this->redisStatus && $this->redis->exists($key)) {
-                    $list = unserialize($this->redis->get($key));
-                } else {
-                    $list = (new News())->get($numList[0]);
+                $list = (new News())->get($numList[0]);
 
-                    if (!Wrap::$debugEnabled && [] != $list && $this->redisStatus) {
-                        $this->redis->set($key, serialize($list), 600); // 10 min
-                    }
-                }
+                //Debug::prn($key);
 
                 if ([] != $list) {
                     $this->addData([

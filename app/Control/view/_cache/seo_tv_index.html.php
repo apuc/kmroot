@@ -283,7 +283,7 @@
 </style>
 
 <div class="content-heading">
-    Настройка СЕО для главной
+    Настройка СЕО для страницы ТВ
 </div>
 
 <div class="row">

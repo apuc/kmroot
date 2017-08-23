@@ -5,6 +5,7 @@ use Dspbee\Bundle\Debug\Wrap;
 use Kinomania\Original\Controller\DefaultController;
 use Kinomania\Original\Logic\Script\Script;
 use Kinomania\System\Data\Genre;
+use Kinomania\System\Options\Options;
 
 class GET extends DefaultController
 {
@@ -26,7 +27,8 @@ class GET extends DefaultController
 
         $this->addData([
             'genre' => Genre::RU,
-            'list' => $list
+            'list' => $list,
+			'options' => new Options()
         ]);
         $this->setTemplate('scripts/index.html.php');
     }

@@ -22,6 +22,7 @@ use Kinomania\Original\Key\Person\Frame as Frame;
         <meta name="keywords" content="<?= $min[Film::NAME_RU] ?>, <?= $min[Film::NAME_ORIGIN] ?>, фильм, постеры"/>
     <?php endif ?>
 
+    <link rel="canonical" href="http://www.kinomania.ru/film/<?= $id ?>/posters"/>
     <meta property="og:title" content="Постеры фильма <?= $min[Film::TITLE] ?>" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />

@@ -14,7 +14,9 @@
     <meta name="description" content="Рецензии на авторское кино, обзоры, новости"/>
     <meta name="keywords" content="артхаус, другое кино, авторское кино"/>
 
-    <!-- include section/head.html.php -->
+	<link rel="canonical" href="http://www.kinomania.ru/art"/>
+ 
+	<!-- include section/head.html.php -->
 </head>
 <body>
   <!--#include virtual="/design/ssi/top" -->

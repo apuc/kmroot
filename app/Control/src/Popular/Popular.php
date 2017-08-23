@@ -17,6 +17,8 @@ class Popular extends DB
             'person_photo' => [],
             'film_poster' => [],
             'casting_promo' => [],
+            'trailer_new' => [],
+            'wallpaper_new' => [],
         ];
         $result = $this->db->query("SELECT `list` FROM `popular` WHERE `type` = 'film_wallpaper' LIMIT 1");
         if ($row = $result->fetch_assoc()) {
@@ -46,6 +48,14 @@ class Popular extends DB
         if ($row = $result->fetch_assoc()) {
             $temp['casting_promo'] = unserialize($row['list']);
         }
+        $result = $this->db->query("SELECT `list` FROM `popular` WHERE `type` = 'trailer_new' LIMIT 1");
+        if ($row = $result->fetch_assoc()) {
+            $temp['trailer_new'] = unserialize($row['list']);
+        }
+        $result = $this->db->query("SELECT `list` FROM `popular` WHERE `type` = 'wallpaper_new' LIMIT 1");
+        if ($row = $result->fetch_assoc()) {
+            $temp['wallpaper_new'] = unserialize($row['list']);
+        }
 
         $item->initFromArray($temp);
 
@@ -63,6 +73,8 @@ class Popular extends DB
         $film_poster = $post->fetch('film_poster');
         $film_new = $post->fetch('film_new');
         $casting_promo = $post->fetch('casting_promo');
+        $trailer_new = $post->fetch('trailer_new');
+        $wallpaper_new = $post->fetch('wallpaper_new');
 
         if (!empty($film_wallpaper)) {
             $film_wallpaper = $this->db->real_escape_string(serialize($film_wallpaper));
@@ -121,6 +133,24 @@ class Popular extends DB
         if (!empty($casting_promo)) {
             $casting_promo = $this->db->real_escape_string(serialize($casting_promo));
             $this->db->query("UPDATE `popular` SET `list` = '{$casting_promo}' WHERE `type` = 'casting_promo' LIMIT 1");
+            if (!empty($this->db->error)) {
+                $this->error = $this->db->error;
+                return false;
+            }
+        }
+
+        if (!empty($trailer_new)) {
+            $trailer_new = $this->db->real_escape_string(serialize($trailer_new));
+            $this->db->query("UPDATE `popular` SET `list` = '{$trailer_new}' WHERE `type` = 'trailer_new' LIMIT 1");
+            if (!empty($this->db->error)) {
+                $this->error = $this->db->error;
+                return false;
+            }
+        }
+
+        if (!empty($wallpaper_new)) {
+            $wallpaper_new = $this->db->real_escape_string(serialize($wallpaper_new));
+            $this->db->query("UPDATE `popular` SET `list` = '{$wallpaper_new}' WHERE `type` = 'wallpaper_new' LIMIT 1");
             if (!empty($this->db->error)) {
                 $this->error = $this->db->error;
                 return false;

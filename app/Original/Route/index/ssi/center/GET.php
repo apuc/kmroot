@@ -6,6 +6,7 @@ use Kinomania\System\Common\TDate;
 use Kinomania\System\Common\TRepository;
 use Kinomania\System\Config\Path;
 use Kinomania\System\Config\Server;
+use Kinomania\System\Debug\Debug;
 
 class GET extends DefaultController
 {
@@ -19,7 +20,7 @@ class GET extends DefaultController
         $list = [];
         $result = $this->mysql()->query("SELECT t1.`id`, t1.`s`, t1.`image`, t1.`category`, t1.`publish`, t1.`title`, t1.`anons`, t2.`comment` FROM `news` as `t1` 
                                         LEFT JOIN `news_stat` as `t2` ON t1.`id` = t2.`newsId` 
-                                        WHERE t1.`status` = 'show' AND t1.`center` = 'yes' ORDER BY t1.`publish` DESC LIMIT 4");
+                                        WHERE t1.`status` = 'show' AND t1.`center` = 'yes' ORDER BY t1.`publish` DESC LIMIT 7");
         while ($row = $result->fetch_assoc()) {
             switch ($row['category']) {
                 case 'Новости кино':

@@ -35,21 +35,21 @@ use Kinomania\System\SEO\SeoList;
 					<form method="post">
 						<div class="dataTables_wrapper">
 							<table class="table table-responsive">
-								<colgroup>
-									<col width="50px">
-									<col width="auto">
-								</colgroup>
 								<tr>
+									<th>#</th>
 									<th>Название</th>
 									<th>Ссылка на раздел</th>
 									<th>Действия</th>
 								</tr>
+                                <?php $i=1; ?>
                                 <?php foreach (SeoList::LIST_INFO as $item): ?>
                                     <tr>
+                                        <td><?= $i ?></td>
                                         <td><?= $item['label'] ?></td>
                                         <td><a href="<?= $item['url'] ?>" target="_blank">Ссылка</a></td>
                                         <td><a href="/control/<?= $item['urlAdmin'] ?>" class="btn btn-info">Редактировать</a></td>
                                     </tr>
+                                    <?php $i++ ?>
                                 <?php endforeach; ?>
 							</table>
 						</div>
