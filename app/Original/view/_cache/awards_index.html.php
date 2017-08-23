@@ -16,6 +16,8 @@ use Kinomania\Original\Key\Award\Award as Award;
     <meta name="description" content="<?= $options->get('seo_awards_description') ?>"/>
     <meta name="keywords" content="<?= $options->get('seo_awards_keywords') ?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/awards"/>
+
     <meta property="og:title" content="Кинонаграды и кинофестивали | KINOMANIA.RU" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
@@ -117,6 +119,7 @@ use Kinomania\Original\Key\Award\Award as Award;
                                     <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                                     <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                                     <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                                <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                                     <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                                 </ul>
                             </li>
@@ -178,6 +181,7 @@ use Kinomania\Original\Key\Award\Award as Award;
                         <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                         <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                         <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                    <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                         <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                     </ul>
                 </li>

@@ -22,6 +22,8 @@ use Kinomania\Original\Key\Person\Wallpaper as Wallpaper;
     <meta name="description" content="Обои <?= $width ?> на <?= $height ?> <?= $min[Person::TITLE] ?>  #<?= $wallpaperId ?> на KINOMANIA.RU. Фильмография, биография, обои, факты, новости и многое другое о звёздах мирового кинематографа." />
     <meta name="keywords" content="<?= $min[Person::NAME_RU] ?> <?= $min[Person::NAME_ORIGIN] ?> обои" />
 
+	<link rel="canonical" href="http://www.kinomania.ru/people/<?= $id ?>/wallpapers/<?= $wallpaperId ?>"/>
+
     <meta property="og:title" content="Обои <?= $width ?> на <?= $height ?> <?= $min[Person::TITLE] ?>  #<?= $wallpaperId ?>" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />

@@ -15,6 +15,7 @@ use Kinomania\Original\Key\News\Preview as News;
     <title><?=$options->get('seo_interview_title');?></title>
     <meta name="description" content="<?= $options->get('seo_interview_description') ?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/article/interview"/>
 
     <meta property="og:title" content="Интервью" />
     <meta property="og:site_name" content="KINOMANIA.RU" />

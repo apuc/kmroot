@@ -19,6 +19,8 @@ use Kinomania\Original\Key\Person\Award as Award;
     <meta name="description" content="<?= $min[Person::TITLE] ?>: новости на KINOMANIA.RU. Фильмография, биография, факты, новости и многое другое о звёздах мирового кинематографа."/>
     <meta name="keywords" content="<?= $min[Person::TITLE] ?> новости"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/people/<?= $id ?>/news"/>
+
     <meta property="og:title" content="<?= $min[Person::TITLE] ?> новости" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
@@ -120,6 +122,7 @@ use Kinomania\Original\Key\Person\Award as Award;
                                     <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                                     <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                                     <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                                <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                                     <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                                 </ul>
                             </li>
@@ -181,6 +184,7 @@ use Kinomania\Original\Key\Person\Award as Award;
                         <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                         <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                         <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                    <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                         <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                     </ul>
                 </li>
@@ -322,28 +326,30 @@ use \Kinomania\Original\Key\Person\Stat;
                     <div class="row-actor-news">
                         <div class="outer-pagelist-item clear">
                             <?php foreach ($list as $item): ?>
-                                <div class="pagelist-item clear">
-                                    <div class="pagelist-item-image news-pagelist-item-image col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                        <div class=" image-shadow ">
-                                            <a href="/<?= $item['category'] ?>/<?= $item['id'] ?>/"><img alt="" src="//:0" data-original="<?= $item['image'] ?>" class="lazy responsive-image  image-prewiew"   style="width: 365px; height: 199px;"></a>
-                                        </div>
-                                    </div>
-                                    <div class="pagelist-item-content news-pagelist-item-content col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                        <div class="pagelist-item-title">
-                                            <a href="/<?= $item['category'] ?>/<?= $item['id'] ?>/"><?= $item['title'] ?></a>
-                                        </div>
-                                        <p>
-                                            <?= $item['anons'] ?>
-                                        </p>
-                                        <div class="pagelist-info">
-                                            <span class="date__month"><?= $item['publish'] ?></span>
-                                            <?php if (0 < $item['comment']): ?>
-                                                <a href="/<?= $item['category'] ?>/<?= $item['id'] ?>#commentList/" class="pagelist__comments"><?= $item['comment'] ?></a>
-                                            <?php endif ?>
-                                        </div>
-                                        <a href="/<?= $item['category'] ?>/<?= $item['id'] ?>/" class="pagelist__link">Подробнее</a>
-                                    </div>
-                                </div>
+	                            <?php if($item['category'] != '/'|| $item['category'] != ''):?>
+		                                <div class="pagelist-item clear">
+		                                    <div class="pagelist-item-image news-pagelist-item-image col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+		                                        <div class=" image-shadow ">
+		                                            <a href="/<?= $item['category'] ?>/<?= $item['id'] ?>/"><img alt="" src="//:0" data-original="<?= $item['image'] ?>" class="lazy responsive-image  image-prewiew"   style="width: 365px; height: 199px;"></a>
+		                                        </div>
+		                                    </div>
+		                                    <div class="pagelist-item-content news-pagelist-item-content col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+		                                        <div class="pagelist-item-title">
+		                                            <a href="/<?= $item['category'] ?>/<?= $item['id'] ?>/"><?= $item['title'] ?></a>
+		                                        </div>
+		                                        <p>
+		                                            <?= $item['anons'] ?>
+		                                        </p>
+		                                        <div class="pagelist-info">
+		                                            <span class="date__month"><?= $item['publish'] ?></span>
+		                                            <?php if (0 < $item['comment']): ?>
+		                                                <a href="/<?= $item['category'] ?>/<?= $item['id'] ?>#commentList/" class="pagelist__comments"><?= $item['comment'] ?></a>
+		                                            <?php endif ?>
+		                                        </div>
+		                                        <a href="/<?= $item['category'] ?>/<?= $item['id'] ?>/" class="pagelist__link">Подробнее</a>
+		                                    </div>
+		                                </div>
+	                            <?php endif;?>
                             <?php endforeach; ?>
                         </div>
                     </div>

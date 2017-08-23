@@ -2,6 +2,7 @@
 /**
  * @var array $item
  * @var string $static
+ * @var $options Kinomania\System\Options\
  */
 ?>
 <!doctype html>
@@ -10,9 +11,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>АртКиноМания :: Артхаус, другое кино, авторское кино</title>
-    <meta name="description" content="Рецензии на авторское кино, обзоры, новости"/>
-    <meta name="keywords" content="артхаус, другое кино, авторское кино"/>
+    <title><?= $options->get('seo_art_title') ?></title>
+    <meta name="description" content="<?= $options->get('seo_art_description') ?>"/>
+    <meta name="keywords" content="<?= $options->get('seo_art_keywords') ?>"/>
 
 	<link rel="canonical" href="http://www.kinomania.ru/art"/>
  
@@ -111,6 +112,7 @@
                                     <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                                     <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                                     <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                                <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                                     <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                                 </ul>
                             </li>
@@ -172,6 +174,7 @@
                         <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                         <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                         <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                    <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                         <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                     </ul>
                 </li>
@@ -220,7 +223,7 @@
                 <!-- Контент -->
                 <content class="page-section-content section-content content-outer outer-vert col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="row-festivals">
-                        <h1 class="pagetitle">АРТКИНОМАНИЯ</h1>
+                        <h1 class="pagetitle"><?= $options->get('seo_art_h1') ?></h1>
                         <div class="description">
                             Фестивали национальных фильмов и главные смотры планеты, разговоры по душам с выдающимися деятелями авторского кино, рецензии на актуальный артхаус и классику, новости о лентах, в которых главным остается творец, режиссер, а все коммерческие аспекты остаются за кадром — все это и не только в рубрике «АРТКиномания». Мы знаем, где смотреть самое интересное «другое» кино, как не пропустить лучшие фестивали, где найти билеты на редкие показы и что настоящему киноману просто обязательно знать.
                         </div>

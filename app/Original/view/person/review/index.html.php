@@ -33,6 +33,8 @@ use Kinomania\Original\Key\Person\Photo as Photo;
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/people/<?= $id ?>/reviews" />
 
+	<link rel="canonical" href="http://www.kinomania.ru/people/<?= $id ?>/reviews"/>
+
     <!-- include section/head.html.php -->
 </head>
 <body>

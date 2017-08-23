@@ -15,6 +15,8 @@ use Kinomania\Original\Key\News\Preview as News;
     <meta name="description" content="Архив новостей: все новости о мире кино и жизни актеров"/>
     <meta name="keywords" content="кино, новости, актеры, фильмы, кадры, рецензия, обои, ролик, саундтрек"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/news/rus_serials"/>
+
     <meta property="og:title" content="Российские сериалы" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />

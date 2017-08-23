@@ -19,6 +19,8 @@ use Kinomania\Original\Key\Film\Wallpaper as Wallpaper;
     <meta name="description" content="<?= $options->get('seo_films_description') ?>"/>
     <meta name="keywords" content="<?= $options->get('seo_films_keywords') ?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/wallpapers/films"/>
+
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/wallpapers/films" />
@@ -120,6 +122,7 @@ use Kinomania\Original\Key\Film\Wallpaper as Wallpaper;
                                     <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                                     <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                                     <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                                <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                                     <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                                 </ul>
                             </li>
@@ -181,6 +184,7 @@ use Kinomania\Original\Key\Film\Wallpaper as Wallpaper;
                         <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                         <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                         <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                    <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                         <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                     </ul>
                 </li>

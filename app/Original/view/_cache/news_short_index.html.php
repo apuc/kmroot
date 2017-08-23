@@ -16,12 +16,14 @@ use Kinomania\Original\Key\News\Preview as News;
     <meta name="description" content="<?=$options->get('seo_shorts_description');?>"/>
     <meta name="keywords" content="<?=$options->get('seo_shorts_keywords');?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/article/shorts"/>
+	
     <meta property="og:title" content="Shortы" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/article/shorts" />
     <meta property="og:description" content="Лучшие короткометражные фильмы со всего света в рубрике «SHORTы». Самая интересная и актуальная информация о новинках мирового кинопроката и многое другое из мира кино на сайте KINOMANIA.RU."/>
-	<link rel="canonical" href="http://kmroot/news/short/index.html.php"/>
+	
     <?php
 /**
  * @var string $static

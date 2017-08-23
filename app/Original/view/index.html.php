@@ -1,6 +1,7 @@
 <?php
 /**
- * @var $options \Kinomania\System\Options\Options
+ * @var $options Kinomania\System\Options\Options
+ *
  */
 ?>
 <!doctype html>
@@ -47,7 +48,7 @@
         <div class="main-content clear">
             <!-- В ЦЕНТРЕ ВНИМАНИЯ -->
             <section class="outer-section clear section-news">
-                <!--#include virtual="/index/ssi/center" -->
+	            <!--#include virtual="/index/ssi/poster" -->
             </section>
 
             <!-- Новости Кино -->

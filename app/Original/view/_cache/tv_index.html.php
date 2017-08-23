@@ -19,11 +19,13 @@ use Kinomania\Original\Key\TV\Film as Film;
     <title><?=$options->get('seo_tv_title');?></title>
     <meta name="description" content="<?=$options->get('seo_tv_description');?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/tv"/>
+	
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/tv" />
     <meta property="og:title" content="ТВ программа" />
-	<link rel="canonical" href="http://www.kinomania.ru/tv"/>
+	
 
     <?php
 /**

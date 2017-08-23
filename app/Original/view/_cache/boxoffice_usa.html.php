@@ -14,6 +14,8 @@
     <meta name="description" content="<?= $options->get('seo_boxoffice_usa_description') ?>"/>
     <meta name="keywords" content="<?= $options->get('seo_boxoffice_usa_keywords') ?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/boxoffice/usa"/>
+
     <meta property="og:title" content="Кассовые сборы фильмов в прокате США (Box-office)" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />

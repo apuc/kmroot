@@ -16,6 +16,8 @@ use Kinomania\Original\Key\News\Preview as News;
     <meta name="description" content="<?= $options->get('seo_reviews_description') ?>"/>
     <meta name="keywords" content="<?= $options->get('seo_reviews_keywords') ?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/reviews"/>
+
     <meta property="og:title" content="Рецензии" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
@@ -117,6 +119,7 @@ use Kinomania\Original\Key\News\Preview as News;
                                     <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                                     <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                                     <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                                <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                                     <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                                 </ul>
                             </li>
@@ -178,6 +181,7 @@ use Kinomania\Original\Key\News\Preview as News;
                         <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                         <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                         <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                    <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                         <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                     </ul>
                 </li>

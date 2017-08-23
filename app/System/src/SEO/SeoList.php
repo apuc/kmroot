@@ -13,8 +13,9 @@ class SeoList
 
     const LIST = [
         'seo/main' => 'Главная',
+		'seo/billboard' => 'Афиша',
         'seo/news' => 'Новости',
-        'seo/top_films' => 'Топ фильмов',
+        'seo/top/films' => 'Топ фильмов',
         'seo/trailers' => 'Трейлеры',
         'seo/tv' => 'ТВ',
         'seo/releases/russia' => 'График премьер РФ',
@@ -25,6 +26,8 @@ class SeoList
         'seo/press_review' => 'Пресс-обзор',
         'seo/anticipation' => 'Ожидания',
         'seo/inside' => 'Инсайд',
+		'seo/reason' => 'Был бы повод',
+		'seo/art' => 'Арткиномания',
         'seo/awards' => 'Фестивали и премии',
         'seo/movie_memorial' => 'BOOOM!!',
         'seo/scripts' => 'Все сценарии',
@@ -47,14 +50,19 @@ class SeoList
             'urlAdmin' => 'seo/main',
             'label' => 'Главная',
         ],
+		[
+			'url' => '/billboard',
+			'urlAdmin' => 'seo/billboard',
+			'label' => 'Афиша',
+		],
         [
             'url' => '/news',
             'urlAdmin' => 'seo/news',
             'label' => 'Новости',
         ],
 		[
-			'url' => '/top_films',
-			'urlAdmin' => 'seo/top_films',
+			'url' => '/top/films',
+			'urlAdmin' => 'seo/top/films',
 			'label' => 'Топ фильмов',
 		],
 		[
@@ -78,7 +86,7 @@ class SeoList
 			'label' => 'График премьер США',
 		],
 		[
-		'url' => '/shorts',
+		'url' => '/article/shorts',
 		'urlAdmin' => 'seo/shorts',
 		'label' => 'SHORTS',
 		],
@@ -88,24 +96,34 @@ class SeoList
 			'label' => 'Рецензии',
 		],
 		[
-			'url' => '/interview',
+			'url' => '/article/interview',
 			'urlAdmin' => 'seo/interview',
 			'label' => 'Интервью',
 		],
 		[
-			'url' => '/press_review',
+			'url' => '/article/press_review',
 			'urlAdmin' => 'seo/press_review',
 			'label' => 'Пресс-обзор',
 		],
 		[
-			'url' => '/anticipation',
+			'url' => '/article/anticipation',
 			'urlAdmin' => 'seo/anticipation',
 			'label' => 'Ожидания',
 		],
 		[
-			'url' => '/inside',
+			'url' => '/article/inside',
 			'urlAdmin' => 'seo/inside',
 			'label' => 'Инсайд',
+		],
+		[
+			'url' => '/article/reason',
+			'urlAdmin' => 'seo/reason',
+			'label' => 'Был бы повод',
+		],
+		[
+			'url' => '/art',
+			'urlAdmin' => 'seo/art',
+			'label' => 'Арткиномания',
 		],
 		[
 			'url' => '/awards',
@@ -113,7 +131,7 @@ class SeoList
 			'label' => 'Фестивали и премии',
 		],
 		[
-			'url' => '/movie_memorial',
+			'url' => '/article/movie_memorial',
 			'urlAdmin' => 'seo/movie_memorial',
 			'label' => 'BOOOM!!',
 		],
@@ -158,7 +176,7 @@ class SeoList
 			'label' => 'Подборки киномании',
 		],
 		[
-			'url' => '/boxoffice',
+			'url' => '/article/boxoffice',
 			'urlAdmin' => 'seo/boxoffice',
 			'label' => 'Бокс-офис',
 		],

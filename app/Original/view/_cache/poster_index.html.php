@@ -19,6 +19,8 @@ use Kinomania\Original\Key\Film\Poster as Poster;
     <meta name="description" content="<?= $options->get('seo_posters_description') ?>"/>
     <meta name="keywords" content="<?= $options->get('seo_posters_keywords') ?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/posters"/>
+
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:image" content="" />
     <meta property="og:type" content="website" />
@@ -121,6 +123,7 @@ use Kinomania\Original\Key\Film\Poster as Poster;
                                     <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                                     <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                                     <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                                <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                                     <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                                 </ul>
                             </li>
@@ -182,6 +185,7 @@ use Kinomania\Original\Key\Film\Poster as Poster;
                         <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                         <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                         <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                    <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                         <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                     </ul>
                 </li>

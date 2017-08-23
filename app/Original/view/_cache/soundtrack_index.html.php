@@ -18,6 +18,8 @@ use Kinomania\Original\Key\Film\Soundtrack as Soundtrack;
     <meta name="description" content="<?=$options->get('seo_soundtracks_description');?>"/>
     <meta name="keywords" content="<?=$options->get('seo_soundtracks_keywords');?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/soundtracks"/>
+
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:image" content="" />
     <meta property="og:type" content="website" />
@@ -102,7 +104,7 @@ use Kinomania\Original\Key\Film\Soundtrack as Soundtrack;
                     <div class="close">
                         <span href="#" class="mobile-nav-button__close">Закрыть</span>
                         <ul class="mobile-nav-list clear">
-                            <li><a href="/billboard/">СМОТРЕТЬ</a>
+                            <li><a href="/billboard/">СМО</a>
                                 <ul class="nav-list-dop">
                                     <!-- <li><a href="/billboard/">АФИША</a></li> -->
                                     <li><a href="/tv/">ТВ</a></li>

@@ -12,8 +12,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= $options->get('seo_tf_title') ?></title>
-    <meta name="description" content="<?= $options->get('seo_tf_description') ?>"/>
+    <title><?= $options->get('seo_top_films_title') ?></title>
+    <meta name="description" content="<?= $options->get('seo_top_films_description') ?>"/>
 
 	<link rel="canonical" href="http://www.kinomania.ru/top/films"/>
 
@@ -242,6 +242,7 @@
                                     <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                                     <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                                     <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                                <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                                     <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                                 </ul>
                             </li>
@@ -303,6 +304,7 @@
                         <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                         <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                         <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                    <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                         <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                     </ul>
                 </li>
@@ -351,9 +353,9 @@
                 <!-- Контент -->
                 <content class="page-section-content section-content content-outer content-top--padding col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="row-top-films">
-                        <h1 class="pagetitle"><?= $options->get('seo_tf_h1') ?></h1>
+                        <h1 class="pagetitle"><?= $options->get('seo_top_films_h1') ?></h1>
                         <div class="description">
-                            Читатели «Киномании» сами выбирают, какое кино считать хорошим, а какое совсем не удалось. В нашем рейтинге — фильмы с самими высокими оценками на сайте. Выбирайте жанр, страну-производителя, временной период — и перед вами топ лучших фильмов, составленный по оценкам зрителей.
+							<?= $options->get('seo_top_films_description') ?>
                         </div>
                         <div class="row-top">
                             <div class="top-forms">
