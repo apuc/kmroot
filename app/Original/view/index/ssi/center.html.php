@@ -2,18 +2,17 @@
 /**
  * @var array $list
  */
-
-
 ?>
 <div class="parent-sticker">
     <div class="bxslider" style="visibility: hidden;">
-        <?php foreach ($list1 as $item): ?>
+        <?php foreach ($list as $item): ?>
             <div class="item">
                 <div class="inner-section clear row">
                     <div class="center-section-preview col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                         <div class="outer-image-prewiew ">
                             <div class="inner-image-prewiew ">
                                 <img alt="<?= $item['title'] ?>" src="<?= $item['image'] ?>" class="image-prewiew">
+                                
                             </div>
                         </div>
                     </div>

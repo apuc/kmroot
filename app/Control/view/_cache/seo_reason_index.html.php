@@ -283,7 +283,7 @@
 </style>
 
 <div class="content-heading">
-    Настройка СЕО для страницы 100 ЛУЧШИХ ФИЛЬМОВ
+    Настройка СЕО для страницы БЫЛ БЫ ПОВОД
 </div>
 
 <div class="row">
@@ -305,25 +305,25 @@
                                 <tr>
                                     <td>Title</td>
                                     <td>
-                                        <input type="text" name="title" value="<?= $options->get('seo_top_films_title') ?>" class="form-control">
+                                        <input type="text" name="title" value="<?= $options->get('seo_reason_title') ?>" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Description</td>
                                     <td>
-                                        <input type="text" name="description" value="<?= $options->get('seo_top_films_description') ?>" class="form-control">
+                                        <input type="text" name="description" value="<?= $options->get('seo_reason_description') ?>" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Keywords</td>
                                     <td>
-                                        <input type="text" name="keywords" value="<?= $options->get('seo_top_films_keywords') ?>" class="form-control">
+                                        <input type="text" name="keywords" value="<?= $options->get('seo_reason_keywords') ?>" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>H1</td>
                                     <td>
-                                        <input type="text" name="h1" value="<?= $options->get('seo_top_films_h1') ?>" class="form-control">
+                                        <input type="text" name="h1" value="<?= $options->get('seo_reason_h1') ?>" class="form-control">
                                     </td>
                                 </tr>
                             </table>

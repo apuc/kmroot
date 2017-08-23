@@ -234,12 +234,12 @@
     </header>
 </div>
         <div class="banner">
-              <!--#include virtual="/design/ssi/center" -->
+              <!--#include virtual="/design/ssi/center.html.php" -->
         </div>
         <div class="main-content clear">
             <!-- В ЦЕНТРЕ ВНИМАНИЯ -->
             <section class="outer-section clear section-news">
-                <!--#include virtual="/index/ssi/center" -->
+	            <!--#include virtual="/index/ssi/poster" -->
             </section>
 
             <!-- Новости Кино -->

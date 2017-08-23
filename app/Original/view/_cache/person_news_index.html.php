@@ -326,28 +326,30 @@ use \Kinomania\Original\Key\Person\Stat;
                     <div class="row-actor-news">
                         <div class="outer-pagelist-item clear">
                             <?php foreach ($list as $item): ?>
-                                <div class="pagelist-item clear">
-                                    <div class="pagelist-item-image news-pagelist-item-image col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                        <div class=" image-shadow ">
-                                            <a href="/<?= $item['category'] ?>/<?= $item['id'] ?>/"><img alt="" src="//:0" data-original="<?= $item['image'] ?>" class="lazy responsive-image  image-prewiew"   style="width: 365px; height: 199px;"></a>
-                                        </div>
-                                    </div>
-                                    <div class="pagelist-item-content news-pagelist-item-content col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                        <div class="pagelist-item-title">
-                                            <a href="/<?= $item['category'] ?>/<?= $item['id'] ?>/"><?= $item['title'] ?></a>
-                                        </div>
-                                        <p>
-                                            <?= $item['anons'] ?>
-                                        </p>
-                                        <div class="pagelist-info">
-                                            <span class="date__month"><?= $item['publish'] ?></span>
-                                            <?php if (0 < $item['comment']): ?>
-                                                <a href="/<?= $item['category'] ?>/<?= $item['id'] ?>#commentList/" class="pagelist__comments"><?= $item['comment'] ?></a>
-                                            <?php endif ?>
-                                        </div>
-                                        <a href="/<?= $item['category'] ?>/<?= $item['id'] ?>/" class="pagelist__link">Подробнее</a>
-                                    </div>
-                                </div>
+	                            <?php if($item['category'] != '/'|| $item['category'] != ''):?>
+		                                <div class="pagelist-item clear">
+		                                    <div class="pagelist-item-image news-pagelist-item-image col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+		                                        <div class=" image-shadow ">
+		                                            <a href="/<?= $item['category'] ?>/<?= $item['id'] ?>/"><img alt="" src="//:0" data-original="<?= $item['image'] ?>" class="lazy responsive-image  image-prewiew"   style="width: 365px; height: 199px;"></a>
+		                                        </div>
+		                                    </div>
+		                                    <div class="pagelist-item-content news-pagelist-item-content col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+		                                        <div class="pagelist-item-title">
+		                                            <a href="/<?= $item['category'] ?>/<?= $item['id'] ?>/"><?= $item['title'] ?></a>
+		                                        </div>
+		                                        <p>
+		                                            <?= $item['anons'] ?>
+		                                        </p>
+		                                        <div class="pagelist-info">
+		                                            <span class="date__month"><?= $item['publish'] ?></span>
+		                                            <?php if (0 < $item['comment']): ?>
+		                                                <a href="/<?= $item['category'] ?>/<?= $item['id'] ?>#commentList/" class="pagelist__comments"><?= $item['comment'] ?></a>
+		                                            <?php endif ?>
+		                                        </div>
+		                                        <a href="/<?= $item['category'] ?>/<?= $item['id'] ?>/" class="pagelist__link">Подробнее</a>
+		                                    </div>
+		                                </div>
+	                            <?php endif;?>
                             <?php endforeach; ?>
                         </div>
                     </div>

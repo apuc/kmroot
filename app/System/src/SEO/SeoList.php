@@ -26,6 +26,7 @@ class SeoList
         'seo/press_review' => 'Пресс-обзор',
         'seo/anticipation' => 'Ожидания',
         'seo/inside' => 'Инсайд',
+		'seo/reason' => 'Был бы повод',
 		'seo/art' => 'Арткиномания',
         'seo/awards' => 'Фестивали и премии',
         'seo/movie_memorial' => 'BOOOM!!',
@@ -113,6 +114,11 @@ class SeoList
 			'url' => '/article/inside',
 			'urlAdmin' => 'seo/inside',
 			'label' => 'Инсайд',
+		],
+		[
+			'url' => '/article/reason',
+			'urlAdmin' => 'seo/reason',
+			'label' => 'Был бы повод',
 		],
 		[
 			'url' => '/art',

@@ -1,5 +1,5 @@
 <?php
-namespace Control\Route_seo_top_films;
+namespace Control\Route_seo_reason;
 use Kinomania\Control\Controller\AdminController;
 use Kinomania\Control\Template\Menu;
 use Kinomania\System\Options\Options;
@@ -18,8 +18,8 @@ class GET extends AdminController
         $this->addData([
             'options' => new Options()
         ]);
-        $this->setTitle('Настройка СЕО для страницы 100 ЛУЧШИХ ФИЛЬМОВ');
-        $this->setTemplate('seo/top/films/index.html.php');
+        $this->setTitle('Настройка СЕО для страницы Был бы повод');
+        $this->setTemplate('seo/reason/index.html.php');
     }
 
 }
