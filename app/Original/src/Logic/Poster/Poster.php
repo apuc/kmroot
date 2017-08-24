@@ -26,7 +26,7 @@ class Poster
 
         $filmId = [];
         $result = $this->mysql()->query("SELECT t1.`id`, t1.`filmId`, t1.`s`, t1.`image`, t3.`name_origin`, t3.`name_ru`, t4.`poster`
-                                            FROM (SELECT ANY_VALUE(`id`) as `id` FROM `film_poster` WHERE `width` > 738 GROUP BY `filmId` ORDER BY ANY_VALUE(`id`) DESC LIMIT 12) as `t`
+                                            FROM (SELECT ANY_VALUE(`id`) as `id` FROM `film_poster` WHERE `height` > `width` GROUP BY `filmId` ORDER BY ANY_VALUE(`id`) DESC LIMIT 12) as `t`
                                             JOIN `film_poster` AS `t1` ON t.`id` = t1.`id`
                                             JOIN `film` as `t3` ON t1.`filmId` = t3.`id`
                                             LEFT JOIN `film_stat` as `t4` ON t1.`filmId` = t4.`filmId` LIMIT 6
@@ -59,7 +59,7 @@ class Poster
         $filmId = implode(',', $filmId);
 
         $result = $this->mysql()->query("SELECT t1.`id`, t1.`filmId`, t1.`s`, t1.`image`, t3.`name_origin`, t3.`name_ru`, t4.`poster`
-                                              FROM (SELECT ANY_VALUE(`id`) as `id` FROM `film_poster` WHERE `width` = 738 AND `filmId` NOT IN ({$filmId}) GROUP BY `id` ORDER BY ANY_VALUE(`id`) DESC LIMIT 2) as `t`
+                                              FROM (SELECT ANY_VALUE(`id`) as `id` FROM `film_poster` WHERE `width` > `height` AND `filmId` NOT IN ({$filmId}) GROUP BY `id` ORDER BY ANY_VALUE(`id`) DESC LIMIT 2) as `t`
                                             JOIN `film_poster` AS `t1` ON t.`id` = t1.`id`
                                             JOIN `film` as `t3` ON t1.`filmId` = t3.`id`
                                             LEFT JOIN `film_stat` as `t4` ON t1.`filmId` = t4.`filmId` LIMIT 2
