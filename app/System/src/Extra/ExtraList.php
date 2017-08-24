@@ -22,40 +22,49 @@ class ExtraList
 		
 		$new_film = [];
 		
-		$result = $this->mysql()->query("SELECT `id`
-                                          		FROM `film` ORDER BY `id` LIMIT 500
+		$result = $this->mysql()->query("SELECT `id`, `name_ru`
+                                          		FROM `film`
+                                          		LIMIT 500
                                         ");
-		while ($row = $result->fetch_assoc()) {
-			$new_film[] = $row['id'];
+		if($result){
+			while ($row = $result->fetch_assoc()) {
+				$new_film[$row['id']] =  $row['name_ru'];
+			}
+			return $new_film;
 		}
-		return $new_film;
 	}
 	
 	public function get_trailers(){
 		
 		$trailers = [];
 		
-		$result2 = $this->mysql()->query("SELECT `id`
-                                          FROM `trailers`
-                                         
+		$result = $this->mysql()->query("SELECT t2.`id`, t2.`name_ru`,
+                                            	FROM `trailer` AS `t1`
+                                            	JOIN `film` as `t2` ON t1.`filmId` = t2.`id` ORDER BY t2.`id` LIMIT 5000
                                         ");
-		while ($row = $result2->fetch_assoc()) {
-			$trailers[] = $row['id'];
+		if($result){
+			while ($row = $result->fetch_assoc()) {
+				$trailers[$row['id']] = $row['name_ru'];
+			}
+			return $trailers;
 		}
-		return $trailers;
 	}
 	
-	public function get_posters(){
+	public function get_wallpaper(){
 		
-		$trailers = [];
+		$wallpaper = [];
 		
-		$result = $this->mysql()->query("SELECT `id`
-                                          FROM `trailers`
-										  LIMIT 1
+		$result = $this->mysql()->query("SELECT  f2.`id`, f2.`name_ru`,
+                                          FROM `film_wallpaper` as `f1`
+                                          JOIN `film` as `f2` ON f1.`filmId` = f2.`id`
+                                		  LIMIT 5000
                                         ");
-		while ($row = $result->fetch_assoc()) {
-			$posters[] = $row['id'];
+		if($result){
+			while ($row = $result->fetch_assoc()) {
+				$wallpaper[$row['id']] = $row['name_ru'];
+			}
+			var_dump($wallpaper); exit();
+			return $wallpaper;
 		}
-		return $posters;
 	}
 }

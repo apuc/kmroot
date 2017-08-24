@@ -310,20 +310,23 @@ use Kinomania\System\Extra\ExtraList;
                                 </tr>
                                <?php
                                     $n = new ExtraList();
+                                    $n = $n->get_new_films();
                                     $t = new ExtraList();
-                                    $p = new ExtraList();
+                                    $t = $t->get_trailers();
+                                    $w = new ExtraList();
+                                    $w = $w->get_wallpaper();
                                ?>
                                 <?php for ($i = 1; $i <= 4; $i++): ?>
                                     <tr>
                                         <td>
-                                            <?= $i ?>
+                                            <?= $i ?>.
                                         </td>
                                         <td>
 	                                        <select class="js-example-basic-multiple" multiple="multiple" name="film_new[]">
 	                                            <?php if (isset($list->film_new()[$i -1])): ?>
 		                                                <option selected="selected" type="text" value="<?= $list->film_new()[$i -1] ?>" class="form-control"><?= $list->film_new()[$i -1] ?></option>
-													<?php foreach($n->get_new_films() as $item):?>
-		                                                <option type="text" name="film_new[]" value="<?=$item?>" class="form-control"><?=$item;?></option>
+													<?php foreach($n as $item => $key):?>
+		                                                <option type="text" name="film_new[]" value="<?=$item?>" class="form-control"><?=$key;?></option>
 		                                            <?php endforeach;?>
 	                                            <?php else: ?>
 		                                                <option selected="selected" type="text" value="" class="form-control">Выберите из списка</option>
@@ -353,13 +356,13 @@ use Kinomania\System\Extra\ExtraList;
 	                                        <select class="js-example-basic-multiple" multiple="multiple" name="trailer_new[]">
 	                                            <?php if (isset($list->trailer_new()[$i -1])): ?>
 		                                            <option selected="selected" type="text"  value="<?= $list->trailer_new()[$i -1] ?>" class="form-control"><?= $list->trailer_new()[$i -1] ?></option>
-													<?php foreach($t->get_trailers() as $val):?>
-			                                            <option type="text"  value="<?=$val?>" class="form-control"><?=$val;?></option>
+													<?php foreach($t as $item => $key ):?>
+			                                            <option type="text"  value="<?=$item?>" class="form-control"><?=$key;?></option>
 													<?php endforeach;?>
 	                                            <?php else: ?>
-		                                            <option type="text" value="" class="form-control"></option>>
+		                                            <option type="text" value="" class="form-control"></option>
 	                                            <?php endif ?>
-	                                        </select>>
+	                                        </select>
                                         </td>
                                     </tr>
                                 <?php endfor; ?>
@@ -383,12 +386,14 @@ use Kinomania\System\Extra\ExtraList;
                                         <td>
 	                                        <select class="js-example-basic-multiple" multiple="multiple" name="wallpaper_new[]">
 	                                            <?php if (isset($list->wallpaper_new()[$i -1])): ?>
-		                                            <option type="text" selected="selected"  value="<?= $list->wallpaper_new()[$i -1] ?>" class="form-control"><?= $list->wallpaper_new()[$i -1] ?></option>>
-													<?php foreach($p->get_posters() as $value):?>
-			                                            <option type="text" value="<?=$value?>" class="form-control"><?=$value;?></option>
+		                                            <option selected="selected" type="text" selected="selected"  value="<?= $list->wallpaper_new()[$i -1] ?>" class="form-control"><?= $list->wallpaper_new()[$i -1] ?></option>
+													<?php foreach($w as $item => $key):?>
+			                                            <option type="text" value="<?=$item?>" class="form-control"><?=$key;?></option>
 													<?php endforeach;?>
 	                                            <?php else: ?>
-		                                            <option type="text" value="" class="form-control"></option>
+													<?php foreach($w as $item => $key):?>
+		                                                <option type="text" value="$item" class="form-control"><?=$key;?></option>
+		                                            <? endforeach;?>
 	                                            <?php endif ?>
 	                                        </select>
                                         </td>
