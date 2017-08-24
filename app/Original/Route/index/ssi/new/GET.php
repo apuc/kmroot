@@ -89,7 +89,9 @@ class GET extends DefaultController
 			$temp['trailer_new'] = unserialize($row['list']);
 			
 		}
+		
 		$str = implode("," , $temp['trailer_new']);
+		
 	
 		
 		$result = $this->mysql()->query("SELECT t3.`id`, t3.`name_origin`, t3.`name_ru`, t3.`country`, t3.`year`

@@ -1,8 +1,13 @@
 <?php
+
 /**
  * @var \Dspbee\Core\Request $request
  * @var \Kinomania\Control\Popular\Item $list
  */
+
+use Kinomania\System\Extra\ExtraList;
+
+
 ?>
 <!-- extends base.html.php -->
 
@@ -16,6 +21,9 @@
         border: 0;
     }
 </style>
+<script type="text/javascript">
+	$(".js-example-basic-multiple").select2();
+</script>
 
 <div class="content-heading">
     Новинки (популярное)
@@ -37,17 +45,27 @@
                                     <th></th>
                                     <th>Новинки фильмов</th>
                                 </tr>
+                               <?php
+                                    $n = new ExtraList();
+                                    $t = new ExtraList();
+                                    $p = new ExtraList();
+                               ?>
                                 <?php for ($i = 1; $i <= 4; $i++): ?>
                                     <tr>
                                         <td>
-                                            <?= $i ?>.
+                                            <?= $i ?>
                                         </td>
                                         <td>
-                                            <?php if (isset($list->film_new()[$i -1])): ?>
-                                                <input type="text" name="film_new[]" value="<?= $list->film_new()[$i -1] ?>" class="form-control">
-                                            <?php else: ?>
-                                                <input type="text" name="film_new[]" value="" class="form-control">
-                                            <?php endif ?>
+	                                        <select class="js-example-basic-multiple" multiple="multiple" name="film_new[]">
+	                                            <?php if (isset($list->film_new()[$i -1])): ?>
+		                                                <option selected="selected" type="text" value="<?= $list->film_new()[$i -1] ?>" class="form-control"><?= $list->film_new()[$i -1] ?></option>
+													<?php foreach($n->get_new_films() as $item):?>
+		                                                <option type="text" name="film_new[]" value="<?=$item?>" class="form-control"><?=$item;?></option>
+		                                            <?php endforeach;?>
+	                                            <?php else: ?>
+		                                                <option selected="selected" type="text" value="" class="form-control">Выберите из списка</option>
+	                                            <?php endif ?>
+	                                        </select>
                                         </td>
                                     </tr>
                                 <?php endfor; ?>
@@ -69,11 +87,16 @@
                                             <?= $i ?>.
                                         </td>
                                         <td>
-                                            <?php if (isset($list->trailer_new()[$i -1])): ?>
-                                                <input type="text" name="trailer_new[]" value="<?= $list->trailer_new()[$i -1] ?>" class="form-control">
-                                            <?php else: ?>
-                                                <input type="text" name="trailer_new[]" value="" class="form-control">
-                                            <?php endif ?>
+	                                        <select class="js-example-basic-multiple" multiple="multiple" name="trailer_new[]">
+	                                            <?php if (isset($list->trailer_new()[$i -1])): ?>
+		                                            <option selected="selected" type="text"  value="<?= $list->trailer_new()[$i -1] ?>" class="form-control"><?= $list->trailer_new()[$i -1] ?></option>
+													<?php foreach($t->get_trailers() as $val):?>
+			                                            <option type="text"  value="<?=$val?>" class="form-control"><?=$val;?></option>
+													<?php endforeach;?>
+	                                            <?php else: ?>
+		                                            <option type="text" value="" class="form-control"></option>>
+	                                            <?php endif ?>
+	                                        </select>>
                                         </td>
                                     </tr>
                                 <?php endfor; ?>
@@ -95,11 +118,16 @@
                                             <?= $i ?>.
                                         </td>
                                         <td>
-                                            <?php if (isset($list->wallpaper_new()[$i -1])): ?>
-                                                <input type="text" name="wallpaper_new[]" value="<?= $list->wallpaper_new()[$i -1] ?>" class="form-control">
-                                            <?php else: ?>
-                                                <input type="text" name="wallpaper_new[]" value="" class="form-control">
-                                            <?php endif ?>
+	                                        <select class="js-example-basic-multiple" multiple="multiple" name="wallpaper_new[]">
+	                                            <?php if (isset($list->wallpaper_new()[$i -1])): ?>
+		                                            <option type="text" selected="selected"  value="<?= $list->wallpaper_new()[$i -1] ?>" class="form-control"><?= $list->wallpaper_new()[$i -1] ?></option>>
+													<?php foreach($p->get_posters() as $value):?>
+			                                            <option type="text" value="<?=$value?>" class="form-control"><?=$value;?></option>
+													<?php endforeach;?>
+	                                            <?php else: ?>
+		                                            <option type="text" value="" class="form-control"></option>
+	                                            <?php endif ?>
+	                                        </select>
                                         </td>
                                     </tr>
                                 <?php endfor; ?>
