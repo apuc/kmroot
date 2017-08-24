@@ -91,11 +91,12 @@ class GET extends DefaultController
 			
 		}
 		$str = implode("," , $temp['trailer_new']);
-	
+
+		//Debug::prn($str);
 		
 		$result = $this->mysql()->query("SELECT t3.`id`, t3.`name_origin`, t3.`name_ru`, t3.`country`, t3.`year`
                                             FROM `trailer` AS `t1`
-                                            JOIN `film` as `t3` ON t1.`filmId` = t3.`id` WHERE t1.`id` in ($str) GROUP BY t3.`id` ORDER BY t3.`premiere_world` DESC  LIMIT 4");
+                                            JOIN `film` as `t3` ON t1.`filmId` = t3.`id` WHERE t3.`id` in ($str) GROUP BY t3.`id`");
 	
 	
                                             

@@ -21,7 +21,9 @@ use Kinomania\Original\Key\Person\Frame as Frame;
         <meta name="description" content="Постеры фильма «<?= $min[Film::NAME_RU] ?>» на сайте KINOMANIA.RU"/>
         <meta name="keywords" content="<?= $min[Film::NAME_RU] ?>, <?= $min[Film::NAME_ORIGIN] ?>, фильм, постеры"/>
     <?php endif ?>
+
 	<link rel="canonical" href="http://www.kinomania.ru/film/<?= $id ?>/posters" />
+
     <meta property="og:title" content="Постеры фильма <?= $min[Film::TITLE] ?>" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
@@ -217,7 +219,7 @@ use Kinomania\Original\Key\Person\Frame as Frame;
                         <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                         <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                         <li><a href="/article/inside/">ИНСАЙД</a></li>
-	                    <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
+                        <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                         <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                     </ul>
                 </li>
