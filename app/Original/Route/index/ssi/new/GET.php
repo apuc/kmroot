@@ -16,7 +16,7 @@ class GET extends DefaultController
 
     public function index()
     {
-        header('Cache-Control: public, max-age=720');
+        //header('Cache-Control: public, max-age=720');
 
         $list = [
             'film' => [],
@@ -90,9 +90,8 @@ class GET extends DefaultController
 			$temp['trailer_new'] = unserialize($row['list']);
 			
 		}
+		
 		$str = implode("," , $temp['trailer_new']);
-
-		//Debug::prn($str);
 		
 		$result = $this->mysql()->query("SELECT t3.`id`, t3.`name_origin`, t3.`name_ru`, t3.`country`, t3.`year`
                                             FROM `trailer` AS `t1`
