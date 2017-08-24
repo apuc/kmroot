@@ -75,6 +75,7 @@ class Popular extends DB
         $casting_promo = $post->fetch('casting_promo');
         $trailer_new = $post->fetch('trailer_new');
         $wallpaper_new = $post->fetch('wallpaper_new');
+		
 
         if (!empty($film_wallpaper)) {
             $film_wallpaper = $this->db->real_escape_string(serialize($film_wallpaper));
@@ -147,7 +148,7 @@ class Popular extends DB
                 return false;
             }
         }
-
+		
         if (!empty($wallpaper_new)) {
             $wallpaper_new = $this->db->real_escape_string(serialize($wallpaper_new));
             $this->db->query("UPDATE `popular` SET `list` = '{$wallpaper_new}' WHERE `type` = 'wallpaper_new' LIMIT 1");
@@ -156,7 +157,6 @@ class Popular extends DB
                 return false;
             }
         }
-        
         return true;
     }
 }
