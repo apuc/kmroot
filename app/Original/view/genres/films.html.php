@@ -16,8 +16,9 @@
     <meta name="description" content="<?= $options->get('seo_top_films_description') ?>"/>
 
 	<link rel="canonical" href="http://www.kinomania.ru/top/films"/>
-
+	
     <!-- include section/head.html.php -->
+	
 </head>
 <body>
 <div class="my-overlay">
@@ -85,54 +86,79 @@
                                 </form>
                             </div>
                         </div>
+	                    
+	                    
                         <div class="row-table-top">
                             <div class="session-table">
-                                <?php $count = 0; ?>
-                                <?php foreach ($list as $item): ?>
-                                    <?php $count++ ?>
-                                    <div class="session-table-item table-top-item clear">
-                                        <div class="table-top-info-one">
-                                            <div class="table-number"><?= $count ?></div>
-                                            <div class="session-table-item__name">
-                                                <?php if ('' == $item['name_ru']): ?>
-                                                    <div class="table-top-title"><a href="/film/<?= $item['id'] ?>/"><?= $item['name_origin'] ?></a></div>
-                                                <?php else: ?>
-                                                    <div class="table-top-title"><a href="/film/<?= $item['id'] ?>/"><?= $item['name_ru'] ?></a></div>
-                                                    <div class="table-top-title-eng"><?= $item['name_origin'] ?></div>
-                                                <?php endif ?>
-                                            </div>
-                                        </div>
-                                        <div class="table-top-info">
-                                            <div class="row-button-list">
-
-                                            </div>
-                                            <span class="table-top-info-text table-top-info-raiting"><?= $item['rate'] ?></span>
-                                            <div class="table-top-info-text table-top-info-views open-help-in"><?= $item['rate_count'] ?>
-                                                <div class="help help--gray">Количество оценок</div>
-                                            </div>
-                                            <div class="main-folder-icon">
-                                                <div class="parent-dropdown-folder row-icon-add row-icon-add--white icon-folder collectFilm">
-                                                    <a class="folder__icon icon"></a>
-                                                    <div class="hint">Добавить в Избранное</div>
-                                                    <div class="row-dropdown-folder">
-                                                        <div class="dropdown-folder dropdown-folder-content">
-                                                            <div class="dropdown-folder-title"><span>В избранное</span></div>
-                                                            <ul class="dropdown-folder-list" data-id="<?= $item['id'] ?>">
-
-                                                            </ul>
-                                                        </div>
-                                                        <div class="dropdown-folder dropdown-folder-setting">
-                                                            <a href="#" class="clear">
-                                                                <!-- <i class="setting-icon"></i> -->
-                                                                <span>Управление папками</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php endforeach; ?>
+                                <?php
+                                    $count = 0;
+	                                $n = 5;
+	                                $page = $_GET['page'];
+	                                $num = 20;
+	                                $pc = intval(round(count($list)/$num)); //количество страниц
+                                    $start = $page * $num - $num;
+									if(isset($_GET['page'])){$count = $start; $page = intval($_GET['page']);}
+									$fs = array_intersect_key($list,array_fill_keys(range($start,$start + 20 -1),''));
+									
+                                ?>
+	                                <?php foreach ($fs as $item): ?>
+	                                    <?php $count++ ?>
+	                                    <div class="session-table-item table-top-item clear">
+	                                        <div class="table-top-info-one">
+	                                            <div class="table-number"><?= $count ?></div>
+	                                            <div class="session-table-item__name">
+	                                                <?php if ('' == $item['name_ru']): ?>
+	                                                    <div class="table-top-title"><a href="/film/<?= $item['id'] ?>/"><?= $item['name_origin'] ?></a></div>
+	                                                <?php else: ?>
+	                                                    <div class="table-top-title"><a href="/film/<?= $item['id'] ?>/"><?= $item['name_ru'] ?></a></div>
+	                                                    <div class="table-top-title-eng"><?= $item['name_origin'] ?></div>
+	                                                <?php endif ?>
+	                                            </div>
+	                                        </div>
+	                                        <div class="table-top-info">
+	                                            <div class="row-button-list">
+	
+	                                            </div>
+	                                            <span class="table-top-info-text table-top-info-raiting"><?= $item['rate'] ?></span>
+	                                            <div class="table-top-info-text table-top-info-views open-help-in"><?= $item['rate_count'] ?>
+	                                                <div class="help help--gray">Количество оценок</div>
+	                                            </div>
+	                                            <div class="main-folder-icon">
+	                                                <div class="parent-dropdown-folder row-icon-add row-icon-add--white icon-folder collectFilm">
+	                                                    <a class="folder__icon icon"></a>
+	                                                    <div class="hint">Добавить в Избранное</div>
+	                                                    <div class="row-dropdown-folder">
+	                                                        <div class="dropdown-folder dropdown-folder-content">
+	                                                            <div class="dropdown-folder-title"><span>В избранное</span></div>
+	                                                            <ul class="dropdown-folder-list" data-id="<?= $item['id'] ?>">
+	
+	                                                            </ul>
+	                                                        </div>
+	                                                        <div class="dropdown-folder dropdown-folder-setting">
+	                                                            <a href="#" class="clear">
+	                                                                <!-- <i class="setting-icon"></i> -->
+	                                                                <span>Управление папками</span>
+	                                                            </a>
+	                                                        </div>
+	                                                    </div>
+	                                                </div>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                <?php endforeach; ?>
+								<?php if($page > 5):?>
+	                                <a href='?start=index&page=1'><<</a>
+									<a href='?start=index&page=<?=$page-5;?>'><</a>
+	                            <? endif;?>
+								<?php if($pc <= 5):?>
+		                            <?php for($i=1+$page-1; $i<= $page+$n-1; $i++):?>
+										<a href='?start=index&page=<?=$i;?>'><?=$i;?></a>
+									<? endfor;?>
+										<a href='?start=index&page=<?=$i+$n-1;?>'>></a>
+										<a href='?start=index&page=<?=$pc;?>'>>></a>
+									<?php else:?>
+										<a href='?start=index&page=1'><<</a>
+	                            <? endif;?>
                             </div>
                         </div>
                     </div>

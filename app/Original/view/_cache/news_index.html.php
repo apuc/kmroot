@@ -15,9 +15,7 @@ use Kinomania\Original\Key\News\Preview as News;
     <title><?= $options->get('seo_news_title') ?></title>
     <meta name="description" content="<?= $options->get('seo_news_description') ?>"/>
     <meta name="keywords" content="<?= $options->get('seo_news_keywords') ?>"/>
-
 	<link rel="canonical" href="http://www.kinomania.ru/news"/>
-	
     <meta property="og:title" content="Новости кино" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
@@ -142,12 +140,14 @@ use Kinomania\Original\Key\News\Preview as News;
                                 </ul>
                             </li>
                             <li><a href="/top/films/">ЛУЧШИЕ ФИЛЬМЫ</a>
-                                <ul class="nav-list-dop">
-                                    <li><a href="/top/films/">РЕЙТИНГ КИНОМАНИИ</a></li>
-                                    <li><a href="/top/">ПОДБОРКИ</a></li>
-                                    <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
-                                </ul>
-                            </li>
+		                        <ul class="nav-list-dop">
+			                        <li><a href="/top/films/">РЕЙТИНГ КИНОМАНИИ</a></li>
+			                        <li><a href="/top/">ПОДБОРКИ</a></li>
+			                        <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
+		                        </ul>
+	                        </li>
+	                        <li><a href="/genres/films/">ЖАНРЫ</a>
+	                        </li>
                         </ul>
                     </div>
                 </div>
@@ -181,7 +181,7 @@ use Kinomania\Original\Key\News\Preview as News;
                         <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                         <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                         <li><a href="/article/inside/">ИНСАЙД</a></li>
-	                    <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
+                        <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                         <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                     </ul>
                 </li>
@@ -210,6 +210,8 @@ use Kinomania\Original\Key\News\Preview as News;
                         <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
                     </ul>
                 </li>
+	            <li><a href="/genres/">ЖАНРЫ</a>
+	            </li>
             </ul>
             <div class="tablet-autorization-outer col-xl-3 col-lg-3 col-md-7 col-sm-7 col-xs-5">
                 <div class="autorization">
