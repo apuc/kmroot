@@ -8,6 +8,7 @@
  * @var Kinomania\System\Buttons\Buttons
  */
 use Kinomania\System\Pagination\Pagination;
+use Kinomania\System\Search\Search;
 
 ?>
 <!doctype html>
@@ -58,24 +59,20 @@ use Kinomania\System\Pagination\Pagination;
                             <div class="top-forms">
                                 <form action="">
                                     <div class="row-dropdown-input session-dropdown-input">
-                                        <select name="genre" id="genre" class="">
-                                            <?php if (isset($_GET['genres'])): ?>
-                                                <option value="name"
-                                                        selected="selected"><?= $_GET['genres']; ?></option>
-                                            <?php else: ?>
-                                                <option value="name" selected="selected">Выберите жанр</option>
-                                            <?php endif; ?>
-                                            <?php foreach ($genre as $code => $name): ?>
-                                                <option value="<?= $code ?>"><?= $name ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                        <select name="country" id="country" class="" style="max-width: 250px;">
+                                        <form method="get" action="films.html.php">
+	                                        <select name="genre" class="">
+	                                                <option value="name" selected="selected">Выберите жанр</option>
+	                                            <?php foreach ($genre as $code => $name): ?>
+	                                                <option value="<?= $code ?>"><?= $name ?></option>
+	                                            <?php endforeach; ?>
+	                                        </select>
+                                        <select name="country" class="" style="max-width: 250px;">
                                             <option value="1" selected="selected">Выберите страну</option>
                                             <?php foreach ($country as $code => $name): ?>
                                                 <option value="<?= $code ?>"><?= $name ?></option>
                                             <?php endforeach; ?>
                                         </select>
-                                        <select name="years-two" id="year" class="">
+                                        <select name="years-two" class="">
                                             <option value="name" selected="selected">По десятилетиям</option>
                                             <option value="2010">2010-е годы</option>
                                             <option value="2000">2000-е годы</option>
@@ -90,9 +87,10 @@ use Kinomania\System\Pagination\Pagination;
                                             <option value="1910">1910-е годы</option>
                                             <option value="1900">1900-е годы</option>
                                         </select>
-                                        <input type="text" name="name" id="name" class=""
+                                        <input type="text" name="name" class=""
                                                placeholder="Введите название фильма" autocomplete="off">
-                                    </div>
+	                                      <input type="submit" value="Поиск">
+                                        </form>
                                 </form>
                             </div>
                         </div>
@@ -101,13 +99,6 @@ use Kinomania\System\Pagination\Pagination;
                         <div class="row-table-top">
                             <div class="session-table">
                                 <?php
-                                $pages = new Pagination(100, 3, [
-                                    'homeBtn' => 'home',
-                                    'endBtn' => 'end',
-                                    'nextBtn' => 'next',
-                                    'prevBtn' => 'prev'
-                                ]);
-                                $pages->printPag();
                                 /*$buttons->page;// page No. 5 button
                                 $count = 0;
                                 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -116,63 +107,84 @@ use Kinomania\System\Pagination\Pagination;
                                     'itemsPerPage' => 5,
                                     'currentPage' => $page
                                 ]);
-                                $num = 20;
+                               
                                 $pc = intval(round(intval(count($list)/$num))); //количество страниц
                                 $num_films = intval(count($list));
                                 $start = $page * $num - $num;
                                 if(isset($_GET['page'])){$count = $start; $page = intval($_GET['page']);}
                                 $fs = array_intersect_key($list,array_fill_keys(range($start,$start + 20 -1),''));*/
                                 ?>
-                                <?php //foreach ($fs as $item): ?>
-                                <!--    --><?php //$count++ ?>
-                                <!--    <div class="session-table-item table-top-item clear">-->
-                                <!--        <div class="table-top-info-one">-->
-                                <!--            <div class="table-number">--><? //= $count ?><!--</div>-->
-                                <!--            <div class="session-table-item__name">-->
-                                <!--                --><?php //if ('' == $item['name_ru']): ?>
-                                <!--                    <div class="table-top-title"><a href="/film/-->
-                                <? //= $item['id'] ?><!--/">--><? //= $item['name_origin'] ?><!--</a></div>-->
-                                <!--                --><?php //else: ?>
-                                <!--                    <div class="table-top-title"><a href="/film/-->
-                                <? //= $item['id'] ?><!--/">--><? //= $item['name_ru'] ?><!--</a></div>-->
-                                <!--                    <div class="table-top-title-eng">-->
-                                <? //= $item['name_origin'] ?><!--</div>-->
-                                <!--                --><?php //endif ?>
-                                <!--            </div>-->
-                                <!--        </div>-->
-                                <!--        <div class="table-top-info">-->
-                                <!--            <div class="row-button-list">-->
-                                <!---->
-                                <!--            </div>-->
-                                <!--            <span class="table-top-info-text table-top-info-raiting">-->
-                                <? //= $item['rate'] ?><!--</span>-->
-                                <!--            <div class="table-top-info-text table-top-info-views open-help-in">--><? //= $item['rate_count'] ?>
-                                <!--                <div class="help help--gray">Количество оценок</div>-->
-                                <!--            </div>-->
-                                <!--            <div class="main-folder-icon">-->
-                                <!--                <div class="parent-dropdown-folder row-icon-add row-icon-add--white icon-folder collectFilm">-->
-                                <!--                    <a class="folder__icon icon"></a>-->
-                                <!--                    <div class="hint">Добавить в Избранное</div>-->
-                                <!--                    <div class="row-dropdown-folder">-->
-                                <!--                        <div class="dropdown-folder dropdown-folder-content">-->
-                                <!--                            <div class="dropdown-folder-title"><span>В избранное</span></div>-->
-                                <!--                            <ul class="dropdown-folder-list" data-id="-->
-                                <? //= $item['id'] ?><!--">-->
-                                <!---->
-                                <!--                            </ul>-->
-                                <!--                        </div>-->
-                                <!--                        <div class="dropdown-folder dropdown-folder-setting">-->
-                                <!--                            <a href="#" class="clear">-->
-                                <!--                                <!-- <i class="setting-icon"></i> -->-->
-                                <!--                                <span>Управление папками</span>-->
-                                <!--                            </a>-->
-                                <!--                        </div>-->
-                                <!--                    </div>-->
-                                <!--                </div>-->
-                                <!--            </div>-->
-                                <!--        </div>-->
-                                <!--    </div>-->
-                                <?php //endforeach; ?>
+                                
+	                            <?php if(isset($_GET)):?>
+		                            <?php
+									$count = 0;
+		                            $genre =isset($_GET['genre']) ? $_GET['genre'] : '';
+									$country =isset($_GET['country']) ? $_GET['country'] : '';
+									$year =isset($_GET['years-two']) ? $_GET['years-two'] : '';
+	                                $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+	                                $num = 20;
+	                                $start = $page * $num - $num;
+	                                $count = $start;
+									$pages = new Pagination(100, 3, [
+										'homeBtn' => 'home',
+										'endBtn' => 'end',
+										'nextBtn' => 'next',
+										'prevBtn' => 'prev'
+									]);
+									$pages->printPag();
+	                                ?>
+	                            <?php $list = new Kinomania\System\Search\Search();?>
+                                <?php foreach ($list->getList($page, $num, $genre,$country,$year) as $item): ?>
+                                <?php $count++ ?>
+                                    <div class="session-table-item table-top-item clear">
+                                        <div class="table-top-info-one">
+                                            <div class="table-number"><?= $count ?></div>
+	                                            <div class="session-table-item__name">
+	                                                <?php if ('' == $item['name_ru']): ?>
+	                                                    <div class="table-top-title"><a href="/film/
+							                                <?= $item['id'] ?>/"><?= $item['name_origin'] ?></a>
+	                                                    </div>
+	                                                <?php else: ?>
+		                                                <div class="table-top-title">
+			                                                <a href="/film/<?= $item['id'] ?>/">
+				                                                <?= $item['name_ru'] ?></a>
+		                                                </div>
+		                                                <div class="table-top-title-eng">
+							                                <?= $item['name_origin'] ?>
+		                                                </div>
+	                                                <?php endif; ?>
+	                                            </div>
+                                            </div>
+                                        <div class="table-top-info">
+                                            <div class="row-button-list">
+                                        </div>
+		                                <span class="table-top-info-text table-top-info-raiting">
+		                                <?= $item['rate'] ?></span>
+                                            <div class="table-top-info-text table-top-info-views open-help-in"><?= $item['rate_count'] ?>
+                                                <div class="help help--gray">Количество оценок</div>
+                                            </div>
+                                            <div class="main-folder-icon">
+                                                <div class="parent-dropdown-folder row-icon-add row-icon-add--white icon-folder collectFilm">
+                                                    <a class="folder__icon icon"></a>
+                                                    <div class="hint">Добавить в Избранное</div>
+                                                    <div class="row-dropdown-folder">
+                                                        <div class="dropdown-folder dropdown-folder-content">
+                                                            <div class="dropdown-folder-title"><span>В избранное</span></div>
+                                                            <ul class="dropdown-folder-list" data-id="<?= $item['id'] ?>"></ul>
+                                                        </div>
+                                                        <div class="dropdown-folder dropdown-folder-setting">
+                                                            <a href="#" class="clear">
+                                                                 <i class="setting-icon"></i>
+                                                                <span>Управление папками</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+	                           <? endif;?>
                             </div>
                             <!--<div align="center">-->
                             <?php //foreach ($p->buttons as $button): ?>

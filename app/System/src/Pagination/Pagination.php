@@ -60,29 +60,29 @@ class Pagination
         $this->html = '<ul class="' . $this->classUl . '">';
         if ($this->currentPage > 1) {
             if ($this->arrowsHE) {
-                $this->html .= '<li><a href="#">'.$this->homeBtn.'</a></li>';
+                $this->html .= '<li><a href="'.$_SERVER["PATH_INFO"].'?page=1">'.$this->homeBtn.'</a></li>';
             }
             if ($this->arrows) {
-                $this->html .= '<li><a href="#">'.$this->prevBtn.'</a></li>';
+                $this->html .= '<li><a href="'.$_SERVER["PATH_INFO"].'">'.$this->prevBtn.'</a></li>';
             }
         }
         for ($i = $this->currentPage - 2; $i <= $this->currentPage + 2; $i++) {
             if($i > 0 && $i <= $this->pagesCount){
                 if($i === $this->currentPage){
-                    $this->html .= '<li class="'.$this->classActive.'"><a href="#">'.$i.'</a></li>';
+                    $this->html .= '<li class="'.$this->classActive.'"><a href="'.$_SERVER["PATH_INFO"].'?page='.$i.'">'.$i.'</a></li>';
                 }
                 else {
-                    $this->html .= '<li><a href="#">'.$i.'</a></li>';
+                    $this->html .= '<li><a href="'.$_SERVER["PATH_INFO"].'?page='.$i.'">'.$i.'</a></li>';
                 }
             }
         }
 
         if ($this->currentPage !== $this->itemsCount) {
             if ($this->arrows) {
-                $this->html .= '<li><a href="#">'.$this->nextBtn.'</a></li>';
+                $this->html .= '<li><a href="'.$_SERVER["PATH_INFO"].'?page='.($this->currentPage+$i).'">'.$this->nextBtn.'</a></li>';
             }
             if ($this->arrowsHE) {
-                $this->html .= '<li><a href="#">'.$this->endBtn.'</a></li>';
+                $this->html .= '<li><a href="'.$_SERVER["PATH_INFO"].'?page='.$this->pagesCount.'">'.$this->endBtn.'</a></li>';
             }
         }
         $this->html .= '</ul>';
