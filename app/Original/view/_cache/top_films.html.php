@@ -336,7 +336,7 @@
                         <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
                     </ul>
                 </li>
-	            <li><a href="/genres/?page=1">ЖАНРЫ</a>
+	            <li><a href="/genres/films/">ЖАНРЫ</a>
 	            </li>
             </ul>
             <div class="tablet-autorization-outer col-xl-3 col-lg-3 col-md-7 col-sm-7 col-xs-5">

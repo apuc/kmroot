@@ -1,5 +1,5 @@
 <?php
-namespace Original\Route_genres;
+namespace Original\Route_genres_films;
 
 use Dspbee\Bundle\Debug\Wrap;
 use Kinomania\Original\Controller\DefaultController;
@@ -8,7 +8,8 @@ use Kinomania\System\Common\TRepository;
 use Kinomania\System\Data\Country;
 use Kinomania\System\Data\Genre;
 use Kinomania\System\Options\Options;
-use Original\Route_genres\AJAX;
+use Kinomania\System\Buttons;
+use Kinomania\System\Pagination;
 
 class GET extends DefaultController
 {
@@ -30,7 +31,7 @@ class GET extends DefaultController
             $result = $this->mysql()->query("SELECT t1.`id`, t1.`name_origin`, t1.`name_ru`, t2.`rate`, t2.`rate_count`
                                             FROM `film` as `t1`
                                             JOIN `film_stat` as `t2` ON t1.`id` = t2.`filmId` 
-                                            WHERE t1.`status` = 'show' ORDER BY t2.`rate` DESC LIMIT 100
+                                            WHERE t1.`status` = 'show' ORDER BY t2.`rate` DESC
                                             ");
             while ($row = $result->fetch_assoc()) {
                 $list[] = $row;
@@ -38,17 +39,14 @@ class GET extends DefaultController
             if (!Wrap::$debugEnabled && [] != $list && $redisStatus) {
                 $redis->set($key, serialize($list), 300); // 5 min
             }
-	
-			// Количество новостей на странице
-			$per_page = 20;
-            $start_row = 0;
-            $count = $result->num_rows;
         }
         $this->addData([
             'list' => $list,
             'genre' => Genre::RU,
             'country' => Country::RU,
-            'options' => new Options()
+            'options' => new Options(),
+			'buttons' => new Buttons\Buttons(3),
+			'pagination' => new Pagination\Pagination,
         ]);
 
         $this->setTemplate('genres/films.html.php');
