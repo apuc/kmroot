@@ -1,5 +1,7 @@
 <?php
+
 namespace Kinomania\System\Pagination;
+
 /**
  * Created by PhpStorm.
  * User: Neo
@@ -7,68 +9,96 @@ namespace Kinomania\System\Pagination;
  * Time: 11:23
  */
 use Kinomania\System\Buttons\Buttons;
+use Kinomania\System\Debug\Debug;
+use phpDocumentor\Reflection\Types\Integer;
 
 class Pagination
 {
-	public $buttons = [];
-	
-	public function __construct(Array $options = (['itemsCount' => 257, 'itemsPerPage' => 10, 'currentPage' => 1]))
-	{
-		extract($options);
-		
-		/** @var int $currentPage */
-		if (!$currentPage) {
-			return;
-		}
-		
-		/** @var int $pagesCount
-		 *  @var int $itemsCount
-		 *  @var int $itemsPerPage
-		 */
-		$pagesCount = ceil($itemsCount / $itemsPerPage);
-		
-		if ($pagesCount == 1) {
-			return;
-		}
-		
-		/** @var int $currentPage */
-		if ($currentPage > $pagesCount) {
-			$currentPage = $pagesCount;
-		}
-		if($currentPage > 1) {
-			$this->buttons[] = new Buttons(1,$pagesCount,'<<');
-		}
-		$this->buttons[] = new Buttons($currentPage - 1, $currentPage > 1, '<');
-		/*$n=0;
-		for ($i = 1; $i <= $pagesCount; $i++) {
-			$n++;
-			if($n <= 5){
-				$active = $currentPage != $i;
-				$this->buttons[] = new Buttons($i, $active);
-			}
-		}*/
-		$this->pageCount($currentPage, 5, $pagesCount);
-		$this->buttons[] = new Buttons($currentPage + 1, $currentPage < $pagesCount, '>');
-		if($currentPage != $pagesCount) {
-			$this->buttons[] = new Buttons($pagesCount,$pagesCount,'>>');
-		}
-	}
-	public function pageCount($start, $limit, $pagesCount) {
-		/*$n=0;
-		for ($i = $start; $i <= $pagesCount; $i++) {
-			$n++;
-			if($n <= $limit){
-				$active = $start != $i;
-				$this->buttons[] = new Buttons($i, $active);
-			}*/
-		if($pagesCount != $start){
-			$this->buttons[] = new Buttons($start,false);
-			$this->buttons[] = new Buttons($start+1);
-			$this->buttons[] = new Buttons($start + 2);
-			$this->buttons[] = new Buttons($start + 3);
-			$this->buttons[] = new Buttons($start + 4);
-		}
-		
-		
-	}
+    public $buttons = [];
+    public $itemsPerPage = 10;
+    public $itemsCount;
+    public $currentPage;
+    public $pagesCount;
+    public $classUl = 'pagList';
+    public $classActive = 'pagActive';
+    public $arrows = true;
+    public $nextBtn = '>';
+    public $prevBtn = '<';
+    public $homeBtn = '<<';
+    public $endBtn = '>>';
+    public $arrowsHE = true;
+    public $html = '';
+
+    public function __construct($itemsCount, $currentPage, Array $options = [], $toPrint = false)
+    {
+        /** @var int $pagesCount
+         * @var int $itemsCount
+         * @var int $itemsPerPage
+         */
+        $this->pagesCount = ceil($itemsCount / $this->itemsPerPage);
+        $this->itemsCount = $itemsCount;
+        $this->currentPage = $currentPage;
+
+        if ($this->pagesCount === 1) {
+            return;
+        }
+
+        $this->setOptions($options);
+
+        if ($toPrint) {
+            $this->printPag();
+        }
+
+    }
+
+    public function printPag()
+    {
+
+        if ($this->currentPage <= 0 || $this->itemsCount <= 0) {
+            return false;
+        }
+        $this->html = '<ul class="' . $this->classUl . '">';
+        if ($this->currentPage > 1) {
+            if ($this->arrowsHE) {
+                $this->html .= '<li><a href="#">'.$this->homeBtn.'</a></li>';
+            }
+            if ($this->arrows) {
+                $this->html .= '<li><a href="#">'.$this->prevBtn.'</a></li>';
+            }
+        }
+        for ($i = $this->currentPage - 2; $i <= $this->currentPage + 2; $i++) {
+            if($i > 0 && $i <= $this->pagesCount){
+                if($i === $this->currentPage){
+                    $this->html .= '<li class="'.$this->classActive.'"><a href="#">'.$i.'</a></li>';
+                }
+                else {
+                    $this->html .= '<li><a href="#">'.$i.'</a></li>';
+                }
+            }
+        }
+
+        if ($this->currentPage !== $this->itemsCount) {
+            if ($this->arrows) {
+                $this->html .= '<li><a href="#">'.$this->nextBtn.'</a></li>';
+            }
+            if ($this->arrowsHE) {
+                $this->html .= '<li><a href="#">'.$this->endBtn.'</a></li>';
+            }
+        }
+        $this->html .= '</ul>';
+        echo $this->html;
+    }
+
+    public function setOptions($options)
+    {
+        $this->classUl = $options['classUl'] ?? $this->classUl;
+        $this->classActive = $options['classActive'] ?? $this->classActive;
+        $this->arrows = $options['arrows'] ?? $this->arrows;
+        $this->arrowsHE = $options['arrowsHE'] ?? $this->arrowsHE;
+        $this->homeBtn = $options['homeBtn'] ?? $this->homeBtn;
+        $this->endBtn = $options['endBtn'] ?? $this->endBtn;
+        $this->nextBtn = $options['nextBtn'] ?? $this->nextBtn;
+        $this->prevBtn = $options['prevBtn'] ?? $this->prevBtn;
+    }
+
 }

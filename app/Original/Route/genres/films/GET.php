@@ -7,6 +7,7 @@ use Kinomania\System\Common\TDate;
 use Kinomania\System\Common\TRepository;
 use Kinomania\System\Data\Country;
 use Kinomania\System\Data\Genre;
+use Kinomania\System\Debug\Debug;
 use Kinomania\System\Options\Options;
 use Kinomania\System\Buttons;
 use Kinomania\System\Pagination;
@@ -46,7 +47,6 @@ class GET extends DefaultController
             'country' => Country::RU,
             'options' => new Options(),
 			'buttons' => new Buttons\Buttons(3),
-			'pagination' => new Pagination\Pagination,
         ]);
 
         $this->setTemplate('genres/films.html.php');
