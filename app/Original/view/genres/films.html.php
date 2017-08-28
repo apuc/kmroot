@@ -5,6 +5,9 @@
  * @var array $country
  * @var string static
  * @var $options \Kinomania\System\Options\Options
+ * @var Kinomania\System\Buttons\Buttons
+ * @var Kinomania\System\Pagination\Pagination
+ *
  */
 ?>
 <!doctype html>
@@ -12,12 +15,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= $options->get('seo_tf_title') ?></title>
-    <meta name="description" content="<?= $options->get('seo_tf_description') ?>"/>
+    <title><?= $options->get('seo_top_films_title') ?></title>
+    <meta name="description" content="<?= $options->get('seo_top_films_description') ?>"/>
 
 	<link rel="canonical" href="http://www.kinomania.ru/top/films"/>
-
+	
     <!-- include section/head.html.php -->
+	
 </head>
 <body>
 <div class="my-overlay">
@@ -45,21 +49,20 @@
                 <!-- Контент -->
                 <content class="page-section-content section-content content-outer content-top--padding col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="row-top-films">
-                        <h1 class="pagetitle"><?= $options->get('seo_tf_h1') ?></h1>
+                        <h1 class="pagetitle"><?= $options->get('seo_top_films_h1') ?></h1>
                         <div class="description">
-                            Рейтинг лучших фильмов на «Киномании» составляется нашими читателями. Здесь каждый может выразить свое мнение о понравившейся новинке кино или запомнившемся с детства шедевре. Позиции всех самых интересных фильмов вычисляются в зависимости от его оценки, выставленной пользователями. Наш список поможет вам выбрать хорошее кино на вечер: это может быть проверенная временем классика, легкая комедия, захватывающий сериал или кровавый ужастик. Достаточно выбрать жанр, страну производителя и дату – и вы найдете для себя топ лучших фильмов, которые выбрали для вас зрители. А они плохого не посоветуют.
-                            <br><br>Каждый фильм в нашем списке можно назвать лучшим. Кино снимается для зрителей, и они выбирают какой из них интересный, а какой не заслуживает внимания. Существует множество топов хороших фильмов всех времен, составленных критиками и профессионалами. Часто в них входят картины маститых классиков, вроде «Гражданина Кейна» Орсона Уэллса или «Броненосца «Потемкина» нашего соотечественника Сергея Эйзенштейна. В рейтинге лучших фильмов «Киномании» можно не встретить такие ленты, просмотр которых обязателен для поступления на профессию киноведа. Наш список состоит из популярных, любимых и интересных, прежде всего, зрителям фильмов и сериалов.
-                            <br><br>Лучшие фильмы вычисляются не по количеству голосов, а по тому, насколько высокую оценку поставили наши читатели и зрители. И каждая из перечисленных картин отмечена как самое интересное и классное кино. Здесь представлены легендарные фильмы Дэвида Финчера – «Бойцовский клуб» и «Семь», а также лучшие ленты Квентина Тарантино, Джеймса Кэмерона и Кристофера Нолана – главных гениев современного кино. Но наши зрители не забывают и о нетленной классике – в списке вы найдете Альфреда Хичкока, Стэнли Кубрика, а также великая комедия Билли Уайлдера «В джазе только девушки».
-                            <br><br>Топ 100 самых лучших фильмов всех времен по версии «Киномании» не исчерпывается только полнометражными лентами. В списке широко представлены самые популярные сериалы, на просмотр которых не жалко времени: знаменитые криминальные драмы «Во все тяжкие» и «Клан Сопрано», масштабная «Игра престолов», культовые ситкомы «Друзья» и «Как я встретил вашу маму», и, конечно, всеми любимые «Симпсоны». Лучшие отечественные сериалы также можно найти в рейтинге «Киномании», среди них популярные комедии «Кухня» и «Физрук», а также историческая драма «Василиса».
-                            <br><br>Чтобы не забыть посмотреть самые интересные фильмы из нашего рейтинга, нужно зарегистрироваться на сайте и добавить понравившуюся ленту в избранное. Так, у вас под рукой всегда будет собственная подборка интересного кино на вечер. Также в своем профиле на сайте «Киномания» вы можете ознакомиться с оставленными вами комментариями, написанными рецензиями и списком проставленных оценок просмотренным фильмам.
-
+							<!--<?= $options->get('seo_top_films_description') ?>-->
                         </div>
                         <div class="row-top">
                             <div class="top-forms">
                                 <form action="">
                                     <div class="row-dropdown-input session-dropdown-input">
                                         <select name="genre" id="genre" class="">
-                                            <option value="name" selected="selected">Выберите жанр</option>
+	                                        <?php if(isset($_GET['genres'])):?>
+	                                            <option value="name" selected="selected"><?= $_GET['genres']; ?></option>
+	                                        <?php else:?>
+                                                <option value="name" selected="selected">Выберите жанр</option>
+	                                        <?php endif;?>
                                             <?php foreach ($genre as $code => $name): ?>
                                                 <option value="<?= $code ?>"><?= $name ?></option>
                                             <?php endforeach; ?>
@@ -90,10 +93,27 @@
                                 </form>
                             </div>
                         </div>
+	                    
+	                    
                         <div class="row-table-top">
                             <div class="session-table">
-                                <?php $count = 0; ?>
-                                <?php foreach ($list as $item): ?>
+                                <?php
+	                                $buttons->page;// page No. 5 button
+									$count = 0;
+									$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+									$p = new $pagination([
+										'itemsCount' => count($list),
+										'itemsPerPage' => 5,
+										'currentPage' => $page
+									]);
+									$num = 20;
+	                                $pc = intval(round(intval(count($list)/$num))); //количество страниц
+	                                $num_films = intval(count($list));
+	                                $start = $page * $num - $num;
+									if(isset($_GET['page'])){$count = $start; $page = intval($_GET['page']);}
+									$fs = array_intersect_key($list,array_fill_keys(range($start,$start + 20 -1),''));
+								?>
+                                <?php foreach ($fs as $item): ?>
                                     <?php $count++ ?>
                                     <div class="session-table-item table-top-item clear">
                                         <div class="table-top-info-one">
@@ -139,6 +159,16 @@
                                     </div>
                                 <?php endforeach; ?>
                             </div>
+	                        <div align="center">
+								<?php foreach ($p->buttons as $button): ?>
+									<?php if ($button->isActive): ?>
+				                        <a href = '?page=<?=$button->page?>'><?=$button->text?></a>
+									<?php else: ?>
+				                        <span style="color:#555555"><?=$button->text?></span>
+									<?php endif; ?>
+								<? endforeach; ?>
+
+	                        </div>
                         </div>
                     </div>
                     <div class="outer-pagelist-more">
@@ -186,7 +216,7 @@
               "url": "?handler=search",
               dataType: "json",
               data: 'filter=' + JSON.stringify(filter),
-              "success": function (data) {
+	          "success": function (data) {
                   var html = '';
                   for (var key in data) {
                       if (data.hasOwnProperty(key) && /^0$|^[1-9]\d*$/.test(key) && key <= 4294967294) {
@@ -234,7 +264,7 @@
                               '  </div>  ' ;
                       }
                   }
-
+                  
                   $('.session-table').append(html);
 
                   $("img.lazy[proc!=true]").lazyload({
@@ -265,7 +295,6 @@
               'country': '',
               'year':  ''
           };
-
           $('#genre').change(function(){
               FILTER.genre = $(this).val();
 

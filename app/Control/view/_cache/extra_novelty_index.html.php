@@ -285,7 +285,7 @@ use Kinomania\System\Extra\ExtraList;
     }
 </style>
 <script type="text/javascript">
-	$(".js-example-basic-multiple").select2();
+	$('.select2').select2();
 </script>
 
 <div class="content-heading">
@@ -309,12 +309,12 @@ use Kinomania\System\Extra\ExtraList;
                                     <th>Новинки фильмов</th>
                                 </tr>
                                <?php
-                                    /*$n = new ExtraList();
+                                    $n = new ExtraList();
                                     $n = $n->get_new_films();
-                                    $t = new ExtraList();
-                                    $t = $t->get_trailers();
-                                    $w = new ExtraList();
-                                    $w = $w->get_wallpaper();*/
+							   /*$t = new ExtraList();
+							   $t = $t->get_trailers();
+							   $w = new ExtraList();
+							   $w = $w->get_wallpaper();*/
                                ?>
                                 <?php for ($i = 1; $i <= 4; $i++): ?>
                                     <tr>
@@ -323,10 +323,16 @@ use Kinomania\System\Extra\ExtraList;
                                         </td>
                                         <td>
 	                                        <!--<select class="js-example-basic-multiple" multiple="multiple" name="film_new[]">-->
+	                                        <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+		                                        <option selected="selected">Alabama</option>
+		                                        <?php foreach($n as $item => $key):?>
+		                                            <option value="<?=$item;?>"><?=$key?></option>
+		                                        <?php endforeach;?>
+	                                        </select>
                                             <?php if (isset($list->film_new()[$i -1])): ?>
-	                                            <input selected="selected" name="film_new[]" type="text" value="<?= $list->film_new()[$i -1] ?>" class="form-control">
+	                                            <input name="film_new[]" type="text" value="<?= $list->film_new()[$i -1] ?>" class="form-control">
                                             <?php else: ?>
-	                                            <input selected="selected" name="film_new[]" type="text" value="" class="form-control">
+	                                            <input name="film_new[]" type="text" value="" class="form-control">
                                             <?php endif ?>
                                         </td>
                                     </tr>

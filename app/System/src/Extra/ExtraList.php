@@ -24,7 +24,7 @@ class ExtraList
 		
 		$result = $this->mysql()->query("SELECT `id`, `name_ru`
                                           		FROM `film`
-                                          		LIMIT 500
+                                          		WHERE  `name_ru` != '' LIMIT 1000
                                         ");
 		if($result){
 			while ($row = $result->fetch_assoc()) {
