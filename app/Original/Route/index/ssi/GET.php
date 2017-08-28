@@ -15,7 +15,7 @@ class GET extends DefaultController
 
     public function index()
     {
-        //header('Cache-Control: public, max-age=300');
+        header('Cache-Control: public, max-age=300');
         
         $list = [];
         $result = $this->mysql()->query("SELECT t1.`id`, t1.`s`, t1.`image`, t1.`category`, t1.`publish`, t1.`title`, t1.`anons`, t2.`comment` FROM `news` as `t1` 
