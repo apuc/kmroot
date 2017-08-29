@@ -25,6 +25,9 @@ use Kinomania\System\Search\Search;
 
 </head>
 <body>
+<div class="overlay-ajax-load"  style="position: absolute;z-index: 100; width: 100%; height: 100%">
+    <img class="load-ajax"  src="/app/img/design/load.gif" style="align-self: center">
+</div>
 <div class="my-overlay">
     <div class="my-overlay-item" data-type="overlay-auth">
         <div class="my-overlay-bg"></div>
@@ -45,35 +48,38 @@ use Kinomania\System\Search\Search;
         <div class="banner">
             <!--#include virtual="/design/ssi/center" -->
         </div>
+
+
         <div class="main-content-other-page clear">
+
             <section class=" outer-section clear outer-content">
                 <!-- Контент -->
-                <content
-                        class="page-section-content section-content content-outer content-top--padding col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <content class="page-section-content section-content content-outer content-top--padding col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="row-top-films">
+
                         <h1 class="pagetitle"><?= $options->get('seo_top_films_h1') ?></h1>
                         <div class="description">
                             <!--<?= $options->get('seo_top_films_description') ?>-->
                         </div>
                         <div class="row-top">
                             <div class="top-forms">
-                                <form action="">
+                                <form action="" class="form-filter">
                                     <div class="row-dropdown-input session-dropdown-input">
                                         <form method="get" action="films.html.php">
-	                                        <select name="genre" class="">
-	                                                <option value="name" selected="selected">Выберите жанр</option>
+	                                        <select name="genre" class="genre-filter">
+	                                                <option value="0" selected="selected">Выберите жанр</option>
 	                                            <?php foreach ($genre as $code => $name): ?>
 	                                                <option value="<?= $code ?>"><?= $name ?></option>
 	                                            <?php endforeach; ?>
 	                                        </select>
-                                        <select name="country" class="" style="max-width: 250px;">
-                                            <option value="1" selected="selected">Выберите страну</option>
+                                        <select name="country" class="country-filter" style="max-width: 250px;">
+                                            <option value="0" selected="selected">Выберите страну</option>
                                             <?php foreach ($country as $code => $name): ?>
                                                 <option value="<?= $code ?>"><?= $name ?></option>
                                             <?php endforeach; ?>
                                         </select>
-                                        <select name="years-two" class="">
-                                            <option value="name" selected="selected">По десятилетиям</option>
+                                        <select name="years-two" class="years-filter">
+                                            <option value="0" selected="selected">По десятилетиям</option>
                                             <option value="2010">2010-е годы</option>
                                             <option value="2000">2000-е годы</option>
                                             <option value="1990">1990-е годы</option>
@@ -87,9 +93,6 @@ use Kinomania\System\Search\Search;
                                             <option value="1910">1910-е годы</option>
                                             <option value="1900">1900-е годы</option>
                                         </select>
-                                        <input type="text" name="name" class=""
-                                               placeholder="Введите название фильма" autocomplete="off">
-	                                      <input type="submit" value="Поиск">
                                         </form>
                                 </form>
                             </div>
@@ -125,13 +128,9 @@ use Kinomania\System\Search\Search;
 	                                $num = 20;
 	                                $start = $page * $num - $num;
 	                                $count = $start;
-									$pages = new Pagination(100, 3, [
-										'homeBtn' => 'home',
-										'endBtn' => 'end',
-										'nextBtn' => 'next',
-										'prevBtn' => 'prev'
+									$pages = new Pagination(100, 1, [
 									]);
-									$pages->printPag();
+									//$pages->printPag();
 	                                ?>
 	                            <?php $list = new Kinomania\System\Search\Search();?>
                                 <?php foreach ($list->getList($page, $num, $genre,$country,$year) as $item): ?>
@@ -185,6 +184,7 @@ use Kinomania\System\Search\Search;
                                     </div>
                                 <?php endforeach; ?>
 	                           <? endif;?>
+                                <?php $pages->printPag(); ?>
                             </div>
                             <!--<div align="center">-->
                             <?php //foreach ($p->buttons as $button): ?>
@@ -231,6 +231,8 @@ use Kinomania\System\Search\Search;
 <!-- include section/footer.html.php -->
 <!-- include section/scripts.html.php -->
 <script type="text/javascript" src="<?= $static ?>/vendor/cms/jquery/jquery.lazyload.min.js"></script>
+<script type="text/javascript" src="<?= $static ?>/app/js/filter.js"></script>
+<?php var_dump($static)?>
 <script type="text/javascript">
     function getContent(filter, clearContent) {
         var me = $(this);

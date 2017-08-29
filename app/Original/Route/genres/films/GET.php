@@ -20,11 +20,7 @@ class GET extends DefaultController
     public function index()
 	{
 		$list = [];
-		
-		$redis = new \Redis();
-		$redisStatus = $redis->connect('127.0.0.1');
-	
-		$key = 'top:films';
+
 		if(!Wrap::$debugEnabled && $redisStatus && $redis->exists($key)) {
 			$list = unserialize($redis->get($key));
 		}else {

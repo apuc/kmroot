@@ -8,6 +8,7 @@ use Kinomania\System\Common\TDate;
 use Kinomania\System\Common\TRepository;
 use Kinomania\System\Data\Country;
 use Kinomania\System\Data\Genre;
+use Kinomania\System\Debug\Debug;
 
 class AJAX extends DefaultController
 {
@@ -82,5 +83,41 @@ class AJAX extends DefaultController
         }
 
         $this->setContent(json_encode($list));
+    }
+
+    public function get()
+    {
+        $list =[];
+        $country = ('0' != $_POST['country']) ? $_POST['country'] : '';
+        $genre = ('0' != $_POST['genre']) ? $_POST['genre'] : '';
+        $year = ('0' != $_POST['years']) ? $_POST['years'] : '';
+        $page = ($_POST['page']) ? $_POST['page'] : 1;
+        $query =  "SELECT film.`id`, film.`name_ru`, film.`name_origin`, t2.`rate`, t2.`rate_count` FROM `film`
+                        JOIN `film_stat` as `t2` ON film.`id` = t2.`filmId`
+                        WHERE `country` LIKE '%$country%'
+                        AND `genre` LIKE '%$genre%' AND `status` = 'show' ";
+        if($year) $query .= "AND `year` BETWEEN $year AND $year + 10 ";
+        $count = $this->mysql()
+            ->query("SELECT COUNT(*) as count ". substr($query, strrpos($query, 'FROM')) )
+            ->fetch_assoc();
+        //Debug::prn($count['count']);
+        $offset = $page * 20 - 20;
+        $query .= "ORDER BY t2.`rate_count` DESC ";
+        $query .= "LIMIT 20 OFFSET $offset ";
+
+        $result = $this->mysql()->query($query);
+
+        while ($row = $result->fetch_assoc()) {
+            $list[] = $row;
+        }
+
+        $this->addData(['list' => $list,
+            'itemCount' => $count['count'],
+            'page' => $page,
+            'offset' => $offset,
+        ]);
+        $this->setTemplate('genres/ajax.html.php');
+        //Debug::prn($list);
+        //var_dump($_POST);
     }
 }

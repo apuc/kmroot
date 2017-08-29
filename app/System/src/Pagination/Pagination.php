@@ -15,7 +15,7 @@ use phpDocumentor\Reflection\Types\Integer;
 class Pagination
 {
     public $buttons = [];
-    public $itemsPerPage = 10;
+    public $itemsPerPage = 20;
     public $itemsCount;
     public $currentPage;
     public $pagesCount;
@@ -57,7 +57,21 @@ class Pagination
         if ($this->currentPage <= 0 || $this->itemsCount <= 0) {
             return false;
         }
-        $this->html = '<ul class="' . $this->classUl . '">';
+        $this->html = '<style>
+                           ul.pagList {
+                            margin: 0; /* Обнуляем значение отступов */
+                            padding: 4px; /* Значение полей */
+                           }
+                           ul.pagList li {
+                            display: inline; /* Отображать как строчный элемент */
+                            margin-right: 5px; /* Отступ слева */                      
+                            padding: 3px; /* Поля вокруг текста */
+                           }
+                           ul.pagList li.pagActive a{
+                            color: black;
+                            text-decoration: none;
+                           }
+                            </style><ul class="' . $this->classUl . '">';
         if ($this->currentPage > 1) {
             if ($this->arrowsHE) {
                 $this->html .= '<li><a href="'.$_SERVER["PATH_INFO"].'?page=1">'.$this->homeBtn.'</a></li>';
@@ -68,7 +82,7 @@ class Pagination
         }
         for ($i = $this->currentPage - 2; $i <= $this->currentPage + 2; $i++) {
             if($i > 0 && $i <= $this->pagesCount){
-                if($i === $this->currentPage){
+                if($i == $this->currentPage){
                     $this->html .= '<li class="'.$this->classActive.'"><a href="'.$_SERVER["PATH_INFO"].'?page='.$i.'">'.$i.'</a></li>';
                 }
                 else {
@@ -77,7 +91,7 @@ class Pagination
             }
         }
 
-        if ($this->currentPage !== $this->itemsCount) {
+        if ($this->currentPage < $this->pagesCount) {
             if ($this->arrows) {
                 $this->html .= '<li><a href="'.$_SERVER["PATH_INFO"].'?page='.($this->currentPage+$i).'">'.$this->nextBtn.'</a></li>';
             }
