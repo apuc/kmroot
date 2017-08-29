@@ -54,6 +54,7 @@ use Kinomania\Original\Key\Person\Frame as Frame;
 <?php endif ?>
 
     <script src="<?= $static ?>/app/js/jquery/jquery-1.11.3.min.js?v=1.0.1"></script>
+	
 
     <!--#include virtual="/design/ssi/include" -->
 
@@ -180,12 +181,14 @@ use Kinomania\Original\Key\Person\Frame as Frame;
                                 </ul>
                             </li>
                             <li><a href="/top/films/">ЛУЧШИЕ ФИЛЬМЫ</a>
-                                <ul class="nav-list-dop">
-                                    <li><a href="/top/films/">РЕЙТИНГ КИНОМАНИИ</a></li>
-                                    <li><a href="/top/">ПОДБОРКИ</a></li>
-                                    <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
-                                </ul>
-                            </li>
+		                        <ul class="nav-list-dop">
+			                        <li><a href="/top/films/">РЕЙТИНГ КИНОМАНИИ</a></li>
+			                        <li><a href="/top/">ПОДБОРКИ</a></li>
+			                        <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
+		                        </ul>
+	                        </li>
+	                        <li><a href="/genres/films/">ЖАНРЫ</a>
+	                        </li>
                         </ul>
                     </div>
                 </div>
@@ -248,6 +251,8 @@ use Kinomania\Original\Key\Person\Frame as Frame;
                         <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
                     </ul>
                 </li>
+	            <li><a href="/genres/films/">ЖАНРЫ</a>
+	            </li>
             </ul>
             <div class="tablet-autorization-outer col-xl-3 col-lg-3 col-md-7 col-sm-7 col-xs-5">
                 <div class="autorization">
