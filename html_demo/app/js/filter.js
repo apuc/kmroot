@@ -28,6 +28,7 @@ $(document).ready(function () {
         country = ($('.country-filter :selected').val()) ? $('.country-filter :selected').val() : '';
         years = ($('.years-filter :selected').val()) ? $('.years-filter :selected').val() : '';
         page = $(this).attr('href').split('=')[1];
+        page = (page) ? page : 1;
         progressLoad('start');
         $.ajax({
             type: 'POST',

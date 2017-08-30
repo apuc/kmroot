@@ -77,7 +77,7 @@ class Pagination
                 $this->html .= '<li><a href="'.$_SERVER["PATH_INFO"].'?page=1">'.$this->homeBtn.'</a></li>';
             }
             if ($this->arrows) {
-                $this->html .= '<li><a href="'.$_SERVER["PATH_INFO"].'">'.$this->prevBtn.'</a></li>';
+                $this->html .= '<li><a href="'.$_SERVER["PATH_INFO"].'?page='.($this->currentPage - 1).'">'.$this->prevBtn.'</a></li>';
             }
         }
         for ($i = $this->currentPage - 2; $i <= $this->currentPage + 2; $i++) {
@@ -93,7 +93,7 @@ class Pagination
 
         if ($this->currentPage < $this->pagesCount) {
             if ($this->arrows) {
-                $this->html .= '<li><a href="'.$_SERVER["PATH_INFO"].'?page='.($this->currentPage+$i).'">'.$this->nextBtn.'</a></li>';
+                $this->html .= '<li><a href="'.$_SERVER["PATH_INFO"].'?page='.($this->currentPage + 1).'">'.$this->nextBtn.'</a></li>';
             }
             if ($this->arrowsHE) {
                 $this->html .= '<li><a href="'.$_SERVER["PATH_INFO"].'?page='.$this->pagesCount.'">'.$this->endBtn.'</a></li>';
