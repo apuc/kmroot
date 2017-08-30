@@ -4,3 +4,5 @@ vendor
 html_demo/index.php
 html_main/index.php
 app/Original/view/_cache
+/sphinxsearch/
+/sphinx_/

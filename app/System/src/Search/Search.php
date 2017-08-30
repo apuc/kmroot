@@ -42,7 +42,7 @@ class Search
 		if ('' != $genre) {
 			$query .= " AND t3.`genre` = '{$genre}' ";
 		}
-		$query .= "WHERE t1.`status` = 'show' ORDER BY t2.`rate` DESC LIMIT $limit OFFSET $startPage";
+		$query .= "WHERE t1.`status` = 'show' ORDER BY t2.`rate_count` DESC LIMIT $limit OFFSET $startPage";
 		$result = $this->mysql()->query($query);
 		while($row = $result->fetch_assoc()) {
 			$list[] = $row;

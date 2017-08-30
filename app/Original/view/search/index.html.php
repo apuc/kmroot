@@ -92,9 +92,25 @@
                                             </div>
                                         <?php endif ?>
                                     </div>
+
+
+
                                 </div>
                             </div>
                         <?php endif ?>
+
+                        <?php if(!empty($data['genre']['name'])): ?>
+
+                        <div class="list-content-item-inner">
+                            <div class="section-result-item">
+                                <div class="name">
+                                    <a href="/genres/films?genre=<?= $data['genre']['id']?>">Жанр: <?= $data['genre']['name'] ?> </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <?php endif;?>
+
                         <?php if (0 < $data['film_total']): ?>
                             <div class="list-content-item">
                                 <div class="list-content-title">ФИЛЬМЫ <span class="number"><?= $data['film_total'] ?></span></div>

@@ -66,10 +66,11 @@ use Kinomania\System\Search\Search;
                                 <form action="" class="form-filter">
                                     <div class="row-dropdown-input session-dropdown-input">
                                         <form method="get" action="films.html.php">
+
 	                                        <select name="genre" class="genre-filter">
-	                                                <option value="0" selected="selected">Выберите жанр</option>
+	                                                <option value="0" <?= ($genreSelected) ? '' : 'selected="selected'?>">Выберите жанр</option>
 	                                            <?php foreach ($genre as $code => $name): ?>
-	                                                <option value="<?= $code ?>"><?= $name ?></option>
+	                                                <option value="<?= $code ?>" <?= ($genreSelected === $code) ? 'selected="selected"' : '' ?>><?= $name ?></option>
 	                                            <?php endforeach; ?>
 	                                        </select>
                                         <select name="country" class="country-filter" style="max-width: 250px;">
@@ -128,12 +129,13 @@ use Kinomania\System\Search\Search;
 	                                $num = 20;
 	                                $start = $page * $num - $num;
 	                                $count = $start;
-									$pages = new Pagination(100, 1, [
+	                                $countItemsPage = 20;
+									$pages = new Pagination(count($list), 1, [
 									]);
+
 									//$pages->printPag();
 	                                ?>
-	                            <?php $list = new Kinomania\System\Search\Search();?>
-                                <?php foreach ($list->getList($page, $num, $genre,$country,$year) as $item): ?>
+                                <?php foreach ($list as $item): ?>
                                 <?php $count++ ?>
                                     <div class="session-table-item table-top-item clear">
                                         <div class="table-top-info-one">
@@ -182,6 +184,9 @@ use Kinomania\System\Search\Search;
                                             </div>
                                         </div>
                                     </div>
+                                        <?php if($count >= $countItemsPage): ?>
+                                            <?php break; ?>
+                                        <?php endif;?>
                                 <?php endforeach; ?>
 	                           <? endif;?>
                                 <?php $pages->printPag(); ?>

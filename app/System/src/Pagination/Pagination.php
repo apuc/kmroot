@@ -68,7 +68,9 @@ class Pagination
                             padding: 3px; /* Поля вокруг текста */
                            }
                            ul.pagList li.pagActive a{
-                            color: black;
+                            pointer-events: none; /* делаем ссылку некликабельной */
+                            cursor: default;  /* устанавливаем курсор в виде стрелки */
+                            color: black; /* цвет текста для нективной ссылки */
                             text-decoration: none;
                            }
                             </style><ul class="' . $this->classUl . '">';

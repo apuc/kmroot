@@ -6,6 +6,7 @@ use Kinomania\Original\Controller\DefaultController;
 use Kinomania\System\Common\TRepository;
 use Kinomania\System\Config\Path;
 use Kinomania\System\Config\Server;
+use Kinomania\System\Data\Genre;
 
 class GET extends DefaultController
 {
@@ -28,7 +29,21 @@ class GET extends DefaultController
             'person_total' => 0,
             'news' => [],
             'news_total' => 0,
+            'genre' => [],
         ];
+
+        /*get genre*/
+        if('' !== $query){
+            foreach (Genre::RU as $key => $genre){
+                if(false !== stristr($genre, $query)){
+                    $data['genre'] = [
+                        'id' => $key,
+                        'name' => $genre
+                    ];
+                }
+            }
+        }
+
 
         $suggest = '';
 
