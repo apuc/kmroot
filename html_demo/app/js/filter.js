@@ -6,7 +6,7 @@ $(document).ready(function () {
         var genre = ($('.genre-filter :selected').val()) ? $('.genre-filter :selected').val() : '';
         country = ($('.country-filter :selected').val()) ? $('.country-filter :selected').val() : '';
         years = ($('.years-filter :selected').val()) ? $('.years-filter :selected').val() : '';
-        page = $('.pagActive a').text();
+        page = 1;
         progressLoad('start');
         $.ajax({
             type: 'POST',

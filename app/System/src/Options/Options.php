@@ -2,15 +2,15 @@
 
 namespace Kinomania\System\Options;
 
-//use Kinomania\System\Common\TRepository;
-
+use Kinomania\System\Common\TRepository;
+use Kinomania\System\Options\ModelOptions;
 /**
  * Created by PhpStorm.
  * User: apuc0
  * Date: 09.08.2017
  * Time: 21:43
  */
-class Options extends Model_Options
+class Options extends ModelOptions
 {
 
     //use TRepository;

@@ -54,7 +54,7 @@ class Pagination
     public function printPag()
     {
 
-        if ($this->currentPage <= 0 || $this->itemsCount <= 0) {
+        if ($this->currentPage <= 0 || $this->itemsCount <= 0 || $this->pagesCount <= 1) {
             return false;
         }
         $this->html = '<style>

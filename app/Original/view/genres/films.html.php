@@ -232,7 +232,6 @@ use Kinomania\System\Search\Search;
 <!-- include section/scripts.html.php -->
 <script type="text/javascript" src="<?= $static ?>/vendor/cms/jquery/jquery.lazyload.min.js"></script>
 <script type="text/javascript" src="<?= $static ?>/app/js/filter.js"></script>
-<?php var_dump($static)?>
 <script type="text/javascript">
     function getContent(filter, clearContent) {
         var me = $(this);

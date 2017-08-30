@@ -11,7 +11,7 @@ namespace Kinomania\System\Options;
 use Kinomania\System\Common\TRepository;
 
 
-class Model_Options
+class ModelOptions
 {
 	public function __construct() {
 		$file = __FILE__;
