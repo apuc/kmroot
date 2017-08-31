@@ -35,6 +35,7 @@ $(document).ready(function () {
             url: '?handler=get',
             data: {'page': page, 'genre': genre, 'country': country, 'years': years},
             success: function (data) {
+                console.log(data);
                 $('.session-table').html('');
                 $('.session-table').append(data);
                 progressLoad('end');

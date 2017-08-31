@@ -49,7 +49,6 @@ use Kinomania\System\Search\Search;
             <!--#include virtual="/design/ssi/center" -->
         </div>
 
-
         <div class="main-content-other-page clear">
 
             <section class=" outer-section clear outer-content">
@@ -121,25 +120,24 @@ use Kinomania\System\Search\Search;
                                 
 	                            <?php if(isset($_GET)):?>
 		                            <?php
-									$count = 0;
+                                    $i = 0;
 		                            $genre =isset($_GET['genre']) ? $_GET['genre'] : '';
 									$country =isset($_GET['country']) ? $_GET['country'] : '';
 									$year =isset($_GET['years-two']) ? $_GET['years-two'] : '';
 	                                $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 	                                $num = 20;
 	                                $start = $page * $num - $num;
-	                                $count = $start;
 	                                $countItemsPage = 20;
-									$pages = new Pagination(count($list), 1, [
+									$pages = new Pagination($count, 1, [
 									]);
 
 									//$pages->printPag();
 	                                ?>
                                 <?php foreach ($list as $item): ?>
-                                <?php $count++ ?>
+                                <?php $i++ ?>
                                     <div class="session-table-item table-top-item clear">
                                         <div class="table-top-info-one">
-                                            <div class="table-number"><?= $count ?></div>
+                                            <div class="table-number"><?= $i ?></div>
 	                                            <div class="session-table-item__name">
 	                                                <?php if ('' == $item['name_ru']): ?>
 	                                                    <div class="table-top-title"><a href="/film/
@@ -184,7 +182,7 @@ use Kinomania\System\Search\Search;
                                             </div>
                                         </div>
                                     </div>
-                                        <?php if($count >= $countItemsPage): ?>
+                                        <?php if($i >= $countItemsPage): ?>
                                             <?php break; ?>
                                         <?php endif;?>
                                 <?php endforeach; ?>

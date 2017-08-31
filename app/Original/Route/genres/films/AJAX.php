@@ -88,27 +88,44 @@ class AJAX extends DefaultController
     public function get()
     {
         $list =[];
-        $country = ('0' != $_POST['country']) ? $_POST['country'] : '';
-        $genre = ('0' != $_POST['genre']) ? $_POST['genre'] : '';
-        $year = ('0' != $_POST['years']) ? $_POST['years'] : '';
+        $redis = New \Redis();
+        $redisStatus = $redis->connect('127.0.0.1');
+        $country = ('0' != $_POST['country']) ? $_POST['country'] : 0;
+        $genre = ('0' != $_POST['genre']) ? $_POST['genre'] : 0;
+        $year = ('0' != $_POST['years']) ? $_POST['years'] : 0;
         $page = ($_POST['page']) ? $_POST['page'] : 1;
-        $query =  "SELECT film.`id`, film.`name_ru`, film.`name_origin`, t2.`rate`, t2.`rate_count` FROM `film`
-                        JOIN `film_stat` as `t2` ON film.`id` = t2.`filmId`
-                        WHERE `country` LIKE '%$country%'
-                        AND `genre` LIKE '%$genre%' AND `status` = 'show' ";
-        if($year) $query .= "AND `year` BETWEEN $year AND $year + 10 ";
-        $count = $this->mysql()
-            ->query("SELECT COUNT(*) as count ". substr($query, strrpos($query, 'FROM')) )
-            ->fetch_assoc();
-        //Debug::prn($count['count']);
         $offset = $page * 20 - 20;
-        $query .= "ORDER BY t2.`rate_count` DESC ";
-        $query .= "LIMIT 20 OFFSET $offset ";
+        $key = "$genre:$country:$year:list:$page";
 
-        $result = $this->mysql()->query($query);
+        if($redisStatus && $redis->exists($key)){
+            $list = unserialize($redis->get($key));
+            $count['count'] = $redis->get($key.':count');
+        }else{
+            $query =  "SELECT film.`id`, film.`name_ru`, film.`name_origin`, t2.`rate`, t2.`rate_count` FROM `film`
+                        JOIN `film_stat` as `t2` ON film.`id` = t2.`filmId`
+                        WHERE `status` = 'show' ";
 
-        while ($row = $result->fetch_assoc()) {
-            $list[] = $row;
+            if($country) $query .= "AND `country` LIKE '%$country%' ";
+            if($genre) $query .= "AND `genre` LIKE '%$genre%' ";
+            if($year) $query .= "AND `year` BETWEEN $year AND $year + 10 ";
+
+            $count = $this->mysql()
+                ->query("SELECT COUNT(*) as count ". substr($query, strrpos($query, 'FROM')) )
+                ->fetch_assoc();
+
+            $query .= "ORDER BY t2.`rate_count` DESC ";
+            $query .= "LIMIT 20 OFFSET $offset ";
+
+            $result = $this->mysql()->query($query);
+
+            while ($row = $result->fetch_assoc()) {
+                $list[] = $row;
+            }
+
+            if([] != $list && $redisStatus) {
+                $redis->set($key.':count', $count['count'], 300);
+                $redis->set($key,serialize($list),300); // 5 min
+            }
         }
 
         $this->addData(['list' => $list,
@@ -116,6 +133,7 @@ class AJAX extends DefaultController
             'page' => $page,
             'offset' => $offset,
         ]);
+
         $this->setTemplate('genres/ajax.html.php');
         //Debug::prn($list);
         //var_dump($_POST);
