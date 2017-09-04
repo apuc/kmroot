@@ -69,7 +69,11 @@ use Kinomania\System\Search\Search;
 	                                        <select name="genre" class="genre-filter">
 	                                                <option value="0" selected="selected">Выберите жанр</option>
 	                                            <?php foreach ($genre as $code => $name): ?>
-	                                                <option value="<?= $code ?>"><?= $name ?></option>
+		                                            <?php if(isset($_GET['genere'])):?>
+			                                            <option value="<?= $code ?>"><?= $_GET['genre'];?></option>
+		                                            <?php else:?>
+	                                                    <option value="<?= $code ?>"><?= $name ?></option>
+		                                            <?php endif;?>
 	                                            <?php endforeach; ?>
 	                                        </select>
                                         <select name="country" class="country-filter" style="max-width: 250px;">

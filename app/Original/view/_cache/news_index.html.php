@@ -47,6 +47,7 @@ use Kinomania\Original\Key\News\Preview as News;
 <?php endif ?>
 
     <script src="<?= $static ?>/app/js/jquery/jquery-1.11.3.min.js?v=1.0.1"></script>
+	
 
     <!--#include virtual="/design/ssi/include" -->
 </head>
@@ -210,7 +211,7 @@ use Kinomania\Original\Key\News\Preview as News;
                         <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
                     </ul>
                 </li>
-	            <li><a href="/genres/">ЖАНРЫ</a>
+	            <li><a href="/genres/films/">ЖАНРЫ</a>
 	            </li>
             </ul>
             <div class="tablet-autorization-outer col-xl-3 col-lg-3 col-md-7 col-sm-7 col-xs-5">

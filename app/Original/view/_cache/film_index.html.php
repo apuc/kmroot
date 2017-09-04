@@ -703,7 +703,7 @@ use Kinomania\Original\Key\Film\Stat as Stat;
                                         <ul class="value">
                                             <li class="value__name">Жанр:</li>
                                             <?php foreach ($item[Film::GENRE] as $code): ?>
-                                                <li><?= \Kinomania\System\Data\Genre::RU[$code] ?? '' ?></li>
+                                                <li><a href="/genres/films/?genre=<?= \Kinomania\System\Data\Genre::RU[$code] ?? '' ?>" ><?= \Kinomania\System\Data\Genre::RU[$code] ?? '' ?></a></li>
                                             <?php endforeach; ?>
                                         </ul>
                                     </li>
@@ -1308,7 +1308,7 @@ use Kinomania\Original\Key\Film\Stat as Stat;
                         </div>
                         <div class="inner">
 
-                            
+                        
                         </div>
 
                         <div class="full-comments-head full-comments-foot">
