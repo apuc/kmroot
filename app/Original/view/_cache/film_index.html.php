@@ -492,6 +492,18 @@ use Kinomania\Original\Key\Film\TV as TV;
 		                        </ul>
 	                        </li>
 	                        <li><a href="/genres/films/">ЖАНРЫ</a>
+                                <ul class="nav-list-dop">
+                                    <li><a href="/genres/films?genre=ro">МЕЛОДРАМА</a></li>
+                                    <li><a href="/genres/films?genre=co">КОМЕДИИ</a></li>
+                                    <li><a href="/genres/films?genre=th">ТРИЛЛЕР</a></li>
+                                    <li><a href="/genres/films?genre=fa">ФЭНТЭЗИ</a></li>
+                                    <li><a href="/genres/films?genre=dr">ДРАМА</a></li>
+                                    <li><a href="/genres/films?genre=ho">УЖАСЫ</a></li>
+                                    <li><a href="/genres/films?genre=ad">ПРИКЛЮЧЕНИЯ</a></li>
+                                    <li><a href="/genres/films?genre=ac">БОЕВИК</a></li>
+                                    <li><a href="/genres/films?genre=my">ДЕТЕКТИВ</a></li>
+                                    <li><a href="/genres/films?genre=sc">ФАНТАСТИКА</a></li>
+                                </ul>
 	                        </li>
                         </ul>
                     </div>
@@ -556,6 +568,18 @@ use Kinomania\Original\Key\Film\TV as TV;
                     </ul>
                 </li>
 	            <li><a href="/genres/films/">ЖАНРЫ</a>
+                    <ul class="nav-list-dop">
+                        <li><a href="/genres/films?genre=ro">МЕЛОДРАМА</a></li>
+                        <li><a href="/genres/films?genre=co">КОМЕДИИ</a></li>
+                        <li><a href="/genres/films?genre=th">ТРИЛЛЕР</a></li>
+                        <li><a href="/genres/films?genre=fa">ФЭНТЭЗИ</a></li>
+                        <li><a href="/genres/films?genre=dr">ДРАМА</a></li>
+                        <li><a href="/genres/films?genre=ho">УЖАСЫ</a></li>
+                        <li><a href="/genres/films?genre=ad">ПРИКЛЮЧЕНИЯ</a></li>
+                        <li><a href="/genres/films?genre=ac">БОЕВИК</a></li>
+                        <li><a href="/genres/films?genre=my">ДЕТЕКТИВ</a></li>
+                        <li><a href="/genres/films?genre=sc">ФАНТАСТИКА</a></li>
+                    </ul>
 	            </li>
             </ul>
             <div class="tablet-autorization-outer col-xl-3 col-lg-3 col-md-7 col-sm-7 col-xs-5">
@@ -703,7 +727,7 @@ use Kinomania\Original\Key\Film\Stat as Stat;
                                         <ul class="value">
                                             <li class="value__name">Жанр:</li>
                                             <?php foreach ($item[Film::GENRE] as $code): ?>
-                                                <li><?= \Kinomania\System\Data\Genre::RU[$code] ?? '' ?></li>
+                                                <li><a href="/genres/films?genre=<?= $code ?? '' ?>"><?= \Kinomania\System\Data\Genre::RU[$code] ?? '' ?></a></li>
                                             <?php endforeach; ?>
                                         </ul>
                                     </li>

@@ -309,7 +309,7 @@ use Kinomania\Original\Key\Film\TV as TV;
                                         <ul class="value">
                                             <li class="value__name">Жанр:</li>
                                             <?php foreach ($item[Film::GENRE] as $code): ?>
-                                                <li><?= \Kinomania\System\Data\Genre::RU[$code] ?? '' ?></li>
+                                                <li><a href="/genres/films?genre=<?= $code ?? '' ?>"><?= \Kinomania\System\Data\Genre::RU[$code] ?? '' ?></a></li>
                                             <?php endforeach; ?>
                                         </ul>
                                     </li>
