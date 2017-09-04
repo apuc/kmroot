@@ -7,7 +7,6 @@ use Kinomania\System\Common\TDate;
 use Kinomania\System\Common\TRepository;
 use Kinomania\System\Data\Country;
 use Kinomania\System\Data\Genre;
-use Kinomania\System\Debug\Debug;
 use Kinomania\System\Options\Options;
 use Kinomania\System\Buttons;
 use Kinomania\System\Pagination;
@@ -20,7 +19,7 @@ class GET extends DefaultController
     public function index()
 	{
 		$list = [];
-
+        $count['count'] = '';
 		$redis = New \Redis();
 		$redisStatus = $redis->connect('127.0.0.1');
 		$genre = (isset($_GET['genre'])) ? $_GET['genre'] : 0;
@@ -66,7 +65,7 @@ class GET extends DefaultController
             'genreSelected' => (isset($_GET['genre'])) ? $_GET['genre'] : '',
             'count' => $count['count'],
 		]);
-	
+
 		$this->setTemplate('genres/films.html.php');
 	}
 

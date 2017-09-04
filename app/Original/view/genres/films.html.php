@@ -22,11 +22,11 @@ use Kinomania\System\Search\Search;
     <link rel="canonical" href="http://www.kinomania.ru/top/films"/>
 
     <!-- include section/head.html.php -->
-
+    <link rel="stylesheet" href="<?= $static ?>/app/css/main.css?v=1.0.2">
 </head>
 <body>
 <div class="overlay-ajax-load"  style="position: absolute;z-index: 100; width: 100%; height: 100%">
-    <img class="load-ajax"  src="/app/img/design/load.gif" style="align-self: center">
+    <img class="load-ajax"  src="<?= $static ?>/app/img/design/load.gif" style="align-self: center">
 </div>
 <div class="my-overlay">
     <div class="my-overlay-item" data-type="overlay-auth">
@@ -118,20 +118,11 @@ use Kinomania\System\Search\Search;
                                 $fs = array_intersect_key($list,array_fill_keys(range($start,$start + 20 -1),''));*/
                                 ?>
                                 
-	                            <?php if(isset($_GET)):?>
+
 		                            <?php
                                     $i = 0;
-		                            $genre =isset($_GET['genre']) ? $_GET['genre'] : '';
-									$country =isset($_GET['country']) ? $_GET['country'] : '';
-									$year =isset($_GET['years-two']) ? $_GET['years-two'] : '';
-	                                $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-	                                $num = 20;
-	                                $start = $page * $num - $num;
-	                                $countItemsPage = 20;
 									$pages = new Pagination($count, 1, [
 									]);
-
-									//$pages->printPag();
 	                                ?>
                                 <?php foreach ($list as $item): ?>
                                 <?php $i++ ?>
@@ -182,24 +173,9 @@ use Kinomania\System\Search\Search;
                                             </div>
                                         </div>
                                     </div>
-                                        <?php if($i >= $countItemsPage): ?>
-                                            <?php break; ?>
-                                        <?php endif;?>
                                 <?php endforeach; ?>
-	                           <? endif;?>
                                 <?php $pages->printPag(); ?>
                             </div>
-                            <!--<div align="center">-->
-                            <?php //foreach ($p->buttons as $button): ?>
-                            <!--	--><?php //if ($button->isActive): ?>
-                            <!--           <a href = '?page=--><? //=$button->page?><!--'>-->
-                            <? //=$button->text?><!--</a>-->
-                            <!--	--><?php //else: ?>
-                            <!--           <span style="color:#555555">--><? //=$button->text?><!--</span>-->
-                            <!--	--><?php //endif; ?>
-                            <? // endforeach; ?>
-                            <!---->
-                            <!--</div>-->
                         </div>
                     </div>
                     <div class="outer-pagelist-more">
