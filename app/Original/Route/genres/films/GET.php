@@ -27,7 +27,7 @@ class GET extends DefaultController
         $key = $genre.':0:0:list:1';
 
 
-		if(/*!Wrap::$debugEnabled*/$redisStatus && $redis->exists($key)) {
+		if(!Wrap::$debugEnabled && $redisStatus && $redis->exists($key)) {
 			$list = unserialize($redis->get($key));
 			$count['count'] = $redis->get($key.':count');
 		}else {
@@ -44,13 +44,14 @@ class GET extends DefaultController
                 ->fetch_assoc();
 
             $query .= "ORDER BY t2.`rate_count` DESC LIMIT 20";
+
 			$result = $this->mysql()->query($query);
 
 			while($row = $result->fetch_assoc()) {
 				$list[] = $row;
 			}
 
-			if(/*!Wrap::$debugEnabled && */[] != $list && $redisStatus) {
+			if(!Wrap::$debugEnabled && [] != $list && $redisStatus) {
                 $redis->set($key.':count', $count['count'], 300);
 				$redis->set($key,serialize($list),300); // 5 min
 			}

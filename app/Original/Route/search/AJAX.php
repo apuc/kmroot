@@ -26,7 +26,7 @@ class AJAX extends DefaultController
 
         foreach (Genre::RU as $key => $genre){
             if(false !== stristr($genre, $query)){
-                $data['genre'] = [
+                $data['genre'][] = [
                     'id' => $key,
                     'name' => $genre
                 ];

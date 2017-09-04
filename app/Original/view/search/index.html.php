@@ -99,16 +99,18 @@
                             </div>
                         <?php endif ?>
 
-                        <?php if(!empty($data['genre']['name'])): ?>
-
-                        <div class="list-content-item-inner">
-                            <div class="section-result-item">
-                                <div class="name">
-                                    <a href="/genres/films?genre=<?= $data['genre']['id']?>">Жанр: <?= $data['genre']['name'] ?> </a>
+                        <?php if(!empty($data['genre'])): ?>
+                            <?php $string = '' ?>
+                            <?php foreach($data['genre'] as $genres):?>
+                                <?php $string .='<a href="/genres/films?genre='.$genres['id'].'">'.$genres['name'].'</a>'.' ' ?>
+                            <?php endforeach;?>
+                            <div class="list-content-item-inner">
+                                <div class="section-result-item">
+                                    <div class="name">
+                                        <a href="/genres/films">жанр: </a><?= $string ?>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
                         <?php endif;?>
 
                         <?php if (0 < $data['film_total']): ?>

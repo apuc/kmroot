@@ -7,6 +7,7 @@ use Kinomania\System\Common\TRepository;
 use Kinomania\System\Config\Path;
 use Kinomania\System\Config\Server;
 use Kinomania\System\Data\Genre;
+use Kinomania\System\Debug\Debug;
 
 class GET extends DefaultController
 {
@@ -36,7 +37,7 @@ class GET extends DefaultController
         if('' !== $query){
             foreach (Genre::RU as $key => $genre){
                 if(false !== stristr($genre, $query)){
-                    $data['genre'] = [
+                    $data['genre'][] = [
                         'id' => $key,
                         'name' => $genre
                     ];
@@ -56,7 +57,9 @@ class GET extends DefaultController
             $query .= '*';
         }
         $query = $this->sphinx()->real_escape_string($query);
+
         $result = $this->sphinx()->query("SELECT * FROM `film` WHERE MATCH('{$query}') ORDER BY `weight` DESC LIMIT 16 OPTION ranker=sph04,field_weights=(name_ru=100,name_origin=90,search=80)");
+
         $idList = [];
         while ($rowData = $result->fetch_assoc()) {
             $idList[] = $rowData['id'];

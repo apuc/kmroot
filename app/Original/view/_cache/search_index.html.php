@@ -270,6 +270,18 @@
 		                        </ul>
 	                        </li>
 	                        <li><a href="/genres/films/">ЖАНРЫ</a>
+                                <ul class="nav-list-dop">
+                                    <li><a href="/genres/films?genre=ro">МЕЛОДРАМА</a></li>
+                                    <li><a href="/genres/films?genre=co">КОМЕДИИ</a></li>
+                                    <li><a href="/genres/films?genre=th">ТРИЛЛЕР</a></li>
+                                    <li><a href="/genres/films?genre=fa">ФЭНТЭЗИ</a></li>
+                                    <li><a href="/genres/films?genre=dr">ДРАМА</a></li>
+                                    <li><a href="/genres/films?genre=ho">УЖАСЫ</a></li>
+                                    <li><a href="/genres/films?genre=ad">ПРИКЛЮЧЕНИЯ</a></li>
+                                    <li><a href="/genres/films?genre=ac">БОЕВИК</a></li>
+                                    <li><a href="/genres/films?genre=my">ДЕТЕКТИВ</a></li>
+                                    <li><a href="/genres/films?genre=sc">ФАНТАСТИКА</a></li>
+                                </ul>
 	                        </li>
                         </ul>
                     </div>
@@ -334,6 +346,18 @@
                     </ul>
                 </li>
 	            <li><a href="/genres/films/">ЖАНРЫ</a>
+                    <ul class="nav-list-dop">
+                        <li><a href="/genres/films?genre=ro">МЕЛОДРАМА</a></li>
+                        <li><a href="/genres/films?genre=co">КОМЕДИИ</a></li>
+                        <li><a href="/genres/films?genre=th">ТРИЛЛЕР</a></li>
+                        <li><a href="/genres/films?genre=fa">ФЭНТЭЗИ</a></li>
+                        <li><a href="/genres/films?genre=dr">ДРАМА</a></li>
+                        <li><a href="/genres/films?genre=ho">УЖАСЫ</a></li>
+                        <li><a href="/genres/films?genre=ad">ПРИКЛЮЧЕНИЯ</a></li>
+                        <li><a href="/genres/films?genre=ac">БОЕВИК</a></li>
+                        <li><a href="/genres/films?genre=my">ДЕТЕКТИВ</a></li>
+                        <li><a href="/genres/films?genre=sc">ФАНТАСТИКА</a></li>
+                    </ul>
 	            </li>
             </ul>
             <div class="tablet-autorization-outer col-xl-3 col-lg-3 col-md-7 col-sm-7 col-xs-5">
@@ -412,16 +436,18 @@
                             </div>
                         <?php endif ?>
 
-                        <?php if(!empty($data['genre']['name'])): ?>
-
-                        <div class="list-content-item-inner">
-                            <div class="section-result-item">
-                                <div class="name">
-                                    <a href="/genres/films?genre=<?= $data['genre']['id']?>">Жанр: <?= $data['genre']['name'] ?> </a>
+                        <?php if(!empty($data['genre'])): ?>
+                            <?php $string = '' ?>
+                            <?php foreach($data['genre'] as $genres):?>
+                                <?php $string .='<a href="/genres/films?genre='.$genres['id'].'">'.$genres['name'].'</a>'.' ' ?>
+                            <?php endforeach;?>
+                            <div class="list-content-item-inner">
+                                <div class="section-result-item">
+                                    <div class="name">
+                                        <a href="/genres/films">жанр: </a><?= $string ?>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
                         <?php endif;?>
 
                         <?php if (0 < $data['film_total']): ?>
