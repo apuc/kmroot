@@ -664,17 +664,11 @@ $(document).ready(function () {
                     data = JSON.parse(data);
                     console.log(data);
                     if(0 < data['genre'].length){
+                        $('.search-result_data').append('<div class="search-input-result-category"><div class="search-category-result-title"><a href="#">Жанры</a></div>');
                         var genre = '';
                         for(var key in data['genre']){
-                            if(key == 0){
-                               genre += '<a href="/genres/films">Жанр:</a>'+'<a href="/genres/films?genre='+data['genre'][key]['id']+'">'+ data['genre'][key]['name'] +
-                                ' '+'</a>';
-                            }else{
-                                genre += '<a href="/genres/films?genre='+data['genre'][key]['id']+'">'+ data['genre'][key]['name'] + ' '
-                                +'</a>';
-                            }
+                            $('.search-result_data').append('<div class="search-input-result-one">' + ' <div class="row-search-result-item">' + ' <div class="search-result-item-left"></div>' + ' <div class="search-result-item-right">' + ' <div class="mini-title"><a href="/genres/films?genre=' + data['genre'][key]['id'] + '">' + data['genre'][key]['name'] + '</a></div>' + '</div>' + '</div>' + '</div>');
                         }
-                        $('.search-result_data').append('<div class="search-input-result-category"><div class="search-category-result-title">'+genre+'</div>');
                     }
                     if (0 < data['film'].length) {
                         $('.search-result_data').append('<div class="search-input-result-category"><div class="search-category-result-title"><a href="#">Фильмы</a></div>');
