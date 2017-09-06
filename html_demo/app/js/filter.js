@@ -4,6 +4,7 @@
 $(document).ready(function () {
     $(document).on('change', '.form-filter', function () {
         var genre = ($('.genre-filter :selected').val()) ? $('.genre-filter :selected').val() : '';
+        genreText = ($('.genre-filter :selected').text()) ? $('.genre-filter :selected').text() : '';
         country = ($('.country-filter :selected').val()) ? $('.country-filter :selected').val() : '';
         years = ($('.years-filter :selected').val()) ? $('.years-filter :selected').val() : '';
         page = 1;
@@ -15,6 +16,7 @@ $(document).ready(function () {
             success: function (data) {
                 $('.session-table').html('');
                 $('.session-table').append(data);
+                $('.pagetitle').text(genreText);
                 progressLoad('end');
             },
             error: function (xhr, str) {

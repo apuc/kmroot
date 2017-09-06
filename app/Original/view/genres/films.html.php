@@ -56,7 +56,7 @@ use Kinomania\System\Search\Search;
                 <content class="page-section-content section-content content-outer content-top--padding col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="row-top-films">
 
-                        <h1 class="pagetitle"><?= $options->get('seo_top_films_h1') ?></h1>
+                        <h1 class="pagetitle"><?= $genre[$genreSelected] ?></h1>
                         <div class="description">
                             <!--<?= $options->get('seo_top_films_description') ?>-->
                         </div>
@@ -65,7 +65,6 @@ use Kinomania\System\Search\Search;
                                 <form action="" class="form-filter">
                                     <div class="row-dropdown-input session-dropdown-input">
                                         <form method="get" action="films.html.php">
-
 	                                        <select name="genre" class="genre-filter">
 	                                                <option value="0" <?= ($genreSelected) ? '' : 'selected="selected'?>">Выберите жанр</option>
 	                                            <?php foreach ($genre as $code => $name): ?>
@@ -94,6 +93,7 @@ use Kinomania\System\Search\Search;
                                             <option value="1900">1900-е годы</option>
                                         </select>
                                         </form>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -201,9 +201,11 @@ use Kinomania\System\Search\Search;
                             </ul>
                         </div>
                     </div>
+
                 </content>
                 <!-- include section/aside.html.php -->
             </section>
+
         </div>
     </div>
 </div>
