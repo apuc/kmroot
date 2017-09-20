@@ -19,6 +19,8 @@ use Kinomania\Original\Key\Person\Trailer as Trailer;
     <meta name="description" content="<?= $min[Person::TITLE] ?>: видео актера, эпизоды из фильмов, портфолио на KINOMANIA.RU. Фильмография, биография, факты, новости и многое другое о звёздах мирового кинематографа."/>
     <meta name="keywords" content="<?= $min[Person::TITLE] ?> видео эпизоды портфолио видео"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/people/<?= $id ?>/trailers"/>
+
     <meta property="og:title" content="<?= $min[Person::TITLE] ?> награды и номинации" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />

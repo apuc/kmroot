@@ -24,6 +24,7 @@ use Kinomania\Original\Key\Person\Trailer as Trailer;
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/people/<?= $id ?>/trailers" />
     <meta property="og:description" content=""/>
+	<link rel="canonical" href="http://www.kinomania.ru/people/<?= $id ?>/trailers"/>
 
     <?php
 /**

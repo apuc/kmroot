@@ -20,6 +20,7 @@ use Kinomania\Original\Key\News\Preview as News;
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/news/artkinomania" />
     <meta property="og:description" content="Архив новостей: все новости о мире кино и жизни актеров"/>
+	<link rel="canonical" href="http://www.kinomania.ru/news/artkinomania"/>
 
     <!-- include section/head.html.php -->
 </head>

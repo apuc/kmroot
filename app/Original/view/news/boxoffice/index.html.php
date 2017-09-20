@@ -2,6 +2,7 @@
 /**
  * @var array $list
  * @var string $static
+ * @var $options \Kinomania\System\Options\Options
  */
 use Kinomania\Original\Key\News\Preview as News;
 ?>
@@ -11,10 +12,12 @@ use Kinomania\Original\Key\News\Preview as News;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>KINOMANIA.RU :: Бокс-офис</title>
-    <meta name="description" content="Анализ последних финансовых сводок из мира кино в рубрике «Бокс-офис». Под прицелом — положение дел в США, России и международном прокате."/>
-    <meta name="keywords" content="бокс офис анализ последних финансовых сводок из мира кино"/>
+    <title><?= $options->get('seo_boxoffice_title') ?></title>
+    <meta name="description" content="<?= $options->get('seo_boxoffice_description') ?>"/>
+    <meta name="keywords" content="<?= $options->get('seo_boxoffice_keywords') ?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/article/boxoffice"/>
+	
     <meta property="og:title" content="Бокс-офис" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
@@ -41,7 +44,7 @@ use Kinomania\Original\Key\News\Preview as News;
                     </ul>
                 </div>
                 <div class="row-news-list">
-                    <h1 class="pagetitle">Бокс-офис</h1>
+                    <h1 class="pagetitle"><?= $options->get('seo_boxoffice_h1') ?></h1>
                     <div class="description description-border">
                         Что по чем? Аналитика главных цифр прошедшего уикенда. Кто выиграл гонку за первое место в бокс-офисе этой недели? Чего ждать от новинок и как держатся на плаву ветераны кассового чарта? Кто побил рекорд, кто не оправдал ожиданий, а кто внезапно «выстрелил», полюбившись зрителям? Все подробности российского, американского и международного проката.
                     </div>

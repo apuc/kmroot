@@ -2,6 +2,7 @@
 /**
  * @var array $genre
  * @var array $list
+ * @var $options \Kinomania\System\Options\Options
  */
 
 use Kinomania\Original\Key\Film\Script as Script;
@@ -13,8 +14,10 @@ use Kinomania\Original\Key\Film\Script as Script;
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <title>Сценарии к фильмам на KINOMANIA.RU</title>
-    <meta name="description" content="Сценарии к фильмам на KINOMANIA.RU"/>
+    <title><?= $options->get('seo_scripts_title') ?></title>
+    <meta name="description" content="<?= $options->get('seo_scripts_description') ?>"/>
+
+	<link rel="canonical" href="http://www.kinomania.ru/scripts"/>
 
     <meta property="og:title" content="Сценарии к фильмам" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
@@ -222,7 +225,7 @@ use Kinomania\Original\Key\Film\Script as Script;
         </div>
         <div class="main-content-other-page clear">
             <content class="page-section-content section-content content-outer outer-vert col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                <h1 class="pagetitle trailers-pagetitle">ВСЕ СЦЕНАРИИ</h1>
+                <h1 class="pagetitle trailers-pagetitle"><?= $options->get('seo_scripts_h1') ?></h1>
                 <div class="outer-selection-trailers">
                     <div data-type-openclose-button="open_close" data-type-openclose-class="active" class="button__selection-trailers"><span>Подбор по параметрам</span></div>
                     <div class="selection-trailers">

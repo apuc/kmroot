@@ -1,6 +1,7 @@
 <?php
 /**
  * @var array $item
+ * @var $options Kinomania\System\Options\
  */
 ?>
 <!doctype html>
@@ -9,8 +10,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Афиша Москвы - все кинотеатры, расписание, фильмы</title>
-    <meta name="description" content="Подробная афиша кинотеатров Москвы"/>
+    <title><?= $options->get('seo_billboard_title') ?></title>
+    <meta name="description" content="<?= $options->get('seo_billboard_description') ?>"/>
+
+	<link rel="canonical" href="http://www.kinomania.ru/billboard"/>
 
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
@@ -43,6 +46,7 @@
 <?php endif ?>
 
     <script src="<?= $static ?>/app/js/jquery/jquery-1.11.3.min.js?v=1.0.1"></script>
+	
 
     <!--#include virtual="/design/ssi/include" -->
 </head>
@@ -113,6 +117,7 @@
                                     <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                                     <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                                     <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                                <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                                     <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                                 </ul>
                             </li>
@@ -135,12 +140,14 @@
                                 </ul>
                             </li>
                             <li><a href="/top/films/">ЛУЧШИЕ ФИЛЬМЫ</a>
-                                <ul class="nav-list-dop">
-                                    <li><a href="/top/films/">РЕЙТИНГ КИНОМАНИИ</a></li>
-                                    <li><a href="/top/">ПОДБОРКИ</a></li>
-                                    <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
-                                </ul>
-                            </li>
+		                        <ul class="nav-list-dop">
+			                        <li><a href="/top/films/">РЕЙТИНГ КИНОМАНИИ</a></li>
+			                        <li><a href="/top/">ПОДБОРКИ</a></li>
+			                        <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
+		                        </ul>
+	                        </li>
+	                        <li><a href="/genres/films/">ЖАНРЫ</a>
+	                        </li>
                         </ul>
                     </div>
                 </div>
@@ -174,6 +181,7 @@
                         <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                         <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                         <li><a href="/article/inside/">ИНСАЙД</a></li>
+                        <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                         <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                     </ul>
                 </li>
@@ -202,6 +210,8 @@
                         <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
                     </ul>
                 </li>
+	            <li><a href="/genres/films/">ЖАНРЫ</a>
+	            </li>
             </ul>
             <div class="tablet-autorization-outer col-xl-3 col-lg-3 col-md-7 col-sm-7 col-xs-5">
                 <div class="autorization">
@@ -222,7 +232,7 @@
                 <!-- Контент -->
                 <content class="page-section-content section-content content-outer col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="row-page">
-                        <h1 class="pagetitle">АФИША</h1>
+                        <h1 class="pagetitle"><?= $options->get('seo_billboard_h1') ?></h1>
                         <div class="description">
                             Афиша «Киномании» точно знает, в каких кинотеатрах и во сколько идет лучшее кино. Выбирайте ваш город — и мы покажем самые удобные сеансы. Всего пара кликов — и билет у вас в кармане, здесь и сейчас. Приятного просмотра!
                         </div>

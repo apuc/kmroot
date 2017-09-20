@@ -34,7 +34,7 @@ use Kinomania\Original\Key\Person\Trailer as Trailer;
     <meta property="og:image" content="" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/film/<?= $id ?>/trailers" />
-
+	<link rel="canonical" href="http://www.kinomania.ru/film/<?= $id ?>/trailers"/>
     <?php
 /**
  * @var string $static
@@ -142,6 +142,7 @@ use Kinomania\Original\Key\Person\Trailer as Trailer;
                                     <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                                     <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                                     <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                                <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                                     <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                                 </ul>
                             </li>
@@ -203,6 +204,7 @@ use Kinomania\Original\Key\Person\Trailer as Trailer;
                         <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                         <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                         <li><a href="/article/inside/">ИНСАЙД</a></li>
+                        <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                         <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                     </ul>
                 </li>

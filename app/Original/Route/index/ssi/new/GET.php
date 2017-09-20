@@ -7,6 +7,7 @@ use Kinomania\System\Common\TRepository;
 use Kinomania\System\Config\Path;
 use Kinomania\System\Config\Server;
 use Kinomania\System\Data\Country;
+use Kinomania\System\Debug\Debug;
 
 class GET extends DefaultController
 {
@@ -15,7 +16,7 @@ class GET extends DefaultController
 
     public function index()
     {
-        header('Cache-Control: public, max-age=720');
+        //header('Cache-Control: public, max-age=720');
 
         $list = [
             'film' => [],
@@ -82,10 +83,27 @@ class GET extends DefaultController
         /**
          * Trailer.
          */
-        $result = $this->mysql()->query("SELECT t3.`id`, t3.`name_origin`, t3.`name_ru`, t3.`country`, t3.`year`
-                                            FROM `trailer` AS `t1` 
+		$temp = [];
+		$result = $this->mysql()->query("SELECT `list` FROM `popular` WHERE `type` = 'trailer_new' LIMIT 1");
+		
+		if ($row = $result->fetch_assoc()) {
+			$temp['trailer_new'] = unserialize($row['list']);
+			
+		}
+		
+		$str = implode("," , $temp['trailer_new']);
+		
+		$result = $this->mysql()->query("SELECT t3.`id`, t3.`name_origin`, t3.`name_ru`, t3.`country`, t3.`year`
+                                            FROM `trailer` AS `t1`
+                                            JOIN `film` as `t3` ON t1.`filmId` = t3.`id` WHERE t3.`id` in ($str) GROUP BY t3.`id`");
+	
+	
+                                            
+        /*$result = $this->mysql()->query("SELECT t3.`id`, t3.`name_origin`, t3.`name_ru`, t3.`country`, t3.`year`
+                                            FROM `trailer` AS `t1`
                                             JOIN `film` as `t3` ON t1.`filmId` = t3.`id` WHERE t3.`status` = 'show' GROUP BY t3.`id` ORDER BY t3.`premiere_world` DESC  LIMIT 4
-                                        ");
+                                        ");*/
+        
         while ($row = $result->fetch_assoc()) {
             $name = $row['name_ru'];
             if (empty($name)) {

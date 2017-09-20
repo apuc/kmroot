@@ -1,6 +1,7 @@
 <?php
 /**
- * @var $options \Kinomania\System\Options\Options
+ * @var $options Kinomania\System\Options\Options
+ *
  */
 ?>
 <!doctype html>
@@ -12,6 +13,8 @@
     <meta name="description" content="<?= $options->get('seo_main_description') ?>" />
     <link rel="image_src" href="<?= \Kinomania\System\Config\Server::STATIC[0] ?>/app/img/design/logo3.png" />
     <meta name="keywords" content="<?= $options->get('seo_main_keywords') ?>" />
+
+	<link rel="canonical" href="http://www.kinomania.ru"/>
 
     <meta property="og:title" content="Новинки кино | KINOMANIA.RU" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
@@ -40,12 +43,12 @@
     <div class="wrap">
         <!-- include section/header.html.php -->
         <div class="banner">
-              <!--#include virtual="/design/ssi/center" -->
+              <!--#include virtual="design/ssi/center.html.php" -->
         </div>
         <div class="main-content clear">
             <!-- В ЦЕНТРЕ ВНИМАНИЯ -->
             <section class="outer-section clear section-news">
-                <!--#include virtual="/index/ssi/center" -->
+	            <!--#include virtual="/index/ssi/poster" -->
             </section>
 
             <!-- Новости Кино -->

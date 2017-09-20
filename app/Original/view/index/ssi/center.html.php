@@ -12,6 +12,7 @@
                         <div class="outer-image-prewiew ">
                             <div class="inner-image-prewiew ">
                                 <img alt="<?= $item['title'] ?>" src="<?= $item['image'] ?>" class="image-prewiew">
+                                
                             </div>
                         </div>
                     </div>

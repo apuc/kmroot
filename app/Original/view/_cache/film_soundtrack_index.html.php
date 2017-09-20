@@ -35,6 +35,7 @@ use Kinomania\Original\Key\Film\Soundtrack as Soundtrack;
     <meta property="og:image" content="" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/film/<?= $id ?>/soundtracks" />
+	<link rel="canonical" href="http://www.kinomania.ru/film/<?= $id ?>/soundtracks"/>
 
     <?php
 /**

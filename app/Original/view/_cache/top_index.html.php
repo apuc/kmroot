@@ -2,6 +2,7 @@
 /**
  * @var array $date
  * @var string $static
+ * @var $options Kinomania\System\Options\Options
  */
 
 use Kinomania\Original\Key\News\Preview as News;
@@ -12,8 +13,10 @@ use Kinomania\Original\Key\News\Preview as News;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Подборки киномании</title>
-    <meta name="description" content="Подборки киномании"/>
+    <title><?= $options->get('seo_top_title') ?></title>
+    <meta name="description" content="<?= $options->get('seo_top_description') ?>"/>
+
+	<link rel="canonical" href="http://www.kinomania.ru/top"/>
 
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
@@ -45,6 +48,7 @@ use Kinomania\Original\Key\News\Preview as News;
 <?php endif ?>
 
     <script src="<?= $static ?>/app/js/jquery/jquery-1.11.3.min.js?v=1.0.1"></script>
+	
 
     <!--#include virtual="/design/ssi/include" -->
 </head>
@@ -115,6 +119,7 @@ use Kinomania\Original\Key\News\Preview as News;
                                     <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                                     <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                                     <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                                <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                                     <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                                 </ul>
                             </li>
@@ -137,12 +142,26 @@ use Kinomania\Original\Key\News\Preview as News;
                                 </ul>
                             </li>
                             <li><a href="/top/films/">ЛУЧШИЕ ФИЛЬМЫ</a>
+		                        <ul class="nav-list-dop">
+			                        <li><a href="/top/films/">РЕЙТИНГ КИНОМАНИИ</a></li>
+			                        <li><a href="/top/">ПОДБОРКИ</a></li>
+			                        <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
+		                        </ul>
+	                        </li>
+	                        <li><a href="/genres/films/">ЖАНРЫ</a>
                                 <ul class="nav-list-dop">
-                                    <li><a href="/top/films/">РЕЙТИНГ КИНОМАНИИ</a></li>
-                                    <li><a href="/top/">ПОДБОРКИ</a></li>
-                                    <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
+                                    <li><a href="/genres/films?genre=ro">МЕЛОДРАМА</a></li>
+                                    <li><a href="/genres/films?genre=co">КОМЕДИИ</a></li>
+                                    <li><a href="/genres/films?genre=th">ТРИЛЛЕР</a></li>
+                                    <li><a href="/genres/films?genre=fa">ФЭНТЭЗИ</a></li>
+                                    <li><a href="/genres/films?genre=dr">ДРАМА</a></li>
+                                    <li><a href="/genres/films?genre=ho">УЖАСЫ</a></li>
+                                    <li><a href="/genres/films?genre=ad">ПРИКЛЮЧЕНИЯ</a></li>
+                                    <li><a href="/genres/films?genre=ac">БОЕВИК</a></li>
+                                    <li><a href="/genres/films?genre=my">ДЕТЕКТИВ</a></li>
+                                    <li><a href="/genres/films?genre=sc">ФАНТАСТИКА</a></li>
                                 </ul>
-                            </li>
+	                        </li>
                         </ul>
                     </div>
                 </div>
@@ -176,6 +195,7 @@ use Kinomania\Original\Key\News\Preview as News;
                         <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                         <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                         <li><a href="/article/inside/">ИНСАЙД</a></li>
+                        <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                         <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                     </ul>
                 </li>
@@ -204,6 +224,20 @@ use Kinomania\Original\Key\News\Preview as News;
                         <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
                     </ul>
                 </li>
+	            <li><a href="/genres/films/">ЖАНРЫ</a>
+                    <ul class="nav-list-dop">
+                        <li><a href="/genres/films?genre=ro">МЕЛОДРАМА</a></li>
+                        <li><a href="/genres/films?genre=co">КОМЕДИИ</a></li>
+                        <li><a href="/genres/films?genre=th">ТРИЛЛЕР</a></li>
+                        <li><a href="/genres/films?genre=fa">ФЭНТЭЗИ</a></li>
+                        <li><a href="/genres/films?genre=dr">ДРАМА</a></li>
+                        <li><a href="/genres/films?genre=ho">УЖАСЫ</a></li>
+                        <li><a href="/genres/films?genre=ad">ПРИКЛЮЧЕНИЯ</a></li>
+                        <li><a href="/genres/films?genre=ac">БОЕВИК</a></li>
+                        <li><a href="/genres/films?genre=my">ДЕТЕКТИВ</a></li>
+                        <li><a href="/genres/films?genre=sc">ФАНТАСТИКА</a></li>
+                    </ul>
+	            </li>
             </ul>
             <div class="tablet-autorization-outer col-xl-3 col-lg-3 col-md-7 col-sm-7 col-xs-5">
                 <div class="autorization">
@@ -224,7 +258,7 @@ use Kinomania\Original\Key\News\Preview as News;
                 <!-- Контент -->
                 <content class="page-section-content section-content content-outer content-top--padding col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="row-news-list">
-                        <h1 class="pagetitle">Подборки киномании</h1>
+                        <h1 class="pagetitle"><?= $options->get('seo_top_h1') ?></h1>
                         <div class="description">
                             Что посмотреть сегодня или на выходных? Выбирайте фильмы из тематических подборок «Киномании». Лучшие комедии о шпионах, самые страшные фильмы о домах с привидениями, отличное французское кино, о котором вы даже не слышали, самые кассовые экранизации триллеров и лучшие призеры международных кинофестивалей — любую ленту из наших списков можно смело включать в планы на вечер.
                         </div>

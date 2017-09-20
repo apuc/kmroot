@@ -3,6 +3,7 @@
  * @var string static
  * @var array $list
  * @var array $dateList
+ * @var $options \Kinomania\System\Options\Options
  */
 
 use Kinomania\Original\Key\TV\Chanel as Chanel;
@@ -15,13 +16,16 @@ use Kinomania\Original\Key\TV\Film as Film;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>ТВ программа</title>
-    <meta name="description" content="ТВ программа"/>
+    <title><?=$options->get('seo_tv_title');?></title>
+    <meta name="description" content="<?=$options->get('seo_tv_description');?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/tv"/>
+	
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/tv" />
     <meta property="og:title" content="ТВ программа" />
+	
 
     <!-- include section/head.html.php -->
 </head>
@@ -36,7 +40,7 @@ use Kinomania\Original\Key\TV\Film as Film;
         <div class="main-content-other-page clear">
             <div class="head-content">
                 <div class="info-user head-two">
-                    <h1 class="pagetitle">ТВ</h1>
+                    <h1 class="pagetitle"><?=$options->get('seo_tv_h1');?></h1>
                     <div class="row-tv-slider">
                         <div class="bx-tv-slider">
                             <?php foreach ($list['filmList'] as $film): ?>

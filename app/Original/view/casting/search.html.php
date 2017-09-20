@@ -17,6 +17,8 @@ use Kinomania\Original\Key\Casting\Person as Person;
     <meta name="description" content="Актерская база с расширенным поиском, фото и видео российсских актеров и актрис, информация по кастинг-агентсвам"/>
     <meta name="keywords" content="Кастинг, кастинг-база, актерская база, поиск по актерам, кастинг агентства, видео актеров"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/casting/search"/>
+
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/casting/search" />

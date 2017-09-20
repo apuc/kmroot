@@ -12,9 +12,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title><?= $options->get('seo_tf_title') ?></title>
     <meta name="description" content="<?= $options->get('seo_tf_description') ?>"/>
+
+	<link rel="canonical" href="http://www.kinomania.ru/top/films"/>
 
     <?php
 /**
@@ -41,6 +42,7 @@
 <?php endif ?>
 
     <script src="<?= $static ?>/app/js/jquery/jquery-1.11.3.min.js?v=1.0.1"></script>
+	
 
     <!--#include virtual="/design/ssi/include" -->
 </head>
@@ -241,6 +243,7 @@
                                     <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                                     <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                                     <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                                <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                                     <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                                 </ul>
                             </li>
@@ -263,12 +266,26 @@
                                 </ul>
                             </li>
                             <li><a href="/top/films/">ЛУЧШИЕ ФИЛЬМЫ</a>
+		                        <ul class="nav-list-dop">
+			                        <li><a href="/top/films/">РЕЙТИНГ КИНОМАНИИ</a></li>
+			                        <li><a href="/top/">ПОДБОРКИ</a></li>
+			                        <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
+		                        </ul>
+	                        </li>
+	                        <li><a href="/genres/films/">ЖАНРЫ</a>
                                 <ul class="nav-list-dop">
-                                    <li><a href="/top/films/">РЕЙТИНГ КИНОМАНИИ</a></li>
-                                    <li><a href="/top/">ПОДБОРКИ</a></li>
-                                    <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
+                                    <li><a href="/genres/films?genre=ro">МЕЛОДРАМА</a></li>
+                                    <li><a href="/genres/films?genre=co">КОМЕДИИ</a></li>
+                                    <li><a href="/genres/films?genre=th">ТРИЛЛЕР</a></li>
+                                    <li><a href="/genres/films?genre=fa">ФЭНТЭЗИ</a></li>
+                                    <li><a href="/genres/films?genre=dr">ДРАМА</a></li>
+                                    <li><a href="/genres/films?genre=ho">УЖАСЫ</a></li>
+                                    <li><a href="/genres/films?genre=ad">ПРИКЛЮЧЕНИЯ</a></li>
+                                    <li><a href="/genres/films?genre=ac">БОЕВИК</a></li>
+                                    <li><a href="/genres/films?genre=my">ДЕТЕКТИВ</a></li>
+                                    <li><a href="/genres/films?genre=sc">ФАНТАСТИКА</a></li>
                                 </ul>
-                            </li>
+	                        </li>
                         </ul>
                     </div>
                 </div>
@@ -276,6 +293,9 @@
             <div class="autorization-outer col-xl-3 col-lg-3 col-md-7 col-sm-12 col-xs-12">
                 <div class="autorization">
                     <ul class="autorization-list authorizationContent">
+                        <?php $city = unserialize($_COOKIE['city']) ?>
+
+                        <li><a href="#" class="change-location" data-region="<?= $city['region'] ?>" data-city_id="<?= $city['city_id']?>"><span><?= $city['city'] ?></span></a></li>
                         <li><a href="/login/"><span>ВХОД</span></a></li>
                         <li><a href="/registration_/"><span>РЕГИСТРАЦИЯ</span></a></li>
                     </ul>
@@ -302,6 +322,7 @@
                         <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                         <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                         <li><a href="/article/inside/">ИНСАЙД</a></li>
+                        <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                         <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                     </ul>
                 </li>
@@ -330,6 +351,20 @@
                         <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
                     </ul>
                 </li>
+	            <li><a href="/genres/films/">ЖАНРЫ</a>
+                    <ul class="nav-list-dop">
+                        <li><a href="/genres/films?genre=ro">МЕЛОДРАМА</a></li>
+                        <li><a href="/genres/films?genre=co">КОМЕДИИ</a></li>
+                        <li><a href="/genres/films?genre=th">ТРИЛЛЕР</a></li>
+                        <li><a href="/genres/films?genre=fa">ФЭНТЭЗИ</a></li>
+                        <li><a href="/genres/films?genre=dr">ДРАМА</a></li>
+                        <li><a href="/genres/films?genre=ho">УЖАСЫ</a></li>
+                        <li><a href="/genres/films?genre=ad">ПРИКЛЮЧЕНИЯ</a></li>
+                        <li><a href="/genres/films?genre=ac">БОЕВИК</a></li>
+                        <li><a href="/genres/films?genre=my">ДЕТЕКТИВ</a></li>
+                        <li><a href="/genres/films?genre=sc">ФАНТАСТИКА</a></li>
+                    </ul>
+	            </li>
             </ul>
             <div class="tablet-autorization-outer col-xl-3 col-lg-3 col-md-7 col-sm-7 col-xs-5">
                 <div class="autorization">
@@ -352,7 +387,12 @@
                     <div class="row-top-films">
                         <h1 class="pagetitle"><?= $options->get('seo_tf_h1') ?></h1>
                         <div class="description">
-                            Читатели «Киномании» сами выбирают, какое кино считать хорошим, а какое совсем не удалось. В нашем рейтинге — фильмы с самими высокими оценками на сайте. Выбирайте жанр, страну-производителя, временной период — и перед вами топ лучших фильмов, составленный по оценкам зрителей.
+                            Рейтинг лучших фильмов на «Киномании» составляется нашими читателями. Здесь каждый может выразить свое мнение о понравившейся новинке кино или запомнившемся с детства шедевре. Позиции всех самых интересных фильмов вычисляются в зависимости от его оценки, выставленной пользователями. Наш список поможет вам выбрать хорошее кино на вечер: это может быть проверенная временем классика, легкая комедия, захватывающий сериал или кровавый ужастик. Достаточно выбрать жанр, страну производителя и дату – и вы найдете для себя топ лучших фильмов, которые выбрали для вас зрители. А они плохого не посоветуют.
+                            <br><br>Каждый фильм в нашем списке можно назвать лучшим. Кино снимается для зрителей, и они выбирают какой из них интересный, а какой не заслуживает внимания. Существует множество топов хороших фильмов всех времен, составленных критиками и профессионалами. Часто в них входят картины маститых классиков, вроде «Гражданина Кейна» Орсона Уэллса или «Броненосца «Потемкина» нашего соотечественника Сергея Эйзенштейна. В рейтинге лучших фильмов «Киномании» можно не встретить такие ленты, просмотр которых обязателен для поступления на профессию киноведа. Наш список состоит из популярных, любимых и интересных, прежде всего, зрителям фильмов и сериалов.
+                            <br><br>Лучшие фильмы вычисляются не по количеству голосов, а по тому, насколько высокую оценку поставили наши читатели и зрители. И каждая из перечисленных картин отмечена как самое интересное и классное кино. Здесь представлены легендарные фильмы Дэвида Финчера – «Бойцовский клуб» и «Семь», а также лучшие ленты Квентина Тарантино, Джеймса Кэмерона и Кристофера Нолана – главных гениев современного кино. Но наши зрители не забывают и о нетленной классике – в списке вы найдете Альфреда Хичкока, Стэнли Кубрика, а также великая комедия Билли Уайлдера «В джазе только девушки».
+                            <br><br>Топ 100 самых лучших фильмов всех времен по версии «Киномании» не исчерпывается только полнометражными лентами. В списке широко представлены самые популярные сериалы, на просмотр которых не жалко времени: знаменитые криминальные драмы «Во все тяжкие» и «Клан Сопрано», масштабная «Игра престолов», культовые ситкомы «Друзья» и «Как я встретил вашу маму», и, конечно, всеми любимые «Симпсоны». Лучшие отечественные сериалы также можно найти в рейтинге «Киномании», среди них популярные комедии «Кухня» и «Физрук», а также историческая драма «Василиса».
+                            <br><br>Чтобы не забыть посмотреть самые интересные фильмы из нашего рейтинга, нужно зарегистрироваться на сайте и добавить понравившуюся ленту в избранное. Так, у вас под рукой всегда будет собственная подборка интересного кино на вечер. Также в своем профиле на сайте «Киномания» вы можете ознакомиться с оставленными вами комментариями, написанными рецензиями и списком проставленных оценок просмотренным фильмам.
+
                         </div>
                         <div class="row-top">
                             <div class="top-forms">
@@ -385,6 +425,7 @@
                                             <option value="1910">1910-е годы</option>
                                             <option value="1900">1900-е годы</option>
                                         </select>
+	                                    <input type="text" name="name" id="name" class="" placeholder="Введите название фильма" autocomplete="off">
                                     </div>
                                 </form>
                             </div>
@@ -667,7 +708,7 @@
 <!-- bxSlider Javascript file -->
 <script src="<?= $static ?>/app/js/plugins/bx/jquery.bxslider.js?v=1.0.2"></script>
 <script type="text/javascript" src="<?= $static ?>/app/js/main.js?v=1.0.2"></script>
-
+<script type="text/javascript" src="<?= $static ?>/app/js/location.js"></script>
 <script>
     $(document).ready(function(){
         $('.search__button').click(function(e){

@@ -28,6 +28,7 @@ use Kinomania\Original\Key\Person\Frame as Frame;
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/film/<?= $id ?>/frames" />
+	<link rel="canonical" href="http://www.kinomania.ru/film/<?= $id ?>/frames"/>
 
     <?php
 /**
@@ -154,6 +155,7 @@ use Kinomania\Original\Key\Person\Frame as Frame;
                                     <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                                     <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                                     <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                                <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                                     <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                                 </ul>
                             </li>
@@ -215,6 +217,7 @@ use Kinomania\Original\Key\Person\Frame as Frame;
                         <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                         <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                         <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                    <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                         <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                     </ul>
                 </li>

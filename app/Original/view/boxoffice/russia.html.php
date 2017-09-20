@@ -1,6 +1,7 @@
 <?php
 /**
  * @var array $list
+ *  @var $options \Kinomania\System\Options\Options
  */
 ?>
 <!doctype html>
@@ -9,14 +10,16 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Кассовые сборы фильмов в прокате России (Box-office)</title>
-    <meta name="description" content="Кассовые сборы фильмов в прокате России"/>
-    <meta name="keywords" content="Кассовые сборы фильмов, Box-office, касса, лидерв проката, РФ"/>
+    <title><?= $options->get('seo_boxoffice_russia_title') ?></title>
+    <meta name="description" content="<?= $options->get('seo_boxoffice_russia_description') ?>"/>
+    <meta name="keywords" content="<?= $options->get('seo_boxoffice_russia_keywords') ?>"/>
+
+	<link rel="canonical" href="http://www.kinomania.ru/boxoffice/russia"/>
 
     <meta property="og:title" content="Кассовые сборы фильмов в прокате России (Box-office)" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://www.kinomania.ru/boxoffice/cis" />
+    <meta property="og:url" content="http://www.kinomania.ru/boxoffice/russia" />
     <meta property="og:description" content="Кассовые сборы фильмов в прокате России"/>
 
     <!-- include section/head.html.php -->
@@ -39,7 +42,7 @@
                                 <li><a href="/boxoffice/usa/">СБОРЫ В США</a></li>
                             </ul>
                         </div>
-                        <h1 class="pagetitle pagetitle-two">Бокс-Офис</h1>
+                        <h1 class="pagetitle pagetitle-two"><?= $options->get('seo_boxoffice_russia_h1') ?></h1>
                         <div class="table-page-caption clear">
                             <div class="table-page-caption-item1">
                                 ЛИДЕРЫ ПРОКАТА ЗА УИКЕНД <?= $list['date_from'] ?> — <?= $list['date_to'] ?>

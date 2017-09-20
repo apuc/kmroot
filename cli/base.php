@@ -5,10 +5,10 @@ if (!isset($argv[1])) {
     //$classList = ['KV', 'Award', 'Company', 'Person', 'Film', 'News', 'User', 'Comment', 'Stat', 'Count', 'Weight', 'Admin'];  //Script
     $classList = ['Stat'];  //Script
     foreach ($classList as $class) {
-        $db_from = mysqli_connect("127.0.0.1", "fg.kmmain", "fjT94HGF4jde3", "kinomania");
+        $db_from = mysqli_connect("127.0.0.1", "root", "", "kinomania");
         $db_from->query("SET NAMES 'UTF8'");
         setTimeZone($db_from);
-        $db_from_2 = mysqli_connect("127.0.0.1", "fg.kmmain", "fjT94HGF4jde3", "kinomania");
+        $db_from_2 = mysqli_connect("127.0.0.1", "root", "", "kinomania");
         $db_from_2->query("SET NAMES 'UTF8'");
         setTimeZone($db_from_2);
 
@@ -33,10 +33,10 @@ if (!isset($argv[1])) {
     }
     echo 'Done';
 } else {
-    $db_from = mysqli_connect("127.0.0.1", "fg.kmmain", "fjT94HGF4jde3", "kinomania");
+    $db_from = mysqli_connect("127.0.0.1", "root", "", "kinomania");
     $db_from->query("SET NAMES 'UTF8'");
     setTimeZone($db_from);
-    $db_from_2 = mysqli_connect("127.0.0.1", "fg.kmmain", "fjT94HGF4jde3", "kinomania");
+    $db_from_2 = mysqli_connect("127.0.0.1", "root", "", "kinomania");
     $db_from_2->query("SET NAMES 'UTF8'");
     setTimeZone($db_from_2);
 

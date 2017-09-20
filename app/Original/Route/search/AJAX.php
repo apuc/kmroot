@@ -6,6 +6,8 @@ use Kinomania\Original\Controller\DefaultController;
 use Kinomania\System\Common\TRepository;
 use Kinomania\System\Config\Path;
 use Kinomania\System\Config\Server;
+use Kinomania\System\Debug\Debug;
+use Kinomania\System\Data\Genre;
 
 class AJAX extends DefaultController
 {
@@ -15,12 +17,21 @@ class AJAX extends DefaultController
     {
         $post = new PostBag();
         $query = $post->fetch('q');
-
         $data = [
             'film' => [],
             'person' => [],
-            'news' => []
+            'news' => [],
+            'genre' => []
         ];
+
+        foreach (Genre::RU as $key => $genre){
+            if(false !== stristr($genre, $query)){
+                $data['genre'][] = [
+                    'id' => $key,
+                    'name' => $genre
+                ];
+            }
+        }
 
         $suggest = '';
 

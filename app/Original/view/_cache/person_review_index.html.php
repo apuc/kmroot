@@ -32,6 +32,7 @@ use Kinomania\Original\Key\Person\Photo as Photo;
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/people/<?= $id ?>/reviews" />
+	<link rel="canonical" href="http://www.kinomania.ru/people/<?= $id ?>/reviews"/>
 
     <?php
 /**

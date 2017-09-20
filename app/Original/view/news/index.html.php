@@ -15,7 +15,7 @@ use Kinomania\Original\Key\News\Preview as News;
     <title><?= $options->get('seo_news_title') ?></title>
     <meta name="description" content="<?= $options->get('seo_news_description') ?>"/>
     <meta name="keywords" content="<?= $options->get('seo_news_keywords') ?>"/>
-
+	<link rel="canonical" href="http://www.kinomania.ru/news"/>
     <meta property="og:title" content="Новости кино" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />

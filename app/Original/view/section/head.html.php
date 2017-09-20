@@ -23,5 +23,6 @@
 <?php endif ?>
 
     <script src="<?= $static ?>/app/js/jquery/jquery-1.11.3.min.js?v=1.0.1"></script>
+	
 
     <!--#include virtual="/design/ssi/include" -->

@@ -16,6 +16,8 @@ class Item
         $this->film_poster = [];
         $this->film_new = [];
         $this->casting_promo = [];
+        $this->trailer_new = [];
+        $this->wallpaper_new = [];
     }
     
     public function film_wallpaper()
@@ -53,6 +55,16 @@ class Item
         return $this->casting_promo;
     }
 
+    public function trailer_new()
+    {
+        return $this->trailer_new;
+    }
+
+    public function wallpaper_new()
+    {
+        return $this->wallpaper_new;
+    }
+
     protected $film_wallpaper;
     protected $person_wallpaper_actors;
     protected $person_wallpaper_actresses;
@@ -60,4 +72,6 @@ class Item
     protected $film_poster;
     protected $film_new;
     protected $casting_promo;
+    protected $trailer_new;
+    protected $wallpaper_new;
 }

@@ -39,6 +39,7 @@
 <?php endif ?>
 
     <script src="<?= $static ?>/app/js/jquery/jquery-1.11.3.min.js?v=1.0.1"></script>
+	
 
     <!--#include virtual="/design/ssi/include" -->
 </head>
@@ -239,6 +240,7 @@
                                     <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                                     <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                                     <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                                <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                                     <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                                 </ul>
                             </li>
@@ -261,12 +263,26 @@
                                 </ul>
                             </li>
                             <li><a href="/top/films/">ЛУЧШИЕ ФИЛЬМЫ</a>
+		                        <ul class="nav-list-dop">
+			                        <li><a href="/top/films/">РЕЙТИНГ КИНОМАНИИ</a></li>
+			                        <li><a href="/top/">ПОДБОРКИ</a></li>
+			                        <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
+		                        </ul>
+	                        </li>
+	                        <li><a href="/genres/films/">ЖАНРЫ</a>
                                 <ul class="nav-list-dop">
-                                    <li><a href="/top/films/">РЕЙТИНГ КИНОМАНИИ</a></li>
-                                    <li><a href="/top/">ПОДБОРКИ</a></li>
-                                    <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
+                                    <li><a href="/genres/films?genre=ro">МЕЛОДРАМА</a></li>
+                                    <li><a href="/genres/films?genre=co">КОМЕДИИ</a></li>
+                                    <li><a href="/genres/films?genre=th">ТРИЛЛЕР</a></li>
+                                    <li><a href="/genres/films?genre=fa">ФЭНТЭЗИ</a></li>
+                                    <li><a href="/genres/films?genre=dr">ДРАМА</a></li>
+                                    <li><a href="/genres/films?genre=ho">УЖАСЫ</a></li>
+                                    <li><a href="/genres/films?genre=ad">ПРИКЛЮЧЕНИЯ</a></li>
+                                    <li><a href="/genres/films?genre=ac">БОЕВИК</a></li>
+                                    <li><a href="/genres/films?genre=my">ДЕТЕКТИВ</a></li>
+                                    <li><a href="/genres/films?genre=sc">ФАНТАСТИКА</a></li>
                                 </ul>
-                            </li>
+	                        </li>
                         </ul>
                     </div>
                 </div>
@@ -300,6 +316,7 @@
                         <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                         <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                         <li><a href="/article/inside/">ИНСАЙД</a></li>
+                        <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                         <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                     </ul>
                 </li>
@@ -328,6 +345,20 @@
                         <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
                     </ul>
                 </li>
+	            <li><a href="/genres/films/">ЖАНРЫ</a>
+                    <ul class="nav-list-dop">
+                        <li><a href="/genres/films?genre=ro">МЕЛОДРАМА</a></li>
+                        <li><a href="/genres/films?genre=co">КОМЕДИИ</a></li>
+                        <li><a href="/genres/films?genre=th">ТРИЛЛЕР</a></li>
+                        <li><a href="/genres/films?genre=fa">ФЭНТЭЗИ</a></li>
+                        <li><a href="/genres/films?genre=dr">ДРАМА</a></li>
+                        <li><a href="/genres/films?genre=ho">УЖАСЫ</a></li>
+                        <li><a href="/genres/films?genre=ad">ПРИКЛЮЧЕНИЯ</a></li>
+                        <li><a href="/genres/films?genre=ac">БОЕВИК</a></li>
+                        <li><a href="/genres/films?genre=my">ДЕТЕКТИВ</a></li>
+                        <li><a href="/genres/films?genre=sc">ФАНТАСТИКА</a></li>
+                    </ul>
+	            </li>
             </ul>
             <div class="tablet-autorization-outer col-xl-3 col-lg-3 col-md-7 col-sm-7 col-xs-5">
                 <div class="autorization">
@@ -398,9 +429,29 @@
                                             </div>
                                         <?php endif ?>
                                     </div>
+
+
+
                                 </div>
                             </div>
                         <?php endif ?>
+
+                        <?php if(!empty($data['genre'])): ?>
+                    <div class="list-content-item">
+                        <div class="list-content-title">жанры <span class="number"><?= count($data['genre']) ?></span></div>
+                            <?php foreach($data['genre'] as $genres):?>
+                                <div class="list-content-item-inner">
+                                    <div class="section-result-content clear">
+                                        <div class="section-result-item item2">
+                                                <div class="name"><a href="/genres/films?genre<?= $genres['id'] ?>/"><?= $genres['name'] ?></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach;?>
+                    </div>
+
+                        <?php endif;?>
+
                         <?php if (0 < $data['film_total']): ?>
                             <div class="list-content-item">
                                 <div class="list-content-title">ФИЛЬМЫ <span class="number"><?= $data['film_total'] ?></span></div>

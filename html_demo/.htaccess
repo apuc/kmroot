@@ -1,6 +1,14 @@
 DirectoryIndex app.php
 RewriteEngine On
+Options +Includes
+AddType text/html .shtml
+AddHandler server-parsed .shtml .html .html.php
+RemoveHandler .html AddType application/x-httpd-php .html .htm .xhtml .xht .xml .php .phtml .php3 .php4 .php5 .phps
 RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)\?*$ app.php/$1 [L,QSA]
+
+
+
+

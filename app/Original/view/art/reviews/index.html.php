@@ -15,6 +15,8 @@ use Kinomania\Original\Key\News\Preview as News;
     <meta name="description" content="Рецензии АртКиноМания"/>
     <meta name="keywords" content="рецензия, рецензия на фильм, отзыв"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/art/reviews"/>
+
     <meta property="og:title" content="Рецензии АртКиноМания" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />

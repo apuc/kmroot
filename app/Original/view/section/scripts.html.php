@@ -6,7 +6,7 @@
 <!-- bxSlider Javascript file -->
 <script src="<?= $static ?>/app/js/plugins/bx/jquery.bxslider.js?v=1.0.2"></script>
 <script type="text/javascript" src="<?= $static ?>/app/js/main.js?v=1.0.2"></script>
-
+<script type="text/javascript" src="<?= $static ?>/app/js/location.js"></script>
 <script>
     $(document).ready(function(){
         $('.search__button').click(function(e){

@@ -34,6 +34,7 @@ use Kinomania\Original\Key\Person\Award as Award;
     <meta property="og:image" content="" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/film/<?= $id ?>/awards" />
+	<link rel="canonical" href="http://www.kinomania.ru/film/<?= $id ?>/awards"/>
 
     <!-- include section/head.html.php -->
 </head>

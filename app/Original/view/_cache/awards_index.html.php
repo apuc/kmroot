@@ -2,6 +2,7 @@
 /**
  * @var array $list
  * @var string $static
+ * @var $options \Kinomania\System\Options\Options
  */
 use Kinomania\Original\Key\Award\Award as Award;
 ?>
@@ -11,9 +12,11 @@ use Kinomania\Original\Key\Award\Award as Award;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Кинонаграды и кинофестивали | KINOMANIA.RU</title>
-    <meta name="description" content="Кинонаграды и кинофестивали: ОСКАР, Золотой Глобус, ММКФ, Берлинский Кинофестиваль и др. на KINOMANIA.RU. KINOMANIA.RU – все о мире кино и жизни актеров."/>
-    <meta name="keywords" content="кинонаграды, кинофестивали, оскар, золотой глобус, ммкф, берлинский кинофестиваль"/>
+    <title><?= $options->get('seo_awards_title') ?></title>
+    <meta name="description" content="<?= $options->get('seo_awards_description') ?>"/>
+    <meta name="keywords" content="<?= $options->get('seo_awards_keywords') ?>"/>
+
+	<link rel="canonical" href="http://www.kinomania.ru/awards"/>
 
     <meta property="og:title" content="Кинонаграды и кинофестивали | KINOMANIA.RU" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
@@ -116,6 +119,7 @@ use Kinomania\Original\Key\Award\Award as Award;
                                     <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                                     <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                                     <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                                <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                                     <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                                 </ul>
                             </li>
@@ -177,6 +181,7 @@ use Kinomania\Original\Key\Award\Award as Award;
                         <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                         <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                         <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                    <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                         <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                     </ul>
                 </li>
@@ -225,7 +230,7 @@ use Kinomania\Original\Key\Award\Award as Award;
                 <!-- Контент -->
                 <content class="page-section-content section-content content-outer outer-vert col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="row-festivals">
-                        <h1 class="pagetitle">ФЕСТИВАЛИ И ПРЕМИИ</h1>
+                        <h1 class="pagetitle"><?= $options->get('seo_awards_h1') ?></h1>
                         <div class="description">
                             В рубрике «Фестивали и премии» — новости о самых важных кинособытиях мира. Кто получил «Золотую пальмовую ветвь»? Кому отдала предпочтение Ассоциация иностранной прессы? Кто станет ведущим очередной церемонии вручения «Оскаров»? Итоги премий, лауреаты фестивалей, списки победителей и номинантов, репортажи с красных дорожек и дневники «Киномании» с места событий.
                         </div>

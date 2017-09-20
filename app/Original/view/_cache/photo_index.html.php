@@ -4,6 +4,7 @@
  * @var array $genre
  * @var array $popular
  * @var array $list
+ * @var $options \Kinomania\System\Options\Options
  */
 use Kinomania\Original\Key\Person\Photo as Photo;
 ?>
@@ -13,9 +14,11 @@ use Kinomania\Original\Key\Person\Photo as Photo;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Фотографии актеров и актрис | KINOMANIA.RU</title>
-    <meta name="description" content="Большая коллекция фотографий с самыми популярными актерами и актрисами кино и сериалов на KINOMANIA.RU. KINOMANIA.RU – все о мире кино и жизни актеров."/>
-    <meta name="keywords" content="фотографии, фото, актеры, актрисы, photo"/>
+    <title><?= $options->get('seo_photos_title') ?></title>
+    <meta name="description" content="<?= $options->get('seo_photos_description') ?>"/>
+    <meta name="keywords" content="<?= $options->get('seo_photos_keywords') ?>"/>
+
+	<link rel="canonical" href="http://www.kinomania.ru/photos"/>
 
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
@@ -48,6 +51,7 @@ use Kinomania\Original\Key\Person\Photo as Photo;
 <?php endif ?>
 
     <script src="<?= $static ?>/app/js/jquery/jquery-1.11.3.min.js?v=1.0.1"></script>
+	
 
     <!--#include virtual="/design/ssi/include" -->
 </head>
@@ -118,6 +122,7 @@ use Kinomania\Original\Key\Person\Photo as Photo;
                                     <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                                     <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                                     <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                                <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                                     <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                                 </ul>
                             </li>
@@ -140,12 +145,26 @@ use Kinomania\Original\Key\Person\Photo as Photo;
                                 </ul>
                             </li>
                             <li><a href="/top/films/">ЛУЧШИЕ ФИЛЬМЫ</a>
+		                        <ul class="nav-list-dop">
+			                        <li><a href="/top/films/">РЕЙТИНГ КИНОМАНИИ</a></li>
+			                        <li><a href="/top/">ПОДБОРКИ</a></li>
+			                        <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
+		                        </ul>
+	                        </li>
+	                        <li><a href="/genres/films/">ЖАНРЫ</a>
                                 <ul class="nav-list-dop">
-                                    <li><a href="/top/films/">РЕЙТИНГ КИНОМАНИИ</a></li>
-                                    <li><a href="/top/">ПОДБОРКИ</a></li>
-                                    <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
+                                    <li><a href="/genres/films?genre=ro">МЕЛОДРАМА</a></li>
+                                    <li><a href="/genres/films?genre=co">КОМЕДИИ</a></li>
+                                    <li><a href="/genres/films?genre=th">ТРИЛЛЕР</a></li>
+                                    <li><a href="/genres/films?genre=fa">ФЭНТЭЗИ</a></li>
+                                    <li><a href="/genres/films?genre=dr">ДРАМА</a></li>
+                                    <li><a href="/genres/films?genre=ho">УЖАСЫ</a></li>
+                                    <li><a href="/genres/films?genre=ad">ПРИКЛЮЧЕНИЯ</a></li>
+                                    <li><a href="/genres/films?genre=ac">БОЕВИК</a></li>
+                                    <li><a href="/genres/films?genre=my">ДЕТЕКТИВ</a></li>
+                                    <li><a href="/genres/films?genre=sc">ФАНТАСТИКА</a></li>
                                 </ul>
-                            </li>
+	                        </li>
                         </ul>
                     </div>
                 </div>
@@ -179,6 +198,7 @@ use Kinomania\Original\Key\Person\Photo as Photo;
                         <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                         <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                         <li><a href="/article/inside/">ИНСАЙД</a></li>
+                        <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                         <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                     </ul>
                 </li>
@@ -207,6 +227,20 @@ use Kinomania\Original\Key\Person\Photo as Photo;
                         <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
                     </ul>
                 </li>
+	            <li><a href="/genres/films/">ЖАНРЫ</a>
+                    <ul class="nav-list-dop">
+                        <li><a href="/genres/films?genre=ro">МЕЛОДРАМА</a></li>
+                        <li><a href="/genres/films?genre=co">КОМЕДИИ</a></li>
+                        <li><a href="/genres/films?genre=th">ТРИЛЛЕР</a></li>
+                        <li><a href="/genres/films?genre=fa">ФЭНТЭЗИ</a></li>
+                        <li><a href="/genres/films?genre=dr">ДРАМА</a></li>
+                        <li><a href="/genres/films?genre=ho">УЖАСЫ</a></li>
+                        <li><a href="/genres/films?genre=ad">ПРИКЛЮЧЕНИЯ</a></li>
+                        <li><a href="/genres/films?genre=ac">БОЕВИК</a></li>
+                        <li><a href="/genres/films?genre=my">ДЕТЕКТИВ</a></li>
+                        <li><a href="/genres/films?genre=sc">ФАНТАСТИКА</a></li>
+                    </ul>
+	            </li>
             </ul>
             <div class="tablet-autorization-outer col-xl-3 col-lg-3 col-md-7 col-sm-7 col-xs-5">
                 <div class="autorization">
@@ -226,7 +260,7 @@ use Kinomania\Original\Key\Person\Photo as Photo;
             <section class="outer-section clear outer-content">
                 <!-- Контент -->
                 <content class="page-section-content section-content content-outer outer-vert col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                    <h1 class="pagetitle soundtracks-pagetitle">Фотографии</h1>
+                    <h1 class="pagetitle soundtracks-pagetitle"><?= $options->get('seo_photos_h1') ?></h1>
                     <div class="outer-selection-trailers">
                         <div data-type-openclose-button="open_close" data-type-openclose-class="active" class="button__selection-trailers"><span>Подбор по параметрам</span></div>
                         <div class="selection-trailers">

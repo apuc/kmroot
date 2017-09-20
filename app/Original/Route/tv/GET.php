@@ -4,6 +4,7 @@ namespace Original\Route_tv;
 use Dspbee\Bundle\Debug\Wrap;
 use Kinomania\Original\Controller\DefaultController;
 use Kinomania\Original\Logic\TV\TV;
+use Kinomania\System\Options\Options;
 
 class GET extends DefaultController
 {
@@ -35,7 +36,8 @@ class GET extends DefaultController
 
         $this->addData([
             'list' => $list,
-            'dateList' => $dateList
+            'dateList' => $dateList,
+			'options' => new Options()
         ]);
 
         $this->setTemplate('tv/index.html.php');

@@ -22,6 +22,8 @@ use Kinomania\Original\Key\Person\Frame as Frame;
         <meta name="keywords" content="<?= $min[Film::NAME_RU] ?>, <?= $min[Film::NAME_ORIGIN] ?>, фильм, постеры"/>
     <?php endif ?>
 
+	<link rel="canonical" href="http://www.kinomania.ru/film/<?= $id ?>/posters" />
+
     <meta property="og:title" content="Постеры фильма <?= $min[Film::TITLE] ?>" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
@@ -52,6 +54,7 @@ use Kinomania\Original\Key\Person\Frame as Frame;
 <?php endif ?>
 
     <script src="<?= $static ?>/app/js/jquery/jquery-1.11.3.min.js?v=1.0.1"></script>
+	
 
     <!--#include virtual="/design/ssi/include" -->
 
@@ -155,6 +158,7 @@ use Kinomania\Original\Key\Person\Frame as Frame;
                                     <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                                     <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                                     <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                                <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                                     <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                                 </ul>
                             </li>
@@ -177,12 +181,26 @@ use Kinomania\Original\Key\Person\Frame as Frame;
                                 </ul>
                             </li>
                             <li><a href="/top/films/">ЛУЧШИЕ ФИЛЬМЫ</a>
+		                        <ul class="nav-list-dop">
+			                        <li><a href="/top/films/">РЕЙТИНГ КИНОМАНИИ</a></li>
+			                        <li><a href="/top/">ПОДБОРКИ</a></li>
+			                        <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
+		                        </ul>
+	                        </li>
+	                        <li><a href="/genres/films/">ЖАНРЫ</a>
                                 <ul class="nav-list-dop">
-                                    <li><a href="/top/films/">РЕЙТИНГ КИНОМАНИИ</a></li>
-                                    <li><a href="/top/">ПОДБОРКИ</a></li>
-                                    <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
+                                    <li><a href="/genres/films?genre=ro">МЕЛОДРАМА</a></li>
+                                    <li><a href="/genres/films?genre=co">КОМЕДИИ</a></li>
+                                    <li><a href="/genres/films?genre=th">ТРИЛЛЕР</a></li>
+                                    <li><a href="/genres/films?genre=fa">ФЭНТЭЗИ</a></li>
+                                    <li><a href="/genres/films?genre=dr">ДРАМА</a></li>
+                                    <li><a href="/genres/films?genre=ho">УЖАСЫ</a></li>
+                                    <li><a href="/genres/films?genre=ad">ПРИКЛЮЧЕНИЯ</a></li>
+                                    <li><a href="/genres/films?genre=ac">БОЕВИК</a></li>
+                                    <li><a href="/genres/films?genre=my">ДЕТЕКТИВ</a></li>
+                                    <li><a href="/genres/films?genre=sc">ФАНТАСТИКА</a></li>
                                 </ul>
-                            </li>
+	                        </li>
                         </ul>
                     </div>
                 </div>
@@ -216,6 +234,7 @@ use Kinomania\Original\Key\Person\Frame as Frame;
                         <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                         <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                         <li><a href="/article/inside/">ИНСАЙД</a></li>
+                        <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                         <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                     </ul>
                 </li>
@@ -244,6 +263,20 @@ use Kinomania\Original\Key\Person\Frame as Frame;
                         <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
                     </ul>
                 </li>
+	            <li><a href="/genres/films/">ЖАНРЫ</a>
+                    <ul class="nav-list-dop">
+                        <li><a href="/genres/films?genre=ro">МЕЛОДРАМА</a></li>
+                        <li><a href="/genres/films?genre=co">КОМЕДИИ</a></li>
+                        <li><a href="/genres/films?genre=th">ТРИЛЛЕР</a></li>
+                        <li><a href="/genres/films?genre=fa">ФЭНТЭЗИ</a></li>
+                        <li><a href="/genres/films?genre=dr">ДРАМА</a></li>
+                        <li><a href="/genres/films?genre=ho">УЖАСЫ</a></li>
+                        <li><a href="/genres/films?genre=ad">ПРИКЛЮЧЕНИЯ</a></li>
+                        <li><a href="/genres/films?genre=ac">БОЕВИК</a></li>
+                        <li><a href="/genres/films?genre=my">ДЕТЕКТИВ</a></li>
+                        <li><a href="/genres/films?genre=sc">ФАНТАСТИКА</a></li>
+                    </ul>
+	            </li>
             </ul>
             <div class="tablet-autorization-outer col-xl-3 col-lg-3 col-md-7 col-sm-7 col-xs-5">
                 <div class="autorization">

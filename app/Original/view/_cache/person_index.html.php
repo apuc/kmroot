@@ -27,7 +27,7 @@ use Kinomania\Original\Key\Person\TV as TV;
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:image" content="<?= $item[Person::IMAGE] ?>" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://www.kinomania.ru/people/<?= $id ?>" />
+    <meta property="og:url" content="http://www.kinomania.ru/people/<?= $id ?>/" />
     <meta property="og:description" content="<?= $item[Person::TITLE] ?> : всё о персоне на сайте KINOMANIA.RU. Обои, фотографии, фильмография, биография, факты, новости и многое другое о звёздах мирового кинематографа"/>
 
     <?php
@@ -457,6 +457,7 @@ use Kinomania\Original\Key\Person\TV as TV;
                                     <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                                     <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                                     <li><a href="/article/inside/">ИНСАЙД</a></li>
+	                                <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                                     <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                                 </ul>
                             </li>
@@ -518,6 +519,7 @@ use Kinomania\Original\Key\Person\TV as TV;
                         <li><a href="/article/anticipation/">ОЖИДАНИЯ</a></li>
                         <!-- <li><a href="/article/in_ten/">В ДЕСЯТКУ</a></li> -->
                         <li><a href="/article/inside/">ИНСАЙД</a></li>
+                        <li><a href="/article/reason/">БЫЛ БЫ ПОВОД</a></li>
                         <li><a href="http://forum.kinomania.ru/">ФОРУМ</a></li>
                     </ul>
                 </li>

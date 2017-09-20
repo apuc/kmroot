@@ -4,6 +4,7 @@
  * @var array $genre
  * @var array $popular
  * @var array $list
+ * @var $options \Kinomania\System\Options\Options
  */
 use Kinomania\Original\Key\Person\Photo as Photo;
 ?>
@@ -13,9 +14,11 @@ use Kinomania\Original\Key\Person\Photo as Photo;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Фотографии актеров и актрис | KINOMANIA.RU</title>
-    <meta name="description" content="Большая коллекция фотографий с самыми популярными актерами и актрисами кино и сериалов на KINOMANIA.RU. KINOMANIA.RU – все о мире кино и жизни актеров."/>
-    <meta name="keywords" content="фотографии, фото, актеры, актрисы, photo"/>
+    <title><?= $options->get('seo_photos_title') ?></title>
+    <meta name="description" content="<?= $options->get('seo_photos_description') ?>"/>
+    <meta name="keywords" content="<?= $options->get('seo_photos_keywords') ?>"/>
+
+	<link rel="canonical" href="http://www.kinomania.ru/photos"/>
 
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
@@ -37,7 +40,7 @@ use Kinomania\Original\Key\Person\Photo as Photo;
             <section class="outer-section clear outer-content">
                 <!-- Контент -->
                 <content class="page-section-content section-content content-outer outer-vert col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                    <h1 class="pagetitle soundtracks-pagetitle">Фотографии</h1>
+                    <h1 class="pagetitle soundtracks-pagetitle"><?= $options->get('seo_photos_h1') ?></h1>
                     <div class="outer-selection-trailers">
                         <div data-type-openclose-button="open_close" data-type-openclose-class="active" class="button__selection-trailers"><span>Подбор по параметрам</span></div>
                         <div class="selection-trailers">
