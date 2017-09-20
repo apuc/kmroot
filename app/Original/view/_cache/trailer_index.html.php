@@ -51,6 +51,7 @@ use Kinomania\Original\Key\Person\Trailer as Trailer;
 <?php endif ?>
 
     <script src="<?= $static ?>/app/js/jquery/jquery-1.11.3.min.js?v=1.0.1"></script>
+	
 
     <!--#include virtual="/design/ssi/include" -->
 </head>
@@ -163,6 +164,18 @@ use Kinomania\Original\Key\Person\Trailer as Trailer;
 		                        </ul>
 	                        </li>
 	                        <li><a href="/genres/films/">ЖАНРЫ</a>
+                                <ul class="nav-list-dop">
+                                    <li><a href="/genres/films?genre=ro">МЕЛОДРАМА</a></li>
+                                    <li><a href="/genres/films?genre=co">КОМЕДИИ</a></li>
+                                    <li><a href="/genres/films?genre=th">ТРИЛЛЕР</a></li>
+                                    <li><a href="/genres/films?genre=fa">ФЭНТЭЗИ</a></li>
+                                    <li><a href="/genres/films?genre=dr">ДРАМА</a></li>
+                                    <li><a href="/genres/films?genre=ho">УЖАСЫ</a></li>
+                                    <li><a href="/genres/films?genre=ad">ПРИКЛЮЧЕНИЯ</a></li>
+                                    <li><a href="/genres/films?genre=ac">БОЕВИК</a></li>
+                                    <li><a href="/genres/films?genre=my">ДЕТЕКТИВ</a></li>
+                                    <li><a href="/genres/films?genre=sc">ФАНТАСТИКА</a></li>
+                                </ul>
 	                        </li>
                         </ul>
                     </div>
@@ -171,6 +184,9 @@ use Kinomania\Original\Key\Person\Trailer as Trailer;
             <div class="autorization-outer col-xl-3 col-lg-3 col-md-7 col-sm-12 col-xs-12">
                 <div class="autorization">
                     <ul class="autorization-list authorizationContent">
+                        <?php $city = unserialize($_COOKIE['city']) ?>
+
+                        <li><a href="#" class="change-location" data-region="<?= $city['region'] ?>" data-city_id="<?= $city['city_id']?>"><span><?= $city['city'] ?></span></a></li>
                         <li><a href="/login/"><span>ВХОД</span></a></li>
                         <li><a href="/registration_/"><span>РЕГИСТРАЦИЯ</span></a></li>
                     </ul>
@@ -226,7 +242,19 @@ use Kinomania\Original\Key\Person\Trailer as Trailer;
                         <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
                     </ul>
                 </li>
-	            <li><a href="/genres/">ЖАНРЫ</a>
+	            <li><a href="/genres/films/">ЖАНРЫ</a>
+                    <ul class="nav-list-dop">
+                        <li><a href="/genres/films?genre=ro">МЕЛОДРАМА</a></li>
+                        <li><a href="/genres/films?genre=co">КОМЕДИИ</a></li>
+                        <li><a href="/genres/films?genre=th">ТРИЛЛЕР</a></li>
+                        <li><a href="/genres/films?genre=fa">ФЭНТЭЗИ</a></li>
+                        <li><a href="/genres/films?genre=dr">ДРАМА</a></li>
+                        <li><a href="/genres/films?genre=ho">УЖАСЫ</a></li>
+                        <li><a href="/genres/films?genre=ad">ПРИКЛЮЧЕНИЯ</a></li>
+                        <li><a href="/genres/films?genre=ac">БОЕВИК</a></li>
+                        <li><a href="/genres/films?genre=my">ДЕТЕКТИВ</a></li>
+                        <li><a href="/genres/films?genre=sc">ФАНТАСТИКА</a></li>
+                    </ul>
 	            </li>
             </ul>
             <div class="tablet-autorization-outer col-xl-3 col-lg-3 col-md-7 col-sm-7 col-xs-5">
@@ -716,7 +744,7 @@ use Kinomania\Original\Key\Person\Trailer as Trailer;
 <!-- bxSlider Javascript file -->
 <script src="<?= $static ?>/app/js/plugins/bx/jquery.bxslider.js?v=1.0.2"></script>
 <script type="text/javascript" src="<?= $static ?>/app/js/main.js?v=1.0.2"></script>
-
+<script type="text/javascript" src="<?= $static ?>/app/js/location.js"></script>
 <script>
     $(document).ready(function(){
         $('.search__button').click(function(e){

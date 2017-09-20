@@ -293,6 +293,9 @@
             <div class="autorization-outer col-xl-3 col-lg-3 col-md-7 col-sm-12 col-xs-12">
                 <div class="autorization">
                     <ul class="autorization-list authorizationContent">
+                        <?php $city = unserialize($_COOKIE['city']) ?>
+
+                        <li><a href="#" class="change-location" data-region="<?= $city['region'] ?>" data-city_id="<?= $city['city_id']?>"><span><?= $city['city'] ?></span></a></li>
                         <li><a href="/login/"><span>ВХОД</span></a></li>
                         <li><a href="/registration_/"><span>РЕГИСТРАЦИЯ</span></a></li>
                     </ul>
@@ -705,7 +708,7 @@
 <!-- bxSlider Javascript file -->
 <script src="<?= $static ?>/app/js/plugins/bx/jquery.bxslider.js?v=1.0.2"></script>
 <script type="text/javascript" src="<?= $static ?>/app/js/main.js?v=1.0.2"></script>
-
+<script type="text/javascript" src="<?= $static ?>/app/js/location.js"></script>
 <script>
     $(document).ready(function(){
         $('.search__button').click(function(e){

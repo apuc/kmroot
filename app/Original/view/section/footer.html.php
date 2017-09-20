@@ -4,6 +4,50 @@
  */
 ?>
 <div class="footer">
+
+    <div class="overlay-location">
+        <div class="location-window">
+
+            <h1>Где вы находитесь?</h1>
+            <span>введите название вашего города </span>
+            <form role="form" class="location-form">
+                <div class="location-form-wrapper">
+                    <input type="text" data-id="0" class="search-location" value="<?= (isset($location['city'])) ? $location['city'] : '' ?> test">
+                    <span class="loction-delete">X</span>
+                </div>
+                <a href="#" type="button" class="button button1 button-location">Сохранить</a>
+
+            </form>
+
+            <!--<div class="location-form-result">
+                <div class="result-items">Ивано-Франковск(Ивано-Франковская область)</div>
+                <div class="result-items">Донецк </div>
+                <div class="result-items">Симферополь </div>
+                <div class="result-items">Ростов на Дону </div>
+                <div class="result-items">Хмельницкий </div>
+                <div class="result-items">Ростов на Дону </div>
+            </div>-->
+
+            <div class="search-location-result">
+                <div class="search-loader">
+                    <div class="ball-clip-rotate-multiple"><div></div><div></div></div>
+                </div>
+                <div class="location-result">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <?php if(!isset($_COOKIE['city'])): ?>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.overlay-location').fadeIn(300);
+            })
+        </script>
+    <?php endif;?>
+
     <div class="wrap">
         <div class="inner-footer">
             <a href="/casting/" class="footer-sticker button button2">КАСТИНГ-БАЗА</a>

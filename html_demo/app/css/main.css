@@ -29,3 +29,142 @@ img.load-ajax {
     height: 100vh;
     background:rgba(0, 0, 0, .5);
 }
+
+.overlay-location{
+    display: none;
+    position: fixed;
+    float: left;
+    z-index: 99999;
+    width: 100%;
+    height: 100vh;
+    background:rgba(0, 0, 0, .5);
+}
+.location-window form{
+    max-width: 360px;
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+}
+.location-window input{
+    border: 1px solid #888888;
+    background: #ffffff;
+    outline: none;
+    color: #282828;
+    width: 100%;
+    height: 100%;
+    color: black;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    padding: 0 20px 0 10px;
+    font-size: 16px;
+}
+.location-window .location-form-wrapper{
+    display: inline-block;
+    position: relative;
+    width: 230px;
+    height: 36px;
+}
+.location-window .location-form-result{
+    display: flex;
+    max-width: 600px;
+    padding-left: 25px;
+    margin-top: 15px;
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+.location-window .location-form-result .result-items{
+    text-align: left;
+    width: 50%;
+    font-size: 12px;
+    font-family: "ro";
+}
+.location-window .loction-delete{
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: -1px;
+    transition: 200ms ease;
+    color: red;
+}
+.location-window .loction-delete:hover{
+    transform: scale(1.1);
+    transition: 200ms ease;
+}
+
+/*.location-window .button-location {*/
+    /*background:#ccc;*/
+    /*height: 30px;*/
+    /*width: 65px;*/
+    /*line-height: 29px;*/
+    /*text-decoration: none;*/
+    /*border:0 none;*/
+    /*cursor:pointer;*/
+    /*-webkit-border-radius: 5px;*/
+    /*border-radius: 5px;*/
+    /*font-size: 20px;*/
+    /*font-family: Tahoma;*/
+    /*color: #545454;*/
+/*}*/
+
+.location-window{
+    position: fixed;
+    left: 50%;
+    width: 40%;
+    height: 40%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: whitesmoke;
+}
+
+.location-window h1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    font-family: Tahoma;
+    color: #282828;
+    text-align: center;
+    margin-top: 33px;
+
+}
+.location-window span{
+    display: block;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    margin-bottom: 24px;
+    margin-top: 13px;
+}
+
+.location-form{
+
+}
+
+.search-location-result{
+    width: auto;
+    height: auto;
+    background-color: white;
+    position: relative;
+    display: none;
+    padding-left: 15px;
+    margin-top: 5px;
+    text-align: auto;
+}
+
+.location-result{
+    width: auto;
+
+}
+
+.location-result a{
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    color: #0a1115;
+    margin-top: 5px;
+}
+
+.change-location{
+    font-size: 9px!important;
+}

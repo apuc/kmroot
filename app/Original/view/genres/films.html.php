@@ -56,7 +56,7 @@ use Kinomania\System\Search\Search;
                 <content class="page-section-content section-content content-outer content-top--padding col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="row-top-films">
 
-                        <h1 class="pagetitle"><?= $genre[$genreSelected] ?></h1>
+                        <h1 class="pagetitle"><?= (isset($genre[$genreSelected])) ? $genre[$genreSelected] : '' ?></h1>
                         <div class="description">
                             <!--<?= $options->get('seo_top_films_description') ?>-->
                         </div>

@@ -14,11 +14,7 @@ use Kinomania\System\Common\TRepository;
 class ModelOptions
 {
 	public function __construct() {
-		$file = __FILE__;
-		$file = basename($file , ".php");
-		$i = strpos($file,'_')+1;
-		//$j = strpos($file,'.')-$i;
-		$this->table = substr($file, $i);
+	    $this->table = $this->setTableName();
 	}
 	
 	use TRepository;
@@ -38,4 +34,10 @@ class ModelOptions
 		$this->mysql()->query("INSERT INTO `".$this->table."` (`key`, `value`)
 									  VALUES ('{$key}', '{$value}')");
 	}
+
+	private function setTableName()
+    {
+        $className = explode('\\', self::class);
+        return mb_strtolower(str_ireplace('model', '', $className[count($className) - 1]));
+    }
 }
