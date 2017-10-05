@@ -16,19 +16,21 @@ class GET extends DefaultController
 
         $result = $this->mysql()->query("SELECT `tag` FROM `news_tag_value` WHERE `id` = {$numList[0]} LIMIT 1");
         if ($row = $result->fetch_assoc()) {
-            $redis = new \Redis();
-            $redisStatus = $redis->connect('127.0.0.1');
+            //$redis = new \Redis();
+            //$redisStatus = $redis->connect('127.0.0.1');
+            //
+            //$key = 'tag:list:1';
+            //if ($redisStatus && $redis->exists($key)) {
+            //    $list = unserialize($redis->get($key));
+            //} else {
+            //    $list = (new Tag())->getList($numList[0], 1);
+            //
+            //    if (!Wrap::$debugEnabled && [] != $list && $redisStatus) {
+            //        $redis->set($key, serialize($list), 720); // 12 min
+            //    }
+            //}
 
-            $key = 'tag:list:1';
-            if ($redisStatus && $redis->exists($key)) {
-                $list = unserialize($redis->get($key));
-            } else {
-                $list = (new Tag())->getList($numList[0], 1);
-
-                if (!Wrap::$debugEnabled && [] != $list && $redisStatus) {
-                    $redis->set($key, serialize($list), 720); // 12 min
-                }
-            }
+            $list = (new Tag())->getList($numList[0], 1);
 
             $this->addData([
                 'tagId' => $numList[0],

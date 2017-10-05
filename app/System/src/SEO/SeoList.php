@@ -60,6 +60,11 @@ class SeoList
             'urlAdmin' => 'seo/news',
             'label' => 'Новости',
         ],
+        [
+            'url' => '/genre',
+            'urlAdmin' => 'seo/genre',
+            'label' => 'Жанры',
+        ],
 		[
 			'url' => '/top/films',
 			'urlAdmin' => 'seo/top/films',

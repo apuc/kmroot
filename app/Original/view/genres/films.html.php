@@ -16,8 +16,9 @@ use Kinomania\System\Search\Search;
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= $options->get('seo_top_films_title') ?></title>
-    <meta name="description" content="<?= $options->get('seo_top_films_description') ?>"/>
+    <title><?= $options->get('seo_genre_'.$_GET['genre'].'_title') ?></title>
+    <meta name="description" content="<?= $options->get('seo_genre_'.$_GET['genre'].'_description') ?>"/>
+    <meta name="keywords" content="<?= $options->get('seo_genre_'.$_GET['genre'].'_keywords') ?>"/>
 
     <link rel="canonical" href="http://www.kinomania.ru/top/films"/>
 

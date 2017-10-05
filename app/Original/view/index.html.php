@@ -380,5 +380,9 @@
 
 <script src="http://userapi.com/js/api/share.js?3" async="async" type="text/javascript"></script>
 <script src="http://vkontakte.ru/js/api/openapi.js?20" async="async" type="text/javascript"></script>
+
+<script src="//data.videonow.ru/?profile_id=103919&format=vast&container=preroll"></script>
+<script src="//static.videonow.ru/vn_init.js?profileId=2785734" defer></script>
+<script src="//static.videonow.ru/vn_init.js?profileId=2786448" defer></script>
 </body>
 </html>
