@@ -7,6 +7,7 @@ use Kinomania\System\Common\TDate;
 use Kinomania\System\Common\TRepository;
 use Kinomania\System\Config\Path;
 use Kinomania\System\Config\Server;
+use Kinomania\System\Debug\Debug;
 
 /**
  * Class Poster
@@ -26,11 +27,12 @@ class Poster
 
         $filmId = [];
         $result = $this->mysql()->query("SELECT t1.`id`, t1.`filmId`, t1.`s`, t1.`image`, t3.`name_origin`, t3.`name_ru`, t4.`poster`
-                                            FROM (SELECT ANY_VALUE(`id`) as `id` FROM `film_poster` WHERE `width` < 738 GROUP BY `filmId` ORDER BY ANY_VALUE(`id`) DESC LIMIT 12) as `t`
+                                            FROM (SELECT ANY_VALUE(`id`) as `id` FROM `film_poster` WHERE `height` > `width` GROUP BY `filmId` DESC ORDER BY ANY_VALUE(`id`) DESC LIMIT 12) as `t`
                                             JOIN `film_poster` AS `t1` ON t.`id` = t1.`id`
                                             JOIN `film` as `t3` ON t1.`filmId` = t3.`id`
                                             LEFT JOIN `film_stat` as `t4` ON t1.`filmId` = t4.`filmId` LIMIT 6
                                         ");
+        /* WHERE `height` > `width` GROUP BY filmid*/
         while ($row = $result->fetch_assoc()) {
             if (!empty($row['image'])) {
                 $iName = md5($row['id']);
@@ -57,13 +59,15 @@ class Poster
         }
 
         $filmId = implode(',', $filmId);
-
+       
         $result = $this->mysql()->query("SELECT t1.`id`, t1.`filmId`, t1.`s`, t1.`image`, t3.`name_origin`, t3.`name_ru`, t4.`poster`
-                                              FROM (SELECT ANY_VALUE(`id`) as `id` FROM `film_poster` WHERE `width` > 738 AND `filmId` NOT IN ({$filmId}) GROUP BY `filmId` ORDER BY ANY_VALUE(`id`) DESC LIMIT 4) as `t`
+                                              FROM (SELECT ANY_VALUE(`id`) as `id` FROM `film_poster` WHERE `width` > `height` AND `filmId` NOT IN ({$filmId})
+                                              GROUP BY `filmId` ORDER BY ANY_VALUE(`id`) DESC LIMIT 2) as `t`
                                             JOIN `film_poster` AS `t1` ON t.`id` = t1.`id`
-                                            JOIN `film` as `t3` ON t1.`filmId` = t3.`id`
-                                            LEFT JOIN `film_stat` as `t4` ON t1.`filmId` = t4.`filmId` LIMIT 2
+                                            JOIN `film` as `t3` ON t1.`filmId` = t3.`id` 
+                                            LEFT JOIN `film_stat` as `t4` ON t1.`filmId` = t4.`filmId` LIMIT 2 
                                         ");
+       /*WHERE `width` > `height` AND `filmId` NOT IN ({$filmId})*/
         while ($row = $result->fetch_assoc()) {
             if (!empty($row['image'])) {
                 $iName = md5($row['id']);

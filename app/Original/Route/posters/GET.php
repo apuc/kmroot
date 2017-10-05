@@ -5,6 +5,7 @@ use Dspbee\Bundle\Debug\Wrap;
 use Kinomania\Original\Controller\DefaultController;
 use Kinomania\Original\Logic\Poster\Poster;
 use Kinomania\System\Data\Genre;
+use Kinomania\System\Options\Options;
 
 class GET extends DefaultController
 {
@@ -39,6 +40,7 @@ class GET extends DefaultController
             'list' => $list,
             'popular' => $popular,
             'genre' => Genre::RU,
+			'options' => new Options()
         ]);
 
         $this->setTemplate('poster/index.html.php');

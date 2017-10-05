@@ -4,6 +4,7 @@ namespace Original\Route_reviews;
 use Dspbee\Bundle\Debug\Wrap;
 use Kinomania\Original\Controller\DefaultController;
 use Kinomania\Original\Logic\News\News;
+use Kinomania\System\Options\Options;
 
 class GET extends DefaultController
 {
@@ -24,7 +25,8 @@ class GET extends DefaultController
         }
         
         $this->addData([
-            'list' => $list
+            'list' => $list,
+			'options' => new Options()
         ]);
 
         $this->setTemplate('news/reviews/index.html.php');

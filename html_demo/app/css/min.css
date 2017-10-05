@@ -4945,3 +4945,6 @@ ul li a.filter.active {
     font-weight: inherit;
     color: #fff;
 }
+.bx-pager {
+    left: 23%!important;
+}

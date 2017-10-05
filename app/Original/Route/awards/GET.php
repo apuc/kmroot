@@ -4,6 +4,7 @@ namespace Original\Route_awards;
 use Dspbee\Bundle\Debug\Wrap;
 use Kinomania\Original\Controller\DefaultController;
 use Kinomania\Original\Logic\Award\Award;
+use Kinomania\System\Options\Options;
 
 /**
  * Class GET
@@ -26,7 +27,8 @@ class GET extends DefaultController
         }
 
         $this->addData([
-            'list' => $list
+            'list' => $list,
+			'options' => new Options()
         ]);
 
         $this->setTemplate('awards/index.html.php');

@@ -24,7 +24,7 @@ class Photo
         $list = [];
 
         $result = $this->mysql()->query("SELECT t1.`id`, t1.`personId`, t1.`s`, t1.`image`, t3.`name_origin`, t3.`name_ru`, t4.`photo`
-                                              FROM (SELECT ANY_VALUE(`id`) as `id` FROM `person_photo` GROUP BY `personId` ORDER BY `id` DESC) as `t`
+                                              FROM (SELECT ANY_VALUE(`id`) as `id` FROM `person_photo` GROUP BY `personId` DESC HAVING MAX(`id`) ORDER BY `id` DESC) as `t`
                                               JOIN `person_photo` AS `t1` ON t1.`id` = t.`id`
                                               LEFT JOIN `person_stat` as `t4` ON t1.`personId` = t4.`personId`               
                                               JOIN `person` as `t3` ON t1.`personId` = t3.`id` ORDER BY t1.`id` DESC LIMIT 24

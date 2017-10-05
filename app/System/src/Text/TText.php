@@ -1,4 +1,5 @@
 <?php
+
 namespace Kinomania\System\Text;
 
 /**
@@ -20,7 +21,7 @@ trait TText
         $val = trim($val);
         return strip_tags($val);
     }
-    
+
     /**
      * @param string $text
      * @param bool $removeTags
@@ -50,5 +51,11 @@ trait TText
     public function clearSpaces($text)
     {
         return trim(preg_replace('/\s\s+/', ' ', $text));
+    }
+
+    public static function mbUcfirst($string, $enc = 'UTF-8')
+    {
+        return mb_strtoupper(mb_substr($string, 0, 1, $enc), $enc) .
+            mb_substr($string, 1, mb_strlen($string, $enc), $enc);
     }
 }

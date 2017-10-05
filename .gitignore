@@ -3,5 +3,7 @@
 vendor
 html_demo/index.php
 html_main/index.php
-sphinx_/
-sphinx_
+app/Original/view/_cache
+/sphinxsearch/
+/sphinx_/
+

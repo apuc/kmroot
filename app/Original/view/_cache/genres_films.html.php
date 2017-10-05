@@ -9,6 +9,9 @@
  */
 use Kinomania\System\Pagination\Pagination;
 use Kinomania\System\Search\Search;
+use Kinomania\System\Body\BodyScript;
+use Kinomania\System\MobileDetect\MobileDetect;
+
 
 ?>
 <!doctype html>
@@ -16,9 +19,15 @@ use Kinomania\System\Search\Search;
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= $options->get('seo_top_films_title') ?></title>
-    <meta name="description" content="<?= $options->get('seo_top_films_description') ?>"/>
-
+	<?php if(isset($_GET['genre'])):?>
+		<title><?= $options->get('seo_genre_'.$_GET['genre'].'_title')?></title>
+	    <meta name="description" content="<?= $options->get('seo_genre_'.$_GET['genre'].'_description') ?>"/>
+	    <meta name="keywords" content="<?= $options->get('seo_genre_'.$_GET['genre'].'_keywords') ?>"/>
+	<?php else:?>
+		<title>Жанры</title>
+		<meta name="description" content=""/>
+		<meta name="keywords" content=""/>
+	<?php endif;?>
     <link rel="canonical" href="http://www.kinomania.ru/top/films"/>
 
     <?php
@@ -49,11 +58,11 @@ use Kinomania\System\Search\Search;
 	
 
     <!--#include virtual="/design/ssi/include" -->
-
+    <link rel="stylesheet" href="<?= $static ?>/app/css/main.css?v=1.0.2">
 </head>
 <body>
 <div class="overlay-ajax-load"  style="position: absolute;z-index: 100; width: 100%; height: 100%">
-    <img class="load-ajax"  src="/app/img/design/load.gif" style="align-self: center">
+    <img class="load-ajax"  src="<?= $static ?>/app/img/design/load.gif" style="align-self: center">
 </div>
 <div class="my-overlay">
     <div class="my-overlay-item" data-type="overlay-auth">
@@ -301,6 +310,8 @@ use Kinomania\System\Search\Search;
             <div class="autorization-outer col-xl-3 col-lg-3 col-md-7 col-sm-12 col-xs-12">
                 <div class="autorization">
                     <ul class="autorization-list authorizationContent">
+                        <?php $city = unserialize($_COOKIE['city'] ?? '') ?>
+                        <li><a href="#" class="change-location" data-region="<?= $city['region'] ?>" data-city_id="<?= $city['city_id']?>"><span><?= $city['city'] ?></span></a></li>
                         <li><a href="/login/"><span>ВХОД</span></a></li>
                         <li><a href="/registration_/"><span>РЕГИСТРАЦИЯ</span></a></li>
                     </ul>
@@ -393,7 +404,7 @@ use Kinomania\System\Search\Search;
                 <content class="page-section-content section-content content-outer content-top--padding col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="row-top-films">
 
-                        <h1 class="pagetitle"><?= $options->get('seo_top_films_h1') ?></h1>
+                        <h1 class="pagetitle"><?= (isset($genre[$genreSelected])) ? $genre[$genreSelected] : '' ?></h1>
                         <div class="description">
                             <!--<?= $options->get('seo_top_films_description') ?>-->
                         </div>
@@ -402,7 +413,6 @@ use Kinomania\System\Search\Search;
                                 <form action="" class="form-filter">
                                     <div class="row-dropdown-input session-dropdown-input">
                                         <form method="get" action="films.html.php">
-
 	                                        <select name="genre" class="genre-filter">
 	                                                <option value="0" <?= ($genreSelected) ? '' : 'selected="selected'?>">Выберите жанр</option>
 	                                            <?php foreach ($genre as $code => $name): ?>
@@ -431,6 +441,7 @@ use Kinomania\System\Search\Search;
                                             <option value="1900">1900-е годы</option>
                                         </select>
                                         </form>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -455,20 +466,11 @@ use Kinomania\System\Search\Search;
                                 $fs = array_intersect_key($list,array_fill_keys(range($start,$start + 20 -1),''));*/
                                 ?>
                                 
-	                            <?php if(isset($_GET)):?>
+
 		                            <?php
                                     $i = 0;
-		                            $genre =isset($_GET['genre']) ? $_GET['genre'] : '';
-									$country =isset($_GET['country']) ? $_GET['country'] : '';
-									$year =isset($_GET['years-two']) ? $_GET['years-two'] : '';
-	                                $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-	                                $num = 20;
-	                                $start = $page * $num - $num;
-	                                $countItemsPage = 20;
 									$pages = new Pagination($count, 1, [
 									]);
-
-									//$pages->printPag();
 	                                ?>
                                 <?php foreach ($list as $item): ?>
                                 <?php $i++ ?>
@@ -519,24 +521,9 @@ use Kinomania\System\Search\Search;
                                             </div>
                                         </div>
                                     </div>
-                                        <?php if($i >= $countItemsPage): ?>
-                                            <?php break; ?>
-                                        <?php endif;?>
                                 <?php endforeach; ?>
-	                           <? endif;?>
                                 <?php $pages->printPag(); ?>
                             </div>
-                            <!--<div align="center">-->
-                            <?php //foreach ($p->buttons as $button): ?>
-                            <!--	--><?php //if ($button->isActive): ?>
-                            <!--           <a href = '?page=--><? //=$button->page?><!--'>-->
-                            <? //=$button->text?><!--</a>-->
-                            <!--	--><?php //else: ?>
-                            <!--           <span style="color:#555555">--><? //=$button->text?><!--</span>-->
-                            <!--	--><?php //endif; ?>
-                            <? // endforeach; ?>
-                            <!---->
-                            <!--</div>-->
                         </div>
                     </div>
                     <div class="outer-pagelist-more">
@@ -562,6 +549,7 @@ use Kinomania\System\Search\Search;
                             </ul>
                         </div>
                     </div>
+
                 </content>
                 <aside class="main-aside col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
     <div class="section-gray layout outer-aside">
@@ -593,6 +581,7 @@ use Kinomania\System\Search\Search;
     </div>
 </aside>
             </section>
+
         </div>
     </div>
 </div>
@@ -602,6 +591,50 @@ use Kinomania\System\Search\Search;
  */
 ?>
 <div class="footer">
+
+    <div class="overlay-location">
+        <div class="location-window">
+
+            <h1>Где вы находитесь?</h1>
+            <span>введите название вашего города </span>
+            <form role="form" class="location-form">
+                <div class="location-form-wrapper">
+                    <input type="text" data-id="0" class="search-location" value="<?= (isset($location['city'])) ? $location['city'] : '' ?> test">
+                    <span class="loction-delete">X</span>
+                </div>
+                <a href="#" type="button" class="button button1 button-location">Сохранить</a>
+
+            </form>
+
+            <!--<div class="location-form-result">
+                <div class="result-items">Ивано-Франковск(Ивано-Франковская область)</div>
+                <div class="result-items">Донецк </div>
+                <div class="result-items">Симферополь </div>
+                <div class="result-items">Ростов на Дону </div>
+                <div class="result-items">Хмельницкий </div>
+                <div class="result-items">Ростов на Дону </div>
+            </div>-->
+
+            <div class="search-location-result">
+                <div class="search-loader">
+                    <div class="ball-clip-rotate-multiple"><div></div><div></div></div>
+                </div>
+                <div class="location-result">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <?php if(!isset($_COOKIE['city'])): ?>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.overlay-location').fadeIn(300);
+            })
+        </script>
+    <?php endif;?>
+
     <div class="wrap">
         <div class="inner-footer">
             <a href="/casting/" class="footer-sticker button button2">КАСТИНГ-БАЗА</a>
@@ -775,7 +808,7 @@ use Kinomania\System\Search\Search;
 <!-- bxSlider Javascript file -->
 <script src="<?= $static ?>/app/js/plugins/bx/jquery.bxslider.js?v=1.0.2"></script>
 <script type="text/javascript" src="<?= $static ?>/app/js/main.js?v=1.0.2"></script>
-
+<script type="text/javascript" src="<?= $static ?>/app/js/location.js"></script>
 <script>
     $(document).ready(function(){
         $('.search__button').click(function(e){
@@ -1222,5 +1255,6 @@ use Kinomania\System\Search\Search;
         });
     });
 </script>
+<?php BodyScript::getContent();?>
 </body>
 </html>

@@ -9,7 +9,7 @@ class POST extends AdminController
     public function edit()
     {
         $popular = new Popular($this->mysql());
-
+		
         if ($popular->save()) {
             $this->successMessage('Изменения сохранены');
         } else {

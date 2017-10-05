@@ -5,6 +5,7 @@ use Dspbee\Bundle\Debug\Wrap;
 use Kinomania\Original\Controller\DefaultController;
 use Kinomania\Original\Logic\Trailer\Trailer;
 use Kinomania\System\Data\Genre;
+use Kinomania\System\Options\Options;
 
 class GET extends DefaultController
 {
@@ -27,7 +28,8 @@ class GET extends DefaultController
         $this->addData([
             'list' => $list,
             'genre' => Genre::RU,
-            'yearFrom' => 1888
+            'yearFrom' => 1888,
+			'options' => new Options()
         ]);
 
         $this->setTemplate('trailer/index.html.php');

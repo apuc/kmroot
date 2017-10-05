@@ -2,6 +2,7 @@
 /**
  * @var array $list
  * @var string $static
+ * @var $options \Kinomania\System\Options\Options
  */
 use Kinomania\Original\Key\News\Preview as News;
 ?>
@@ -11,16 +12,18 @@ use Kinomania\Original\Key\News\Preview as News;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Лучшие короткометражные фильмы на KINOMANIA.RU</title>
-    <meta name="description" content="Лучшие короткометражные фильмы со всего света в рубрике «SHORTы». Самая интересная и актуальная информация о новинках мирового кинопроката и многое другое из мира кино на сайте KINOMANIA.RU."/>
-    <meta name="keywords" content="SHORTы лучшие короткометражные фильмы со всего света"/>
+    <title><?=$options->get('seo_shorts_title');?></title>
+    <meta name="description" content="<?=$options->get('seo_shorts_description');?>"/>
+    <meta name="keywords" content="<?=$options->get('seo_shorts_keywords');?>"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/article/shorts"/>
+	
     <meta property="og:title" content="Shortы" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/article/shorts" />
     <meta property="og:description" content="Лучшие короткометражные фильмы со всего света в рубрике «SHORTы». Самая интересная и актуальная информация о новинках мирового кинопроката и многое другое из мира кино на сайте KINOMANIA.RU."/>
-
+	
     <!-- include section/head.html.php -->
 </head>
 <body>
@@ -33,7 +36,7 @@ use Kinomania\Original\Key\News\Preview as News;
         </div>
         <div class="main-content-other-page clear">
             <content class="page-section-content section-content content-outer outer-vert col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                <h1 class="pagetitle">SHORTЫ: Лучшие короткометражные фильмы</h1>
+                <h1 class="pagetitle"><?=$options->get('seo_shorts_h1');?></h1>
                 <div class="description description-border">
                     Короткометражное кино - предмет особого интереса нашей редакции. Еженедельно мы делимся с вами лучшими короткометражками со всего мира. Короче, смотрите shortы!
                 </div>

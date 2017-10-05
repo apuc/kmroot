@@ -8,6 +8,7 @@ use Kinomania\System\Common\TDate;
 use Kinomania\System\Common\TRepository;
 use Kinomania\System\Config\Path;
 use Kinomania\System\Config\Server;
+use Kinomania\System\Options\Options;
 
 class GET extends DefaultController
 {
@@ -30,7 +31,8 @@ class GET extends DefaultController
         }
 
         $this->addData([
-            'list' => $list
+            'list' => $list,
+			'options' => new Options()
         ]);
 
         $this->setTemplate('boxoffice/cis.html.php');

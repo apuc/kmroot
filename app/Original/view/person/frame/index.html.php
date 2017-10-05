@@ -19,6 +19,8 @@ use Kinomania\Original\Key\Person\Frame as Frame;
     <meta name="description" content="<?= $min[Person::TITLE] ?>: кадры из фильмов на KINOMANIA.RU. Фильмография, биография, факты, новости и многое другое о звёздах мирового кинематографа."/>
     <meta name="keywords" content="<?= $min[Person::TITLE] ?> кадры из фильмов кино"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/people/<?= $id ?>/frames"/>
+
     <meta property="og:title" content="<?= $min[Person::TITLE] ?> кадры из фильмов" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />

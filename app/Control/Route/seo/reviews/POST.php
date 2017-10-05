@@ -20,7 +20,7 @@ class POST extends AdminController
         $options->set('seo_reviews_title', !empty($_POST['title']) ? $_POST['title'] : 'KINOMANIA.RU :: Рецензии');
         $options->set('seo_reviews_description', !empty($_POST['description']) ? $_POST['description'] : 'Все рецензии');
         $options->set('seo_reviews_keywords', !empty($_POST['keywords']) ? $_POST['keywords'] : 'рецензия, рецензия на фильм, отзыв');
-        $options->set('seo_reviews_h1', !empty($_POST['h1']) ? $_POST['h1'] : 'KINOMANIA.RU');
+        $options->set('seo_reviews_h1', !empty($_POST['h1']) ? $_POST['h1'] : 'Рецензии');
 
         $this->successMessage('Изменения сохранены');
         $this->setRedirect();

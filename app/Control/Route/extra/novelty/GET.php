@@ -11,7 +11,7 @@ class GET extends AdminController
     {
         $popular = new Popular($this->mysql());
         
-        $this->setTitle('Новинки фильмов');
+        $this->setTitle('Новинки (популярное)');
         $this->addData([
             'list' => $popular->list() 
         ]);

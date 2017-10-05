@@ -27,6 +27,7 @@ use Kinomania\Original\Key\Person\Frame as Frame;
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.kinomania.ru/film/<?= $id ?>/script/<?= $frameId ?>" />
+	<link rel="canonical" href="http://www.kinomania.ru/film/<?= $id ?>/script/<?= $frameId ?>"/>
 
     <!-- include section/head.html.php -->
 

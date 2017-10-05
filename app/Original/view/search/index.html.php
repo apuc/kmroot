@@ -92,9 +92,29 @@
                                             </div>
                                         <?php endif ?>
                                     </div>
+
+
+
                                 </div>
                             </div>
                         <?php endif ?>
+
+                        <?php if(!empty($data['genre'])): ?>
+                    <div class="list-content-item">
+                        <div class="list-content-title">жанры <span class="number"><?= count($data['genre']) ?></span></div>
+                            <?php foreach($data['genre'] as $genres):?>
+                                <div class="list-content-item-inner">
+                                    <div class="section-result-content clear">
+                                        <div class="section-result-item item2">
+                                                <div class="name"><a href="/genres/films?genre<?= $genres['id'] ?>/"><?= $genres['name'] ?></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach;?>
+                    </div>
+
+                        <?php endif;?>
+
                         <?php if (0 < $data['film_total']): ?>
                             <div class="list-content-item">
                                 <div class="list-content-title">ФИЛЬМЫ <span class="number"><?= $data['film_total'] ?></span></div>

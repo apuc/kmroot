@@ -18,6 +18,8 @@ use Kinomania\Original\Key\News\Preview as News;
     <meta name="description" content="Архив новостей по тегу `<?= $tag ?>`: все новости о мире кино и жизни актеров"/>
     <meta name="keywords" content="кино, новости, <?= $tag ?>, актеры, фильмы, кадры, рецензия, обои, ролик, саундтрек"/>
 
+	<link rel="canonical" href="http://www.kinomania.ru/tag/<?= $tagId ?>"/>
+
     <meta property="og:title" content="Новости по тегу `<?= $tag ?>`<" />
     <meta property="og:site_name" content="KINOMANIA.RU" />
     <meta property="og:type" content="website" />
