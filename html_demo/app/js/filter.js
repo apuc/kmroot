@@ -2,7 +2,12 @@
  * Created by perff on 29.08.2017.
  */
 $(document).ready(function () {
-    $(document).on('change', '.form-filter', function () {
+    $(document).on('change', '.genre-filter', function () {
+        var genre = ($('.genre-filter :selected').val()) ? $('.genre-filter :selected').val() : '';
+        window.location.href = '/genres/films?genre=' + genre;
+    });
+
+    $(document).on('change', '.select-filter', function () {
         var genre = ($('.genre-filter :selected').val()) ? $('.genre-filter :selected').val() : '';
         genreText = ($('.genre-filter :selected').text()) ? $('.genre-filter :selected').text() : '';
         country = ($('.country-filter :selected').val()) ? $('.country-filter :selected').val() : '';
@@ -14,8 +19,7 @@ $(document).ready(function () {
             url: '?handler=get',
             data: {'page': page, 'genre': genre, 'country': country, 'years': years},
             success: function (data) {
-                $('.session-table').html('');
-                $('.session-table').append(data);
+                $('.session-table').html(data);
                 $('.pagetitle').text(genreText);
                 progressLoad('end');
             },

@@ -73,20 +73,23 @@ use Kinomania\System\MobileDetect\MobileDetect;
                             <div class="top-forms">
                                 <form action="" class="form-filter">
                                     <div class="row-dropdown-input session-dropdown-input">
+                                        <select name="genre" class="genre-filter">
+                                            <option value="0" <?= ($genreSelected) ? '' : 'selected="selected'?>">Выберите жанр</option>
+                                            <?php foreach ($genre as $code => $name): ?>
+                                                <option value="<?= $code ?>" <?= ($genreSelected === $code) ? 'selected="selected"' : '' ?>>
+                                                    <?= $name ?>
+                                                </option>
+                                            <?php endforeach; ?>
+                                        </select>
                                         <form method="get" action="films.html.php">
-	                                        <select name="genre" class="genre-filter">
-	                                                <option value="0" <?= ($genreSelected) ? '' : 'selected="selected'?>">Выберите жанр</option>
-	                                            <?php foreach ($genre as $code => $name): ?>
-	                                                <option value="<?= $code ?>" <?= ($genreSelected === $code) ? 'selected="selected"' : '' ?>><?= $name ?></option>
-	                                            <?php endforeach; ?>
-	                                        </select>
-                                        <select name="country" class="country-filter" style="max-width: 250px;">
+
+                                        <select name="country" class="country-filter select-filter" style="max-width: 250px;">
                                             <option value="0" selected="selected">Выберите страну</option>
                                             <?php foreach ($country as $code => $name): ?>
                                                 <option value="<?= $code ?>"><?= $name ?></option>
                                             <?php endforeach; ?>
                                         </select>
-                                        <select name="years-two" class="years-filter">
+                                        <select name="years-two" class="years-filter select-filter">
                                             <option value="0" selected="selected">По десятилетиям</option>
                                             <option value="2010">2010-е годы</option>
                                             <option value="2000">2000-е годы</option>
@@ -194,6 +197,11 @@ use Kinomania\System\MobileDetect\MobileDetect;
                                 <div></div>
                             </div>
                         </div>
+                    </div>
+                    <div>
+                        <p class="seo-text">
+                            <?= $options->get('seo_genre_'.$genreSelected.'_text')?>
+                        </p>
                     </div>
                     <div class="pagelist-social">
                         <div class="outer-social clear">

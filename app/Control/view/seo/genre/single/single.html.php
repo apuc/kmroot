@@ -65,6 +65,13 @@ use Kinomania\System\Data\Genre;
                                         <input type="text" name="h1" value="<?= $options->get('seo_genre_'.$get['slug'].'_h1') ?>" class="form-control">
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>Text</td>
+                                    <td>
+                                        <textarea name="text" id="text" class="htmlEdit_text form-control"><?= $options->get('seo_genre_'.$get['slug'].'_text') ?></textarea>
+                                    </td>
+                                </tr>
+
                                 <input type="hidden" name="slug" value="<?= $get['slug'] ?>">
                             </table>
                         </div>
@@ -77,3 +84,40 @@ use Kinomania\System\Data\Genre;
         </div>
     </div>
 </div>
+
+<script src="/vendor/cms/_js/tinymce/tinymce.min.js"></script>
+<script>
+    $(document).ready(function(){
+        tinymce.init({
+            selector: ".htmlEdit_text",
+            theme: "modern",
+            menubar:false,
+            statusbar: false,
+            plugins: [
+                "advlist autolink lists link charmap hr anchor pagebreak",
+                "searchreplace wordcount visualblocks visualchars code fullscreen",
+                "insertdatetime media nonbreaking save table contextmenu directionality",
+                "paste textcolor"
+            ],
+            toolbar1: "undo redo | pastetext | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link code ",
+            height: 300,
+            language:'ru',
+            extended_valid_elements: 'span[*],div[*],p[*],areatext[*],',
+            setup:function(ed) {
+                ed.on('change', function(e) {
+                    window.unsaved = true;
+                });
+            }
+        });
+
+        $(document).on('focusin', function(e) {
+            if ($(e.target).closest(".mce-window").length) {
+                e.stopImmediatePropagation();
+            }
+        });
+
+        $('.modalBtn').click(function(){
+            callCrop();
+        });
+    });
+</script>
