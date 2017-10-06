@@ -198,10 +198,10 @@ use Kinomania\System\MobileDetect\MobileDetect;
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <p class="seo-text">
+                    <div class="seo-text">
+
                             <?= $options->get('seo_genre_'.$genreSelected.'_text')?>
-                        </p>
+
                     </div>
                     <div class="pagelist-social">
                         <div class="outer-social clear">

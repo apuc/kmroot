@@ -168,3 +168,8 @@ img.load-ajax {
 .change-location{
     font-size: 9px!important;
 }
+
+.seo-text > p {
+    display: flex;
+    flex-wrap: wrap;
+}
