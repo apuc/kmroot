@@ -21,6 +21,7 @@ class POST extends AdminController
         $options->set('seo_genre_'.$_POST['slug'].'_description', !empty($_POST['description']) ? $_POST['description'] : 'Жанры');
         $options->set('seo_genre_'.$_POST['slug'].'_keywords', !empty($_POST['keywords']) ? $_POST['keywords'] : 'Жанры');
         $options->set('seo_genre_'.$_POST['slug'].'_h1', !empty($_POST['h1']) ? $_POST['h1'] : 'Жанры');
+        $options->set('seo_genre_'.$_POST['slug'].'_text', !empty($_POST['text']) ? $_POST['text'] : 'Жанры');
 
         $this->successMessage('Изменения сохранены');
         $this->setRedirect();

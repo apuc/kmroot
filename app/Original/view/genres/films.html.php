@@ -9,6 +9,9 @@
  */
 use Kinomania\System\Pagination\Pagination;
 use Kinomania\System\Search\Search;
+use Kinomania\System\Body\BodyScript;
+use Kinomania\System\MobileDetect\MobileDetect;
+
 
 ?>
 <!doctype html>
@@ -16,10 +19,15 @@ use Kinomania\System\Search\Search;
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= $options->get('seo_genre_'.$_GET['genre'].'_title') ?></title>
-    <meta name="description" content="<?= $options->get('seo_genre_'.$_GET['genre'].'_description') ?>"/>
-    <meta name="keywords" content="<?= $options->get('seo_genre_'.$_GET['genre'].'_keywords') ?>"/>
-
+	<?php if(isset($_GET['genre'])):?>
+		<title><?= $options->get('seo_genre_'.$_GET['genre'].'_title')?></title>
+	    <meta name="description" content="<?= $options->get('seo_genre_'.$_GET['genre'].'_description') ?>"/>
+	    <meta name="keywords" content="<?= $options->get('seo_genre_'.$_GET['genre'].'_keywords') ?>"/>
+	<?php else:?>
+		<title>Жанры</title>
+		<meta name="description" content=""/>
+		<meta name="keywords" content=""/>
+	<?php endif;?>
     <link rel="canonical" href="http://www.kinomania.ru/top/films"/>
 
     <!-- include section/head.html.php -->
@@ -65,20 +73,23 @@ use Kinomania\System\Search\Search;
                             <div class="top-forms">
                                 <form action="" class="form-filter">
                                     <div class="row-dropdown-input session-dropdown-input">
+                                        <select name="genre" class="genre-filter">
+                                            <option value="0" <?= ($genreSelected) ? '' : 'selected="selected'?>">Выберите жанр</option>
+                                            <?php foreach ($genre as $code => $name): ?>
+                                                <option value="<?= $code ?>" <?= ($genreSelected === $code) ? 'selected="selected"' : '' ?>>
+                                                    <?= $name ?>
+                                                </option>
+                                            <?php endforeach; ?>
+                                        </select>
                                         <form method="get" action="films.html.php">
-	                                        <select name="genre" class="genre-filter">
-	                                                <option value="0" <?= ($genreSelected) ? '' : 'selected="selected'?>">Выберите жанр</option>
-	                                            <?php foreach ($genre as $code => $name): ?>
-	                                                <option value="<?= $code ?>" <?= ($genreSelected === $code) ? 'selected="selected"' : '' ?>><?= $name ?></option>
-	                                            <?php endforeach; ?>
-	                                        </select>
-                                        <select name="country" class="country-filter" style="max-width: 250px;">
+
+                                        <select name="country" class="country-filter select-filter" style="max-width: 250px;">
                                             <option value="0" selected="selected">Выберите страну</option>
                                             <?php foreach ($country as $code => $name): ?>
                                                 <option value="<?= $code ?>"><?= $name ?></option>
                                             <?php endforeach; ?>
                                         </select>
-                                        <select name="years-two" class="years-filter">
+                                        <select name="years-two" class="years-filter select-filter">
                                             <option value="0" selected="selected">По десятилетиям</option>
                                             <option value="2010">2010-е годы</option>
                                             <option value="2000">2000-е годы</option>
@@ -186,6 +197,11 @@ use Kinomania\System\Search\Search;
                                 <div></div>
                             </div>
                         </div>
+                    </div>
+                    <div class="seo-text">
+
+                            <?= $options->get('seo_genre_'.$genreSelected.'_text')?>
+
                     </div>
                     <div class="pagelist-social">
                         <div class="outer-social clear">
@@ -569,5 +585,6 @@ use Kinomania\System\Search\Search;
         });
     });
 </script>
+<?php BodyScript::getContent();?>
 </body>
 </html>
