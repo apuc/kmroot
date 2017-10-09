@@ -4,6 +4,7 @@
  */
 use Kinomania\Original\Key\Award\Award as Award;
 use Kinomania\Original\Key\Award\Nominee as Nominee;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -212,5 +213,6 @@ use Kinomania\Original\Key\Award\Nominee as Nominee;
         })
     });
 </script>
+  <?php BodyScript::getContent();?>
 </body>
 </html>

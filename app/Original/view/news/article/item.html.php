@@ -8,6 +8,7 @@
  */
 use Kinomania\Original\Key\News\News;
 use Kinomania\Original\Key\News\Preview as Preview;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -792,5 +793,6 @@ use Kinomania\Original\Key\News\Preview as Preview;
             });
         });
     </script>
+<?php BodyScript::getContent();?>
 </body>
 </html>

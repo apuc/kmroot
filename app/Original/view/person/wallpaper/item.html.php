@@ -11,6 +11,7 @@
  */
 use Kinomania\Original\Key\Person\Person as Person;
 use Kinomania\Original\Key\Person\Wallpaper as Wallpaper;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -114,6 +115,9 @@ use Kinomania\Original\Key\Person\Wallpaper as Wallpaper;
         </div>
     </div>
 </div>
+
     <!-- include section/footer.html.php -->
     <!-- include section/scripts.html.php -->
+<?php BodyScript::getContent();?>
+</body>
 </html>

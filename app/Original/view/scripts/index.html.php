@@ -6,6 +6,7 @@
  */
 
 use Kinomania\Original\Key\Film\Script as Script;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -418,5 +419,6 @@ use Kinomania\Original\Key\Film\Script as Script;
           });
       });
   </script>
+  <?php BodyScript::getContent();?>
 </body>
 </html>

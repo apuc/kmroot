@@ -7,6 +7,7 @@
  * @var string $static
  */
 use Kinomania\Original\Key\News\News;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -644,5 +645,6 @@ use Kinomania\Original\Key\News\News;
             });
         });
     </script>
+<?php BodyScript::getContent();?>
 </body>
 </html>

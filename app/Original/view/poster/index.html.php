@@ -8,6 +8,7 @@
  */
 use Kinomania\Original\Key\Film\Film;
 use Kinomania\Original\Key\Film\Poster as Poster;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -415,5 +416,6 @@ use Kinomania\Original\Key\Film\Poster as Poster;
         });
     });
 </script>
+  <?php BodyScript::getContent();?>
 </body>
 </html>

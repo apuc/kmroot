@@ -9,6 +9,7 @@
  * @var $options \Kinomania\System\Options\Options
  */
 use Kinomania\Original\Key\Film\Release as Release;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -886,5 +887,6 @@ use Kinomania\Original\Key\Film\Release as Release;
           });
       });
   </script>
+<?php BodyScript::getContent();?>
 </body>
 </html>

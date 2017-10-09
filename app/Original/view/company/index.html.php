@@ -5,6 +5,7 @@
  * @var string $static
  */
 use Kinomania\Original\Key\Company\Company;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -711,5 +712,6 @@ use Kinomania\Original\Key\Company\Company;
         });
     });
 </script>
+<?php BodyScript::getContent();?>
 </body>
 </html>

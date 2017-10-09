@@ -8,6 +8,7 @@
  */
 use Kinomania\Original\Key\Film\Film;
 use Kinomania\Original\Key\Film\Wallpaper as Wallpaper;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -401,5 +402,6 @@ use Kinomania\Original\Key\Film\Wallpaper as Wallpaper;
         });
     });
 </script>
+  <?php BodyScript::getContent();?>
 </body>
 </html>

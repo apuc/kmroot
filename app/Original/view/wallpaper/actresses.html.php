@@ -7,6 +7,7 @@
  * @var $options \Kinomania\System\Options\Options
  */
 use Kinomania\Original\Key\Film\Wallpaper as Wallpaper;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -398,5 +399,6 @@ use Kinomania\Original\Key\Film\Wallpaper as Wallpaper;
         });
     });
 </script>
+  <?php BodyScript::getContent();?>
 </body>
 </html>

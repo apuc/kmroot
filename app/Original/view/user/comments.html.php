@@ -6,6 +6,7 @@
  * @var array $min
  */
 use Kinomania\Original\Key\User\User;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -145,7 +146,7 @@ use Kinomania\Original\Key\User\User;
         });
     })
 </script>
-
+  <?php BodyScript::getContent();?>
 
 </body>
 </html>

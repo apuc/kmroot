@@ -7,6 +7,7 @@
  */
 use Kinomania\Original\Key\Film\Film;
 use Kinomania\Original\Key\Person\Wallpaper as Wallpaper;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -275,5 +276,6 @@ use Kinomania\Original\Key\Person\Wallpaper as Wallpaper;
         $('.inner-overlay-image img').css('max-height', $(window.top).height() - 150 + 'px');
     });
 </script>
+<?php BodyScript::getContent();?>
 </body>
 </html>

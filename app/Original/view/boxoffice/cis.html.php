@@ -3,6 +3,7 @@
  * @var array $list
  * @var $options \Kinomania\System\Options\Options
  */
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -200,6 +201,6 @@
 </div>
 <!-- include section/footer.html.php -->
 <!-- include section/scripts.html.php -->
-
+  <?php BodyScript::getContent();?>
 </body>
 </html>

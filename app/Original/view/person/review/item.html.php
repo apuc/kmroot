@@ -8,6 +8,7 @@
  */
 use Kinomania\Original\Key\Person\Person as Person;
 use Kinomania\Original\Key\Person\Photo as Photo;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -549,5 +550,6 @@ use Kinomania\Original\Key\Person\Photo as Photo;
             });
         });
     </script>
+<?php BodyScript::getContent();?>
 </body>
 </html>

@@ -9,6 +9,7 @@
 use Kinomania\Original\Key\TV\Chanel as Chanel;
 use Kinomania\Original\Key\TV\Program as Program;
 use Kinomania\Original\Key\TV\Film as Film;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -452,5 +453,6 @@ use Kinomania\Original\Key\TV\Film as Film;
           });
       });
   </script>
+  <?php BodyScript::getContent();?>
 </body>
 </html>

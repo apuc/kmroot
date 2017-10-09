@@ -7,6 +7,7 @@
  * @var $options \Kinomania\System\Options\Options
  */
 use Kinomania\Original\Key\Film\Soundtrack as Soundtrack;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -382,5 +383,6 @@ use Kinomania\Original\Key\Film\Soundtrack as Soundtrack;
         });
     });
 </script>
+  <?php BodyScript::getContent();?>
 </body>
 </html>

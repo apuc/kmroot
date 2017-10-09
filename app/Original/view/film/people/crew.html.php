@@ -5,6 +5,7 @@
  * @var array $min
  */
 use Kinomania\Original\Key\Film\Film;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -352,5 +353,6 @@ use Kinomania\Original\Key\Film\Film;
           });
       });
   </script>
+<?php BodyScript::getContent();?>
 </body>
 </html>

@@ -6,6 +6,7 @@
  * @var string static
  * @var $options \Kinomania\System\Options\Options
  */
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -521,5 +522,6 @@
           });
       });
   </script>
+<?php BodyScript::getContent();?>
 </body>
 </html>

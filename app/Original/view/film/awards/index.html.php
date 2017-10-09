@@ -7,6 +7,7 @@
  */
 use Kinomania\Original\Key\Film\Film;
 use Kinomania\Original\Key\Person\Award as Award;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -136,5 +137,6 @@ use Kinomania\Original\Key\Person\Award as Award;
 </div>
     <!-- include section/footer.html.php -->
     <!-- include section/scripts.html.php -->
+<?php BodyScript::getContent();?>
 </body>
 </html>

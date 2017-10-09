@@ -8,6 +8,7 @@
  */
 use Kinomania\Original\Key\Person\Person as Person;
 use Kinomania\Original\Key\Person\Trailer as Trailer;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -503,5 +504,6 @@ use Kinomania\Original\Key\Person\Trailer as Trailer;
           }, 1500);
         });
     </script>
+<?php BodyScript::getContent();?>
 </body>
 </html>

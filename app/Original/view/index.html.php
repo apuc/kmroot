@@ -3,6 +3,7 @@
  * @var $options Kinomania\System\Options\Options
  *
  */
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -380,5 +381,6 @@
 
 <script src="http://userapi.com/js/api/share.js?3" async="async" type="text/javascript"></script>
 <script src="http://vkontakte.ru/js/api/openapi.js?20" async="async" type="text/javascript"></script>
+<?php BodyScript::getContent();?>
 </body>
 </html>

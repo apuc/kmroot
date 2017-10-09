@@ -6,6 +6,7 @@
  */
 use Kinomania\Original\Key\Film\Film;
 use Kinomania\Original\Key\Person\Frame as Frame;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -218,5 +219,6 @@ use Kinomania\Original\Key\Person\Frame as Frame;
             });
         });
     </script>
+<?php BodyScript::getContent();?>
 </body>
 </html>

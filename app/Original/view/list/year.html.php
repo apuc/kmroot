@@ -4,6 +4,7 @@
  * @var string static
  * @var int $year
  */
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -264,5 +265,6 @@
           });
       });
   </script>
+<?php BodyScript::getContent();?>
 </body>
 </html>

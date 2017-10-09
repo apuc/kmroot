@@ -10,10 +10,8 @@
 use Kinomania\System\Pagination\Pagination;
 use Kinomania\System\Search\Search;
 use Kinomania\System\Body\BodyScript;
-use Kinomania\System\MobileDetect\MobileDetect;
-
-
 ?>
+<?php BodyScript::getContent();?>
 <!doctype html>
 <html lang="ru">
 <head>

@@ -10,6 +10,7 @@ use \Kinomania\Original\Key\Person\Person;
 use \Kinomania\Original\Key\Person\Filmography;
 use \Kinomania\System\Config\Server;
 use Kinomania\Original\Key\Person\TV as TV;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -1557,5 +1558,6 @@ use Kinomania\Original\Key\Person\TV as TV;
             }
         });
     </script>
+<?php BodyScript::getContent();?>
 </body>
 </html>

@@ -4,6 +4,7 @@
  */
 use Kinomania\Original\Key\Casting\Company as Company;
 use Kinomania\Original\Key\Casting\Person as Person;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -58,5 +59,6 @@ use Kinomania\Original\Key\Casting\Person as Person;
 </div>
 <!-- include section/footer.html.php -->
 <!-- include section/scripts.html.php -->
+  <?php BodyScript::getContent();?>
 </body>
 </html>

@@ -3,6 +3,7 @@
  * @var array $list
  */
 use Kinomania\Original\Key\Casting\Person as Person;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -451,5 +452,6 @@ use Kinomania\Original\Key\Casting\Person as Person;
           
       });
   </script>
+  <?php BodyScript::getContent();?>
 </body>
 </html>

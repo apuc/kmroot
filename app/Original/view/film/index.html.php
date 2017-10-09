@@ -8,6 +8,7 @@
  */
 use Kinomania\Original\Key\Film\Film;
 use Kinomania\Original\Key\Film\TV as TV;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -1866,5 +1867,6 @@ use Kinomania\Original\Key\Film\TV as TV;
             $('.my-overlay .my-item-error').addClass('active');
         });
     </script>
+<?php BodyScript::getContent();?>
 </body>
 </html>

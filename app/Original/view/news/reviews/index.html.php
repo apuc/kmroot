@@ -5,6 +5,7 @@
  * @var $options \Kinomania\System\Options\Options
  */
 use Kinomania\Original\Key\News\Preview as News;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -251,5 +252,6 @@ use Kinomania\Original\Key\News\Preview as News;
             });
         });
     </script>
+  <?php BodyScript::getContent();?>
 </body>
 </html>

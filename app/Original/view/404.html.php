@@ -1,4 +1,6 @@
-
+<?php
+	use Kinomania\System\Body\BodyScript;
+?>
 <!doctype html>
 <html lang="ru">
 <head>
@@ -644,5 +646,6 @@
 
     });
 </script>
+<?php BodyScript::getContent();?>
 </body>
 </html>

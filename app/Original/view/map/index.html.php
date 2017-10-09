@@ -6,6 +6,7 @@
  */
 
 use Kinomania\Original\Key\News\Preview as News;
+use Kinomania\System\Body\BodyScript;
 
 ?>
 <!doctype html>
@@ -151,5 +152,6 @@ use Kinomania\Original\Key\News\Preview as News;
         window.page = 1;
     });
 </script>
+<?php BodyScript::getContent();?>
 </body>
 </html>

@@ -7,6 +7,7 @@
  */
 use Kinomania\Original\Key\Film\Film;
 use Kinomania\Original\Key\Person\Frame as Frame;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -106,5 +107,6 @@ use Kinomania\Original\Key\Person\Frame as Frame;
 </div>
     <!-- include section/footer.html.php -->
     <!-- include section/scripts.html.php -->
+  <?php BodyScript::getContent();?>
 </body>
 </html>

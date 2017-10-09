@@ -8,6 +8,7 @@
  */
 use Kinomania\Original\Key\Film\Film;
 use Kinomania\Original\Key\Film\Soundtrack as Soundtrack;
+use Kinomania\System\Body\BodyScript;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -197,5 +198,6 @@ use Kinomania\Original\Key\Film\Soundtrack as Soundtrack;
         });
     });
 </script>
+<?php BodyScript::getContent();?>
 </body>
 </html>
