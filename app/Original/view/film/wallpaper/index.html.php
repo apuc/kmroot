@@ -61,7 +61,7 @@ use Kinomania\System\Body\BodyScript;
     </div>
 </div>
 <div class="desc-in-over">
-    <span class="desc"></span><a class="link" target="_blank" href="/">Скачать</a>
+    <span class="desc"></span><a class="link" target="_blank" href="/" download>Скачать</a>
 </div>
   <!--#include virtual="/design/ssi/top" -->
 <div class="outer">

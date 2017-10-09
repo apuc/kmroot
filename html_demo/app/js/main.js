@@ -283,7 +283,7 @@ function open_over(object) {
     $(".inner-overlay-caption").html($(object).find(".trailer-caption-hide").html());
     if ($(object).is('[data-type-over-desc]')) {
         $(".inner-overlay-caption").html($($(object).attr('data-type-over-desc')).html());
-        $(".inner-overlay-caption").children('.link').attr('href', '/load/n?file=' + $(object).attr('data-type-over-img'));
+        $(".inner-overlay-caption").children('.link').attr('href', '' + $(object).attr('data-type-over-img')); /* in '' /load/n?file=*/
         $(".inner-overlay-caption").children('.desc').html($(object).attr('data-type-over-desc-desc'));
     }
 }

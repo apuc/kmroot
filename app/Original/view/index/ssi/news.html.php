@@ -19,9 +19,8 @@
                 </div>
                 <div class="news-link-desc">
                     <p>
-                    <a href="/news/<?= $item['id'] ?>/">
-                        <?= $item['anons'] ?>
-                    </a>
+					<!--<a href="/news/--><?//= $item['id'] ?><!--/"></a>-->
+	                    <?= $item['anons'] ?>
                     </p>
                 </div>
             </div>
