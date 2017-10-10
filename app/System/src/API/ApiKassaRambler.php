@@ -21,26 +21,23 @@ class APIKassaRambler {
 			if($content) {
 				$keyJson = json_decode( $content );
 				if($keyJson->Code){
-					echo "Code: " .$keyJson->Code. "<br>";
-					echo "Message: " .$keyJson->Message. "<br>";
+					return $keyJson;
 				} else {
 					$arrayJson = $keyJson->List;
-					foreach ( $arrayJson as $value ) {
-						echo "Name: " .$value->Name. "<br>";
-					}
+					return $arrayJson;
 				}
 			} else {
-				echo "Сервер не доступен";
+				$mess = "Сервер не доступен";
+				return $mess;
 			}
 		} elseif ($format == 'xml') {
 			if($content) {
 				$content = simplexml_load_string($content);
 				$array = $content->List;
-				foreach ( $array as $value ) {
-					echo "Name: " .$value->Name. "<br>";
-				}
+				return $array;
 			} else {
-				echo "Сервер не доступен";
+				$mess = "Сервер не доступен";
+				return $mess;
 			}
 		}
 	}
@@ -51,32 +48,23 @@ class APIKassaRambler {
 			if($content) {
 				$keyJson   = json_decode( $content );
 				if($keyJson->Code){
-					echo "Code: " .$keyJson->Code. "<br>";
-					echo "Message: " .$keyJson->Message. "<br>";
+					return $keyJson;
 				} else {
 					$arrayJson = $keyJson->List;
-					foreach ( $arrayJson as $value ) {
-						echo "CityID: " .$value->CityID. "<br>";
-						echo "Name: " .$value->Name. "<br>";
-						echo "Latitude: " .$value->Latitude. "<br>";
-						echo "Longitude: " .$value->Longitude. "<br>";
-					}
+					return $arrayJson;
 				}
 			} else {
-				echo "Сервер не доступен";
+				$mess = "Сервер не доступен";
+				return $mess;
 			}
 		} elseif ($format == 'xml') {
 			if($content) {
 				$content = simplexml_load_string($content);
 				$array = $content->List;
-				foreach ( $array as $value ) {
-					echo "CityID: " .$value->CityID. "<br>";
-					echo "Name: " .$value->Name. "<br>";
-					echo "Latitude: " .$value->Latitude. "<br>";
-					echo "Longitude: " .$value->Longitude. "<br>";
-				}
+				return $array;
 			} else {
-				echo "Сервер не доступен";
+				$mess = "Сервер не доступен";
+				return $mess;
 			}
 		}
 	}
