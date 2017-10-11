@@ -1,11 +1,9 @@
 <?php
 /**
  * @var $options Kinomania\System\Options\Options
- * @var $api Kinomania\System\API\APIKassaRambler;
  *
  */
 use Kinomania\System\Body\BodyScript;
-use Kinomania\System\Debug\Debug;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -29,10 +27,7 @@ use Kinomania\System\Debug\Debug;
     <!-- include section/head.html.php -->
 </head>
 <body>
-<?
-	//Debug::prn($api->getFiles('movie','sale', 'salemovie-schedule-56-11102017105904.xml'));
-	Debug::prn($api->getCity());
-?>
+
 <div class="my-overlay">
     <div class="my-overlay-item overlay-trailer-item">
         <div class="my-overlay-bg"></div>

@@ -16,7 +16,6 @@ class GET extends DefaultController
         $this->addData([
             'options' => new Options(),
             'location' => $location->getLocation(),
-	        'api' => new APIKassaRambler('eed094a6-b7cc-4529-b858-a60f26a57f6f', 'xml'),
         ]);
         $this->setTemplate('index.html.php');
     }

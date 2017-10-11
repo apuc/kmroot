@@ -15,7 +15,7 @@ class GET extends DefaultController
     {
 
         $rambler = new APIKassaRambler('eed094a6-b7cc-4529-b858-a60f26a57f6f', 'xml');
-        Debug::prn($rambler->getListFromType('Санкт-Питербург'));
+        Debug::prn($rambler->getFile('fullmovie-cities-1-11102017141231.xml'));
 
         $this->addData([
 			'options' => new Options()

@@ -91,81 +91,38 @@ class APIKassaRambler
         }
         return false;
     }
-
-    public function getClass()
-    {
-        $content = file_get_contents('http://api.kassa.rambler.ru/v2/' . $this->key . '/' . $this->format . '/classtypes/');
-        if ($this->format == 'json') {
-            if ($content) {
-                $keyJson = json_decode($content);
-                if (isset($keyJson->Code)) {
-                    return $keyJson;
-                } else {
-                    $arrayJson = $keyJson->List;
-                    return $arrayJson;
-                }
-            } else {
-                $mess = "Сервер не доступен";
-                return $mess;
-            }
-        } elseif ($this->format == 'xml') {
-            if ($content) {
-                $content = simplexml_load_string($content);
-                $array = $content;
-                return $array;
-            } else {
-                $mess = "Сервер не доступен";
-                return $mess;
-            }
-        }
+    
+    public  function  getObjects($city){
+	    if (!empty($city)) {
+		    $cityId = $this->getCityId($city);
+		    $objects = $this->createQuery('json', 'Movie/list', ['cityID'=> $cityId])
+		                 ->jsonToArray();
+		     if(!empty($objects)){
+		    	$arr = [];
+			    foreach ((array)$objects->List as $item) {
+				    $arr[] = $this->createQuery( 'json','place/object',[ 'objectID' => $item->ObjectID ] )
+				                  ->jsonToArray();
+			    }
+			    return $arr;
+		    }
+	    }
+	    return false;
     }
-
-    public function getCity()
-    {
-        $content = file_get_contents('http://api.kassa.rambler.ru/v2/' . $this->key . '/' . $this->format . '/cities/');
-        if ($this->format == 'json') {
-            if ($content) {
-                $keyJson = json_decode($content);
-                if (isset($keyJson->Code)) {
-                    return $keyJson;
-                } else {
-                    $arrayJson = $keyJson->List;
-                    return $arrayJson;
-                }
-            } else {
-                $mess = "Сервер не доступен";
-                return $mess;
-            }
-        } elseif ($this->format == 'xml') {
-            if ($content) {
-                $content = simplexml_load_string($content);
-                $array = $content;
-                return $array;
-            } else {
-                $mess = "Сервер не доступен";
-                return $mess;
-            }
-        }
+    
+    public function getSchedule(){
+    
     }
+	
 
-    public function getFiles($classtype, $data, $filename = null)
+    public function getFiles()
     {
-        if ($this->format == 'xml') {
-            $content = file_get_contents('http://api.kassa.rambler.ru/v2/' . $this->key . '/' . $this->format . '/' . $classtype . '/export/' . $data . '/' . $filename);
-            if ($content) {
-                $content = simplexml_load_string($content);
-                $array = $content;
-                return $array;
-            } else {
-                $mess = "Сервер не доступен";
-                return $mess;
-            }
-        } else {
-            $mess = "Не верно введены данные";
-            return $mess;
-        }
-
+	    return $this->createQuery('xml', 'Movie/export/full')->xmlToArray();
     }
+    
+	public function getFile($file)
+	{
+		return $this->createQuery('xml', 'Movie/export/full/'.$file)->xmlToArray();
+	}
 
     private function mb_ucfirst($string, $enc = 'UTF-8')
     {
