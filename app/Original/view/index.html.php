@@ -30,7 +30,8 @@ use Kinomania\System\Debug\Debug;
 </head>
 <body>
 <?
-	Debug::prn($api->getClass());
+	//Debug::prn($api->getFiles('movie','sale', 'salemovie-schedule-56-11102017105904.xml'));
+	Debug::prn($api->getCity());
 ?>
 <div class="my-overlay">
     <div class="my-overlay-item overlay-trailer-item">
