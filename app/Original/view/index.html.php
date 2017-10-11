@@ -1,9 +1,11 @@
 <?php
 /**
  * @var $options Kinomania\System\Options\Options
+ * @var $api Kinomania\System\API\APIKassaRambler;
  *
  */
 use Kinomania\System\Body\BodyScript;
+use Kinomania\System\Debug\Debug;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -27,6 +29,9 @@ use Kinomania\System\Body\BodyScript;
     <!-- include section/head.html.php -->
 </head>
 <body>
+<?
+	Debug::prn($api->getClass());
+?>
 <div class="my-overlay">
     <div class="my-overlay-item overlay-trailer-item">
         <div class="my-overlay-bg"></div>
