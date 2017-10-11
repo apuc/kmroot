@@ -27,7 +27,14 @@ class APIKassaRambler
         $this->format = $format;
         $this->query = '';
     }
-
+	
+	/**
+	 * @param $format
+	 * @param $url
+	 * @param array $data
+	 *
+	 * @return $this
+	 */
     public function createQuery($format, $url, array $data = [])
     {
         $query = 'http://api.kassa.rambler.ru/v2/' . $this->key . '/' . $format . '/' . $url;

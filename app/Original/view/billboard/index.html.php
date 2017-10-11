@@ -2,6 +2,7 @@
 /**
  * @var array $item
  * @var $options Kinomania\System\Options\
+ * @var $api \Kinomania\System\Options\Options
  */
 use Kinomania\System\Body\BodyScript;
 ?>
@@ -112,6 +113,32 @@ use Kinomania\System\Body\BodyScript;
                                 </div>
                             </div>
                         </div>
+	                    <a href="/billboard?theatre">Кинотеатры</a> <a href="/billboard?film">Фильмы</a>
+	                    <?php if(isset($_GET['theatre'])):?>
+		                    <table class="table">
+			                    <thead>
+			                    <tr>
+				                    <td><strong>Адрес:</strong></td>
+				                    <td><strong>Кинотеатр:</strong></td>
+			                    </tr>
+			                    </thead>
+			                    <tbody>
+			                    <?php foreach ($api->getPlaces('Москва')->List as $place):?>
+				                    <tr>
+					                    <td> <?=$place->Address?></td>
+					                    <td> <?=$place->Name?></td>
+				                    </tr>
+			                    <?php endforeach;?>
+			                    </tbody>
+		                    </table>
+	                    <?php elseif (isset($_GET['film'])):?>
+		                    <? //\Kinomania\System\Debug\Debug::prn($api->getListFromType('Москва'));?>
+		                    <?php foreach ($api->getListFromType('Москва')->List as $film):?>
+			                    <li>
+				                    <?=$film->Name?>
+			                    </li>
+		                    <?php endforeach;?>
+	                    <?php endif;?>
                         <div class="pagelist-social style-pagelist-social">
                             <div class="outer-social clear">
                                 <ul class="social-list social-list--horizontal">
