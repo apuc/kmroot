@@ -14,8 +14,8 @@ class GET extends DefaultController
     public function index()
     {
 
-        $rambler = new APIKassaRambler('eed094a6-b7cc-4529-b858-a60f26a57f6f', 'xml');
-        Debug::prn($rambler->getFile('fullmovie-cities-1-11102017141231.xml'));
+        $rambler = new APIKassaRambler('eed094a6-b7cc-4529-b858-a60f26a57f6f', 'json');
+        Debug::prn($rambler->getListFromType('Москва'));
 
         $this->addData([
 			'options' => new Options()

@@ -92,25 +92,21 @@ class APIKassaRambler
         return false;
     }
     
-    public  function  getObjects($city){
-	    if (!empty($city)) {
-		    $cityId = $this->getCityId($city);
-		    $objects = $this->createQuery('json', 'Movie/list', ['cityID'=> $cityId])
-		                 ->jsonToArray();
-		     if(!empty($objects)){
-		    	$arr = [];
-			    foreach ((array)$objects->List as $item) {
-				    $arr[] = $this->createQuery( 'json','place/object',[ 'objectID' => $item->ObjectID ] )
-				                  ->jsonToArray();
-			    }
-			    return $arr;
-		    }
+    public function  getObject($objectid){
+    	if(!empty($objectid)){
+    		return $this->createQuery('json', 'place/object', ['objectID' => $objectid])
+		                ->jsonToArray();
 	    }
 	    return false;
     }
+	
     
-    public function getSchedule(){
-    
+    public function getSchedule($objectid, $dateFrom, $dateTO, $city, $saleSupport = ''){
+	    $cityId = $this->getCityId($city);
+	    if($objectid){
+		    return $this->createQuery('json', 'Place/schedule', ['objectID' => $objectid, 'dateFrom' => $dateFrom, 'dateTo' => $dateTO, 'cityID' => $city, 'saleSupportedOnly' => $saleSupport])->jsonToArray();
+	    }
+	    return false;
     }
 	
 
@@ -120,8 +116,10 @@ class APIKassaRambler
     }
     
 	public function getFile($file)
-	{
-		return $this->createQuery('xml', 'Movie/export/full/'.$file)->xmlToArray();
+	{   if($file){
+			return $this->createQuery('xml', 'Movie/export/full/'.$file)->xmlToArray();
+		}
+		return false;
 	}
 
     private function mb_ucfirst($string, $enc = 'UTF-8')
