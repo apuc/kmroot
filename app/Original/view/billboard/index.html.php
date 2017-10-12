@@ -114,31 +114,53 @@ use Kinomania\System\Body\BodyScript;
                             </div>
                         </div>
 	                    <a href="/billboard?theatre">Кинотеатры</a> <a href="/billboard?film">Фильмы</a>
-	                    <?php if(isset($_GET['theatre'])):?>
+<!--	                    <button id="btn">Показать</button>-->
+	                    <div id="block" >
+		                    
+		                    <?php if(isset($_GET['theatre'])):?>
+			                    <table class="table">
+				                    <thead>
+				                    <tr>
+					                    <td><strong>Адрес:</strong></td>
+					                    <td><strong>Кинотеатр:</strong></td>
+				                    </tr>
+				                    </thead>
+				                    <tbody>
+				                    <?php foreach ($api->getPlaces('Москва')->List as $place):?>
+					                    <tr>
+						                    <td> <?=$place->Address?></td>
+						                    <td> <?=$place->Name?></td>
+					                    </tr>
+				                    <?php endforeach;?>
+				                    </tbody>
+			                    </table>
+		                    <?php elseif (isset($_GET['film'])):?>
+<!--			                    --><?php //Kinomania\System\Debug\Debug::prn($api->getListFromType('Москва')->List);?>
 		                    <table class="table">
 			                    <thead>
 			                    <tr>
-				                    <td><strong>Адрес:</strong></td>
 				                    <td><strong>Кинотеатр:</strong></td>
+				                    <td><strong>Фильмы</strong></td>
 			                    </tr>
 			                    </thead>
 			                    <tbody>
-			                    <?php foreach ($api->getPlaces('Москва')->List as $place):?>
-				                    <tr>
-					                    <td> <?=$place->Address?></td>
-					                    <td> <?=$place->Name?></td>
-				                    </tr>
-			                    <?php endforeach;?>
+			                    <?php $api->getFilmsForPlaces('Москва');?>
+<!--			                    --><?php //foreach ($api->getPlaces('Москва')->List as $place):?>
+<!--				                    <tr>-->
+<!--					                    <td> --><?//=$place->Name?><!--</td>-->
+<!--					                    <td>-->
+<!--                                        --><?php //foreach ($api->getListFromType('Москва')->List as $film):?>
+<!--                                                --><?php //if($film->ObjectID == $place->ObjectID):?>
+<!--		                                            --><?//=$film->Name?>
+<!--	                                            --><?php //endif;?>
+<!--                                        --><?php //endforeach;?>
+<!--					                    </td>-->
+<!--				                    </tr>-->
+<!--			                    --><?php //endforeach;?>
 			                    </tbody>
 		                    </table>
-	                    <?php elseif (isset($_GET['film'])):?>
-		                    <? //\Kinomania\System\Debug\Debug::prn($api->getListFromType('Москва'));?>
-		                    <?php foreach ($api->getListFromType('Москва')->List as $film):?>
-			                    <li>
-				                    <?=$film->Name?>
-			                    </li>
-		                    <?php endforeach;?>
-	                    <?php endif;?>
+		                    <?php endif;?>
+	                    </div>
                         <div class="pagelist-social style-pagelist-social">
                             <div class="outer-social clear">
                                 <ul class="social-list social-list--horizontal">
@@ -164,6 +186,19 @@ use Kinomania\System\Body\BodyScript;
             $(this).hide();
             return false;
         });
+        /*if ($("#btn").html() ==='Показать'){
+	        $( "#btn" ).on( "click", function() {
+		        $("#block").show('slow');
+		        $("#btn").html('Скрыть');
+	        });
+        }
+        if($("#btn").html() === 'Скрыть') {
+	        $( "#btn" ).on( "click", function() {
+		        $("#block").hide('slow');
+		        $("#btn").html('Показать');
+	        });
+        }*/
+	   
     });
 </script>
   <?php BodyScript::getContent();?>

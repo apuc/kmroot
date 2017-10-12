@@ -106,14 +106,33 @@ class APIKassaRambler
 	    }
 	    return false;
     }
-	
     
-    public function getSchedule($objectid, $dateFrom, $dateTO, $city, $saleSupport = ''){
+    public function getFilmsForPlaces($city){
+    	if(!empty($city)){
+    		$places = $this->getPlaces($city);
+    		$films = $this->getListFromType($city);
+    	    $shedule = $this->getSchedule('1808', '2017-10-15', '2017-10-17', $city, 'true');
+    	    $arr = [];
+    		foreach ($shedule->List as $item){
+			    foreach ($films->List as $item2 ) {
+				    if ( $item2->ObjectID == $item->CreationObjectID ) {
+					    $arr[] = $item2->Name;
+				    }
+			    }
+		    }
+		    
+		    Debug::prn($arr);
+	    }
+	    return false;
+    }
+    
+    public function getSchedule($objectid, $dateFrom, $dateTO, $city, $saleSupport){
 	    $cityId = $this->getCityId($city);
 	    if($objectid){
 		    return $this->createQuery('json', 'Place/schedule', ['objectID' => $objectid, 'dateFrom' => $dateFrom, 'dateTo' => $dateTO, 'cityID' => $city, 'saleSupportedOnly' => $saleSupport])->jsonToArray();
 	    }
 	    return false;
+	    
     }
 	
 
