@@ -1,4 +1,5 @@
 <?php
+
 namespace Original\Route_billboard_cinema;
 
 use Kinomania\Original\Controller\DefaultController;
@@ -8,22 +9,27 @@ use Kinomania\System\API\APIKassaRambler;
 
 class GET extends DefaultController
 {
-	
 
     public function index()
     {
         $api = new APIKassaRambler('eed094a6-b7cc-4529-b858-a60f26a57f6f', 'json');
-        if(isset($_GET['id'])) {
-	        $place = $api->getObject( $_GET['id'] );
-	        $films = $api->getFilmsForPlaces( $_GET['id'],date( "Y-m-d" ),'','Москва' );
+        if (isset($_GET['id'])) {
+            $schedule = $api->getSchedule(
+                $_GET['id'],
+                'Москва',
+                date('Y-m-d'),
+                date('Y-m-d', time() + 86000));
+            $cinema = $api->getObject($_GET['id']);
+
+            $this->addData([
+                'schedule' => $schedule,
+                'cinema' => $cinema,
+                'api' => $api,
+                'options' => new Options(),
+            ]);
+
+            $this->setTemplate('billboard/cinema/index.html.php');
         }
-        Debug::prn($films);
-		$this->addData([
-			'options' => new Options(),
-            /*'films' => $films,*/
-            'place' => $place,
-		]);
-		//$api->getObjectByCreationType(null, 91555);
-        $this->setTemplate('billboard/cinema.html.php');
+
     }
 }

@@ -117,8 +117,7 @@ class APIKassaRambler
         if ($objectID !== null) {
             $data['objectID'] = $objectID;
         }
-        $res = $this->createQuery('json', 'Movie/object', $data)->jsonToArray();
-        Debug::prn($res);
+        return $this->createQuery('json', 'Movie/object', $data)->jsonToArray();
     }
 
     public function getFilmsForPlaces($city, $id, $date)
@@ -139,17 +138,19 @@ class APIKassaRambler
         return false;
     }
 
-    public function getSchedule($objectId, $dateFrom, $dateTO, $city, $saleSupport)
+    public function getSchedule($objectId, $city, $dateFrom = null, $dateTO = null, $saleSupport = true)
     {
-        $cityId = $this->getCityId($city);
+        $data['cityID'] = $this->getCityId($city);
         if ($objectId) {
-            return $this->createQuery('json', 'Place/schedule', [
-                'objectID' => $objectId,
-                'dateFrom' => $dateFrom,
-                'dateTo' => $dateTO,
-                'cityID' => $city,
-                'saleSupportedOnly' => $saleSupport,
-            ])->jsonToArray();
+            if($dateFrom !== null){
+                $data['dateFrom'] = $dateFrom;
+            }
+            if($dateTO !== null){
+                $data['dateTO'] = $dateTO;
+            }
+            $data['objectID'] = $objectId;
+            $data['saleSupportedOnly'] = $saleSupport;
+            return $this->createQuery('json', 'Place/schedule', $data)->jsonToArray();
         }
         return false;
 
