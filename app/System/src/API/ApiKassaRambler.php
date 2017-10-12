@@ -27,14 +27,14 @@ class APIKassaRambler
         $this->format = $format;
         $this->query = '';
     }
-	
-	/**
-	 * @param $format
-	 * @param $url
-	 * @param array $data
-	 *
-	 * @return $this
-	 */
+
+    /**
+     * @param $format
+     * @param $url
+     * @param array $data
+     *
+     * @return $this
+     */
     public function createQuery($format, $url, array $data = [])
     {
         $query = 'http://api.kassa.rambler.ru/v2/' . $this->key . '/' . $format . '/' . $url;
@@ -93,60 +93,81 @@ class APIKassaRambler
     {
         if (!empty($city)) {
             $cityId = $this->getCityId($city);
-            return $this->createQuery('json', 'Movie/list', ['cityID'=> $cityId])
+            return $this->createQuery('json', 'Movie/list', ['cityID' => $cityId])
                 ->jsonToArray();
         }
         return false;
     }
-    
-    public function  getObject($objectid){
-    	if(!empty($objectid)){
-    		return $this->createQuery('json', 'place/object', ['objectID' => $objectid])
-		                ->jsonToArray();
-	    }
-	    return false;
+
+    public function getObject($objectid)
+    {
+        if (!empty($objectid)) {
+            return $this->createQuery('json', 'place/object', ['objectID' => $objectid])
+                ->jsonToArray();
+        }
+        return false;
     }
-    
-    public function getFilmsForPlaces($city){
-    	if(!empty($city)){
-    		$places = $this->getPlaces($city);
-    		$films = $this->getListFromType($city);
-    	    $shedule = $this->getSchedule('1808', '2017-10-15', '2017-10-17', $city, 'true');
-    	    $arr = [];
-    		foreach ($shedule->List as $item){
-			    foreach ($films->List as $item2 ) {
-				    if ( $item2->ObjectID == $item->CreationObjectID ) {
-					    $arr[] = ['film'=> $item2->Name, 'id' => $item->PlaceObjectID];
-				    }
-			    }
-		    }
-		    return $arr;
-	    }
-	    return false;
+
+    public function getObjectByCreationType($sourceCreationId = null, $objectID = null)
+    {
+        $data = [];
+        if ($sourceCreationId !== null) {
+            $data['sourceCreationId'] = $sourceCreationId;
+        }
+        if ($objectID !== null) {
+            $data['objectID'] = $objectID;
+        }
+        $res = $this->createQuery('json', 'Movie/object', $data)->jsonToArray();
+        Debug::prn($res);
     }
-	
-    
-    public function getSchedule($objectid, $dateFrom, $dateTO, $city, $saleSupport){
-	    $cityId = $this->getCityId($city);
-	    if($objectid){
-		    return $this->createQuery('json', 'Place/schedule', ['objectID' => $objectid, 'dateFrom' => $dateFrom, 'dateTo' => $dateTO, 'cityID' => $city, 'saleSupportedOnly' => $saleSupport])->jsonToArray();
-	    }
-	    return false;
-	    
+
+    public function getFilmsForPlaces($city)
+    {
+        if (!empty($city)) {
+            $places = $this->getPlaces($city);
+            $films = $this->getListFromType($city);
+            $shedule = $this->getSchedule('1808', '2017-10-15', '2017-10-17', $city, 'true');
+            $arr = [];
+            foreach ($shedule->List as $item) {
+                foreach ($films->List as $item2) {
+                    if ($item2->ObjectID == $item->CreationObjectID) {
+                        $arr[] = ['film' => $item2->Name, 'id' => $item->PlaceObjectID];
+                    }
+                }
+            }
+            return $arr;
+        }
+        return false;
     }
-	
+
+    public function getSchedule($objectId, $dateFrom, $dateTO, $city, $saleSupport)
+    {
+        $cityId = $this->getCityId($city);
+        if ($objectId) {
+            return $this->createQuery('json', 'Place/schedule', [
+                'objectID' => $objectId,
+                'dateFrom' => $dateFrom,
+                'dateTo' => $dateTO,
+                'cityID' => $city,
+                'saleSupportedOnly' => $saleSupport,
+            ])->jsonToArray();
+        }
+        return false;
+
+    }
 
     public function getFiles()
     {
-	    return $this->createQuery('xml', 'Movie/export/full')->xmlToArray();
+        return $this->createQuery('xml', 'Movie/export/full')->xmlToArray();
     }
-    
-	public function getFile($file)
-	{   if($file){
-			return $this->createQuery('xml', 'Movie/export/full/'.$file)->xmlToArray();
-		}
-		return false;
-	}
+
+    public function getFile($file)
+    {
+        if ($file) {
+            return $this->createQuery('xml', 'Movie/export/full/' . $file)->xmlToArray();
+        }
+        return false;
+    }
 
     private function mb_ucfirst($string, $enc = 'UTF-8')
     {
