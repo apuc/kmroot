@@ -116,15 +116,15 @@ class APIKassaRambler
     		foreach ($shedule->List as $item){
 			    foreach ($films->List as $item2 ) {
 				    if ( $item2->ObjectID == $item->CreationObjectID ) {
-					    $arr[] = $item2->Name;
+					    $arr[] = ['film'=> $item2->Name, 'id' => $item->PlaceObjectID];
 				    }
 			    }
 		    }
-		    
-		    Debug::prn($arr);
+		    return $arr;
 	    }
 	    return false;
     }
+	
     
     public function getSchedule($objectid, $dateFrom, $dateTO, $city, $saleSupport){
 	    $cityId = $this->getCityId($city);

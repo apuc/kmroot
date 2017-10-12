@@ -144,19 +144,13 @@ use Kinomania\System\Body\BodyScript;
 			                    </tr>
 			                    </thead>
 			                    <tbody>
-			                    <?php $api->getFilmsForPlaces('Москва');?>
-<!--			                    --><?php //foreach ($api->getPlaces('Москва')->List as $place):?>
-<!--				                    <tr>-->
-<!--					                    <td> --><?//=$place->Name?><!--</td>-->
-<!--					                    <td>-->
-<!--                                        --><?php //foreach ($api->getListFromType('Москва')->List as $film):?>
-<!--                                                --><?php //if($film->ObjectID == $place->ObjectID):?>
-<!--		                                            --><?//=$film->Name?>
-<!--	                                            --><?php //endif;?>
-<!--                                        --><?php //endforeach;?>
-<!--					                    </td>-->
-<!--				                    </tr>-->
-<!--			                    --><?php //endforeach;?>
+<!--			                    --><?php //$api->getFilmsForPlaces('Москва');?>
+			                    <?php foreach ($api->getFilmsForPlaces('Москва') as $film):?>
+				                    <tr>
+					                    <td><?=$film['id']?><td>
+					                    <td><?=$film['film']?></td>
+				                    </tr>
+			                    <?php endforeach;?>
 			                    </tbody>
 		                    </table>
 		                    <?php endif;?>
