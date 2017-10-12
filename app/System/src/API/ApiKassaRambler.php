@@ -121,12 +121,11 @@ class APIKassaRambler
         Debug::prn($res);
     }
 
-    public function getFilmsForPlaces($city)
+    public function getFilmsForPlaces($city, $id, $date)
     {
         if (!empty($city)) {
-            $places = $this->getPlaces($city);
             $films = $this->getListFromType($city);
-            $shedule = $this->getSchedule('1808', '2017-10-15', '2017-10-17', $city, 'true');
+            $shedule = $this->getSchedule($id, $date, null, $city, 'true');
             $arr = [];
             foreach ($shedule->List as $item) {
                 foreach ($films->List as $item2) {
