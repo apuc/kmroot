@@ -44,13 +44,18 @@
     <script type="text/javascript">
         $(document).ready(function () {
             var modal = document.getElementById('modalWrap');
-            var span = document.getElementsByClassName("close")[0];
+            var span = document.getElementsByClassName("__close")[0];
             console.log(modal);
             <?php if (!isset($_COOKIE['city'])): ?>
                 modal.style.display = "block";
             <?php endif; ?>
             span.onclick = function() {
                 modal.style.display = "none";
+            }
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
             }
         });
     </script>
@@ -150,7 +155,7 @@
 </div>
 <div id="modalWrap" class="modal">
     <div class="content">
-        <span class="close">&times;</span>
+        <span class="__close">&times;</span>
         <div class="content__title">
             <h2>Где вы находитесь?</h2>
             <p>введите название вашего города</p>
