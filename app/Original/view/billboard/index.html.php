@@ -113,7 +113,7 @@ use Kinomania\System\Body\BodyScript;
                                 </div>
                             </div>
                         </div>
-	                    <a href="/billboard?theatre">Кинотеатры</a> <a href="/billboard?film">Фильмы</a>
+	                    <a href="/billboard?page=cinema">Кинотеатры</a> <a href="/billboard?film">Фильмы</a>
 <!--	                    <button id="btn">Показать</button>-->
 	                    <div id="block" >
 		                    

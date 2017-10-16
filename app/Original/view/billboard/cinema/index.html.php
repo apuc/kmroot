@@ -5,6 +5,7 @@
  * @var $schedule object
  * @var $cinema object
  * @var $api \Kinomania\System\API\APIKassaRambler
+ * @var $location \Kinomania\System\GeoLocation\IpGeoBase;
  */
 use Kinomania\System\Body\BodyScript;
 ?>
@@ -42,6 +43,8 @@ use Kinomania\System\Body\BodyScript;
                     <div class="row-page">
                         <h1 class="pagetitle"><?= $options->get('seo_billboard_h1') ?></h1>
                         <div class="description">
+	                        <?php $city = unserialize($_COOKIE['city'] ?? '') ?>
+	                       <?= $city['city_id']?>
                             Афиша «Киномании» точно знает, в каких кинотеатрах и во сколько идет лучшее кино. Выбирайте ваш город — и мы покажем самые удобные сеансы. Всего пара кликов — и билет у вас в кармане, здесь и сейчас. Приятного просмотра!
                         </div>
                         <div class="row-outside row-outside-bill bg-color-one row-outside-art clear">
@@ -114,22 +117,28 @@ use Kinomania\System\Body\BodyScript;
                                     </div>
                                 </div>
                             </div>
+	                        <!--Start Ticket widget-->
+	                        <rb:inline key="1a2cbeaf-d285-45e9-90d7-a66078c15365" classType="place" objectID="<?=$cinema->ObjectID?>" cityID="<?=$city['city_id']?>" locale="" xmlns:rb="http://kassa.rambler.ru"></rb:inline>
+	                        <!--End Ticket widget-->
+	                        <script type="text/javascript" src="https://kassa.rambler.ru/s/widget/js/TicketManager.js"></script>
                         </div>
+	                    
                         <h2>Кинотеатр "<?= $cinema->Name ?>"</h2>
+	                    
 	                    <!--<a href="/billboard?theatre">Кинотеатры</a> <a href="/billboard?film">Фильмы</a>-->
 <!--	                    <button id="btn">Показать</button>-->
 	                    <div id="block" >
                             <?php foreach ((array)$schedule->List as $item): ?>
                                 <?php $film = $api->getObjectByCreationType(null, $item->CreationObjectID); ?>
-                                <?php \Kinomania\System\Debug\Debug::prn($film) ?>
+                                <?php //\Kinomania\System\Debug\Debug::prn($film) ?>
                                 <div style="border-bottom: solid 1px black">
-                                    <p><img src="<?=$film->HorizonalThumbnail?>" alt="" width="200px"></p>
-                                    <p><b><?= $film->Name ?></b></p>
-                                    <p>Жанр: <?= $film->Genre; ?></p>
-                                    <p>Страна: <?= $film->Country; ?></p>
-                                    <p>Продолжительность: <?= $film->Duration; ?></p>
-                                    <p>Дата выхода: <?= $film->ReleaseDate; ?></p>
-                                    <p>Начало: <?= $item->DateTime; ?></p>
+                                    <p><img src="<?=(isset($film->HorizonalThumbnail))? $film->HorizonalThumbnail :''?>" alt="" width="200px"></p>
+                                    <p><b><?=(isset($film->Name))? $film->Name : '' ?></b></p>
+                                    <p>Жанр: <?=(isset($film->Genre))? $film->Genre : ''?></p>
+                                    <p>Страна: <?=(isset($film->Country))? $film->Country :'' ?></p>
+                                    <p>Продолжительность: <?=(isset($film->Duration))? $film->Duration : '' ?></p>
+                                    <p>Дата выхода: <?=(isset($film->ReleaseDate))? $film->ReleaseDate : '' ?></p>
+                                    <p>Начало: <?=(isset($film->DateTime))? $item->DateTime : ''; ?></p>
                                     <p>Цена от: <?= $item->MinPrice; ?></p>
                                     <p>Цена до: <?= $item->MaxPrice; ?></p>
                                 </div>

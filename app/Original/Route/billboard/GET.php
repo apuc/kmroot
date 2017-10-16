@@ -21,12 +21,16 @@ class GET extends DefaultController
             'places' => $places
 		]);
 		//$api->getObjectByCreationType(null, 91555);
-		if($_GET['page'] === 'cinema'){
-            $this->setTemplate('billboard/cinema.html.php');
-        }
-        else {
-            $this->setTemplate('billboard/films.html.php');
-        }
-        //$this->setTemplate('billboard/index.html.php');
+		if(isset($_GET['page'])) {
+			if ( $_GET['page'] === 'cinema' ) {
+				$this->setTemplate( 'billboard/cinema.html.php' );
+			} else {
+				$this->setTemplate( 'billboard/films.html.php' );
+			}
+			//$this->setTemplate('billboard/index.html.php');
+		} else {
+			$this->setTemplate('billboard/index.html.php');
+		}
+	   
     }
 }

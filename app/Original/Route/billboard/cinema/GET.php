@@ -14,18 +14,21 @@ class GET extends DefaultController
     public function index()
     {
         $api = new APIKassaRambler('eed094a6-b7cc-4529-b858-a60f26a57f6f', 'json');
-        $ip = new IpGeoBase();
-
-
+        $location = new IpGeoBase();
+        $schedule = $api->getSchedule($_GET['id'], 'Москва');
+        $cinema = $api->getObject($_GET['id']);
+        Debug::prn($cinema);
+	    //$api->getFilm($_GET['id']);
             $this->addData([
                 'schedule' => $schedule,
                 'cinema' => $cinema,
                 'api' => $api,
                 'options' => new Options(),
+	            'location' => $location->getLocation(),
             ]);
             $this->setTemplate('billboard/cinema/index.html.php');
         }
-        //$api->getFilm(89832);
+        
 
         //if (isset($_GET['id'])) {
         //    $schedule = $api->getSchedule(

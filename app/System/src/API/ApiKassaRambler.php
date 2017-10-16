@@ -3,7 +3,7 @@
 namespace Kinomania\System\API;
 
 use InvalidArgumentException;
-use Kinomania\System\Db\Db;
+//use Kinomania\System\Db\Db;
 use Kinomania\System\Debug\Debug;
 use Kinomania\System\Base\DB;
 use Kinomania\System\Common\TDate;
@@ -142,7 +142,7 @@ class APIKassaRambler
         return false;
     }
     
-    public function insertFilm(array $array){
+   /* public function insertFilm(array $array){
     	if($array){
 		    $list = [];
 		    $query = ("	INSERT INTO `afisha`(`HorizonalThumbnail`,`Name`,`Genre`,`Country`,`Duration`, `ReleaseDate`)
@@ -157,7 +157,7 @@ class APIKassaRambler
 		    
 	    }
     	return false;
-    }
+    }*/
     public  function selectFilm($id){
     	if($id){
 		    $list = [];
@@ -191,12 +191,14 @@ class APIKassaRambler
 
     public function getFilm($objId)
     {
-        $db = new Db();
+        $db = new Db(new \mysqli('127.0.0.1', 'root', '', 'kmmain'));
         $isset = $db->_isset(['ObjectID'=>$objId], 'afisha');
-        if($isset == 0){
-            $film = $this->getObjectByCreationType(null, $objId);
-            //$db->insert((array)$film, 'afisha');
-            Debug::prn((array)$film);
+        if(count($isset) == 0){
+        	$arr = [];
+        	foreach ((array)$this->getSchedule($objId, 'Москва')->List as $item){
+		       $arr['Obj'] = $item->CreationObjectID;
+	        }
+	        $film = $this->getObjectByCreationType(null, $arr['Obj']);
         }
     }
 
