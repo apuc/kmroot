@@ -43,7 +43,7 @@ use Kinomania\System\Body\BodyScript;
                     <div class="row-page">
                         <h1 class="pagetitle"><?= $options->get('seo_billboard_h1') ?></h1>
                         <div class="description">
-	                        <?php $city = unserialize($_COOKIE['city'] ?? '', null) ?>
+	                        <?php $city = unserialize($_COOKIE['city'] ?? '', []) ?>
 	                       <?= $city['city_id']?>
                             Афиша «Киномании» точно знает, в каких кинотеатрах и во сколько идет лучшее кино. Выбирайте ваш город — и мы покажем самые удобные сеансы. Всего пара кликов — и билет у вас в кармане, здесь и сейчас. Приятного просмотра!
                         </div>
@@ -118,7 +118,7 @@ use Kinomania\System\Body\BodyScript;
                                 </div>
                             </div>
 	                        <!--Start Ticket widget-->
-	                        <rb:inline key="1a2cbeaf-d285-45e9-90d7-a66078c15365" classType="place" objectID="<?=$cinema->ObjectID?>" cityID="<?=$city['city_id']?>" locale="" xmlns:rb="http://kassa.rambler.ru"></rb:inline>
+	                        <?= '<rb:inline key="1a2cbeaf-d285-45e9-90d7-a66078c15365" classType="place" objectID="'.$cinema->ObjectID.'" cityID="'.$city['city_id'].'" locale="" xmlns:rb="http://kassa.rambler.ru"></rb:inline>' ?>
 	                        <!--End Ticket widget-->
 	                        <script type="text/javascript" src="https://kassa.rambler.ru/s/widget/js/TicketManager.js"></script>
                         </div>

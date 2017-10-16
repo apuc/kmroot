@@ -44,6 +44,8 @@ $(document).ready(function () {
                     if(0 != data){
                         $('.overlay-location').hide();
                         $('.change-location').text(data);
+                        var modal = document.getElementById('modalWrap');
+                        modal.style.display = "none";
                     }else alert('Такой город не найден');
                 },
         });
@@ -52,8 +54,10 @@ $(document).ready(function () {
 
     $(document).on('click', '.change-location', function () {
         $('input.search-location').val($(this).text() + '('+ $(this).data('region')+')');
-        $('input.search-location').data('id', $(this).data('city_id'))
-        $('.overlay-location').show();
+        $('input.search-location').data('id', $(this).data('city_id'));
+        var modal = document.getElementById('modalWrap');
+        modal.style.display = "block";
+        //$('.overlay-location').show();
         return false;
     });
 

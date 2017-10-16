@@ -162,20 +162,22 @@
         </div>
         <form id="form" method="get">
             <div class="inputs">
-                <input type="text" id="city">
-                <input type="submit" id="find-city" value="Найти">
+                <?php $city = unserialize($_COOKIE['city'] ?? '') ?>
+                <input type="text" data-id="<?= $city['city_id']?>" id="city" class="search-location" value="<?= $city['city']?>">
+                <input type="submit" id="find-city" class="button-location" value="Сохранить">
             </div>
             <div class="cities">
-                <div class="city">
-                    <a href="#">Симферополь</a>
-                    <a href="#">Суммы</a>
-                    <a href="#">Сургут</a>
-                </div>
-                <div class="city">
-                    <a href="#">Симферополь</a>
-                    <a href="#">Суммы</a>
-                    <a href="#">Сургут</a>
-                </div>
+                <div class="location-result"></div>
+                <!--<div class="city">-->
+                <!--    <a href="#">Симферополь</a>-->
+                <!--    <a href="#">Суммы</a>-->
+                <!--    <a href="#">Сургут</a>-->
+                <!--</div>-->
+                <!--<div class="city">-->
+                <!--    <a href="#">Симферополь</a>-->
+                <!--    <a href="#">Суммы</a>-->
+                <!--    <a href="#">Сургут</a>-->
+                <!--</div>-->
             </div>
         </form>
     </div>
