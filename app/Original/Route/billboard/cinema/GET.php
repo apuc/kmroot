@@ -17,7 +17,7 @@ class GET extends DefaultController
         $location = new IpGeoBase();
         $schedule = $api->getSchedule($_GET['id'], 'Москва');
         $cinema = $api->getObject($_GET['id']);
-        Debug::prn($cinema);
+        
 	    //$api->getFilm($_GET['id']);
             $this->addData([
                 'schedule' => $schedule,

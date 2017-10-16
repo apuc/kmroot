@@ -18,7 +18,7 @@ class GET extends DefaultController
         $places = $api->getPlaces('Москва')->List;
 		$this->addData([
 			'options' => new Options(),
-            'places' => $places
+            'places' => $places,
 		]);
 		//$api->getObjectByCreationType(null, 91555);
 		if(isset($_GET['page'])) {
