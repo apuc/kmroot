@@ -43,7 +43,7 @@ use Kinomania\System\Body\BodyScript;
                     <div class="row-page">
                         <h1 class="pagetitle"><?= $options->get('seo_billboard_h1') ?></h1>
                         <div class="description">
-	                        <?php $city = unserialize($_COOKIE['city'] ?? '') ?>
+	                        <?php $city = unserialize($_COOKIE['city'] ?? '', null) ?>
 	                       <?= $city['city_id']?>
                             Афиша «Киномании» точно знает, в каких кинотеатрах и во сколько идет лучшее кино. Выбирайте ваш город — и мы покажем самые удобные сеансы. Всего пара кликов — и билет у вас в кармане, здесь и сейчас. Приятного просмотра!
                         </div>
