@@ -39,9 +39,9 @@ class IpGeoBase
      */
     public function getLocation($asArray = true)
     {
-        $ip = /*'194.247.179.153';*/self::getRealIpAddr();
+        $ip = '195.218.132.1';//self::getRealIpAddr();
         if ($this->useLocalDB) {
-            $ipDataArray = $this->fromDB($ip) + ['ip' => $ip];
+            $ipDataArray = $this->fromDB($ip);
         } else {
             $ipDataArray = $this->fromSite($ip) + ['ip' => $ip];
         }
@@ -125,13 +125,14 @@ class IpGeoBase
             "SELECT tIp.country_code AS country, tCity.name AS city,
                     tRegion.name AS region, tCity.latitude AS lat,
                     tCity.longitude AS lng
-            FROM (SELECT * FROM `geobase_ip` WHERE ip_begin <= INET_ATON(" . $ip . ") ORDER BY ip_begin DESC LIMIT 1) AS tIp
+            FROM (SELECT * FROM `geobase_ip` WHERE ip_begin <= INET_ATON('" . $ip . "') ORDER BY ip_begin DESC LIMIT 1) AS tIp
             LEFT JOIN `geobase_city` AS tCity ON tCity.id = tIp.city_id
             LEFT JOIN `geobase_region` AS tRegion ON tRegion.id = tCity.region_id
-            WHERE INET_ATON(" . $ip . ") <= tIp.ip_end"
+            WHERE INET_ATON('" . $ip . "') <= tIp.ip_end"
         );
-        if ($result != false) {
-            return $result;
+
+        if ($row = $result->fetch_assoc()) {
+            return $row;
         } else {
             return [];
         }

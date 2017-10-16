@@ -3,6 +3,7 @@
 namespace Kinomania\System\API;
 
 use InvalidArgumentException;
+use Kinomania\System\Db\Db;
 use Kinomania\System\Debug\Debug;
 
 /**
@@ -142,10 +143,10 @@ class APIKassaRambler
     {
         $data['cityID'] = $this->getCityId($city);
         if ($objectId) {
-            if($dateFrom !== null){
+            if ($dateFrom !== null) {
                 $data['dateFrom'] = $dateFrom;
             }
-            if($dateTO !== null){
+            if ($dateTO !== null) {
                 $data['dateTO'] = $dateTO;
             }
             $data['objectID'] = $objectId;
@@ -154,6 +155,17 @@ class APIKassaRambler
         }
         return false;
 
+    }
+
+    public function getFilm($objId)
+    {
+        $db = new Db();
+        $isset = $db->_isset(['ObjectID'=>$objId], 'afisha');
+        if($isset == 0){
+            $film = $this->getObjectByCreationType(null, $objId);
+            //$db->insert((array)$film, 'afisha');
+            Debug::prn((array)$film);
+        }
     }
 
     public function getFiles()
