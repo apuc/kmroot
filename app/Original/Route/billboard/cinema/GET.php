@@ -27,7 +27,6 @@ class GET extends DefaultController
                 'api' => $api,
                 'options' => new Options(),
             ]);
-
             $this->setTemplate('billboard/cinema/index.html.php');
         }
 

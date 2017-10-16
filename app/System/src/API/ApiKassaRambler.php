@@ -4,6 +4,9 @@ namespace Kinomania\System\API;
 
 use InvalidArgumentException;
 use Kinomania\System\Debug\Debug;
+use Kinomania\System\Base\DB;
+use Kinomania\System\Common\TDate;
+use Kinomania\System\Common\TRepository;
 
 /**
  * Created by PhpStorm.
@@ -137,6 +140,35 @@ class APIKassaRambler
         }
         return false;
     }
+    
+    public function insertFilm(array $array){
+    	if($array){
+		    $list = [];
+		    $query = ("	INSERT INTO `afisha`(`HorizonalThumbnail`,`Name`,`Genre`,`Country`,`Duration`, `ReleaseDate`)
+	 					VALUES ($array->HorizonalThumbnail,
+	 							$array->Name, $array->Genre, $array->Country,
+	 							$array->Duration, $array->ReleaseDate)
+						   ");
+		    $result = $this->mysql()->query($query);
+		    while($row = $result->fetch_assoc()) {
+			    $list[] = $row;
+		    }
+		    
+	    }
+    	return false;
+    }
+    public  function selectFilm($id){
+    	if($id){
+		    $list = [];
+		    $query = ("  SELECT * FROM `afisha` WHERE `filmID` = '{$id}'");
+		    $result = $this->mysql()->query($query);
+		    while($row = $result->fetch_assoc()) {
+			    $list[] = $row;
+		    }
+	    }
+    	
+    }
+	
 
     public function getSchedule($objectId, $city, $dateFrom = null, $dateTO = null, $saleSupport = true)
     {

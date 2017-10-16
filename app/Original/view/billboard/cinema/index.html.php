@@ -123,7 +123,7 @@ use Kinomania\System\Body\BodyScript;
                                 <?php $film = $api->getObjectByCreationType(null, $item->CreationObjectID); ?>
                                 <?php \Kinomania\System\Debug\Debug::prn($film) ?>
                                 <div style="border-bottom: solid 1px black">
-                                    <p><img src="<?= $film->HorizonalThumbnail ?>" alt="" width="200px"></p>
+                                    <p><img src="<?=$film->HorizonalThumbnail?>" alt="" width="200px"></p>
                                     <p><b><?= $film->Name ?></b></p>
                                     <p>Жанр: <?= $film->Genre; ?></p>
                                     <p>Страна: <?= $film->Country; ?></p>
