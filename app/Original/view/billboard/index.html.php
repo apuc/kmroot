@@ -42,8 +42,8 @@ use Kinomania\System\Body\BodyScript;
                         <div class="description">
                             Афиша «Киномании» точно знает, в каких кинотеатрах и во сколько идет лучшее кино. Выбирайте ваш город — и мы покажем самые удобные сеансы. Всего пара кликов — и билет у вас в кармане, здесь и сейчас. Приятного просмотра!
                         </div>
-                        <div class="row-outside row-outside-bill bg-color-one row-outside-art clear">
-                            <div class="inner-outside ">
+<!--                        <div class="row-outside row-outside-bill bg-color-one row-outside-art clear">-->
+<!--                            <div class="inner-outside ">-->
 <!--                                <div class="bill-nav">-->
 <!--                                    <ul class="part-filter-list clear">-->
 <!--                                        <li class="part-filter-list__name">Сортировать</li>-->
@@ -108,29 +108,29 @@ use Kinomania\System\Body\BodyScript;
 <!--                                        </div>-->
 <!--                                    </div>-->
 <!--                                </div>-->
-                            </div>
-	                        <strong style="font-size: 34px;">Кинотеатры</strong><!--<a href="/billboard?film">Фильмы</a>-->
-	                        <!--	                    <button id="btn">Показать</button>-->
-	                        <div id="block" >
-		                        <table class="table">
-			                        <thead>
-			                        <tr>
-				                        <td><strong>Кинотеатр:</strong></td>
-				                        <td><strong>Адрес:</strong></td>
-			                        </tr>
-			                        </thead>
-			                        <tbody>
-			                        <?php foreach ($places as $place):?>
-				                        <tr>
-					                        <td><a href="/billboard/cinema?id=<?= $place->ObjectID ?>"><?=$place->Name?></a></td>
-					                        <td> <?=$place->Address?></td>
-				                        </tr>
-			                        <?php endforeach;?>
-			                        </tbody>
-		                        </table>
-	                        </div>
-                        </div>
-	                   
+<!--                            </div>-->
+<!--                        </div>-->
+	                    <strong style="font-size: 34px;">Кинотеатры</strong><!--<a href="/billboard?film">Фильмы</a>-->
+	                    <!--	                    <button id="btn">Показать</button>-->
+	                    <div id="block" >
+		                    <table class="table">
+			                    <thead>
+			                    <tr>
+				                    <td><strong>Кинотеатр:</strong></td>
+				                    <td><strong>Адрес:</strong></td>
+			                    </tr>
+			                    </thead>
+			                    <tbody>
+			                    <?php foreach ($places as $place):?>
+				                    <tr>
+					                    <td><a href="/billboard/cinema?id=<?= $place->ObjectID ?>"><?=$place->Name?></a></td>
+					                    <td> <?=$place->Address?></td>
+				                    </tr>
+			                    <?php endforeach;?>
+			                    </tbody>
+		                    </table>
+	                    </div>
+	                    
                         <div class="pagelist-social style-pagelist-social">
                             <div class="outer-social clear">
                                 <ul class="social-list social-list--horizontal">
