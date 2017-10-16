@@ -2,7 +2,7 @@
 /**
  * @var array $item
  * @var $options Kinomania\System\Options\
- * @var $api \Kinomania\System\Options\Options
+ * @var $places \Kinomania\System\Options\Options
  */
 use Kinomania\System\Body\BodyScript;
 ?>
@@ -44,117 +44,93 @@ use Kinomania\System\Body\BodyScript;
                         </div>
                         <div class="row-outside row-outside-bill bg-color-one row-outside-art clear">
                             <div class="inner-outside ">
-                                <div class="bill-nav">
-                                    <ul class="part-filter-list clear">
-                                        <li class="part-filter-list__name">Сортировать</li>
-                                        <li class="active"><a href="/"><span>по количеству сеансов</span></a></li>
-                                        <li><a href="/"><span>самое новое</span></a></li>
-                                        <li><a href="/"><span>по алфавиту</span></a></li>
-                                    </ul>
-                                </div>
-                                <!--  -->
-                                <div class="row-bill-input">
-                                    <div class="row-form-input">
-                                        <div class="form-input-item clear">
-                                            <div class="row-input">
-                                                <div class="row-dropdown-input">
-                                                    <div class="bill-input-item"><select name="city" id="" class="">
-                                                            <option value="name" selected="selected">Москва</option>
-                                                        </select> </div>
-                                                    <!--  -->
-                                                    <div class="row-drop-down-where bill-input-item">
-                                                        <div class="drop-down-where">
-                                                            Сегодня
-                                                        </div>
-                                                        <div class="outer-calendar drop-down-where-calendar default">
-                                                            <div class="datepicker datepicker-dropdown dropdown-menu datepicker-orient-left datepicker-orient-bottom" style="top: 40px; right: 0px; display: block;">
-                                                                <div class="datepicker-days" style="display: block;">
-                                                                    <table class=" table-condensed">
-                                                                        <thead>
-                                                                        <tr>
-                                                                            <th colspan="7" class="datepicker-title" style="display: none;"></th>
-                                                                        </tr>
-                                                                        <tr class="date">
-                                                                            <th class="prev" style="visibility: visible;">«</th>
-                                                                            <th colspan="5" class="datepicker-switch">Октябрь 2016</th>
-                                                                            <th class="next" style="visibility: visible;">»</th>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th class="dow">Пн</th>
-                                                                            <th class="dow">Вт</th>
-                                                                            <th class="dow">Ср</th>
-                                                                            <th class="dow">Чт</th>
-                                                                            <th class="dow">Пт</th>
-                                                                            <th class="dow">Сб</th>
-                                                                            <th class="dow">Вс</th>
-                                                                        </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--  -->
-                                                    <div class="bill-input-item">
-                                                        <select name="time" id="" class="">
-                                                            <option value="name" selected="selected" title="1">Время сеанса</option>
-                                                        </select> </div>
-                                                    <div class="bill-input-item">
-                                                        <select name="ganre" id="" class="">
-                                                            <option value="name" selected="selected">Жанр фильма</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+<!--                                <div class="bill-nav">-->
+<!--                                    <ul class="part-filter-list clear">-->
+<!--                                        <li class="part-filter-list__name">Сортировать</li>-->
+<!--                                        <li class="active"><a href="/"><span>по количеству сеансов</span></a></li>-->
+<!--                                        <li><a href="/"><span>самое новое</span></a></li>-->
+<!--                                        <li><a href="/"><span>по алфавиту</span></a></li>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                                <div class="row-bill-input">-->
+<!--                                    <div class="row-form-input">-->
+<!--                                        <div class="form-input-item clear">-->
+<!--                                            <div class="row-input">-->
+<!--                                                <div class="row-dropdown-input">-->
+<!--                                                    <div class="bill-input-item"><select name="city" id="" class="">-->
+<!--                                                            <option value="name" selected="selected">Москва</option>-->
+<!--                                                        </select> </div>-->
+<!--                                                    <div class="row-drop-down-where bill-input-item">-->
+<!--                                                        <div class="drop-down-where">-->
+<!--                                                            Сегодня-->
+<!--                                                        </div>-->
+<!--                                                        <div class="outer-calendar drop-down-where-calendar default">-->
+<!--                                                            <div class="datepicker datepicker-dropdown dropdown-menu datepicker-orient-left datepicker-orient-bottom" style="top: 40px; right: 0px; display: block;">-->
+<!--                                                                <div class="datepicker-days" style="display: block;">-->
+<!--                                                                    <table class=" table-condensed">-->
+<!--                                                                        <thead>-->
+<!--                                                                        <tr>-->
+<!--                                                                            <th colspan="7" class="datepicker-title" style="display: none;"></th>-->
+<!--                                                                        </tr>-->
+<!--                                                                        <tr class="date">-->
+<!--                                                                            <th class="prev" style="visibility: visible;">«</th>-->
+<!--                                                                            <th colspan="5" class="datepicker-switch">Октябрь 2016</th>-->
+<!--                                                                            <th class="next" style="visibility: visible;">»</th>-->
+<!--                                                                        </tr>-->
+<!--                                                                        <tr>-->
+<!--                                                                            <th class="dow">Пн</th>-->
+<!--                                                                            <th class="dow">Вт</th>-->
+<!--                                                                            <th class="dow">Ср</th>-->
+<!--                                                                            <th class="dow">Чт</th>-->
+<!--                                                                            <th class="dow">Пт</th>-->
+<!--                                                                            <th class="dow">Сб</th>-->
+<!--                                                                            <th class="dow">Вс</th>-->
+<!--                                                                        </tr>-->
+<!--                                                                        </thead>-->
+<!--                                                                        <tbody>-->
+<!--                                                                        </tbody>-->
+<!--                                                                    </table>-->
+<!--                                                                </div>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="bill-input-item">-->
+<!--                                                        <select name="time" id="" class="">-->
+<!--                                                            <option value="name" selected="selected" title="1">Время сеанса</option>-->
+<!--                                                        </select> </div>-->
+<!--                                                    <div class="bill-input-item">-->
+<!--                                                        <select name="ganre" id="" class="">-->
+<!--                                                            <option value="name" selected="selected">Жанр фильма</option>-->
+<!--                                                        </select>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                             </div>
+	                        <strong style="font-size: 34px;">Кинотеатры</strong><!--<a href="/billboard?film">Фильмы</a>-->
+	                        <!--	                    <button id="btn">Показать</button>-->
+	                        <div id="block" >
+		                        <table class="table">
+			                        <thead>
+			                        <tr>
+				                        <td><strong>Кинотеатр:</strong></td>
+				                        <td><strong>Адрес:</strong></td>
+			                        </tr>
+			                        </thead>
+			                        <tbody>
+			                        <?php foreach ($places as $place):?>
+				                        <tr>
+					                        <td><a href="/billboard/cinema?id=<?= $place->ObjectID ?>"><?=$place->Name?></a></td>
+					                        <td> <?=$place->Address?></td>
+				                        </tr>
+			                        <?php endforeach;?>
+			                        </tbody>
+		                        </table>
+	                        </div>
                         </div>
-	                    <a href="/billboard?page=cinema">Кинотеатры</a> <a href="/billboard?film">Фильмы</a>
-<!--	                    <button id="btn">Показать</button>-->
-	                    <div id="block" >
-		                    
-		                    <?php if(isset($_GET['theatre'])):?>
-			                    <table class="table">
-				                    <thead>
-				                    <tr>
-					                    <td><strong>Адрес:</strong></td>
-					                    <td><strong>Кинотеатр:</strong></td>
-				                    </tr>
-				                    </thead>
-				                    <tbody>
-				                    <?php foreach ($api->getPlaces('Москва')->List as $place):?>
-					                    <tr>
-						                    <td> <?=$place->Address?></td>
-						                    <td> <?=$place->Name?></td>
-					                    </tr>
-				                    <?php endforeach;?>
-				                    </tbody>
-			                    </table>
-		                    <?php elseif (isset($_GET['film'])):?>
-<!--			                    --><?php //Kinomania\System\Debug\Debug::prn($api->getListFromType('Москва')->List);?>
-		                    <table class="table">
-			                    <thead>
-			                    <tr>
-				                    <td><strong>Кинотеатр:</strong></td>
-				                    <td><strong>Фильмы</strong></td>
-			                    </tr>
-			                    </thead>
-			                    <tbody>
-<!--			                    --><?php //$api->getFilmsForPlaces('Москва');?>
-			                    <?php foreach ($api->getFilmsForPlaces('Москва') as $film):?>
-				                    <tr>
-					                    <td><?=$film['id']?><td>
-					                    <td><?=$film['film']?></td>
-				                    </tr>
-			                    <?php endforeach;?>
-			                    </tbody>
-		                    </table>
-		                    <?php endif;?>
-	                    </div>
+	                   
                         <div class="pagelist-social style-pagelist-social">
                             <div class="outer-social clear">
                                 <ul class="social-list social-list--horizontal">
