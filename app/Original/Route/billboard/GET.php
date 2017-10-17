@@ -16,8 +16,7 @@ class GET extends DefaultController
     {
         $api = new AKR('eed094a6-b7cc-4529-b858-a60f26a57f6f', 'json');
 	    $db = new Db();
-	    $result = $db->find('company', 'status')->one();
-	    Debug::prn($result);
+	  
         $city = IpGeoBase::getCityInfo();
 
         $places = $api->getPlaces($city['city'])->List;

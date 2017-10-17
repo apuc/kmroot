@@ -24,10 +24,10 @@ class AJAX extends DefaultController
         $db = new Db();
         $arr = ['t1.`name`' => $query];
        
-        $result = $db->find('geobase_city as t1', 't1.`name` as `city`, t2.`name` as `region`, t1.id as `city_id`')
+        $result = $db->find('`geobase_city` AS t1', 't1.`name` as `city`, t2.`name` as `region`, t1.id as `city_id`')
            ->leftJoin('`geobase_region` AS t2', 't1.`region_id` = t2.`id`')
-           ->where($arr, '')
-           ->limit('10')->all();
+           ->where($arr)
+           ->limit(10)->all();
 	    Debug::prn($result); exit();
         /*$result = $this->mysql()->query("SELECT t1.`name` as `city`, t2.`name` as `region`, t1.id as `city_id`
                           FROM `geobase_city` AS t1

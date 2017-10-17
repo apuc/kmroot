@@ -173,7 +173,7 @@ class Db
                         if ($direct) {
                             $query .= " $k LIKE '$v'";
                         } else {
-                            $query .= " $k LIKE '%$v%'";
+                            $query .= " $k LIKE '% $v %'";
                         }
                     }
                 }
