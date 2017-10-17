@@ -4948,3 +4948,149 @@ ul li a.filter.active {
 .bx-pager {
     left: 23%!important;
 }
+
+/* The Modal (background) */
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* modal button */
+
+
+
+/* modal style */
+
+.content {
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    max-width: 470px;
+    min-height: 250px;
+    background-image: url(/app/img/modal-bg.jpg);
+    background-size: cover;
+}
+
+/* The Close Button */
+
+.__close {
+    position: relative;
+    bottom: 10px;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.__close:hover,
+.__close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* modal title */
+
+.content__title {
+    text-align: center;
+}
+
+.content__title h2 {
+    margin-bottom: 10px;
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.content__title p {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+#form {
+    width: 85%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#city {
+    width: 75ы%;
+    margin-right: 10px;
+    padding: 5px 10px;
+    font-weight: 700;
+    font-size: 15px;
+    box-shadow: inset 0 0 1px grey;
+    border: 1px solid #888888;
+    letter-spacing: 1px;
+}
+
+#find-city {
+    width: 25%;
+    padding: 5px 0;
+    font-weight: 700;
+    font-size: 14px;
+    background-color: #199fe9;
+    color: white;
+    border: 2px solid #61bdf0;
+    border-bottom: none;
+    box-shadow: 0 2px 2px #0b4b73;
+    transition: background-color 0.2s;
+}
+
+#find-city:hover {
+    background-color: #0b4b73;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.cities {
+    width: 75%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.city {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: left;
+}
+
+.city a {
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #282828;
+}
+
+.city a:hover,
+.city a:active,
+.city a:focus {
+    text-decoration: underline;
+    opacity: 0.85;
+}
+
+.city-region:hover {
+    background-color: gainsboro;
+}
+
+.location-result{
+    width: 400px;
+    border: 1px solid black;
+    text-align: left;
+    padding: 5px;
+    display: none;
+}
+
+/* The Modal end */

@@ -4,7 +4,9 @@
  * @copyright Copyright (c) 2014 HimikLab
  * @license http://opensource.org/licenses/MIT MIT
  */
+
 namespace Kinomania\System\GeoLocation;
+
 use Kinomania\System\Common\TRepository;
 use Kinomania\System\Debug\Debug;
 
@@ -29,7 +31,7 @@ class IpGeoBase
     const DB_CITY_TABLE_NAME = '{{%geobase_city}}';
     const DB_REGION_TABLE_NAME = '{{%geobase_region}}';
     /** @var bool $useLocalDB Использовать ли локальную базу данных */
-    public $useLocalDB = true;
+    public $useLocalDB = false;
 
     /**
      * Определение географического положеня по IP-адресу.
@@ -39,17 +41,34 @@ class IpGeoBase
      */
     public function getLocation($asArray = true)
     {
-        $ip = '195.218.132.1';//self::getRealIpAddr();
+        //$ip = '217.118.81.17';
+        //$ip = '195.218.132.1';
+        $ip = self::getRealIpAddr();
         if ($this->useLocalDB) {
-            $ipDataArray = $this->fromDB($ip);
+            $ipDataArray = $this->fromDB($ip) + ['ip' => $ip];
         } else {
             $ipDataArray = $this->fromSite($ip) + ['ip' => $ip];
         }
         if ($asArray) {
             return $ipDataArray;
-        } else {
-            return new IpData($ipDataArray);
         }
+
+        return new IpData($ipDataArray);
+    }
+
+    public static function getCityInfo()
+    {
+        $obj = new IpGeoBase();
+        $city = unserialize($_COOKIE['city'] ?? '', []);
+        if (empty($city)) {
+            $city = $obj->getLocation();
+        }
+        return $city;
+    }
+
+    public static function getSelf()
+    {
+        return get_class();
     }
 
     /**
@@ -111,7 +130,7 @@ class IpGeoBase
             'city' => isset($ipData->city) ? (string)$ipData->city : null,
             'region' => isset($ipData->region) ? (string)$ipData->region : null,
             'lat' => isset($ipData->lat) ? (string)$ipData->lat : null,
-            'lng' => isset($ipData->lng) ? (string)$ipData->lng : null
+            'lng' => isset($ipData->lng) ? (string)$ipData->lng : null,
         ];
     }
 
@@ -122,7 +141,7 @@ class IpGeoBase
     protected function fromDB($ip)
     {
         $result = $this->mysql()->query(
-            "SELECT tIp.country_code AS country, tCity.name AS city,
+            "SELECT tIp.country_code AS country, tCity.name AS city, tCity.id AS city_id,
                     tRegion.name AS region, tCity.latitude AS lat,
                     tCity.longitude AS lng
             FROM (SELECT * FROM `geobase_ip` WHERE ip_begin <= INET_ATON('" . $ip . "') ORDER BY ip_begin DESC LIMIT 1) AS tIp
@@ -167,9 +186,11 @@ class IpGeoBase
             $cities[$row[0]][2] = "'" . $uniqueRegions[$regionName] . "'"; // region_id
             $cities[$row[0]][3] = $row[4]; // latitude
             $cities[$row[0]][4] = $row[5]; // longitude
-            $queryValues .= implode(',', $cities[$row[0]]).')';
+            $queryValues .= implode(',', $cities[$row[0]]) . ')';
 
-            if(next($citiesArray)) $queryValues .= ',';
+            if (next($citiesArray)) {
+                $queryValues .= ',';
+            }
         }
         // города
         //Yii::$app->db->createCommand()->truncateTable(self::DB_CITY_TABLE_NAME)->execute();
@@ -183,9 +204,11 @@ class IpGeoBase
         //$regions = [];
         foreach ($uniqueRegions as $regionUniqName => $regionUniqId) {
             $queryValuesRegions .= '(';
-            $queryValuesRegions .= $regionUniqId.", '".$regionUniqName . "'";
+            $queryValuesRegions .= $regionUniqId . ", '" . $regionUniqName . "'";
             $queryValuesRegions .= ')';
-            if(next($uniqueRegions)) $queryValuesRegions .= ',';
+            if (next($uniqueRegions)) {
+                $queryValuesRegions .= ',';
+            }
         }
         //Yii::$app->db->createCommand()->truncateTable(self::DB_REGION_TABLE_NAME)->execute();
         //Debug::prn("INSERT INTO `geobase_region` (`id`, `name`) VALUES ". $queryValuesRegions);die();
@@ -193,7 +216,7 @@ class IpGeoBase
             "TRUNCATE TABLE `geobase_region`"
         );
         $this->mysql()->query(
-            "INSERT INTO `geobase_region` (`id`, `name`) VALUES ". $queryValuesRegions
+            "INSERT INTO `geobase_region` (`id`, `name`) VALUES " . $queryValuesRegions
         );
     }
 
@@ -216,7 +239,7 @@ class IpGeoBase
             $row = explode("\t", $ip);
             $values .= '(' . (float)$row[0] .
                 ',' . (float)$row[1] .
-                ",'" . (string)($row[3]) ."'".
+                ",'" . (string)($row[3]) . "'" .
                 ',' . ($row[4] !== '-' ? (int)$row[4] : 0) .
                 ')';
             ++$i;
@@ -252,7 +275,7 @@ class IpGeoBase
         if ($fileData == false) {
             return false;
         }
-        $fileName = $_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR .
+        $fileName = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR .
             'System' . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'GeoLocation' . DIRECTORY_SEPARATOR .
             substr(strrchr(self::ARCHIVE_URL, '/'), 1);
         if (file_put_contents($fileName, $fileData) != false) {
@@ -277,7 +300,7 @@ class IpGeoBase
             $curl = curl_init($url);
             curl_setopt_array($curl, [
                 CURLOPT_HEADER => false,
-                CURLOPT_RETURNTRANSFER => true
+                CURLOPT_RETURNTRANSFER => true,
             ]);
             $data = curl_exec($curl);
             curl_close($curl);
@@ -289,17 +312,12 @@ class IpGeoBase
 
     public static function getRealIpAddr()
     {
-        if (!empty($_SERVER['HTTP_CLIENT_IP']))
-        {
-            $ip=$_SERVER['HTTP_CLIENT_IP'];
-        }
-        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))
-        {
-            $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
-        }
-        else
-        {
-            $ip=$_SERVER['REMOTE_ADDR'];
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $ip = $_SERVER['REMOTE_ADDR'];
         }
         return $ip;
     }

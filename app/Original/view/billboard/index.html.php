@@ -5,6 +5,8 @@
  * @var $places \Kinomania\System\Options\Options
  */
 use Kinomania\System\Body\BodyScript;
+use Kinomania\System\GeoLocation\IpGeoBase;
+
 ?>
 <!doctype html>
 <html lang="ru">
@@ -42,76 +44,10 @@ use Kinomania\System\Body\BodyScript;
                         <div class="description">
                             Афиша «Киномании» точно знает, в каких кинотеатрах и во сколько идет лучшее кино. Выбирайте ваш город — и мы покажем самые удобные сеансы. Всего пара кликов — и билет у вас в кармане, здесь и сейчас. Приятного просмотра!
                         </div>
-<!--                        <div class="row-outside row-outside-bill bg-color-one row-outside-art clear">-->
-<!--                            <div class="inner-outside ">-->
-<!--                                <div class="bill-nav">-->
-<!--                                    <ul class="part-filter-list clear">-->
-<!--                                        <li class="part-filter-list__name">Сортировать</li>-->
-<!--                                        <li class="active"><a href="/"><span>по количеству сеансов</span></a></li>-->
-<!--                                        <li><a href="/"><span>самое новое</span></a></li>-->
-<!--                                        <li><a href="/"><span>по алфавиту</span></a></li>-->
-<!--                                    </ul>-->
-<!--                                </div>-->
-<!--                                <div class="row-bill-input">-->
-<!--                                    <div class="row-form-input">-->
-<!--                                        <div class="form-input-item clear">-->
-<!--                                            <div class="row-input">-->
-<!--                                                <div class="row-dropdown-input">-->
-<!--                                                    <div class="bill-input-item"><select name="city" id="" class="">-->
-<!--                                                            <option value="name" selected="selected">Москва</option>-->
-<!--                                                        </select> </div>-->
-<!--                                                    <div class="row-drop-down-where bill-input-item">-->
-<!--                                                        <div class="drop-down-where">-->
-<!--                                                            Сегодня-->
-<!--                                                        </div>-->
-<!--                                                        <div class="outer-calendar drop-down-where-calendar default">-->
-<!--                                                            <div class="datepicker datepicker-dropdown dropdown-menu datepicker-orient-left datepicker-orient-bottom" style="top: 40px; right: 0px; display: block;">-->
-<!--                                                                <div class="datepicker-days" style="display: block;">-->
-<!--                                                                    <table class=" table-condensed">-->
-<!--                                                                        <thead>-->
-<!--                                                                        <tr>-->
-<!--                                                                            <th colspan="7" class="datepicker-title" style="display: none;"></th>-->
-<!--                                                                        </tr>-->
-<!--                                                                        <tr class="date">-->
-<!--                                                                            <th class="prev" style="visibility: visible;">«</th>-->
-<!--                                                                            <th colspan="5" class="datepicker-switch">Октябрь 2016</th>-->
-<!--                                                                            <th class="next" style="visibility: visible;">»</th>-->
-<!--                                                                        </tr>-->
-<!--                                                                        <tr>-->
-<!--                                                                            <th class="dow">Пн</th>-->
-<!--                                                                            <th class="dow">Вт</th>-->
-<!--                                                                            <th class="dow">Ср</th>-->
-<!--                                                                            <th class="dow">Чт</th>-->
-<!--                                                                            <th class="dow">Пт</th>-->
-<!--                                                                            <th class="dow">Сб</th>-->
-<!--                                                                            <th class="dow">Вс</th>-->
-<!--                                                                        </tr>-->
-<!--                                                                        </thead>-->
-<!--                                                                        <tbody>-->
-<!--                                                                        </tbody>-->
-<!--                                                                    </table>-->
-<!--                                                                </div>-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                    <div class="bill-input-item">-->
-<!--                                                        <select name="time" id="" class="">-->
-<!--                                                            <option value="name" selected="selected" title="1">Время сеанса</option>-->
-<!--                                                        </select> </div>-->
-<!--                                                    <div class="bill-input-item">-->
-<!--                                                        <select name="ganre" id="" class="">-->
-<!--                                                            <option value="name" selected="selected">Жанр фильма</option>-->
-<!--                                                        </select>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-	                    <strong style="font-size: 34px;">Кинотеатры</strong><!--<a href="/billboard?film">Фильмы</a>-->
-	                    <!--	                    <button id="btn">Показать</button>-->
+<!--
+	                    <strong style="font-size: 34px;">Кинотеатры г.
+                        <?= \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo()['city'] ?>
+                        </strong>
 	                    <div id="block" >
 		                    <table class="table">
 			                    <thead>

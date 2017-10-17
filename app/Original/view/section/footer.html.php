@@ -45,14 +45,15 @@
         $(document).ready(function () {
             var modal = document.getElementById('modalWrap');
             var span = document.getElementsByClassName("__close")[0];
-            console.log(modal);
-            <?php if (!isset($_COOKIE['city'])): ?>
-                modal.style.display = "block";
+
+            <?php if(!isset($_COOKIE['city'])): ?>
+            modal.style.display = "block";
             <?php endif; ?>
-            span.onclick = function() {
+
+            span.onclick = function () {
                 modal.style.display = "none";
             }
-            window.onclick = function(event) {
+            window.onclick = function (event) {
                 if (event.target == modal) {
                     modal.style.display = "none";
                 }
@@ -162,8 +163,10 @@
         </div>
         <form id="form" method="get">
             <div class="inputs">
-                <?php $city = unserialize($_COOKIE['city'] ?? '') ?>
-                <input type="text" data-id="<?= $city['city_id']?>" id="city" class="search-location" value="<?= $city['city']?>">
+                <?php $city = \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo(); ?>
+                <div>Ваш город - <?= $city['city'] ?>?</div>
+                <input type="text" data-id="<?= $city['city_id'] ?>" id="city" class="search-location"
+                       value="<?= $city['city'] ?>">
                 <input type="submit" id="find-city" class="button-location" value="Сохранить">
             </div>
             <div class="cities">
