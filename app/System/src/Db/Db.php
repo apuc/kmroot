@@ -310,7 +310,7 @@ class Db
     public function find($table, $select)
     {
         $this->table = $table;
-        $this->query = "SELECT " . $select . " FROM `$table`";
+        $this->query = "SELECT " . $select . " FROM $table";
         return $this;
     }
 

@@ -28,18 +28,18 @@ class AJAX extends DefaultController
            ->leftJoin('`geobase_region` AS t2', 't1.`region_id` = t2.`id`')
            ->where($arr)
            ->limit(10)->all();
-	    Debug::prn($result); exit();
+        
         /*$result = $this->mysql()->query("SELECT t1.`name` as `city`, t2.`name` as `region`, t1.id as `city_id`
                           FROM `geobase_city` AS t1
                           LEFT JOIN `geobase_region` AS t2 ON t1.`region_id` = t2.`id`
                           WHERE t1.`name` LIKE '%".$query."%' LIMIT 10");*/
         
 
-        while ($row = $result->fetch_assoc()) {
+        /*while ($row = $result->fetch_assoc()) {
             $cities[] = $row;
-        }
+        }*/
 
-        $this->setContent(json_encode($cities));
+        $this->setContent(json_encode($result));
     }
 
     public function set()
