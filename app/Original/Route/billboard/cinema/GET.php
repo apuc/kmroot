@@ -27,23 +27,4 @@ class GET extends DefaultController
         ]);
         $this->setTemplate('billboard/cinema/index.html.php');
     }
-
-
-    //if (isset($_GET['id'])) {
-    //    $schedule = $api->getSchedule(
-    //        $_GET['id'],
-    //        $ip->getLocation()['city'],
-    //        date('Y-m-d'),
-    //        date('Y-m-d', time() + 86000));
-    //    $cinema = $api->getObject($_GET['id']);
-    //
-    //    $this->addData([
-    //        'schedule' => $schedule,
-    //        'cinema' => $cinema,
-    //        'api' => $api,
-    //        'options' => new Options(),
-    //    ]);
-    //
-    //    $this->setTemplate('billboard/cinema/index.html.php');
-    //}
 }

@@ -44,7 +44,7 @@ use Kinomania\System\GeoLocation\IpGeoBase;
                         <div class="description">
                             Афиша «Киномании» точно знает, в каких кинотеатрах и во сколько идет лучшее кино. Выбирайте ваш город — и мы покажем самые удобные сеансы. Всего пара кликов — и билет у вас в кармане, здесь и сейчас. Приятного просмотра!
                         </div>
-<!--
+
 	                    <strong style="font-size: 34px;">Кинотеатры г.
                         <?= \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo()['city'] ?>
                         </strong>
@@ -92,19 +92,6 @@ use Kinomania\System\GeoLocation\IpGeoBase;
             $(this).hide();
             return false;
         });
-        /*if ($("#btn").html() ==='Показать'){
-	        $( "#btn" ).on( "click", function() {
-		        $("#block").show('slow');
-		        $("#btn").html('Скрыть');
-	        });
-        }
-        if($("#btn").html() === 'Скрыть') {
-	        $( "#btn" ).on( "click", function() {
-		        $("#block").hide('slow');
-		        $("#btn").html('Показать');
-	        });
-        }*/
-	   
     });
 </script>
   <?php BodyScript::getContent();?>

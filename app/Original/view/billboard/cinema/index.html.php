@@ -4,7 +4,6 @@
  * @var $options Kinomania\System\Options\
  * @var $schedule object
  * @var $cinema object
- * @var $api \Kinomania\System\API\APIKassaRambler
  * @var $location \Kinomania\System\GeoLocation\IpGeoBase;
  */
 use Kinomania\System\Body\BodyScript;
@@ -74,19 +73,6 @@ use Kinomania\System\Body\BodyScript;
             $(this).hide();
             return false;
         });
-        /*if ($("#btn").html() ==='Показать'){
-	        $( "#btn" ).on( "click", function() {
-		        $("#block").show('slow');
-		        $("#btn").html('Скрыть');
-	        });
-        }
-        if($("#btn").html() === 'Скрыть') {
-	        $( "#btn" ).on( "click", function() {
-		        $("#block").hide('slow');
-		        $("#btn").html('Показать');
-	        });
-        }*/
-	   
     });
 </script>
   <?php BodyScript::getContent();?>
