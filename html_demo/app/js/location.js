@@ -12,7 +12,7 @@ $(document).ready(function () {
             url: '/location?handler=get',
             data: {'q': q},
             success: function (data) {
-                console.log(data);
+                /*console.log(data);*/
                 $('input.search-location').data('id', 0);
                 var string = '';
                 data = JSON.parse(data);
