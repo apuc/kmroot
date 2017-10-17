@@ -164,7 +164,7 @@
         <form id="form" method="get">
             <div class="inputs">
                 <?php $city = \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo(); ?>
-                <div>Ваш город - <?= $city['city'] ?>?</div>
+                <div class="new__class" >Ваш город - <?= $city['city'] ?>?</div>
                 <input type="text" data-id="<?= $city['city_id'] ?>" id="city" class="search-location"
                        value="<?= $city['city'] ?>">
                 <input type="submit" id="find-city" class="button-location" value="Сохранить">

@@ -239,9 +239,13 @@ img.load-ajax {
 
 .content__title p {
     margin-top: 0;
-    margin-bottom: 25px;
+    margin-bottom: -20px;
     font-weight: 400;
     font-size: 13px;
+}
+
+.new__class {
+    margin: 20px;
 }
 
 #form {
