@@ -132,7 +132,7 @@ class Db
             $value = substr($value, 0, -1);
             $key .= ")";
             $value .= ")";
-            $query .= $key . "VALUES" . $value;
+            $query .= $key . 'VALUES' . $value;
             if ($this->rawQuery($query)) {
                 return mysqli_insert_id($this->connect);
             } else {
@@ -162,7 +162,7 @@ class Db
                 }
             }
             $query = substr($query, 0, -1);
-            $query .= " WHERE";
+            $query .= ' WHERE';
             foreach ($where as $k => $v) {
                 if ($k == 'id') {
                     $query .= " $k = $v";
@@ -177,7 +177,7 @@ class Db
                         }
                     }
                 }
-                $query .= " AND";
+                $query .= ' AND';
             }
             $query = substr($query, 0, -3);
             //prn($query);
@@ -258,7 +258,7 @@ class Db
                     }
                 }
             }
-            $query .= " AND";
+            $query .= ' AND';
         }
         //var_dump($query);
         $query = substr($query, 0, -3);
@@ -278,7 +278,7 @@ class Db
     public function getWhere($data, $table, $direct = false)
     {
         $query = "SELECT * FROM `$table` ";
-        $query .= " WHERE";
+        $query .= ' WHERE';
         foreach ($data as $k => $v) {
             if ($k == 'id') {
                 $query .= " $k = $v";
@@ -293,7 +293,7 @@ class Db
                     }
                 }
             }
-            $query .= " AND";
+            $query .= ' AND';
         }
         //var_dump($query);
         $query = substr($query, 0, -3);
@@ -310,7 +310,7 @@ class Db
     public function find($table, $select)
     {
         $this->table = $table;
-        $this->query = "SELECT " . $select . " FROM $table";
+        $this->query = 'SELECT ' . $select . " FROM $table";
         return $this;
     }
 
@@ -322,7 +322,7 @@ class Db
      */
     public function where($data, $logics = 'AND', $direct = false)
     {
-        $this->query .= " WHERE";
+        $this->query .= ' WHERE';
         foreach ($data as $k => $v) {
             if ($k == 'id') {
                 $this->query .= " $k = $v";
@@ -337,7 +337,7 @@ class Db
                     }
                 }
             }
-            $this->query .= " " . $logics;
+            $this->query .= ' ' . $logics;
 
         }
         //var_dump($query);
@@ -353,7 +353,7 @@ class Db
      */
     public function andWhere($data, $logics = 'AND', $direct = false)
     {
-        $this->query .= " AND (" ;
+        $this->query .= ' AND (';
         foreach ($data as $k => $v) {
             if ($k == 'id') {
                 $this->query .= " $k = $v";
@@ -368,12 +368,12 @@ class Db
                     }
                 }
             }
-            $this->query .= " " . $logics;
+            $this->query .= ' ' . $logics;
 
         }
         //var_dump($query);
         $this->query = substr($this->query, 0, -3);
-        $this->query .=")";
+        $this->query .= ')';
         return $this;
     }
 
@@ -405,7 +405,7 @@ class Db
         }
         //var_dump($query);
         $this->query = substr($this->query, 0, -3);
-        $this->query .=")";
+        $this->query .= ')';
         return $this;
     }
 
@@ -430,7 +430,7 @@ class Db
      */
     public function orderBy($order)
     {
-        $this->query .= " ORDER BY " . $order . " ";
+        $this->query .= ' ORDER BY ' . $order . ' ';
         return $this;
     }
 
@@ -440,7 +440,7 @@ class Db
      */
     public function groupBy($group)
     {
-        $this->query .= " GROUP BY " . $group . " ";
+        $this->query .= ' GROUP BY ' . $group . ' ';
         return $this;
     }
 
@@ -489,15 +489,15 @@ class Db
 
         if (!empty($data)) {
             $query = "INSERT INTO `$table` ";
-            $key = "(";
+            $key = '(';
             foreach ($data[0] as $k => $value) {
-                $key .= $k . ", ";
+                $key .= $k . ', ';
 
             }
             $key = substr($key, 0, -2);
 
-            $key .= ")";
-            $query .= $key . " VALUES ";
+            $key .= ')';
+            $query .= $key . ' VALUES ';
             foreach($data as $value){
                 $query .= ' (';
                 foreach($value as $item){
