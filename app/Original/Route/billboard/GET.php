@@ -3,6 +3,7 @@ namespace Original\Route_billboard;
 
 use Kinomania\Original\Controller\DefaultController;
 use Kinomania\System\API\AKR;
+use Kinomania\System\Db\Db;
 use Kinomania\System\Debug\Debug;
 use Kinomania\System\GeoLocation\IpGeoBase;
 use Kinomania\System\Options\Options;
@@ -14,7 +15,9 @@ class GET extends DefaultController
     public function index()
     {
         $api = new AKR('eed094a6-b7cc-4529-b858-a60f26a57f6f', 'json');
-
+	    $db = new Db();
+	    $result = $db->find('company', 'status')->one();
+	    Debug::prn($result);
         $city = IpGeoBase::getCityInfo();
 
         $places = $api->getPlaces($city['city'])->List;

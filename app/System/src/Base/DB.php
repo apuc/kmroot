@@ -24,17 +24,6 @@ class DB
     {
         $this->db = $db;
     }
-    public  function  _isset(array $ar, $bd)
-    {
-    	$list = [];
-    	$query = "SELECT* FROM ". $bd ." WHERE `ObjectID` = " . $ar['ObjectID'] ."";
-	    $result = $this->mysql()->query($query);
-	    while($row = $result->fetch_assoc()) {
-		    $list[] = $row;
-	    }
-	
-	    return $list;
-    }
-
+    
     protected $db;
 }
