@@ -56,15 +56,25 @@ use Kinomania\System\GeoLocation\IpGeoBase;
 				                    <td><strong>Адрес:</strong></td>
 			                    </tr>
 			                    </thead>
-			                    <tbody>
+			                    <tbody class="film__table">
 			                    <?php foreach ($places as $place):?>
 				                    <tr>
-					                    <td><a href="/billboard/cinema?id=<?= $place->ObjectID ?>"><?=$place->Name?></a></td>
-					                    <td> <?=$place->Address?></td>
+					                    <td valign="bottom"><span class="anchor-cube"></span><a href="/billboard/cinema?id=<?= $place->ObjectID ?>"><?=$place->Name?></a> </td>
+					                    <td valign="bottom"> <?=$place->Address?></td>
 				                    </tr>
 			                    <?php endforeach;?>
 			                    </tbody>
 		                    </table>
+<!--		                        <ul class="table">-->
+<!--			                       <td><strong>Кинотеатр:</strong></td>-->
+<!--				                    <td><strong>Адрес:</strong></td>-->
+<!--		                        </ul>-->
+<!--			                    <ul>-->
+<!--				                    --><?php //foreach ($places as $place):?>
+<!--					                    <li><a href="/billboard/cinema?id=--><?//= $place->ObjectID ?><!--">--><?//=$place->Name?><!--</a></li>-->
+<!--					                    <li> --><?//=$place->Address?><!--</li>-->
+<!--				                    --><?php //endforeach;?>
+<!--		                        </ul>-->
 	                    </div>
 	                    
                         <div class="pagelist-social style-pagelist-social">
