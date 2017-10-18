@@ -20,6 +20,9 @@ class GET extends DefaultController
         $city = IpGeoBase::getCityInfo();
 
         $places = $api->getPlaces($city['city'])->List;
+        //Debug::prn($api->getFilmsForPlaces($city['city']));
+        //Debug::prn($api->getFile('fullmovie-schedule-1-18102017161244.xml'));
+        $api->getFilmsForPlaces($city['city']);
         $this->addData([
 			'options' => new Options(),
             'places' => $places,
