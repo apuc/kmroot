@@ -59,7 +59,8 @@ use Kinomania\System\GeoLocation\IpGeoBase;
 			                    <tbody class="film__table">
 			                    <?php foreach ($places as $place):?>
 				                    <tr>
-					                    <td valign="bottom"><span class="anchor-cube">
+					                    <td valign="bottom">
+						                    <span class="anchor-cube">
 						                    </span>
 						                        <a href="/billboard/cinema?id=<?= $place->ObjectID ?>">
 							                        <?=$place->Name?>

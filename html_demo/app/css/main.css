@@ -344,8 +344,8 @@ img.load-ajax {
 
 .table tbody td:first-of-type {
     background-clip: content-box;
-    background-image: -webkit-radial-gradient(circle, #00A1E6, #00A1E6 1px, rgba(0,0,0,0) 1px, rgba(0,0,0,0));
-    background-image: radial-gradient(circle, #00A1E6, #00A1E6 1px, rgba(0,0,0,0) 1px, rgba(0,0,0,0));
+    background-image: -webkit-radial-gradient(circle, rgba(0,161,230,.5), rgba(0,161,230,.5) 1px, rgba(0,0,0,0) 1px, rgba(0,0,0,0));
+    background-image: radial-gradient(circle, rgba(0,161,230,.5), rgba(0,161,230,.5) 1px, rgba(0,0,0,0) 1px, rgba(0,0,0,0));
     background-repeat: repeat-x;
     background-position: left bottom 7px;
     background-size: 5px 1px;
@@ -364,5 +364,4 @@ img.load-ajax {
     background-color: #00A1E6;
     bottom: 2px;
     left: 0;
-
 }
