@@ -112,7 +112,7 @@
                 <div class="autorization">
                     <ul class="autorization-list authorizationContent">
                         <?php $city = \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo(); ?>
-                        <li><a href="#" class="change-location" data-region="<?= $city['region'] ?>" data-city_id="<?= $city['city_id']?>"><span><?= $city['city'] ?></span></a></li>
+                        <li><a href="#" class="change-location" data-region="<?= $city['region'] ?>" data-city_id="<?= (isset($city['city_id'])) ? $city['city_id'] : '' ?>"><span><?= $city['city'] ?></span></a></li>
                         <li><a href="/login/"><span>ВХОД</span></a></li>
                         <li><a href="/registration_/"><span>РЕГИСТРАЦИЯ</span></a></li>
                     </ul>
