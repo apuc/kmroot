@@ -12,7 +12,6 @@ $(document).ready(function () {
             url: '/location?handler=get',
             data: {'q': q},
             success: function (data) {
-                /*console.log(data);*/
                 $('input.search-location').data('id', 0);
                 var string = '';
                 data = JSON.parse(data);
@@ -52,6 +51,29 @@ $(document).ready(function () {
         });
         return false;
     });
+
+	$(document).on('click', '.__close', function () {
+		var city_id =  $('input.search-location').data('id');
+		city_name = $('input.search-location').val();
+		$.ajax({
+			type: 'POST',
+			url: '/location?handler=set',
+			data: {'city_id': city_id},
+			success: function (data) {
+				console.log(data)
+				if(0 != data){
+					$('.overlay-location').hide();
+					$('.change-location').text(data);
+					var modal = document.getElementById('modalWrap');
+					modal.style.display = "none";
+				}else alert('Такой город не найден');
+			},
+		});
+		return false;
+	});
+
+
+
 
     $(document).on('click', '.change-location', function () {
         $('input.search-location').val($(this).text() + '('+ $(this).data('region')+')');
