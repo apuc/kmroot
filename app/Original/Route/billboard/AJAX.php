@@ -17,10 +17,12 @@ class AJAX extends DefaultController
 	{
 		$city = IpGeoBase::getCityInfo();
 		$api = new AKR('eed094a6-b7cc-4529-b858-a60f26a57f6f', 'json');
+		$places = $api->getPlaces($city['city'])->List;
 		$films = $api->getListFromType($city['city'])->List;
 		$this->addData([
 			'options' => new Options(),
 			'films' => $films,
+			'places' => $places,
 				]);
 		$this->setTemplate('billboard/films.html.php');
 	}
