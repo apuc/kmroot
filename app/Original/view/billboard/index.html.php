@@ -7,6 +7,7 @@
  * @var $films_place \Kinomania\System\Options\Options
  * @var $name \Kinomania\System\Options\Options
  * @var $city \Kinomania\System\Options\Options
+ * @var $cinema \Kinomania\System\Options\Options
  */
 use Kinomania\System\Body\BodyScript;
 use Kinomania\System\GeoLocation\IpGeoBase;
@@ -70,19 +71,19 @@ use Kinomania\System\GeoLocation\IpGeoBase;
 				                    </tr>
 				                    </thead>
 				                    <tbody class="film__table">
-				                    <?php foreach ($places as $place):?>
-					                    <tr>
-						                    <td valign="bottom">
-							                    <span class="anchor-cube">
-							                    </span>
-							                        <a href="/billboard/cinema?id=<?= $place->ObjectID ?>">
-								                        <?=$place->Name?>
-							                        </a>
-						                    </td>
-						                    <td valign="bottom">
-							                    <?=$place->Address?>
-						                    </td>
-					                    </tr>
+				                    <?php foreach ($cinema as $place):?>
+						                    <tr>
+							                    <td valign="bottom">
+								                    <span class="anchor-cube">
+								                    </span>
+								                        <a href="/billboard/cinema?id=<?= $place->ObjectID ?>">
+									                        <?=$place->Name?>
+								                        </a>
+							                    </td>
+							                    <td valign="bottom">
+								                    <?=$place->Address?>
+							                    </td>
+						                    </tr>
 				                    <?php endforeach;?>
 				                    </tbody>
 			                    </table>
