@@ -130,7 +130,6 @@ class AKR
 				        }
 			        }
 		        }
-		     
 	            $arrNew = [];
 		         foreach ($arr2 as $ar) {
 		                $arrNew[$ar['theatr']] = [$ar['theatr'], $ar['film']];

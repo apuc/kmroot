@@ -30,6 +30,9 @@ use Kinomania\System\GeoLocation\IpGeoBase;
     <!-- include section/head.html.php -->
 </head>
 <body>
+<div class="overlay-ajax-load"  style="position: absolute;z-index: 100; width: 100%; height: 100%">
+	<img class="load-ajax"  src="<?= $static ?>/app/img/design/load.gif" style="align-self: center">
+</div>
   <!--#include virtual="/design/ssi/top" -->
 <div class="outer">
     <div class="wrap">

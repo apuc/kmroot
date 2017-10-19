@@ -23,6 +23,7 @@ $(document).ready(function () {
 		event.preventDefault();
 		var id = $(this).data('id');
 		var name = $(this).data('name');
+		progressLoad('start');
 		$.ajax({
 			url: "?handler=get_film",
 			type: "get",
@@ -32,8 +33,18 @@ $(document).ready(function () {
 				$('#result').html(data);
 				$('#block_index_afisha').hide();
 				$('#result').show();
+				progressLoad('end');
 			}
 		});
 		return false;
 	});
+	function progressLoad(key) {
+		if(key === 'start'){
+			$('.overlay-ajax-load').fadeIn(300);
+		}
+		if(key === 'end'){
+			$('.overlay-ajax-load').fadeOut(300);
+		}
+
+	}
 });
