@@ -150,7 +150,7 @@ img.load-ajax {
     display: none;
     padding-left: 15px;
     margin-top: 5px;
-    text-align: auto;
+    /*text-align: auto;*/
 }
 
 .location-result{
@@ -316,5 +316,52 @@ img.load-ajax {
 .city-region:hover {
     background-color: gainsboro;
 }
-
 /* The Modal end */
+.film__table{
+    margin-top: 20px;
+}
+
+.film__table td {
+    padding: 5px;
+}
+
+.film__table tr {
+    padding: 5px;
+
+}
+.table{
+    margin-top: 20px;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.table thead tr{
+    height: 40px;
+}
+.table thead tr td{
+    width: 50%;
+}
+
+.table tbody td:first-of-type {
+    background-clip: content-box;
+    background-image: -webkit-radial-gradient(circle, rgba(0,161,230,.5), rgba(0,161,230,.5) 1px, rgba(0,0,0,0) 1px, rgba(0,0,0,0));
+    background-image: radial-gradient(circle, rgba(0,161,230,.5), rgba(0,161,230,.5) 1px, rgba(0,0,0,0) 1px, rgba(0,0,0,0));
+    background-repeat: repeat-x;
+    background-position: left bottom 7px;
+    background-size: 5px 1px;
+}
+
+.anchor-cube {
+    background-color: #ffffff;
+    padding-right: 10px;
+}
+.anchor-cube:before {
+    content: '';
+    position: relative;
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    background-color: #00A1E6;
+    bottom: 2px;
+    left: 0;
+}

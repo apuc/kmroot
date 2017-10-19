@@ -15,14 +15,13 @@ class GET extends DefaultController
     public function index()
     {
         $api = new AKR('eed094a6-b7cc-4529-b858-a60f26a57f6f', 'json');
-	    $db = new Db();
-	  
         $city = IpGeoBase::getCityInfo();
-
         $places = $api->getPlaces($city['city'])->List;
+        $films = $api->getListFromType($city['city'])->List;
         $this->addData([
 			'options' => new Options(),
             'places' => $places,
+	        'films' => $films,
         ]);
 
         if(isset($_GET['test'])){
