@@ -20,12 +20,13 @@ class GET extends DefaultController
         $city = IpGeoBase::getCityInfo();
 
         $places = $api->getPlaces($city['city'])->List;
-        //Debug::prn($api->getFilmsForPlaces($city['city']));
-        //Debug::prn($api->getFile('fullmovie-schedule-1-18102017161244.xml'));
-        $api->getFilmsForPlaces($city['city']);
+        $films = $api->getListFromType($city['city'])->List;
+	    $films_place = $api->getFilmsForPlaces($city['city'], (isset($_GET['id']))? $_GET['id']:'' );
         $this->addData([
 			'options' => new Options(),
             'places' => $places,
+	        'films' => $films,
+			'films_place' => $films_place,
         ]);
 
         if(isset($_GET['test'])){
@@ -34,5 +35,8 @@ class GET extends DefaultController
         else {
             $this->setTemplate('billboard/index.html.php');
         }
+	    if(isset($_GET['id'])){
+		    $this->setTemplate('billboard/films_place.html.php');
+	    }
     }
 }

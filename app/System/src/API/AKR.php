@@ -108,13 +108,13 @@ class AKR
 	     return $this->createQuery('json', 'Movie/object', $data)->jsonToArray();
 	 }
 	
-	 public function getFilmsForPlaces($city)
+	 public function getFilmsForPlaces($city, $idfilm)
 	 {
 	     if (!empty($city)) {
 	         $films = $this->getListFromType($city);
 	         $places = $this->getPlaces($city);
-	         $filmplase = $this->getFile('fullmovie-schedule-1-18102017161244.xml');
-	         //$shedule = $this->getSchedule($id, $date, null, $city, 'true');
+		     $files = $this->getFiles();
+	         $filmplase = $this->getFile($files->Sessions->Files->File['filename']);
 	         $arr = [];
 	         $arr2 = [];
 		        foreach ( $places->List as $place ) {
@@ -125,26 +125,17 @@ class AKR
 		        }
 		        foreach ($films->List as $film){
 		        	foreach ($arr as $item){
-		        		if($film->ObjectID == $item['film']){
+		        		if($film->ObjectID == $idfilm){
 		        			$arr2[] = ['theatr'=> $item['theater'], 'film' => $film->Name];
 				        }
 			        }
 		        }
-		        
-	         Debug::prn($arr2);
-	         
-	         /*foreach ($films as $item){
-	         
-	         }*/
-	         
-	         /*foreach ($shedule->List as $item) {
-	             foreach ($films->List as $item2) {
-	                 if ($item2->ObjectID == $item->CreationObjectID) {
-	                     $arr[] = ['film' => $item2->Name, 'id' => $item->PlaceObjectID];
-	                 }
-	             }
-	         }*/
-	         return $arr;
+		     
+	            $arrNew = [];
+		         foreach ($arr2 as $ar) {
+		                $arrNew[$ar['theatr']] = [$ar['theatr'], $ar['film']];
+		         }
+	         return $arrNew;
 	     }
 	     return false;
 	 }
