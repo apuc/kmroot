@@ -5,6 +5,7 @@
  * @var $places \Kinomania\System\Options\Options
  * @var $films \Kinomania\System\Options\Options
  * @var $films_place \Kinomania\System\Options\Options
+ * @var $name \Kinomania\System\Options\Options
  */
 use Kinomania\System\Body\BodyScript;
 use Kinomania\System\GeoLocation\IpGeoBase;

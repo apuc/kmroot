@@ -1,4 +1,4 @@
-<strong style="font-size: 34px;"><?=$_GET['name']?>
+<strong style="font-size: 34px;"><?=$name?>
 <!--	г.-->
 <?//= \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo()['city'] ?>
 </strong>

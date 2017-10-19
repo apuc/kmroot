@@ -32,6 +32,7 @@ class AJAX extends DefaultController
 		$this->addData([
 			'options' => new Options(),
 			'films_place' => $films_place,
+			'name' => $_GET['name'],
 		]);
 		$this->setTemplate('billboard/films_place.html.php');
 	}
