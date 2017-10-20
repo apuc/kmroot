@@ -17,11 +17,18 @@ class GET extends DefaultController
         $api = new AKR('eed094a6-b7cc-4529-b858-a60f26a57f6f', 'json');
         $city = IpGeoBase::getCityInfo();
         $places = $api->getPlaces($city['city'])->List;
+        $cinema = [];
+        foreach ($places as $place){
+        	if($place->Category == 'Cinema'){
+        		$cinema[] = $place;
+	        }
+        }
         $films = $api->getListFromType($city['city'])->List;
         $this->addData([
 			'options' => new Options(),
             'places' => $places,
 	        'films' => $films,
+	        'cinema' => $cinema,
         ]);
 
         if(isset($_GET['test'])){

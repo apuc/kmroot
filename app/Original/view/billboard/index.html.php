@@ -6,6 +6,8 @@
  * @var $films \Kinomania\System\Options\Options
  * @var $films_place \Kinomania\System\Options\Options
  * @var $name \Kinomania\System\Options\Options
+ * @var $city \Kinomania\System\Options\Options
+ * @var $cinema \Kinomania\System\Options\Options
  */
 use Kinomania\System\Body\BodyScript;
 use Kinomania\System\GeoLocation\IpGeoBase;
@@ -31,7 +33,7 @@ use Kinomania\System\GeoLocation\IpGeoBase;
     <!-- include section/head.html.php -->
 </head>
 <body>
-<div class="overlay-ajax-load"  style="position: absolute;z-index: 100; width: 100%; height: 100%">
+<div class="overlay-ajax-load"  style="position: absolute;z-index: 100; width: 0px; height: 0px;">
 	<img class="load-ajax"  src="<?= $static ?>/app/img/design/load.gif" style="align-self: center">
 </div>
   <!--#include virtual="/design/ssi/top" -->
@@ -69,19 +71,19 @@ use Kinomania\System\GeoLocation\IpGeoBase;
 				                    </tr>
 				                    </thead>
 				                    <tbody class="film__table">
-				                    <?php foreach ($places as $place):?>
-					                    <tr>
-						                    <td valign="bottom">
-							                    <span class="anchor-cube">
-							                    </span>
-							                        <a href="/billboard/cinema?id=<?= $place->ObjectID ?>">
-								                        <?=$place->Name?>
-							                        </a>
-						                    </td>
-						                    <td valign="bottom">
-							                    <?=$place->Address?>
-						                    </td>
-					                    </tr>
+				                    <?php foreach ($cinema as $place):?>
+						                    <tr>
+							                    <td valign="bottom">
+								                    <span class="anchor-cube">
+								                    </span>
+								                        <a href="/billboard/cinema?id=<?= $place->ObjectID ?>">
+									                        <?=$place->Name?>
+								                        </a>
+							                    </td>
+							                    <td valign="bottom">
+								                    <?=$place->Address?>
+							                    </td>
+						                    </tr>
 				                    <?php endforeach;?>
 				                    </tbody>
 			                    </table>

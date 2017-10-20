@@ -1,6 +1,7 @@
 $(document).ready(function () {
 	$(document).on('click', '#films', function () {
 		event.preventDefault();
+		progressLoad('start');
 		$.ajax({
 			url: "?handler=get",
 			type: "get",
@@ -8,6 +9,7 @@ $(document).ready(function () {
 				$('#result').html(response);
 				$('#block_index_afisha').hide();
 				$('#result').show();
+				progressLoad('end');
 
 			}
 		});
@@ -29,7 +31,6 @@ $(document).ready(function () {
 			type: "get",
 			data: {id:id, name:name},
 			success: function(data) {
-				console.log(data);
 				$('#result').html(data);
 				$('#block_index_afisha').hide();
 				$('#result').show();
