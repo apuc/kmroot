@@ -31,7 +31,7 @@ class IpGeoBase
     const DB_CITY_TABLE_NAME = '{{%geobase_city}}';
     const DB_REGION_TABLE_NAME = '{{%geobase_region}}';
     /** @var bool $useLocalDB Использовать ли локальную базу данных */
-    public $useLocalDB = false;
+    public $useLocalDB = true;
 
     /**
      * Определение географического положеня по IP-адресу.
