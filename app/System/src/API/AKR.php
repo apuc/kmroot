@@ -194,7 +194,7 @@ class AKR
 				    $obj['id'] = $film->ObjectID;
 			    }
 		    }
-		    return $obj['id'];
+		    return $obj;
 	    }
     }
     

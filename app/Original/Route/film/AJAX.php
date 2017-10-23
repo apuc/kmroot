@@ -122,17 +122,19 @@ class AJAX extends DefaultController
 		$api = new AKR('eed094a6-b7cc-4529-b858-a60f26a57f6f', 'json');
 		$cityId = $api->getCityId($city['city']);
 		$filmID = $api->getIDbyName($cityId, $_GET['name']);
-		
-		$films_place = $api->getCinemasByFilm( $cityId,$filmID );
-		$this->addData( [
-			'options'     => new Options(),
-			'films_place' => $films_place,
-			'cityId'      => $cityId,
-			'name'        => $_GET['name'],
-			'id'          => $filmID,
-		] );
-		$this->setTemplate( 'film/films_place.html.php' );
-		
+		if(!empty($filmID['id'])) {
+			$films_place = $api->getCinemasByFilm( $cityId,$filmID['id'] );
+			$this->addData( [
+				'options'     => new Options(),
+				'films_place' => $films_place,
+				'cityId'      => $cityId,
+				'name'        => $_GET['name'],
+				'id'          => $filmID['id'],
+			] );
+			$this->setTemplate( 'film/films_place.html.php' );
+		} else {
+			exit();
+		}
 	}
 	
 	public function get_sessions()
