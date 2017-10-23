@@ -636,7 +636,7 @@ use Kinomania\System\Body\BodyScript;
                             <div class="row-tabs">
                                 <ul class="tabs-list clear">
                                     <li class="tabs-list-name"><span>СМОТРЕТЬ</span></li>
-                                    <li id="infilm" class=""  data-name="<?= $item[Film::NAME_RU] ?>" data-type-sliderGroup="smotr" data-type-sliderButton="1"><a><span>В КИНО</span></a></li>
+                                    <li id="infilm" data-show="0" class=""  data-name="<?= $item[Film::NAME_RU] ?>" data-type-sliderGroup="smotr" data-type-sliderButton="1"><a><span>В КИНО</span></a></li>
                                     <li class="" data-type-sliderGroup="smotr" data-type-sliderButton="2"><a><span>ОНЛАЙН</span></a></li>
                                     <li class="active" data-type-sliderGroup="smotr" data-type-sliderButton="3"><a><span>НА ТВ</span></a></li>
                                 </ul>
@@ -651,7 +651,7 @@ use Kinomania\System\Body\BodyScript;
                             </div>
                             <div class="row-session-table" data-type-sliderGroup="smotr" data-type-sliderElem="1">
 	                            <div id="result"></div>
-	                            <p style="text-align: center;" id="none">Данные отсутсвуют</p>
+	                            <p style="text-align: center;" id="inFilmBox"><img src="<?= $static ?>/app/img/design/load.gif" width="100px"></p>
                             </div>
                             <div class="row-session-table" data-type-sliderGroup="smotr" data-type-sliderElem="2">
                                 <p style="text-align: center;">Данные отсутсвуют</p>
@@ -1045,6 +1045,7 @@ use Kinomania\System\Body\BodyScript;
 
     <link rel="stylesheet" href="<?= $static ?>/app/js/plugins/mp/magnific-popup.css">
     <script src="<?= $static ?>/app/js/plugins/mp/jquery.magnific-popup.js"></script>
+<script type="text/javascript" src="https://kassa.rambler.ru/s/widget/js/TicketManager.js"></script>
 <script type="text/javascript" src="<?= $static ?>/vendor/cms/jquery/jquery.lazyload.min.js"></script>
 <script type="text/javascript" src="<?= $static ?>/app/js/film.js"></script>
     <script type="text/javascript">
