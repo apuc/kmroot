@@ -93,7 +93,7 @@ use Kinomania\System\GeoLocation\IpGeoBase;
 		                    </div>
 	                    </div>
 	                    
-                        <div class="pagelist-social style-pagelist-social">
+                        <div class="pagelist-social style-pagelist-social" style="position: relative; float: left;">
                             <div class="outer-social clear">
                                 <ul class="social-list social-list--horizontal">
                                     <li class="vk" id="vk_in_share" data-url="billboard"><a href="http://vkontakte.ru/share.php?url=http%3A%2F%2Fkinomania.ru%2Fbillboard/"><span class="number"></span></a></li>

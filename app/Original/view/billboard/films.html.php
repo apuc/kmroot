@@ -4,23 +4,31 @@
 <div id="block" >
     <table class="table">
         <thead>
-        <tr>
-            <td><strong>Фильмы:</strong></td>
-        </tr>
+	        <tr>
+	            <td><strong>Фильмы:</strong></td>
+	        </tr>
         </thead>
-        <tbody class="film__table">
-	        <?php foreach ($films as $film):?>
-	            <tr>
-	                <td valign="bottom" style="padding-bottom: 15px;">
-	                    <span class="anchor-cube">
-	                    </span>
-	                        <a data-id="<?=$film->ObjectID?>" data-name="<?=$film->Name?>" href="#" id="film">
-		                        <?=$film->Name?>
-	                        </a>
-	                </td>
-	            </tr>
-	        <?php endforeach;?>
-        </tbody>
     </table>
+	<div  width: 100%">
+	    <?php foreach ($films as $film):?>
+	        <div style="
+    float: left;
+    position: relative;
+    width: 30%;
+    height: 230px;
+    margin: 1.66%;">
+	            <div style="overflow: hidden; position: relative; width: 230px; height: 135px;" >
+	                <img style="max-width: 100%; object-fit: contain; top: 20%; transform: translateY(-50%);
+    position: absolute;
+    left: 0;" src="<?=$film->Thumbnail?>">
+	            </div>
+	            <p><?=$film->Genre?></p>
+	                <a data-id="<?=$film->ObjectID?>" data-name="<?=$film->Name?>" href="#" id="film">
+	                    <?=$film->Name?>
+	                </a>
+	            <p>Премьера(РФ): <?=$film->ReleaseDate?></p>
+	        </div>
+	    <?php endforeach;?>
+	</div>
 </div>
 <!--End Ticket widget-->
