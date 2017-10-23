@@ -11,7 +11,7 @@
         <tbody class="film__table">
 	        <?php foreach ($films as $film):?>
 	            <tr>
-	                <td valign="bottom">
+	                <td valign="bottom" style="padding-bottom: 15px;">
 	                    <span class="anchor-cube">
 	                    </span>
 	                        <a data-id="<?=$film->ObjectID?>" data-name="<?=$film->Name?>" href="#" id="film">

@@ -19,7 +19,7 @@
         <tbody class="film__table">
         <?php foreach ($films_place as $item): ?>
             <tr>
-                <td valign="bottom">
+                <td valign="bottom" style="padding-bottom: 15px;">
                     <span class="anchor-cube">
                     </span>
                     <?= $item->Name ?>
