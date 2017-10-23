@@ -184,6 +184,20 @@ class AKR
         }
         return $res;
     }
+	
+    public function getIDbyName ($city, $name){
+    	if(!empty($city)) {
+		    $obj = [];
+		    $films = $this->getListFromType( $city )->List;
+		    foreach ((array)$films as $film) {
+			    if($name == $film->Name){
+				    $obj['id'] = $film->ObjectID;
+			    }
+		    }
+		    return $obj['id'];
+	    }
+    }
+    
 
     public function selectFilm($id)
     {

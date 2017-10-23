@@ -48,6 +48,7 @@ $(document).ready(function () {
             data: {objId:objId, filmId:filmId},
             success: function(data) {
                 $('#cinema-' + objId).html(data);
+                console.log($('#cinema-' + objId).html(data));
             }
         });
         return false;
@@ -55,10 +56,10 @@ $(document).ready(function () {
 
 	function progressLoad(key) {
 		if(key === 'start'){
-			$('.overlay-ajax-load').fadeIn(300);
+			$('.overlay-ajax-load').fadeIn(100);
 		}
 		if(key === 'end'){
-			$('.overlay-ajax-load').fadeOut(300);
+			$('.overlay-ajax-load').fadeOut(100);
 		}
 
 	}
