@@ -10,7 +10,6 @@ $(document).ready(function () {
 				$('#block_index_afisha').hide();
 				$('#result').show();
 				progressLoad('end');
-
 			}
 		});
 		return false;
@@ -22,7 +21,6 @@ $(document).ready(function () {
 		});
 
 	$(document).on('click', '#film', function () {
-		event.preventDefault();
 		var id = $(this).data('id');
 		var name = $(this).data('name');
 		progressLoad('start');
@@ -39,6 +37,22 @@ $(document).ready(function () {
 		});
 		return false;
 	});
+
+	$(document).on('click', '.showSession', function (e) {
+		e.preventDefault();
+		var objId = $(this).attr('data-obj-id');
+		var filmId = $(this).attr('data-film-id');
+        $.ajax({
+            url: "?handler=get_sessions",
+            type: "get",
+            data: {objId:objId, filmId:filmId},
+            success: function(data) {
+                $('#cinema-' + objId).html(data);
+            }
+        });
+        return false;
+    });
+
 	function progressLoad(key) {
 		if(key === 'start'){
 			$('.overlay-ajax-load').fadeIn(300);

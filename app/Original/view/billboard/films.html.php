@@ -6,7 +6,6 @@
         <thead>
         <tr>
             <td><strong>Фильмы:</strong></td>
-	        <td><strong>Заказать билеты:</strong></td>
         </tr>
         </thead>
         <tbody class="film__table">
@@ -19,15 +18,9 @@
 		                        <?=$film->Name?>
 	                        </a>
 	                </td>
-		            <td>
-					<!-- Start Ticket widget-->
-		                <rb:schedule key="55b5814d-8c7e-4c67-95ac-8d583eae8c9a" classType="place" objectID="<?=$film->ObjectID?>" cityID="<?= $places[0]->CityID ?>" filter="" locale="" xmlns:rb="http://kassa.rambler.ru">
-		                </rb:schedule>
-	                </td>
 	            </tr>
 	        <?php endforeach;?>
         </tbody>
     </table>
 </div>
 <!--End Ticket widget-->
-<script type="text/javascript" src="https://kassa.rambler.ru/s/widget/js/TicketManager.js"></script>

@@ -51,7 +51,10 @@ use Kinomania\System\GeoLocation\IpGeoBase;
                         <h1 class="pagetitle"><?= $options->get('seo_billboard_h1') ?></h1>
                         <div class="description">
                             Афиша «Киномании» точно знает, в каких кинотеатрах и во сколько идет лучшее кино. Выбирайте ваш город — и мы покажем самые удобные сеансы. Всего пара кликов — и билет у вас в кармане, здесь и сейчас. Приятного просмотра!
-	                        <p>
+                            <!--<a href='javascript:ticketManager.hallPlanV2(229,62172,"21-10-2017-0105");'>Купить</a>-->
+                            <!--<a href='javascript:ticketManager.richSession(31439310)'>Купить билет на сеанс</a>-->
+                            <script type="text/javascript" src="https://kassa.rambler.ru/s/widget/js/TicketManager.js"></script>
+                            <p>
 		                        <br>
 		                        <a href="#" id="theatre">Кинотеатры</a>
 		                        <a href="#" id="films">Фильмы</a>
