@@ -390,6 +390,7 @@ img.load-ajax {
     border-bottom: none !important;
 }
 
+/*стили афиши*/
 .block__films{
     width: 100%;
     display: flex;
@@ -506,6 +507,7 @@ img.load-ajax {
     border-radius: 3px;
     box-shadow: 0 1px #eee, inset 0 1px #fff;
     text-decoration: none;
+    padding: 5px;
 }
 .film-session a:hover {
     border-color: #f17730;
