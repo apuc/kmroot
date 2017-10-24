@@ -11,7 +11,7 @@
 <div>
     <?php foreach ($sessions as $session): ?>
         <div class="sessionsItem">
-            <a href='javascript:ticketManager.richSession(<?= $session->SessionID ?>)'><?= $session->DateTime ?></a>
+            <a class="showSession"  title="Купить билет" href='javascript:ticketManager.richSession(<?= $session->SessionID ?>)'><?= $session->DateTime ?></a>
         </div>
     <?php endforeach; ?>
 </div>

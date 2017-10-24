@@ -492,3 +492,25 @@ img.load-ajax {
     display: block;
     color: #000;
 }
+.showSession {
+    display: inline-block;
+    margin: 0;
+    color: #666;
+    background-color: #f7f8f9;
+    background-image: -webkit-gradient(linear,left 0,left 100%,from(#fff),to(#f7f8f9));
+    background-image: -webkit-linear-gradient(top,#fff 0,#f7f8f9 100%);
+    background-image: linear-gradient(to bottom,#fff 0,#f7f8f9 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff7f8f9', GradientType=0);
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 1px #eee, inset 0 1px #fff;
+    text-decoration: none;
+}
+.showSession:hover {
+    border-color: #f17730;
+}
+.showSession a:active, .showSession a:focus {
+    border-color: #f17730;
+    background-color: #f17730!important;
+}
