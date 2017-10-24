@@ -182,6 +182,9 @@
                         <li><a href="/genres/films?genre=sc">ФАНТАСТИКА</a></li>
                     </ul>
 	            </li>
+	            <li>
+		            <a href="/billboard/">АФИША</a>
+	            </li>
             </ul>
             <div class="tablet-autorization-outer col-xl-3 col-lg-3 col-md-7 col-sm-7 col-xs-5">
                 <div class="autorization">

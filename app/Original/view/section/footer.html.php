@@ -118,6 +118,10 @@
                         <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
                     </ul>
                 </div>
+	            <div class="outer-footer-nav-list">
+		            <a href="/billboard/">АФИША</a>
+	            </div>
+		           
             </div>
             <div class="outer-social clear">
                 <ul class="social-list social-list--horizontal">
