@@ -255,7 +255,7 @@ img.load-ajax {
 }
 
 #city {
-    width: 75ы%;
+    width: 75%;
     margin-right: 10px;
     padding: 5px 10px;
     font-weight: 700;
@@ -366,7 +366,6 @@ img.load-ajax {
     left: 0;
 }
 
-
 /*Выбор типа списка*/
 .selectListType {
 
@@ -388,5 +387,108 @@ img.load-ajax {
     border-top: 1px solid black;
     border-left: 1px solid black;
     border-right: 1px solid black;
-    border-bottom: none!important;
+    border-bottom: none !important;
+}
+
+.block__films{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.block__films a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.block__film {
+    float: left;
+    position: relative;
+    width: 30%;
+    min-height: 235px;
+    margin: 1.66%;
+}
+.block__film__img {
+    overflow: hidden;
+    position: relative;
+    width: 230px;
+    height: 135px;
+    background: #5f5f5f;
+}
+.block__film__img img {
+    max-width: 100%;
+    object-fit: contain;
+    top: 20%;
+    transform: translateY(-50%);
+    position: absolute;
+    left: 0;
+}
+.block__film p {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.block__film span {
+    display: block;
+    margin-top: auto;
+    font-weight: bold;
+    color: #000;
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.block__film p:last-child {
+    margin-top: 10px;
+    color: #000;
+    bottom: 0px;
+}
+.cinemas {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.inside-film {
+    width: calc(100% - 230px);
+    float: right;
+    margin-top: 0px;
+}
+.film-session {
+    width: 150px;
+}
+.film-block{
+  margin: 10px;
+}
+.cinema-img {
+    width: 230px;
+    /*height: 135px;*/
+}
+.cinema-img-none {
+    width: 230px;
+    height: 135px;
+    background: #5f5f5f;
+}
+.block__film__img span {
+    margin:0px;
+}
+.block__film__img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.film-block >span {
+    display: inline-flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 135px;
+    width: 230px;
+    background: #5f5f5f;
+}
+.film-block >span b {
+    display: block;
+    color: #000;
 }

@@ -33,11 +33,12 @@ $(document).ready(function () {
 	$(document).on('click', '#film', function () {
 		var id = $(this).data('id');
 		var name = $(this).data('name');
+		var img = $(this).data('img');
 		progressLoad('start');
 		$.ajax({
 			url: "?handler=get_film",
 			type: "get",
-			data: {id:id, name:name},
+			data: {id:id, name:name, img:img},
 			success: function(data) {
 				$('#result').html(data);
 				$('#block_index_afisha').hide();
