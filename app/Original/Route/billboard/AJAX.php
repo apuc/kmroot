@@ -35,6 +35,7 @@ class AJAX extends DefaultController
         $city = IpGeoBase::getCityInfo();
         $api = new AKR('eed094a6-b7cc-4529-b858-a60f26a57f6f', 'json');
         $cityId = $api->getCityId($city['city']);
+        $img = $_GET['img'];
         $films_place = $api->getCinemasByFilm($cityId, $_GET['id']);
         $this->addData([
             'options' => new Options(),
@@ -42,6 +43,7 @@ class AJAX extends DefaultController
             'cityId' => $cityId,
             'name' => $_GET['name'],
             'id' => $_GET['id'],
+	        'img' => $img,
         ]);
         $this->setTemplate('billboard/films_place.html.php');
     }
