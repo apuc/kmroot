@@ -9,24 +9,23 @@
 	        </tr>
         </thead>
     </table>
-	<div  width: 100%">
+	<div  style="width: 100%">
 	    <?php foreach ($films as $film):?>
-	        <div style="
-    float: left;
-    position: relative;
-    width: 30%;
-    height: 230px;
-    margin: 1.66%;">
-	            <div style="overflow: hidden; position: relative; width: 230px; height: 135px;" >
-	                <img style="max-width: 100%; object-fit: contain; top: 20%; transform: translateY(-50%);
+	        <div style="float: left; position: relative;  width: 30%; height: 235px; margin: 1.66%;">
+	            <a style="text-decoration: none;" data-id="<?=$film->ObjectID?>" data-name="<?=$film->Name?>" href="#" id="film">
+		            <div style="overflow: hidden; position: relative; width: 230px; height: 135px;" >
+	                    <img style="max-width: 100%; object-fit: contain; top: 20%; transform: translateY(-50%);
     position: absolute;
     left: 0;" src="<?=$film->Thumbnail?>">
-	            </div>
-	            <p><?=$film->Genre?></p>
-	                <a data-id="<?=$film->ObjectID?>" data-name="<?=$film->Name?>" href="#" id="film">
-	                    <?=$film->Name?>
-	                </a>
-	            <p>Премьера(РФ): <?=$film->ReleaseDate?></p>
+	                 </div>
+		            <p style="margin-top: 10px;">
+			            <?=$film->Genre?>
+		            </p>
+		                <span style="font-weight: bold; color: #000;" >
+		                    <?=$film->Name?>
+		                </span>
+		            <p style="margin-top: 10px; color: #000;">Премьера(РФ): <?=$film->ReleaseDate?></p>
+	            </a>
 	        </div>
 	    <?php endforeach;?>
 	</div>
