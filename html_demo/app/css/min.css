@@ -5175,3 +5175,27 @@ img.load-ajax {
     width: 230px;
     height: 135px;
 }
+
+/*Выбор типа списка*/
+.selectListType {
+
+}
+
+.selectListType li{
+    float: left;
+    padding: 15px;
+    border-bottom: 1px solid black;
+}
+
+.selectListType a{
+    text-decoration: none;
+    color: #0b0b0b;
+    font-weight:bold;
+}
+
+.slta {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: none!important;
+}

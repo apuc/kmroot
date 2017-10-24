@@ -14,6 +14,16 @@ $(document).ready(function () {
 		});
 		return false;
 	});
+
+	$(document).on('click', '.selectListType li a', function (e) {
+		console.log('test');
+		var list = $(this).parent();
+		$('.selectListType li').each(function () {
+			$(this).removeClass('slta');
+        });
+		list.addClass('slta');
+    });
+
 	$(document).on('click', '#theatre', function () {
 		event.preventDefault();
 			$('#block_index_afisha').show();

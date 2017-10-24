@@ -9,7 +9,7 @@
 	        </tr>
         </thead>
     </table>
-	<div  width: 100%">
+	<div style="width: 100%">
 	    <?php foreach ($films as $film):?>
 	        <div style="
     float: left;

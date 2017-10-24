@@ -22,83 +22,96 @@ use Kinomania\System\GeoLocation\IpGeoBase;
     <title><?= $options->get('seo_billboard_title') ?></title>
     <meta name="description" content="<?= $options->get('seo_billboard_description') ?>"/>
 
-	<link rel="canonical" href="http://www.kinomania.ru/billboard"/>
+    <link rel="canonical" href="http://www.kinomania.ru/billboard"/>
 
-    <meta property="og:site_name" content="KINOMANIA.RU" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://www.kinomania.ru/billboard" />
-    <meta property="og:title" content="Афиша Москвы" />
+    <meta property="og:site_name" content="KINOMANIA.RU"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="http://www.kinomania.ru/billboard"/>
+    <meta property="og:title" content="Афиша Москвы"/>
     <meta property="og:description" content="Афиша Москвы - все кинотеатры, расписание, фильмы"/>
 
     <!-- include section/head.html.php -->
 </head>
 <body>
-<div class="overlay-ajax-load"  style="position: absolute;z-index: 100; width: 0px; height: 0px;">
-	<img class="load-ajax"  src="<?= $static ?>/app/img/design/load.gif" style="align-self: center">
+<div class="overlay-ajax-load" style="position: absolute;z-index: 100; width: 0px; height: 0px;">
+    <img class="load-ajax" src="<?= $static ?>/app/img/design/load.gif" style="align-self: center">
 </div>
-  <!--#include virtual="/design/ssi/top" -->
+<!--#include virtual="/design/ssi/top" -->
 <div class="outer">
     <div class="wrap">
         <!-- include section/header.html.php -->
         <div class="banner">
-              <!--#include virtual="/design/ssi/center" -->
+            <!--#include virtual="/design/ssi/center" -->
         </div>
         <div class="main-content-other-page clear">
             <section class="outer-section clear outer-content">
                 <!-- Контент -->
-                <content class="page-section-content section-content content-outer col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <content
+                        class="page-section-content section-content content-outer col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="row-page">
                         <h1 class="pagetitle"><?= $options->get('seo_billboard_h1') ?></h1>
                         <div class="description">
-                            Афиша «Киномании» точно знает, в каких кинотеатрах и во сколько идет лучшее кино. Выбирайте ваш город — и мы покажем самые удобные сеансы. Всего пара кликов — и билет у вас в кармане, здесь и сейчас. Приятного просмотра!
+                            Афиша «Киномании» точно знает, в каких кинотеатрах и во сколько идет лучшее кино. Выбирайте
+                            ваш город — и мы покажем самые удобные сеансы. Всего пара кликов — и билет у вас в кармане,
+                            здесь и сейчас. Приятного просмотра!
                             <!--<a href='javascript:ticketManager.hallPlanV2(229,62172,"21-10-2017-0105");'>Купить</a>-->
                             <!--<a href='javascript:ticketManager.richSession(31439310)'>Купить билет на сеанс</a>-->
-                            <script type="text/javascript" src="https://kassa.rambler.ru/s/widget/js/TicketManager.js"></script>
+                            <script type="text/javascript"
+                                    src="https://kassa.rambler.ru/s/widget/js/TicketManager.js"></script>
                             <p>
-		                        <br>
-		                        <a href="#" id="theatre">Кинотеатры</a>
-		                        <a href="#" id="films">Фильмы</a>
-	                        </p>
+                                <br>
+                            <ul class="selectListType">
+                                <li class="slta"><a href="#" id="theatre">Кинотеатры</a></li>
+                                <li><a href="#" id="films">Фильмы</a></li>
+                            </ul>
+                            <br>
+                            </p>
                         </div>
-	                    <div id="result"></div>
-	                    <div id="block_index_afisha">
-		                    <strong style="font-size: 34px;">Кинотеатры г.
-	                            <?= \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo()['city'] ?>
-	                        </strong>
-		                    <div id="block" >
-			                    <table class="table">
-				                    <thead>
-				                    <tr>
-					                    <td><strong>Кинотеатр:</strong></td>
-					                    <td><strong>Адрес:</strong></td>
-				                    </tr>
-				                    </thead>
-				                    <tbody class="film__table">
-				                    <?php foreach ($cinema as $place):?>
-						                    <tr>
-							                    <td valign="bottom">
+                        <div id="result"></div>
+                        <div id="block_index_afisha">
+                            <strong style="font-size: 34px;">Кинотеатры г.
+                                <?= \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo()['city'] ?>
+                            </strong>
+                            <div id="block">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <td><strong>Кинотеатр:</strong></td>
+                                        <td><strong>Адрес:</strong></td>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="film__table">
+                                    <?php foreach ($cinema as $place): ?>
+                                        <tr>
+                                            <td valign="bottom">
 								                    <span class="anchor-cube">
 								                    </span>
-								                        <a href="/billboard/cinema?id=<?= $place->ObjectID ?>">
-									                        <?=$place->Name?>
-								                        </a>
-							                    </td>
-							                    <td valign="bottom">
-								                    <?=$place->Address?>
-							                    </td>
-						                    </tr>
-				                    <?php endforeach;?>
-				                    </tbody>
-			                    </table>
-		                    </div>
-	                    </div>
-	                    
+                                                <a href="/billboard/cinema?id=<?= $place->ObjectID ?>">
+                                                    <?= $place->Name ?>
+                                                </a>
+                                            </td>
+                                            <td valign="bottom">
+                                                <?= $place->Address ?>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
                         <div class="pagelist-social style-pagelist-social" style="position: relative; float: left;">
                             <div class="outer-social clear">
                                 <ul class="social-list social-list--horizontal">
-                                    <li class="vk" id="vk_in_share" data-url="billboard"><a href="http://vkontakte.ru/share.php?url=http%3A%2F%2Fkinomania.ru%2Fbillboard/"><span class="number"></span></a></li>
-                                    <li class="fb" id="fb_in_share" data-url="billboard"><a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fkinomania.ru%2Fbillboard&src=sp/"><span class="number"></span></a></li>
-                                    <li class="tw" id="tw_in_share"><a href="http://twitter.com/share?url=http%3A%2F%2Fkinomania.ru%2Fbillboard/"></a></li>
+                                    <li class="vk" id="vk_in_share" data-url="billboard"><a
+                                                href="http://vkontakte.ru/share.php?url=http%3A%2F%2Fkinomania.ru%2Fbillboard/"><span
+                                                    class="number"></span></a></li>
+                                    <li class="fb" id="fb_in_share" data-url="billboard"><a
+                                                href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fkinomania.ru%2Fbillboard&src=sp/"><span
+                                                    class="number"></span></a></li>
+                                    <li class="tw" id="tw_in_share"><a
+                                                href="http://twitter.com/share?url=http%3A%2F%2Fkinomania.ru%2Fbillboard/"></a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -114,14 +127,14 @@ use Kinomania\System\GeoLocation\IpGeoBase;
 <script type="text/javascript" src="<?= $static ?>/vendor/cms/jquery/jquery.lazyload.min.js"></script>
 <script type="text/javascript" src="<?= $static ?>/app/js/afisha.js"></script>
 <script type="text/javascript">
-    $(document).ready(function(){
-        $('.page-content-head__more a').click(function(){
+    $(document).ready(function () {
+        $('.page-content-head__more a').click(function () {
             $('.read-more-text').addClass('read-more-text_open');
             $(this).hide();
             return false;
         });
     });
 </script>
-  <?php BodyScript::getContent();?>
+<?php BodyScript::getContent(); ?>
 </body>
 </html>
