@@ -492,7 +492,7 @@ img.load-ajax {
     display: block;
     color: #000;
 }
-.showSession {
+.film-session a {
     display: inline-block;
     margin: 0;
     color: #666;
@@ -507,10 +507,10 @@ img.load-ajax {
     box-shadow: 0 1px #eee, inset 0 1px #fff;
     text-decoration: none;
 }
-.showSession:hover {
+.film-session a:hover {
     border-color: #f17730;
 }
-.showSession a:active, .showSession a:focus {
+.film-session a:active, .film-session a:focus {
     border-color: #f17730;
     background-color: #f17730!important;
 }
