@@ -11,7 +11,11 @@
 </strong>
 <span class="cinemas"><strong>Кинотеатры:</strong></span>
 <div id="block" class="film-block">
-	<img class="cinema-img" src="<?=$img?>" alt="">
+	<?php if($img):?>
+		<img class="cinema-img" src="<?=$img?>" alt="">
+	<?php else:?>
+		<span><b>Нет фото</b></span>
+	<?php endif;?>
     <table class="table inside-film">
         <tbody class="film__table">
         <?php foreach ($films_place as $item): ?>

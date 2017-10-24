@@ -14,7 +14,11 @@
 	        <div class="block__film">
 	            <a data-id="<?=$film->ObjectID?>" data-name="<?=$film->Name?>" data-img="<?=$film->Thumbnail?>" href="#" id="film">
 		            <div class="block__film__img">
-	                    <img src="<?=$film->Thumbnail?>">
+			            <?php if($film->Thumbnail):?>
+	                        <img src="<?=$film->Thumbnail?>">
+			            <?php else:?>
+				            <span>Нет фото</span>
+			            <?php endif;?>
 	                 </div>
 		            <p>
 			            <?=$film->Genre?>
