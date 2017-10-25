@@ -17,9 +17,9 @@ class Afisha {
 	use TRepository;
 	use TDate;
 	
-	public function saveFilmsDB( $city, $films ) {
+	public function saveFilmsDB( $films ) {
 		$values = [];
-		foreach ( $films->List as $object ) {
+		foreach ( $films as $object ) {
 			if ( $this->selectFilm( $object->ObjectID ) ) {
 				return false;
 			} else {
