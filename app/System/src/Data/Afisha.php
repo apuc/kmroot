@@ -60,16 +60,12 @@ class Afisha {
 	
 	public function selectFilm( $id ) {
 		if ( $id ) {
-			$list   = [];
 			$query  = ( "  SELECT * FROM `afisha` WHERE `ObjectID` = '$id'" );
 			$result = $this->mysql()->query( $query );
 			while( $row = $result->fetch_assoc() ) {
-				$list[] = $row;
+				return $row;
 			}
-			
-			return $list;
 		}
-		
 		return false;
 	}
 	

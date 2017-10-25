@@ -33,7 +33,6 @@ class AKR {
 			$query = substr( $query,0,- 1 );
 		}
 		$this->query = file_get_contents( $query );
-		
 		return $this;
 	}
 	
@@ -183,6 +182,26 @@ class AKR {
 		
 		return $res;
 	}
+	
+	public function getCinemasByFilmByDate( $cityId,$filmId, $date) {
+		$s   = $this->getSchedule( null,$cityId, $date, date( 'Y-m-d',time() + 86000 ),true );
+		$arr = [];
+		$res = [];
+		foreach ( (array) $s->List as $item ) {
+			if ( $item->CityID == $cityId && $item->CreationObjectID == $filmId && substr($item->DateTime, 0, -6) == $date) {
+				$arr[ $item->PlaceObjectID ] = $item->PlaceObjectID;
+			}
+		}
+		$objects = $this->getPlaces( $cityId )->List;
+		foreach ( (array) $objects as $object ) {
+			if ( in_array( $object->ObjectID,$arr ) ) {
+				$res[] = $object;
+			}
+		}
+		return $res;
+	}
+	
+	
 	
 	public function getIDbyName( $city,$name ) {
 		if ( ! empty( $city ) ) {

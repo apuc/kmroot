@@ -10,6 +10,7 @@ namespace Original\Route_billboard;
  */
 use Kinomania\Original\Controller\DefaultController;
 use Kinomania\System\API\AKR;
+use Kinomania\System\Data\Afisha;
 use Kinomania\System\Debug\Debug;
 use Kinomania\System\GeoLocation\IpGeoBase;
 use Kinomania\System\Options\Options;
@@ -34,22 +35,46 @@ class AJAX extends DefaultController
     {
         $city = IpGeoBase::getCityInfo();
         $api = new AKR('eed094a6-b7cc-4529-b858-a60f26a57f6f', 'json');
+        $afisha = new Afisha();
         $cityId = $api->getCityId($city['city']);
-        $img = $_GET['img'];
-       // $desc = $api->getDescByID($cityId, $_GET['id']);
         $films_place = $api->getCinemasByFilm($cityId, $_GET['id']);
-	    $film = $api->selectFilm($_GET['id']);
+	    $dataFrom = ['now' => date('Y-m-d'),
+	                 'tomorrow' => date_create('now + 1 day')->format('Y-m-d'),
+		              'after' => date_create('now + 2 day')->format('Y-m-d')];
+	    $film = $afisha->selectFilm($_GET['id']);
         $this->addData([
             'options' => new Options(),
             'films_place' => $films_place,
             'cityId' => $cityId,
-            'name' => $_GET['name'],
             'id' => $_GET['id'],
-	        'img' => $img,
 	        'film' => $film,
+	        'dataFrom' => $dataFrom,
         ]);
         $this->setTemplate('billboard/films_place.html.php');
     }
+    
+    public function getFilmByDate () {
+	    $city = IpGeoBase::getCityInfo();
+	    $api = new AKR('eed094a6-b7cc-4529-b858-a60f26a57f6f', 'json');
+	    $afisha = new Afisha();
+	    $cityId = $api->getCityId($city['city']);
+	    $films_place = $api->getCinemasByFilmByDate($cityId, $_GET['id'], $_GET['date']);
+	    $dataFrom = ['now' => date('Y-m-d'),
+	                 'tomorrow' => date_create('now + 1 day')->format('Y-m-d'),
+	                 'after' => date_create('now + 2 day')->format('Y-m-d')];
+	    $film = $afisha->selectFilm($_GET['id']);
+	    $this->addData([
+		    'options' => new Options(),
+		    'films_place' => $films_place,
+		    'cityId' => $cityId,
+		    'id' => $_GET['id'],
+		    'film' => $film,
+		    'dataFrom' => $dataFrom,
+	    ]);
+	    $this->setTemplate('billboard/films_place.html.php');
+    }
+    
+    
 
     public function get_sessions()
     {

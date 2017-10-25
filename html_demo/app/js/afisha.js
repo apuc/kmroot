@@ -32,13 +32,11 @@ $(document).ready(function () {
 
 	$(document).on('click', '#film', function () {
 		var id = $(this).data('id');
-		var name = $(this).data('name');
-		var img = $(this).data('img');
 		progressLoad('start');
 		$.ajax({
 			url: "?handler=get_film",
 			type: "get",
-			data: {id:id, name:name, img:img},
+			data: {id:id},
 			success: function(data) {
 				$('#result').html(data);
 				$('#block_index_afisha').hide();
@@ -53,7 +51,7 @@ $(document).ready(function () {
 		e.preventDefault();
 		var objId = $(this).attr('data-obj-id');
 		var filmId = $(this).attr('data-film-id');
-        $.ajax({
+		$.ajax({
             url: "?handler=get_sessions",
             type: "get",
             data: {objId:objId, filmId:filmId},
@@ -64,6 +62,24 @@ $(document).ready(function () {
         });
         return false;
     });
+
+	$(document).on('click', '#film_sessions', function (e) {
+		e.preventDefault();
+		var id = $(this).attr('data-id');
+		var date = $(this).attr('data-date');
+		progressLoad('start');
+		$.ajax({
+			url: "?handler=getFilmByDate",
+			type: "get",
+			data: {id:id, date:date},
+			success: function(data) {
+				$('#result').html(data);
+			progressLoad('end');
+			}
+		});
+		return false;
+	});
+
 
 	function progressLoad(key) {
 		if(key === 'start'){

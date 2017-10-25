@@ -26,8 +26,9 @@ class GET extends DefaultController
         		$cinema[] = $place;
 	        }
         }
-        $films = $api->getListFromType(' ')->List;
-	    $afisha->saveFilmsDB($films);
+        $films = $api->getListFromType($city['city'])->List;
+        $afilms = $api->getListFromType(' ')->List;
+	    $afisha->saveFilmsDB($afilms);
 	    
 	    $this->addData([
 			'options' => new Options(),

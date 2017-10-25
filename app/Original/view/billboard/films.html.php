@@ -12,7 +12,7 @@
 	<div  class="block__films">
 	    <?php foreach ($films as $film):?>
 	        <div class="block__film">
-	            <a data-id="<?=$film->ObjectID?>" data-name="<?=$film->Name?>" data-img="<?=$film->Thumbnail?>" href="#" id="film">
+	            <a data-id="<?=$film->ObjectID?>" href="#" id="film">
 		            <div class="block__film__img">
 			            <?php if($film->Thumbnail):?>
 	                        <img src="<?=$film->Thumbnail?>">
