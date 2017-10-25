@@ -3,6 +3,7 @@ namespace Original\Route_billboard;
 
 use Kinomania\Original\Controller\DefaultController;
 use Kinomania\System\API\AKR;
+use Kinomania\System\Data\Afisha;
 use Kinomania\System\Db\Db;
 use Kinomania\System\Debug\Debug;
 use Kinomania\System\GeoLocation\IpGeoBase;
@@ -15,6 +16,7 @@ class GET extends DefaultController
     public function index()
     {
         $api = new AKR('eed094a6-b7cc-4529-b858-a60f26a57f6f', 'json');
+        $afisha = new Afisha();
         $city = IpGeoBase::getCityInfo();
         $places = $api->getPlaces($city['city'])->List;
         //Debug::prn($api->getObject(68256));
@@ -25,7 +27,9 @@ class GET extends DefaultController
 	        }
         }
         $films = $api->getListFromType($city['city'])->List;
-        $this->addData([
+	    Debug::prn($afisha->saveFilmsDB(' ' , $films));
+	    
+	    $this->addData([
 			'options' => new Options(),
             'places' => $places,
 	        'films' => $films,

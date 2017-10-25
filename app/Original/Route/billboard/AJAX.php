@@ -36,7 +36,9 @@ class AJAX extends DefaultController
         $api = new AKR('eed094a6-b7cc-4529-b858-a60f26a57f6f', 'json');
         $cityId = $api->getCityId($city['city']);
         $img = $_GET['img'];
+       // $desc = $api->getDescByID($cityId, $_GET['id']);
         $films_place = $api->getCinemasByFilm($cityId, $_GET['id']);
+	    $film = $api->selectFilm($_GET['id']);
         $this->addData([
             'options' => new Options(),
             'films_place' => $films_place,
@@ -44,6 +46,7 @@ class AJAX extends DefaultController
             'name' => $_GET['name'],
             'id' => $_GET['id'],
 	        'img' => $img,
+	        'film' => $film,
         ]);
         $this->setTemplate('billboard/films_place.html.php');
     }
