@@ -1,15 +1,15 @@
 $(document).ready(function () {
 	$(document).on('click', '#play_video', function () {
-		event.preventDefault();
 		alert('hello');
-		return false;
+		event.preventDefault();
+		var id = $(this).data('id');
 		$.ajax({
-			url: "?handler=get",
+			url: "?handler=upToView",
 			type: "get",
+			data: {id:id},
 			success: function(response) {
 				$('#result').html(response);
-				$('#block_index_afisha').hide();
-				$('#result').show();
+				console.log(response);
 			}
 		});
 		return false;
