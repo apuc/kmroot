@@ -17,6 +17,7 @@ class GET extends DefaultController
         $api = new AKR('eed094a6-b7cc-4529-b858-a60f26a57f6f', 'json');
         $city = IpGeoBase::getCityInfo();
         $places = $api->getPlaces($city['city'])->List;
+        //Debug::prn($api->getObject(68256));
         $cinema = [];
         foreach ($places as $place){
         	if($place->Category == 'Cinema'){
@@ -58,6 +59,7 @@ class GET extends DefaultController
     {
         $city = IpGeoBase::getCityInfo();
         $api = new AKR('eed094a6-b7cc-4529-b858-a60f26a57f6f', 'json');
+        $dataFrom = date_create('now + 1 day')->format('Y-m-d');
         $schedule = $api->getSchedule(null, $city['city'], '2017-10-21', '2017-10-22');
         Debug::prn(AKR::getScheduleByFilmId($schedule, $_GET['filmId']));
         $this->addData([
