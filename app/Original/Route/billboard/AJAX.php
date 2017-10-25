@@ -70,8 +70,9 @@ class AJAX extends DefaultController
 		    'id' => $_GET['id'],
 		    'film' => $film,
 		    'dataFrom' => $dataFrom,
+		    'date' => $_GET['date'],
 	    ]);
-	    $this->setTemplate('billboard/films_place.html.php');
+	    $this->setTemplate('billboard/films_place_date.html.php');
     }
     
     
@@ -81,7 +82,11 @@ class AJAX extends DefaultController
         $city = IpGeoBase::getCityInfo();
         $api = new AKR('eed094a6-b7cc-4529-b858-a60f26a57f6f', 'json');
         $cityId =  $api->getCityId($city['city']);
+        if(isset($_GET['date'])){
+	        $schedule = $api->getSchedule($_GET['objId'], $cityId, $_GET['date'], '', true);
+        } else {
         $schedule = $api->getSchedule($_GET['objId'], $cityId, date('Y-m-d'), date('Y-m-d', time()+86000), true);
+        }
         //Debug::prn(AKR::getScheduleByFilmId($schedule, $_GET['filmId']));
         $this->addData([
             'sessions' => AKR::getScheduleByFilmId($schedule, $_GET['filmId'])

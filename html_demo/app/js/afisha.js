@@ -51,10 +51,15 @@ $(document).ready(function () {
 		e.preventDefault();
 		var objId = $(this).attr('data-obj-id');
 		var filmId = $(this).attr('data-film-id');
+		if($(this).attr('data-date')) {
+			var date = $(this).attr('data-date');
+		} else {
+			var date = '';
+		}
 		$.ajax({
             url: "?handler=get_sessions",
             type: "get",
-            data: {objId:objId, filmId:filmId},
+            data: {objId:objId, filmId:filmId, date:date},
             success: function(data) {
                 $('#cinema-' + objId).html(data);
                 console.log($('#cinema-' + objId).html(data));

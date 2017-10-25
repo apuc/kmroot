@@ -184,12 +184,14 @@ class AKR {
 	}
 	
 	public function getCinemasByFilmByDate( $cityId,$filmId, $date) {
-		$s   = $this->getSchedule( null,$cityId, $date, date( 'Y-m-d',time() + 86000 ),true );
+		$s   = $this->getSchedule( null, $cityId, date( 'Y-m-d'), $date ,true );
 		$arr = [];
 		$res = [];
 		foreach ( (array) $s->List as $item ) {
-			if ( $item->CityID == $cityId && $item->CreationObjectID == $filmId && substr($item->DateTime, 0, -6) == $date) {
-				$arr[ $item->PlaceObjectID ] = $item->PlaceObjectID;
+			if ( $item->CityID == $cityId && $item->CreationObjectID == $filmId) {
+				if($date == substr($item->DateTime, 0, -6)){
+					$arr[ $item->PlaceObjectID ] = $item->PlaceObjectID;
+				}
 			}
 		}
 		$objects = $this->getPlaces( $cityId )->List;

@@ -5,6 +5,7 @@
  * @var $img
  * @var $film array
  * @var $dataFrom array
+ * @var $date
  */
 ?>
 <strong class="film__name">
@@ -46,7 +47,7 @@
 	                    <?= $item->Name ?>
 	                </td>
 	                <td class="film-session" id="cinema-<?= $item->ObjectID ?>">
-	                    <a href="#" class="showSession" data-obj-id="<?= $item->ObjectID ?>" data-film-id="<?= $id ?>">Сеансы</a>
+	                    <a href="#" class="showSession" data-obj-id="<?= $item->ObjectID ?>" data-date="<?=$date?>" data-film-id="<?= $id ?>">Сеансы</a>
 	                </td>
 	            </tr>
 	        <?php endforeach; ?>
