@@ -251,15 +251,20 @@ class AKR {
 	}
 	
 	
-	public static function getScheduleByFilmId( $schedule,$filmId ) {
+	public static function getScheduleByFilmId( $schedule,$filmId, $date = null) {
 		$res = [];
 		if ( isset( $schedule->List ) ) {
 			foreach ( (array) $schedule->List as $item ) {
-				if ( $item->CreationObjectID == $filmId ) {
-					$res[] = $item;
+				if($date != null) {
+					if($item->CreationObjectID == $filmId && $date == substr($item->DateTime, 0, -6)){
+						$res[] = $item;
+					}
+				} else {
+					if ( $item->CreationObjectID == $filmId ) {
+						$res[] = $item;
+					}
 				}
 			}
-			
 			return $res;
 		}
 		

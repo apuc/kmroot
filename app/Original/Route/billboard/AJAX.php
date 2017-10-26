@@ -82,15 +82,21 @@ class AJAX extends DefaultController
         $city = IpGeoBase::getCityInfo();
         $api = new AKR('eed094a6-b7cc-4529-b858-a60f26a57f6f', 'json');
         $cityId =  $api->getCityId($city['city']);
-        if(isset($_GET['date'])){
-	        $schedule = $api->getSchedule($_GET['objId'], $cityId, $_GET['date'], '', true);
+	    
+        if(isset($_GET['date'])!= ''){
+	        $schedule = $api->getSchedule($_GET['objId'], $cityId, date('Y-m-d'), date('Y-m-d', time()+258000), true);
+	        //Debug::prn(AKR::getScheduleByFilmId($schedule, $_GET['filmId']));
+	        $this->addData([
+		        'sessions' => AKR::getScheduleByFilmId($schedule, $_GET['filmId'], $_GET['date'])
+	        ]);
+	        $this->setTemplate('billboard/_session.html.php');
         } else {
-        $schedule = $api->getSchedule($_GET['objId'], $cityId, date('Y-m-d'), date('Y-m-d', time()+86000), true);
+	        $schedule = $api->getSchedule($_GET['objId'], $cityId, date('Y-m-d'), date('Y-m-d', time()+86000), true);
+	        //Debug::prn(AKR::getScheduleByFilmId($schedule, $_GET['filmId']));
+	        $this->addData([
+		        'sessions' => AKR::getScheduleByFilmId($schedule, $_GET['filmId'])
+	        ]);
+	        $this->setTemplate('billboard/_session.html.php');
         }
-        //Debug::prn(AKR::getScheduleByFilmId($schedule, $_GET['filmId']));
-        $this->addData([
-            'sessions' => AKR::getScheduleByFilmId($schedule, $_GET['filmId'])
-        ]);
-        $this->setTemplate('billboard/_session.html.php');
     }
 }
