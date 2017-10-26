@@ -543,5 +543,5 @@ img.load-ajax {
     color: #000;
 }
 .activeBtn a {
-    background: #f17730 ;
+    border-color: #f17730;
 }
