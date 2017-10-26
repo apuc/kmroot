@@ -545,3 +545,6 @@ img.load-ajax {
 .activeBtn a {
     border-color: #f17730;
 }
+.film__table tr:hover {
+    background: #f2f2f2;
+}
