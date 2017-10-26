@@ -74,6 +74,7 @@ $(document).ready(function () {
 
 	$(document).on('click', '#film_sessions', function (e) {
 		e.preventDefault();
+		console.log(this.className);
 		var id = $(this).attr('data-id');
 		var date = $(this).attr('data-date');
 		progressLoad('start');
