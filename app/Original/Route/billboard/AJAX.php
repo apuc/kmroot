@@ -62,7 +62,7 @@ class AJAX extends DefaultController
         $cityId =  $api->getCityId($city['city']);
         $schedule = $api->getSchedule($_GET['objId'], $cityId, date('Y-m-d'), date_create('now + 3 day')->format('Y-m-d'),true, 'Place');
         $this->addData([
-	        'sessions' => AKR::getScheduleByFilmId($schedule, $_GET['filmId'], $_GET['date'])
+	        'sessions' => AKR::getScheduleByFilmId($schedule, $_GET['filmId'], $_GET['date']),
         ]);
         $this->setTemplate('billboard/_session.html.php');
     }

@@ -35,13 +35,13 @@
 			<p><b>Продолжительность:</b> <?= ($film['Duration']) ? $film['Duration'] : '' ?></p>
 			<p><b>Премьера(РФ):</b> <?= ($film['ReleaseDate']) ? $film['ReleaseDate'] : ''?></p>
 	</div>
-	<div class="cinemas">
+	<div class="cinemas" data-date="<?=$curDate?>">
 		<strong>Кинотеатры:</strong>
 	    <table class="table inside-film">
 	        <tbody class="film__table">
 	        <?php foreach ($films_place as $item): ?>
 		        <tr>
-	                <td valign="bottom" style="padding-bottom: 15px; padding-left: 15px;">
+	                <td valign="center" style="padding-bottom: 15px; padding-left: 15px;">
 	                    <span class="anchor-cube">
 	                    </span>
 	                    <?= $item->Name ?>
