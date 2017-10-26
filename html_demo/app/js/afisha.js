@@ -16,7 +16,7 @@ $(document).ready(function () {
 	});
 
 	$(document).on('click', '.selectListType li a', function (e) {
-		console.log('test');
+		// console.log('test');
 		var list = $(this).parent();
 		$('.selectListType li').each(function () {
 			$(this).removeClass('slta');
@@ -41,6 +41,10 @@ $(document).ready(function () {
 				$('#result').html(data);
 				$('#block_index_afisha').hide();
 				$('#result').show();
+				var activeList = $('.cinemas').attr('data-date');
+				var activeButton = $('span[data-date="'+ activeList +'"]');
+				$('.film__dates .film-session').removeClass('activeBtn');
+				activeButton.addClass('activeBtn');
 				progressLoad('end');
 			}
 		});
@@ -62,7 +66,7 @@ $(document).ready(function () {
             data: {objId:objId, filmId:filmId, date:date},
             success: function(data) {
                 $('#cinema-' + objId).html(data);
-                console.log($('#cinema-' + objId).html(data));
+                // console.log($('#cinema-' + objId).html(data));
             }
         });
         return false;
@@ -70,6 +74,7 @@ $(document).ready(function () {
 
 	$(document).on('click', '#film_sessions', function (e) {
 		e.preventDefault();
+		console.log(this.className);
 		var id = $(this).attr('data-id');
 		var date = $(this).attr('data-date');
 		progressLoad('start');
@@ -79,12 +84,15 @@ $(document).ready(function () {
 			data: {id:id, date:date},
 			success: function(data) {
 				$('#result').html(data);
+				var activeList = $('.cinemas').attr('data-date');
+				var activeButton = $('span[data-date="'+ activeList +'"]');
+				$('.film__dates .film-session').removeClass('activeBtn');
+				activeButton.addClass('activeBtn');
 			progressLoad('end');
 			}
 		});
 		return false;
 	});
-
 
 	function progressLoad(key) {
 		if(key === 'start'){
@@ -95,4 +103,5 @@ $(document).ready(function () {
 		}
 
 	}
+
 });

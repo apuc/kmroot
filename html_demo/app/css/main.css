@@ -529,6 +529,7 @@ img.load-ajax {
 }
 .film-session a:hover {
     border-color: #f17730;
+    background: #f17730;
 }
 .film-session a:active, .film-session a:focus {
     border-color: #f17730;
@@ -540,4 +541,7 @@ img.load-ajax {
 }
 .film_desc p {
     color: #000;
+}
+.activeBtn a {
+    background: #f17730 ;
 }

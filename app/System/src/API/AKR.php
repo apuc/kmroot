@@ -61,7 +61,6 @@ class AKR {
 				}
 			}
 		}
-		
 		return false;
 	}
 	
@@ -76,7 +75,6 @@ class AKR {
 			return $this->createQuery( 'json','place/list',$data )
 			            ->jsonToArray();
 		}
-		
 		return false;
 	}
 	
@@ -152,6 +150,24 @@ class AKR {
 		
 		return false;
 	}
+	
+	public function getSchedule( $objectId,$city,$dateFrom = null,$dateTO = null,$saleSupport = true, $classType = 'Place') {
+		$data['cityID'] = $this->getCityId( $city );
+		
+		if ( $dateFrom !== null ) {
+			$data['dateFrom'] = $dateFrom;
+		}
+		if ( $dateTO !== null ) {
+			$data['dateTO'] = $dateTO;
+		}
+		if ( null !== $objectId ) {
+			$data['objectID'] = $objectId;
+		}
+		$data['saleSupportedOnly'] = $saleSupport;
+		
+		return $this->createQuery( 'json',$classType . '/schedule',$data )->jsonToArray();
+	}
+	
 	
 	public function getFilmsByCity( $cityId ) {
 		$s   = $this->getSchedule( null,$cityId,date( 'Y-m-d' ),date( 'Y-m-d',time() + 86000 ),true );
@@ -230,7 +246,6 @@ class AKR {
 			
 			return $obj;
 		}
-		
 		return false;
 	}
 	
@@ -243,27 +258,8 @@ class AKR {
 				}
 			}
 		}
-		
 		return false;
 	}
-	
-	public function getSchedule( $objectId,$city,$dateFrom = null,$dateTO = null,$saleSupport = true, $classType = 'Place') {
-		$data['cityID'] = $this->getCityId( $city );
-		
-		if ( $dateFrom !== null ) {
-			$data['dateFrom'] = $dateFrom;
-		}
-		if ( $dateTO !== null ) {
-			$data['dateTO'] = $dateTO;
-		}
-		if ( null !== $objectId ) {
-			$data['objectID'] = $objectId;
-		}
-		$data['saleSupportedOnly'] = $saleSupport;
-		
-		return $this->createQuery( 'json',$classType . '/schedule',$data )->jsonToArray();
-	}
-	
 	
 	public static function getScheduleByFilmId( $schedule,$filmId, $date = null) {
 		$res = [];

@@ -29,7 +29,7 @@ class GET extends DefaultController
         $films = $api->getListFromType($city['city'])->List;
         $afilms = $api->getListFromType(' ')->List;
 	    $afisha->saveFilmsDB($afilms);
-	    
+
 	    $this->addData([
 			'options' => new Options(),
             'places' => $places,
