@@ -35,11 +35,28 @@ $(document).ready(function () {
     $(document).on('click', '.button-location', function () {
         var city_id = $('input.search-location').attr('data-id');
         city_name = $('input.search-location').val();
+        progressLoad('start');
         $.ajax({
             type: 'POST',
             url: '/location?handler=set',
             data: {'city_id': city_id},
             success: function (data) {
+                if($('.selectListType').length > 0){
+                    $.ajax({
+                        url: "billboard?handler=get_cinemas",
+                        type: "get",
+                        success: function(response) {
+                            $('.selectListType li').each(function () {
+                                $(this).removeClass('slta');
+                            });
+                            $('.selectListType li:first').addClass('slta');
+                            $('#result').hide();
+                            $('#block_index_afisha').html(response);
+                            $('#block_index_afisha').show();
+                            progressLoad('end');
+                        }
+                    });
+                }
                 if (0 != data) {
                     data = JSON.parse(data);
                     console.log(data);
@@ -89,6 +106,16 @@ $(document).ready(function () {
 
     $('input.search-location').on('click', function () {
         $(this).select();
-    })
+    });
+
+    function progressLoad(key) {
+        if(key === 'start'){
+            $('.overlay-ajax-load').fadeIn(100);
+        }
+        if(key === 'end'){
+            $('.overlay-ajax-load').fadeOut(100);
+        }
+
+    }
 
 })

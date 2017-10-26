@@ -5200,7 +5200,7 @@ img.load-ajax {
     border-bottom: none!important;
 }
 
-*/
+/*стили афиши*/
 .block__films{
     width: 100%;
     display: flex;
@@ -5258,13 +5258,31 @@ img.load-ajax {
     bottom: 0px;
 }
 .cinemas {
-    display: block;
-    margin-top: 20px;
-    margin-bottom: 30px;
-}
-.inside-film {
+    float: left;
     width: calc(100% - 230px);
     float: right;
+    margin-top: 0px;
+}
+.cinemas strong {
+    margin-left: 10px;
+}
+.film__name{
+    font-size: 34px;
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.film__date{
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.film__dates {
+    margin-left: 10px;
+    display: inline-block;
+}
+.inside-film {
     margin-top: 0px;
 }
 .film-session {
@@ -5321,8 +5339,22 @@ img.load-ajax {
 }
 .film-session a:hover {
     border-color: #f17730;
+    background: #f17730;
 }
 .film-session a:active, .film-session a:focus {
     border-color: #f17730;
     background-color: #f17730!important;
+}
+.film_desc {
+    width: 230px;
+    display: inline-block;
+}
+.film_desc p {
+    color: #000;
+}
+.activeBtn a {
+    border-color: #f17730;
+}
+.film__table tr:hover {
+    background: #f2f2f2;
 }
