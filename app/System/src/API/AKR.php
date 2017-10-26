@@ -49,6 +49,9 @@ class AKR {
 	}
 	
 	public function getCityId( $city ) {
+		if(is_numeric($city)){
+			return $city;
+		}
 		if ( ! empty( $city ) ) {
 			$city   = $this->mb_ucfirst( $city );
 			$cities = $this->getCities();
@@ -77,7 +80,7 @@ class AKR {
 		return false;
 	}
 	
-	public function getListFromType( $city,$maxDate = null,$creationType = 'Movie' ) {
+	public function getListFromType( $city,$maxDate = null) {
 		if ( ! empty( $city ) ) {
 			$cityId = $this->getCityId( $city );
 			if ( null !== $maxDate ) {
@@ -118,7 +121,6 @@ class AKR {
 			$films  = $this->getListFromType( $city );
 			$places = $this->getPlaces( $city );
 			$files  = $this->getFiles();
-			//Debug::prn($files);die();
 			$filmplase = $this->getFile( $files->Sessions->Files->File['filename'] );
 			$arr       = [];
 			$arr2      = [];
@@ -164,27 +166,38 @@ class AKR {
 		return $arr;
 	}
 	
-	public function getCinemasByFilm( $cityId,$filmId ) {
-		$s   = $this->getSchedule( null,$cityId,date( 'Y-m-d' ),date( 'Y-m-d',time() + 86000 ),true );
+	public function getCinemasByFilm( $cityId,$filmId, $date = null ) {
+		$s   = $this->getSchedule($filmId, $cityId,date( 'Y-m-d' ), date_create('now + 3 day')->format('Y-m-d'),true, 'Movie' );
+		if($date == null) {
+			$date = date('Y-m-d');
+		}
 		$arr = [];
 		$res = [];
+		$arDate = [
+			'now' => date('Y-m-d'),
+			'tommorrow' => date_create('now + 1 day')->format('Y-m-d'),
+			'afterTommorow' => date_create('now + 2 day')->format('Y-m-d'),
+		];
+		
 		foreach ( (array) $s->List as $item ) {
-			if ( $item->CityID == $cityId && $item->CreationObjectID == $filmId ) {
-				$arr[ $item->PlaceObjectID ] = $item->PlaceObjectID;
-			}
-		}
-		$objects = $this->getPlaces( $cityId )->List;
-		foreach ( (array) $objects as $object ) {
-			if ( in_array( $object->ObjectID,$arr ) ) {
-				$res[] = $object;
+			if($key = array_search(substr($item->DateTime, 0 , -6), $arDate)){
+				if ( $item->CityID == $cityId && $item->CreationObjectID == $filmId ) {
+					$arr[$arDate[$key]][ $item->PlaceObjectID ] = $item->PlaceObjectID;
+				}
 			}
 		}
 		
+		$objects = $this->getPlaces( $cityId )->List;
+		foreach ( (array) $objects as $object ) {
+			if ( in_array( $object->ObjectID,$arr[$date] ) ) {
+				$res[] = $object;
+			}
+		}
 		return $res;
 	}
 	
 	public function getCinemasByFilmByDate( $cityId,$filmId, $date) {
-		$s   = $this->getSchedule( null, $cityId, date( 'Y-m-d'), $date ,true );
+		$s   = $this->getSchedule( $filmId, $cityId, date('Y-m-d'), $date ,true, 'Movie' );
 		$arr = [];
 		$res = [];
 		foreach ( (array) $s->List as $item ) {
@@ -234,8 +247,9 @@ class AKR {
 		return false;
 	}
 	
-	public function getSchedule( $objectId,$city,$dateFrom = null,$dateTO = null,$saleSupport = true ) {
+	public function getSchedule( $objectId,$city,$dateFrom = null,$dateTO = null,$saleSupport = true, $classType = 'Place') {
 		$data['cityID'] = $this->getCityId( $city );
+		
 		if ( $dateFrom !== null ) {
 			$data['dateFrom'] = $dateFrom;
 		}
@@ -247,29 +261,26 @@ class AKR {
 		}
 		$data['saleSupportedOnly'] = $saleSupport;
 		
-		return $this->createQuery( 'json','Place/schedule',$data )->jsonToArray();
+		return $this->createQuery( 'json',$classType . '/schedule',$data )->jsonToArray();
 	}
 	
 	
 	public static function getScheduleByFilmId( $schedule,$filmId, $date = null) {
 		$res = [];
+		if($date == null){
+			$date == date('Y-m-d');
+		}
 		if ( isset( $schedule->List ) ) {
 			foreach ( (array) $schedule->List as $item ) {
-				if($date != null) {
-					if($item->CreationObjectID == $filmId && $date == substr($item->DateTime, 0, -6)){
-						$res[] = $item;
-					}
-				} else {
-					if ( $item->CreationObjectID == $filmId ) {
+				if ( $item->CreationObjectID == $filmId && substr($item->DateTime, 0, -6) == $date) {
 						$res[] = $item;
 					}
 				}
-			}
 			return $res;
 		}
-		
 		return false;
 	}
+	
 	
 	public function getFiles() {
 		return $this->createQuery( 'xml','Movie/export/full' )->xmlToArray();

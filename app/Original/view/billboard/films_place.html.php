@@ -5,6 +5,7 @@
  * @var $img
  * @var $film array
  * @var $dataFrom array
+ * @var $curDate array
  */
 ?>
 <strong class="film__name">
@@ -14,7 +15,7 @@
 	Даты:
 </strong>
 <div class="film__dates">
-	<?php foreach ($dataFrom as $date):?>
+	<?php foreach ($dataFrom as $key => $date):?>
 		<span id="film_sessions" class="film-session" data-date="<?= $date?>" data-id="<?= $film['ObjectID']?>"><a href="#"> <?= $date?></a></span>
 	<?php endforeach;?>
 </div>
@@ -39,14 +40,14 @@
 	    <table class="table inside-film">
 	        <tbody class="film__table">
 	        <?php foreach ($films_place as $item): ?>
-	            <tr>
+		        <tr>
 	                <td valign="bottom" style="padding-bottom: 15px; padding-left: 15px;">
 	                    <span class="anchor-cube">
 	                    </span>
 	                    <?= $item->Name ?>
 	                </td>
 	                <td class="film-session" id="cinema-<?= $item->ObjectID ?>">
-	                    <a href="#" class="showSession" data-obj-id="<?= $item->ObjectID ?>" data-film-id="<?= $id ?>">Сеансы</a>
+	                    <a href="#" class="showSession" data-obj-id="<?= $item->ObjectID ?>" data-film-id="<?= $id ?>" data-date="<?=$curDate?>">Сеансы</a>
 	                </td>
 	            </tr>
 	        <?php endforeach; ?>

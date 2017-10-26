@@ -74,7 +74,7 @@ $(document).ready(function () {
 		var date = $(this).attr('data-date');
 		progressLoad('start');
 		$.ajax({
-			url: "?handler=getFilmByDate",
+			url: "?handler=get_film",
 			type: "get",
 			data: {id:id, date:date},
 			success: function(data) {
