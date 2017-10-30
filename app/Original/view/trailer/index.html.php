@@ -218,7 +218,7 @@ use Kinomania\System\Body\BodyScript;
                                 <div class="trailer-item clear">
                                     <div class="row-trailer-image">
                                         <div class="image-shadow">
-                                            <a href="/film/<?= $list[$i][Trailer::FILM_ID] ?>/trailers/<?= $list[$i][Trailer::ID] ?>/" class="parent play_video_main"  onclick="upToView(<?= $list[$i][Trailer::FILM_ID] ?>);" data-id="<?= $list[$i][Trailer::FILM_ID] ?>"><img alt="" src="//:0" data-original="<?= $list[$i][Trailer::IMAGE] ?>" class="lazy image-cover">
+                                            <a href="/film/<?= $list[$i][Trailer::FILM_ID] ?>/trailers/<?= $list[$i][Trailer::ID] ?>/" class="parent play_video_main"  onclick="upToView(<?= $list[$i][Trailer::FILM_ID] ?>);"><img alt="" src="//:0" data-original="<?= $list[$i][Trailer::IMAGE] ?>" class="lazy image-cover">
                                                 <i class="trailer__play-icon"></i>
                                             </a>
                                         </div>
