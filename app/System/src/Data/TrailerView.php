@@ -38,4 +38,5 @@ class TrailerView {
 		}
 		return false;
 	}
+	
 }

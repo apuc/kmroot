@@ -71,6 +71,13 @@ class Menu
                     'extra/video' => 'Типы видео',
                 ]
             ],
+            'stat' => [
+	            'title' => 'Статистика',
+	            'icon' => 'fa fa-gears',
+	            'items' => [
+		             'stat/trailers' => 'Трейлеры',
+	            ]
+            ],
             'seo' => [
                 'title' => 'SEO',
                 'icon' => 'fa fa-code',
@@ -86,7 +93,9 @@ class Menu
                     'sys/log' => 'Журнал',
                     'sys/admin' => 'Администраторы',
                     'sys/group' => 'Группы',
-                    'sys/parser' => 'Парсер'
+                    'sys/parser' => 'Парсер',
+	                'sys/stat' => 'Статистика',
+	                
                 ]
             ],
             'user' => [

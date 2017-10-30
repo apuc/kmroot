@@ -1,0 +1,56 @@
+<?php
+/**
+ * @var array $trailers
+ * @var array $page
+ * @var $itemCount
+ * @var object $pagination
+ */
+?>
+<!-- extends base.html.php -->
+
+<div class="content-heading">Статистика просмотров трейлеров</div>
+
+<div class="row">
+	<p>
+		<form method="get" action="trailer">
+			<div class="form-group">
+				<label for="year">Поиск трейлера</label>
+				<input type="text" name="film" value="" id="film" class="form-control" placeholder="Введите название фильма или ID">
+			</div>
+			<input type="submit" value="Найти" class="btn btn-primary">
+		</form>
+	</p>
+	
+	<div class="col-lg-10 col-sm-12 col-xs-12">
+		<div class="panel panel-default">
+			<div class="panel-wrapper">
+				<div class="panel-body">
+					<table id="dataTable" class="table table-striped table-bordered">
+						<thead>
+						<tr>
+							<th>ID</th>
+							<th>Название</th>
+							<th>Дата добавление</th>
+							<th>Количество просмотров</th>
+							<th></th>
+						</tr>
+						</thead>
+						<tbody>
+						<?php foreach ($trailers as $item):?>
+							<tr>
+								<th><?= $item['filmId']; ?></th>
+								<th><?= $item['name_ru']; ?></th>
+								<th><?= $item['date']; ?></th>
+								<th><?= $item['view']; ?></th>
+							</tr>
+						<?php endforeach;?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $pagination->printPag()?>
+<!--<div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate"><ul class="pagination"><li class="paginate_button previous disabled" aria-controls="dataTable" tabindex="0" id="dataTable_previous"><a href="#">Previous</a></li><li class="paginate_button active" aria-controls="dataTable" tabindex="0"><a href="#">1</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">2</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">3</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">4</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">5</a></li><li class="paginate_button disabled" aria-controls="dataTable" tabindex="0" id="dataTable_ellipsis"><a href="#">…</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">72548</a></li><li class="paginate_button next" aria-controls="dataTable" tabindex="0" id="dataTable_next"><a href="#">Next</a></li></ul></div>-->
