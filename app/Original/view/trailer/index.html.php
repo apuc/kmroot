@@ -218,7 +218,7 @@ use Kinomania\System\Body\BodyScript;
                                 <div class="trailer-item clear">
                                     <div class="row-trailer-image">
                                         <div class="image-shadow">
-                                            <a href="/film/<?= $list[$i][Trailer::FILM_ID] ?>/trailers/<?= $list[$i][Trailer::ID] ?>/" class="parent play_video_main" id="play_video" data-id="<?= $list[$i][Trailer::ID] ?>"><img alt="" src="//:0" data-original="<?= $list[$i][Trailer::IMAGE] ?>" class="lazy image-cover">
+                                            <a href="/film/<?= $list[$i][Trailer::FILM_ID] ?>/trailers/<?= $list[$i][Trailer::ID] ?>/" class="parent play_video_main" id="play_video" data-id="<?= $list[$i][Trailer::FILM_ID] ?>"><img alt="" src="//:0" data-original="<?= $list[$i][Trailer::IMAGE] ?>" class="lazy image-cover">
                                                 <i class="trailer__play-icon"></i>
                                             </a>
                                         </div>
@@ -768,6 +768,16 @@ use Kinomania\System\Body\BodyScript;
                     "width": width
                 }, function () {
                     this.play();
+	                var id = $('.play_video_main').attr('data-id');
+	                $.ajax({
+		                url: "?handler=upToView",
+		                type: "post",
+		                data: {id:id},
+		                /*success: function(response) {
+			                $('#result').html(response);
+		                }*/
+	                });
+	                return false;
                 });
                 if ('' !== window.__pre_roll__) {
                     player.preroll({
@@ -849,6 +859,16 @@ use Kinomania\System\Body\BodyScript;
                     "width": width
                 }, function () {
                     this.play();
+	                var id = $('.play_video_main').attr('data-id');
+	                $.ajax({
+		                url: "?handler=upToView",
+		                type: "post",
+		                data: {id:id},
+		                /*success: function(response) {
+			                $('#result').html(response);
+		                }*/
+	                });
+	                return false;
                 });
                 if ('' !== window.__pre_roll__) {
                     player.preroll({

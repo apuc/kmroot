@@ -1,6 +1,8 @@
 $(document).ready(function () {
-	$(document).on('click', '#play_video', function () {
+	$(document).on('click', '.trailer__play-icon', function () {
 		alert('hello');
+		console.log('hello');
+		return false;
 		event.preventDefault();
 		var id = $(this).data('id');
 		$.ajax({
