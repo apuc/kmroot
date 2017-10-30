@@ -30,7 +30,7 @@ class TrailerView {
 	
 	public function selectTrailerView( $data ) {
 		if ( $data ) {
-			$query  = ( "  SELECT * FROM `trailer` WHERE `filmId` = '".$data."'" );
+			$query  = ( " SELECT `view` FROM `trailer` WHERE `filmId` = '".$data."'" );
 			$result = $this->mysql()->query( $query );
 			while( $row = $result->fetch_assoc() ) {
 				return $row['view'];
