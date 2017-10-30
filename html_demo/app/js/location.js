@@ -43,7 +43,7 @@ $(document).ready(function () {
             success: function (data) {
                 if($('.selectListType').length > 0){
                     $.ajax({
-                        url: "billboard?handler=get_cinemas",
+                        url: "?handler=get_cinemas",
                         type: "get",
                         success: function(response) {
                             $('.selectListType li').each(function () {

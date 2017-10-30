@@ -87,11 +87,11 @@ use Kinomania\System\GeoLocation\IpGeoBase;
 								                    <span class="anchor-cube">
 								                    </span>
                                                 <a href="/billboard/cinema?id=<?= $place->ObjectID ?>">
-                                                    <?= $place->Name ?>
+	                                                <?= $place->Name ?>
                                                 </a>
                                             </td>
                                             <td valign="bottom">
-                                                <?= $place->Address ?>
+                                                <?= $place->Address ?>. Станция метро: <?= $place->Metro ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
