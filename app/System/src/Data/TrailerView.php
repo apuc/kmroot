@@ -21,7 +21,7 @@ class TrailerView {
 	
 	public function saveView( $data ) {
 		if($data){
-			$views = ($this->selectTrailerView($data) + 1);
+			$views = ($this->selectTrailerView($data)) + 1;
 			$query = " UPDATE `trailer` SET `view`= '".$views."' WHERE `filmId` = '".$data."'";
 			$this->mysql()->query( $query );
 		}
@@ -30,7 +30,7 @@ class TrailerView {
 	
 	public function selectTrailerView( $data ) {
 		if ( $data ) {
-			$query  = ( " SELECT `view` FROM `trailer` WHERE `filmId` = '".$data."'" );
+			$query  = ( " SELECT * FROM `trailer` WHERE `filmId` = '".$data."'" );
 			$result = $this->mysql()->query( $query );
 			while( $row = $result->fetch_assoc() ) {
 				return $row['view'];
