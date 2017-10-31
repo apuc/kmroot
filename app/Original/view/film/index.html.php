@@ -36,7 +36,7 @@ use Kinomania\System\Body\BodyScript;
 </head>
 <body>
 <div class="overlay-ajax-load"  style="position: absolute;z-index: 100; width: 0px; height: 0px;">
-	<img class="load-ajax"  src="<?= $static ?>/app/img/design/load.gif" style="align-self: center">
+	<img class="load-ajax"  src="<?= $static ?>/app/img/design/load.gif" style="align-self: center" width="100px">
 </div>
 <div class="my-overlay">
     <div class="my-overlay-item overlay-trailer-item">

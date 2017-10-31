@@ -10,7 +10,7 @@
 	<?= $name;?>
     <!--	г.-->
     <? //= \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo()['city'] ?>
-</strong>
+</strong><br><br>
 <strong class="film__date">
 	Даты:
 </strong>

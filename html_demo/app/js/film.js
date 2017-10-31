@@ -82,10 +82,10 @@ $(document).ready(function () {
 
 	function progressLoadSesion(key) {
 		if(key === 'start'){
-			$('#result').html('<img src="/app/img/design/load.gif" width="100px" >');
+			$('.overlay-ajax-load').fadeIn(100);
 		}
 		if(key === 'end'){
-			$('.overlay-ajax-load').fadeOut(300);
+			$('.overlay-ajax-load').fadeOut(100);
 		}
 	}
 });
