@@ -2,7 +2,7 @@ $(document).ready(function () {
 	$(document).on('click', '#infilm', function () {
 		if($(this).attr('data-show') == 0){
             var name = $(this).data('name');
-            //progressLoad('start');
+            progressLoad('start');
             $.ajax({
                 url: "/film?handler=get_film",
                 type: "get",
@@ -14,7 +14,12 @@ $(document).ready(function () {
                     } else {
                         $('#inFilmBox').show();
                     }
+	                var activeList = $('.cinemas').attr('data-date');
+	                var activeButton = $('span[data-date="'+ activeList +'"]');
+	                $('.film__dates .film-session').removeClass('activeBtn');
+	                activeButton.addClass('activeBtn');
                     $('#infilm').attr('data-show', 1);
+	                progressLoad('end');
                 }
             });
 		}
@@ -25,10 +30,15 @@ $(document).ready(function () {
 		e.preventDefault();
 		var objId = $(this).attr('data-obj-id');
 		var filmId = $(this).attr('data-film-id');
+		if($(this).attr('data-date')) {
+			var date = $(this).attr('data-date');
+		} else {
+			var date = '';
+		}
         $.ajax({
             url: "/film?handler=get_sessions",
             type: "get",
-            data: {objId:objId, filmId:filmId},
+            data: {objId:objId, filmId:filmId, date:date},
             success: function(data) {
                 $('#cinema-' + objId).html(data);
             }
@@ -36,13 +46,46 @@ $(document).ready(function () {
         return false;
     });
 
+	$(document).on('click', '#film_sessions', function (e) {
+		e.preventDefault();
+		progressLoadSesion('start');
+		var id = $(this).attr('data-id');
+		var date = $(this).attr('data-date');
+		var name = $(this).attr('data-name');
+		$.ajax({
+			url: "/film?handler=get_film",
+			type: "get",
+			data: {id:id, date:date, name:name},
+			success: function(data) {
+				$('#result').html(data);
+				var activeList = $('.cinemas').attr('data-date');
+				var activeButton = $('span[data-date="'+ activeList +'"]');
+				$('.film__dates .film-session').removeClass('activeBtn');
+				activeButton.addClass('activeBtn');
+				progressLoadSesion('end');
+			}
+		});
+		return false;
+	});
+
+
+
+
 	function progressLoad(key) {
 		if(key === 'start'){
 			$('#inFilmBox').html('<img src="/app/img/design/load.gif" width="100px">');
 		}
-		// if(key === 'end'){
-		// 	$('.overlay-ajax-load').fadeOut(300);
-		// }
+		if(key === 'end'){
+			$('.overlay-ajax-load').fadeOut(300);
+		}
+	}
 
+	function progressLoadSesion(key) {
+		if(key === 'start'){
+			$('#result').html('<img src="/app/img/design/load.gif" width="100px" >');
+		}
+		if(key === 'end'){
+			$('.overlay-ajax-load').fadeOut(300);
+		}
 	}
 });

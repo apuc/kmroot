@@ -2,6 +2,8 @@
 /**
  * @var $id integer
  * @var $cityId integer
+ * @var $curDate
+ * @var $dataFrom array
  */
 ?>
 <strong style="font-size: 34px;">
@@ -9,6 +11,15 @@
     <!--	г.-->
     <? //= \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo()['city'] ?>
 </strong>
+<strong class="film__date">
+	Даты:
+</strong>
+<div class="film__dates">
+	<?php foreach ($dataFrom as $key => $date):?>
+		<span id="film_sessions" class="film-session" data-name="<?= $name?>" data-date="<?= $date?>" data-id="<?= $id?>"><a href="#"> <?= $date?></a></span>
+	<?php endforeach;?>
+</div>
+<div class="cinemas" data-date="<?=$curDate?>"></div>
 <div id="block">
     <table class="table">
         <thead>
@@ -24,8 +35,8 @@
                     </span>
                     <?= $item->Name ?>
                 </td>
-                <td id="cinema-<?= $item->ObjectID ?>">
-                    <a href="#" class="showSession" data-obj-id="<?= $item->ObjectID ?>" data-film-id="<?= $id ?>">Сеансы</a>
+                <td class="film-session" id="cinema-<?= $item->ObjectID ?>">
+                    <a href="#" class="showSession" data-obj-id="<?= $item->ObjectID ?>" data-film-id="<?= $id ?>" data-date="<?= $curDate?>">Сеансы</a>
                 </td>
             </tr>
         <?php endforeach; ?>

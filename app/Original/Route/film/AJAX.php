@@ -123,13 +123,21 @@ class AJAX extends DefaultController
 		$cityId = $api->getCityId($city['city']);
 		$filmID = $api->getIDbyName($cityId, $_GET['name']);
 		if(!empty($filmID['id'])) {
-			$films_place = $api->getCinemasByFilm( $cityId,$filmID['id'] );
+			$films_place = $api->getCinemasByFilm($cityId, $filmID['id'],
+				(isset($_GET['date'])) ? $_GET['date'] : date('Y-m-d'));
+			$dataFrom = [
+				'now' => date('Y-m-d'),
+				'tomorrow' => date_create('now + 1 day')->format('Y-m-d'),
+				'after' => date_create('now + 2 day')->format('Y-m-d'),
+			];
 			$this->addData( [
 				'options'     => new Options(),
 				'films_place' => $films_place,
 				'cityId'      => $cityId,
 				'name'        => $_GET['name'],
 				'id'          => $filmID['id'],
+				'dataFrom' => $dataFrom,
+				'curDate' => (isset($_GET['date'])) ? $_GET['date'] : date('Y-m-d'),
 			] );
 			$this->setTemplate( 'film/films_place.html.php' );
 		} else {
@@ -141,11 +149,11 @@ class AJAX extends DefaultController
 	{
 		$city = IpGeoBase::getCityInfo();
 		$api = new AKR('eed094a6-b7cc-4529-b858-a60f26a57f6f', 'json');
-		$cityId =  $api->getCityId($city['city']);
-		$schedule = $api->getSchedule($_GET['objId'], $cityId, date('Y-m-d'), date('Y-m-d', time()+86000), true);
-		//Debug::prn(AKR::getScheduleByFilmId($schedule, $_GET['filmId']));
+		$cityId = $api->getCityId($city['city']);
+		$schedule = $api->getSchedule($_GET['objId'], $cityId, date('Y-m-d'),
+			date_create('now + 3 day')->format('Y-m-d'), true, 'Place');
 		$this->addData([
-			'sessions' => AKR::getScheduleByFilmId($schedule, $_GET['filmId'])
+			'sessions' => AKR::getScheduleByFilmId($schedule, $_GET['filmId'], $_GET['date']),
 		]);
 		$this->setTemplate('billboard/_session.html.php');
 	}
