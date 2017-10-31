@@ -38,7 +38,7 @@ class Stat {
 			$arr = [];
 			$query  = ( " SELECT * FROM `trailer` as `t1`
  						  JOIN `film` as `t2` ON t1.`filmId` = t2.`id`
-  						  WHERE UPPER (t2.`name_ru`) LIKE  UPPER ('%".$film."%')" );
+  						  WHERE UPPER (t2.`name_ru`) LIKE  UPPER ('".$film."%')" );
 			$result = $this->mysql()->query( $query );
 			while( $row = $result->fetch_assoc() ) {
 				$arr[] = $row;
