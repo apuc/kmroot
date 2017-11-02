@@ -360,7 +360,7 @@ use Kinomania\System\Body\BodyScript;
                         html +=  '   <div class="trailer-item clear">  '  +
                             '   	<div class="row-trailer-image">  '  +
                             '   		<div class="image-shadow">  '  +
-                            '   			<a href="/film/' + data[key][<?= Trailer::FILM_ID ?>] + '/trailers/' + data[key][<?= Trailer::ID ?>] + '/" class="parent play_video_main"><img alt="" src="//:0" data-original="' + data[key][<?= Trailer::IMAGE ?>] + '" class="lazy image-cover">  '  +
+                            '   			<a href="/film/' + data[key][<?= Trailer::FILM_ID ?>] + '/trailers/' + data[key][<?= Trailer::ID ?>] + '/" class="parent play_video_main" onclick="upToView('+ data[key][<?= Trailer::FILM_ID?>]+');"><img alt="" src="//:0" data-original="' + data[key][<?= Trailer::IMAGE ?>] + '" class="lazy image-cover">  '  +
                             '   				<i class="trailer__play-icon"></i>  '  +
                             '   			</a>  '  +
                             '   		</div>  '  +

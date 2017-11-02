@@ -89,3 +89,16 @@ $(document).ready(function () {
 		}
 	}
 });
+
+function upToView(idFilm) {
+	event.preventDefault();
+	$.ajax({
+		url: "/trailers?handler=upToView",
+		type: "post",
+		data: {id:idFilm},
+		success: function(response) {
+			/*$('#result').html(response);*/
+		}
+	});
+	return false;
+};
