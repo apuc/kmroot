@@ -318,6 +318,7 @@ use Kinomania\System\Body\BodyScript;
 </div>
     <!-- include section/footer.html.php -->
     <!-- include section/scripts.html.php -->
+</div>
 <link rel="stylesheet" href="<?= $static ?>/app/css/videojs.ads.css">
 <script src="<?= $static ?>/app/js/video.ie8.js"></script>
 <script src="<?= $static ?>/app/js/video.js"></script>
@@ -516,6 +517,7 @@ use Kinomania\System\Body\BodyScript;
 
                 $('.my-overlay-bg').click(function(event) {
                     var oldPlayer = document.getElementById('trailer_video');
+                    console.log(oldPlayer);return false;
                     if (null !== oldPlayer) {
                         videojs(oldPlayer).dispose();
                     }
