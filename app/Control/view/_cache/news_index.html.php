@@ -263,60 +263,393 @@
         <div class="content-wrapper animated fadeInLeft">
             <?php
 /**
- * @var array $trailers
- * @var array $page
- * @var $itemCount
- * @var object $pagination
+ * @var \Dspbee\Core\Request $request
+ * @var string $getParameter
+ * @var string $from
+ * @var string $to
+ * @var array $categoryList
+ * @var string $category
  */
 ?>
 
 
-<div class="content-heading">Статистика просмотров трейлеров</div>
+<link rel="stylesheet" href="/vendor/cms/datatable-bootstrap/css/dataTables.alternative.min.css">
+<link rel="stylesheet" href="/vendor/cms/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css">
 
-<div class="row">
-	<p>
-		<form method="get" action="trailer">
-			<div class="form-group">
-				<label for="year">Поиск трейлера</label>
-				<input type="text" name="film" value="" id="film" class="form-control" placeholder="Введите название фильма или ID">
-			</div>
-			<input type="submit" value="Найти" class="btn btn-primary">
-		</form>
-	</p>
-	
-	<div class="col-lg-10 col-sm-12 col-xs-12">
-		<div class="panel panel-default">
-			<div class="panel-wrapper">
-				<div class="panel-body">
-					<table id="dataTable" class="table table-striped table-bordered">
-						<thead>
-						<tr>
-							<th>ID</th>
-							<th>Название</th>
-							<th>Дата добавления</th>
-							<th>Количество просмотров</th>
-							<th></th>
-						</tr>
-						</thead>
-						<tbody>
-						<?php foreach ($trailers as $item):?>
-							<tr>
-								<th><?= $item['filmId']; ?></th>
-								<th><?= $item['name_ru']; ?></th>
-								<th><?= $item['date']; ?></th>
-								<th><?= $item['view']; ?></th>
-							</tr>
-						<?php endforeach;?>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="content-heading">
+    Статьи
+    <button type="button" id="modalBtn" data-toggle="modal" data-target="#modalWindow" class="btn btn-primary btn-sm margin20">Добавить</button>
 </div>
 
-<?php $pagination->printPag()?>
+<div class="row">
+    <div class="col-lg-10 col-sm-12 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-wrapper">
+                <div class="panel-body">
+                    <form method="get" id="filterForm">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div id="startdate" class="form-group input-group date">
+                                    <input type="text" name="from" id="from" value="<?= $from ?>" class="form-control" placeholder="С даты" />
+                                     <span class="input-group-addon">
+                                        <span class="fa fa-calendar"></span>
+                                     </span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div id="enddate" class="form-group input-group date">
+                                    <input type="text" name="to" id="to" value="<?= $to ?>" class="form-control" placeholder="По дату" />
+                                     <span class="input-group-addon">
+                                        <span class="fa fa-calendar"></span>
+                                     </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <select id="source" name="category" class="newsFilter chosen-select input-md form-control">
+                                        <option value="">Все</option>
+                                        <?php foreach ($categoryList as $name): ?>
+                                            <option <?php if ($category == $name): ?> selected="selected" <?php endif ?> value="<?= $name ?>"><?= $name ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <input type="button" class="btn btn-default" value="Очистить" id="clean" style="left:-1px;position: relative;">
+                                <input type="submit" class="btn btn-primary margin20" value="Применить">
+                            </div>
+                        </div>
+                    </form>
+                    <hr style="margin-top: 11px; margin-bottom: 41px;" />
+                    <table id="dataTable" class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Дата</th>
+                            <th>Категория</th>
+                            <th>Название</th>
+                            <th>Вывод</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+<script src="/vendor/cms/moment/min/moment-with-locales.min.js"></script>
+<script src="/vendor/cms/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(document).ready(function(){
+            $('#startdate').datetimepicker({
+                format: "YYYY-MM-DD"
+            });
+            $('#enddate').datetimepicker({
+                format: "YYYY-MM-DD"
+            });
+        });
+
+        $('#clean').click(function(){
+            document.getElementById('from').value = '';
+            document.getElementById('to').value = '';
+            document.getElementById('source').value = '';
+            $('#filterForm').submit();
+        });
+
+        $('#modalBtn').click(function(){
+            $.ajax({
+                url : '<?= $request->makeUrl('news/add') ?>',
+                type: "GET",
+                success:function(data) {
+                    $('#modalWindow').html(data).modal({});
+                    $(':file').filestyle();
+                    (function(window, document, $, undefined){
+                        $(function(){
+                            $('select').chosen({disable_search_threshold: 10});
+                        });
+                    })(window, document, window.jQuery);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log("Error: " + textStatus + ' ' + errorThrown);
+                }
+            });
+        });
+    });
+</script>
+
+<script src="/vendor/cms/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="/vendor/cms/datatables-colvis/js/dataTables.colVis.js"></script>
+<script src="/vendor/cms/datatable-bootstrap/js/dataTables.bootstrap.js"></script>
+<script src="/vendor/cms/datatable-bootstrap/js/dataTables.bootstrapPagination.js"></script>
+
+<script>
+    function activeConfirmInit()
+{
+    $('.activeConfirm').on('click', function(e) {
+        window.delConfirmE = this;
+        e.preventDefault();
+
+        var title = $(this).attr('data-title');
+        var text = $(this).attr('data-text');
+
+        swal({
+            title: title,
+            text: text,
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Да",
+            cancelButtonText: "Отмена",
+            closeOnConfirm: true,
+            closeOnCancel: true
+        }, function (isConfirm) {
+            if (isConfirm) {
+                $(window.delConfirmE).parent().submit();
+            }
+        });
+    });
+}
+
+$.fn.dataTable.pipeline = function ( opts ) {
+    // Configuration options
+    var conf = $.extend( {
+        pages: 5,     // number of pages to cache
+        url: '',      // script url
+        data: null,   // function or object with parameters to send to the server
+                      // matching how `ajax.data` works in DataTables
+        method: 'GET' // Ajax HTTP method
+    }, opts );
+
+    // Private variables for storing the cache
+    var cacheLower = -1;
+    var cacheUpper = null;
+    var cacheLastRequest = null;
+    var cacheLastJson = null;
+
+    return function ( request, drawCallback, settings ) {
+        var ajax          = false;
+        var requestStart  = request.start;
+        var drawStart     = request.start;
+        var requestLength = request.length;
+        var requestEnd    = requestStart + requestLength;
+
+        if ( settings.clearCache ) {
+            // API requested that the cache be cleared
+            ajax = true;
+            settings.clearCache = false;
+        }
+        else if ( cacheLower < 0 || requestStart < cacheLower || requestEnd > cacheUpper ) {
+            // outside cached data - need to make a request
+            ajax = true;
+        }
+        else if ( JSON.stringify( request.order )   !== JSON.stringify( cacheLastRequest.order ) ||
+            JSON.stringify( request.columns ) !== JSON.stringify( cacheLastRequest.columns ) ||
+            JSON.stringify( request.search )  !== JSON.stringify( cacheLastRequest.search )
+        ) {
+            // properties changed (ordering, columns, searching)
+            ajax = true;
+        }
+
+        // Store the request for checking next time around
+        cacheLastRequest = $.extend( true, {}, request );
+
+        if ( ajax ) {
+            // Need data from the server
+            if ( requestStart < cacheLower ) {
+                requestStart = requestStart - (requestLength*(conf.pages-1));
+
+                if ( requestStart < 0 ) {
+                    requestStart = 0;
+                }
+            }
+
+            cacheLower = requestStart;
+            cacheUpper = requestStart + (requestLength * conf.pages);
+
+            request.start = requestStart;
+            request.length = requestLength*conf.pages;
+
+            // Provide the same `data` options as DataTables.
+            if ( $.isFunction ( conf.data ) ) {
+                // As a function it is executed with the data object as an arg
+                // for manipulation. If an object is returned, it is used as the
+                // data object to submit
+                var d = conf.data( request );
+                if ( d ) {
+                    $.extend( request, d );
+                }
+            }
+            else if ( $.isPlainObject( conf.data ) ) {
+                // As an object, the data given extends the default
+                $.extend( request, conf.data );
+            }
+
+            settings.jqXHR = $.ajax( {
+                "type":     conf.method,
+                "url":      conf.url,
+                "data":     request,
+                "dataType": "json",
+                "cache":    false,
+                "success":  function ( json ) {
+                    cacheLastJson = $.extend(true, {}, json);
+
+                    if ( cacheLower != drawStart ) {
+                        json.data.splice( 0, drawStart-cacheLower );
+                    }
+                    json.data.splice( requestLength, json.data.length );
+
+                    drawCallback( json );
+                    setTimeout(function(){
+                        activeConfirmInit();
+                        $('[data-toggle="tooltip"]').tooltip({
+                            container: 'body'
+                        });
+                        if (typeof dataTableCallback === "function") {
+                            dataTableCallback();
+                        }
+                    }, 500);
+                }
+            } );
+        } else {
+            json = $.extend( true, {}, cacheLastJson );
+            json.draw = request.draw; // Update the echo for each response
+            json.data.splice( 0, requestStart-cacheLower );
+            json.data.splice( requestLength, json.data.length );
+
+            drawCallback(json);
+            setTimeout(function(){
+                activeConfirmInit();
+                $('[data-toggle="tooltip"]').tooltip({
+                    container: 'body'
+                });
+                if (typeof dataTableCallback === "function") {
+                    dataTableCallback();
+                }
+            }, 500);
+        }
+    }
+};
+
+// Register an API method that will empty the pipelined data, forcing an Ajax
+// fetch on the next draw (i.e. `table.clearPipeline().draw()`)
+$.fn.dataTable.Api.register( 'clearPipeline()', function () {
+    return this.iterator( 'table', function ( settings ) {
+        settings.clearCache = true;
+    } );
+} );
+jQuery.fn.dataTableExt.oApi.fnSetFilteringDelay = function ( oSettings, iDelay ) {
+    var _that = this;
+
+    if ( iDelay === undefined ) {
+        iDelay = 250;
+    }
+
+    this.each( function ( i ) {
+        $.fn.dataTableExt.iApiIndex = i;
+        var
+            oTimerId = null,
+            sPreviousSearch = null,
+            anControl = $( 'input', _that.fnSettings().aanFeatures.f );
+
+        anControl.unbind( 'keyup search input' ).bind( 'keyup search input', function() {
+
+            if (sPreviousSearch === null || sPreviousSearch != anControl.val()) {
+                window.clearTimeout(oTimerId);
+                sPreviousSearch = anControl.val();
+                oTimerId = window.setTimeout(function() {
+                    $.fn.dataTableExt.iApiIndex = i;
+                    _that.fnFilter( anControl.val() );
+                }, iDelay);
+            }
+        });
+
+        return this;
+    } );
+    return this;
+};
+</script>
+
+<script type="text/javascript">
+    $('#dataTable').dataTable({
+        "bStateSave": true,
+        stateSaveCallback: function (settings, data){
+            localStorage.setItem('newsStorage', JSON.stringify(data));
+        },
+        stateLoadCallback: function (){
+            try {
+                return JSON.parse(localStorage.getItem('newsStorage'));
+            } catch (e) {}
+        },
+        "order": [[0, "desc"]],
+        "paging":   true,
+        "ordering": true,
+        "bFilter": true,
+        "aoColumns": [
+            {
+                "mRender": function (data, type, full) {
+                    var news = ['Новости кино', 'Зарубежные сериалы', 'Российские сериалы', 'Арткиномания', 'Фестивали и премии'];
+                    if (-1 != news.indexOf(full[2])) {
+                        return '<a href="<?= \Kinomania\System\Config\Server::DEMO ?>/news/' + full[0] + '/" target="_blank" class="link"><em class="fa fa-external-link"></em></a> &nbsp; ' + full[0]
+                    } else {
+                        return '<a href="<?= \Kinomania\System\Config\Server::DEMO ?>/article/' + full[0] + '/" target="_blank" class="link"><em class="fa fa-external-link"></em></a> &nbsp; ' + full[0]
+                    }
+                }
+            },
+            {"orderable": false},
+            {"orderable": false},
+            {"orderable": false},
+            {
+                "orderable": false,
+                "mRender": function(data, type, full) {
+                    switch (full[4]) {
+                        case 'show':
+                            return '<span class="label label-success">да</span>';
+                            break;
+                    }
+                    return '<span class="label label-danger">скрыт</span>';
+                }
+
+            },
+            {
+                "orderable": false,
+                "mRender": function(data, type, full) {
+                    return '<a class="btn btn-info btn-xs" href="<?= $request->makeUrl('news/edit?id=') ?>' + full[0] + '/">Редактировать</a> &nbsp;' +
+                        '<form method="post" style="display: inline-block;">' +
+                        '<button type="submit" class="btn btn-danger btn-xs activeConfirm" data-title="Удалить новость `' + full[3] + '`?">Удалить</button>' +
+                        '<input type="hidden" name="id" value="' + full[0] + '" />' +
+                        '<input type="hidden" name="handler" value="delete" />' +
+                        '</form>';
+                }
+            }
+        ],
+        "info":     true,
+        "processing": true,
+        "serverSide": true,
+        "ajax": $.fn.dataTable.pipeline( {
+            url: '?handler=getList<?= $getParameter ?>',
+            pages: 5 // number of pages to cache
+        }),
+        "autoWidth": false,
+        oLanguage: {
+            sSearch:      'ID или название:',
+            sZeroRecords:      'Ничего не найдено',
+            sInfo:      'Показано с _START_ по _END_, всего _TOTAL_',
+            sLengthMenu:  '_MENU_',
+            sProcessing: '<div class="ball-clip-rotate-multiple" style="margin-top: 60px;"><div></div><div></div></div>'
+        }
+    }).fnSetFilteringDelay(1000);
+
+    $('.newsFilter ').change(function(){
+        $('#filterForm').submit();
+    })
+</script>
         </div>
     </section>
 
