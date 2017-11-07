@@ -51,9 +51,10 @@ class Pagination
 
     }
 
-    public function printPag()
+    public function printPag($print = true)
     {
 
+        $pi = ($_SERVER['PATH_INFO'] ?? '');
         if ($this->currentPage <= 0 || $this->itemsCount <= 0 || $this->pagesCount <= 1) {
             return false;
         }
@@ -76,33 +77,38 @@ class Pagination
                             </style><ul class="' . $this->classUl . '">';
         if ($this->currentPage > 1) {
             if ($this->arrowsHE) {
-                $this->html .= '<li><a href="'.$_SERVER["PATH_INFO"].'?page=1">'.$this->homeBtn.'</a></li>';
+                $this->html .= '<li><a href="'.$pi.'?page=1">'.$this->homeBtn.'</a></li>';
             }
             if ($this->arrows) {
-                $this->html .= '<li><a href="'.$_SERVER["PATH_INFO"].'?page='.($this->currentPage - 1).'">'.$this->prevBtn.'</a></li>';
+                $this->html .= '<li><a href="'.$pi.'?page='.($this->currentPage - 1).'">'.$this->prevBtn.'</a></li>';
             }
         }
         for ($i = $this->currentPage - 2; $i <= $this->currentPage + 2; $i++) {
             if($i > 0 && $i <= $this->pagesCount){
                 if($i == $this->currentPage){
-                    $this->html .= '<li class="'.$this->classActive.'"><a href="'.$_SERVER["PATH_INFO"].'?page='.$i.'">'.$i.'</a></li>';
+                    $this->html .= '<li class="'.$this->classActive.'"><a href="'.$pi.'?page='.$i.'">'.$i.'</a></li>';
                 }
                 else {
-                    $this->html .= '<li><a href="'.$_SERVER["PATH_INFO"].'?page='.$i.'">'.$i.'</a></li>';
+                    $this->html .= '<li><a href="'.$pi.'?page='.$i.'">'.$i.'</a></li>';
                 }
             }
         }
 
         if ($this->currentPage < $this->pagesCount) {
             if ($this->arrows) {
-                $this->html .= '<li><a href="'.$_SERVER["PATH_INFO"].'?page='.($this->currentPage + 1).'">'.$this->nextBtn.'</a></li>';
+                $this->html .= '<li><a href="'.$pi.'?page='.($this->currentPage + 1).'">'.$this->nextBtn.'</a></li>';
             }
             if ($this->arrowsHE) {
-                $this->html .= '<li><a href="'.$_SERVER["PATH_INFO"].'?page='.$this->pagesCount.'">'.$this->endBtn.'</a></li>';
+                $this->html .= '<li><a href="'.$pi.'?page='.$this->pagesCount.'">'.$this->endBtn.'</a></li>';
             }
         }
         $this->html .= '</ul>';
-        echo $this->html;
+        if($print){
+            echo $this->html;
+        }
+        else {
+            return $this->html;
+        }
     }
 
     public function setOptions($options)

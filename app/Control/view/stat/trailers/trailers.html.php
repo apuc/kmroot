@@ -52,4 +52,4 @@
 	</div>
 </div>
 
-<?php $pagination->printPag()?>
+<?= $pagination?>
