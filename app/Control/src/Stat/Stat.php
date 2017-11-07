@@ -19,10 +19,16 @@ class Stat {
 	public function selectTrailersViewByDate( $data, $offset) {
 		if ( $data != null ) {
 			$arr    = [];
-			$query  = ( " SELECT * FROM `trailer` as `t1`
- 						  JOIN `film` as `t2` ON t1.`filmId` = t2.`id`
-  						  WHERE `date` < '" . $data . "' ORDER BY `date` DESC LIMIT 10 OFFSET $offset" );
+			$query  = ( " SELECT ANY_VALUE(t1.`id`) as id, ANY_VALUE( t1.`view`) as view,
+  						  t1.`filmId`, t2.`name_ru`, ANY_VALUE(t1.`date`) as date
+  						  FROM `trailer` as `t1`
+ 						  JOIN `film` as `t2` ON  t1.`filmId` = t2.`id`
+  						  WHERE  t1.`date` < '".$data."'
+                          GROUP BY  t1.`filmId`
+                          ORDER BY date DESC
+  						  LIMIT 10 OFFSET $offset" );
 			$result = $this->mysql()->query( $query );
+	
 			while( $row = $result->fetch_assoc() ) {
 				;
 				$arr[] = $row;

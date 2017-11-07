@@ -444,7 +444,6 @@
             fd.append('id', <?= $item->id() ?>);
             fd.append('anons', anons);
             fd.append('text', text);
-
             $.ajax({
                 url: '?handler=save',
                 type: "POST",

@@ -7,6 +7,7 @@ use Kinomania\Control\Log\Log;
 use Kinomania\Control\News\Tag;
 use Kinomania\Control\Server\StaticS;
 use Kinomania\System\Config\Server;
+use Kinomania\System\Debug\Debug;
 
 /**
  * Class AJAX
@@ -34,7 +35,7 @@ class AJAX extends AdminController
     {
         $static = new StaticS();
         $data = json_decode($static->crop('news', '1920x1920'), true);
-
+	   
         if (isset($data['er']) && 0 == $data['er']) {
             $post = new PostBag();
             $log = new Log($this->mysql());
@@ -116,7 +117,6 @@ class AJAX extends AdminController
         $s = Server::STATIC_CURRENT;
         $this->mysql()->query("INSERT INTO `news_file` SET `s` = {$s}, `image` = '', `hash` = ''");
         $id = $this->mysql()->insert_id;
-
         $static = new StaticS();
         $data = json_decode($static->upload('news_text', '1280x1920', $id), true);
         

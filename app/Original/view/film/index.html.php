@@ -763,8 +763,8 @@ use Kinomania\System\Body\BodyScript;
                                         <div class="outer-trailer-item">
                                             <div class="">
                                                 <div class="trailer-list-item">
-                                                    <div class="video-prewiew" data-id="<?= $item[Film::TRAILER]['id'] ?>">
-                                                        <img alt="" src="<?= $item[Film::TRAILER]['image'] ?>" class="responsive-image video-prewiew__item">
+                                                    <div class="video-prewiew" data-id="<?= $item[Film::TRAILER]['id'] ?>" onclick="upToView(<?= $id ?>);">
+                                                        <img alt="" src="<?= $item[Film::TRAILER]['image'] ?>" class="responsive-image video-prewiew__item" >
                                                         </div>
                                                     <div class="head-desc clear">
                                                             <div class="trailer__title">
