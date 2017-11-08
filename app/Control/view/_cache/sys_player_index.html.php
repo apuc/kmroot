@@ -280,9 +280,9 @@
 		            <form method="post">
                         <div class="form-group">
                             <label for="type">Плеер</label>
-                            <select name="type" id="type">
-	                            <option selected>Текущий плеер <?=$player?></option>
-                                <option current value="js">JS</option>
+                            <select name="player" id="player">
+	                            <option selected value="<?= $player?>">Текущий плеер <?= $player?></option>
+                                <option value="js">JS</option>
                                 <option value="viqeo">Viqeo</option>
                             </select>
                         </div>

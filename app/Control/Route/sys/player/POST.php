@@ -12,9 +12,8 @@ class POST extends AdminController
 	public function player()
     {
     	$setplayer = new Player();
-    	$setplayer->setPlayer($_POST['type']);
+    	$setplayer->setPlayer($_POST['player']);
     	$player = $setplayer->selectPlayer();
-        Debug::prn($player);
         $this->addData([
             'player' => $player,
         ]);

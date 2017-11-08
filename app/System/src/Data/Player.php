@@ -19,11 +19,13 @@ class Player {
 	
 	public function selectPlayer() {
 		$arr = [];
-		$query = "SELECT * FROM `player`";
+		$query = ( " SELECT *
+				  	 FROM `options`
+				  	 WHERE `key` = 'sys_current_player'");
 		$result = 	$this->mysql()->query( $query );
 		while( $row = $result->fetch_assoc() ) {
 			$arr[] = $row;
 		}
-		return $arr[0]['type'];
+		return $arr[0]['value'];
 	}
 }
