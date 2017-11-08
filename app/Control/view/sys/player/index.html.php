@@ -19,7 +19,7 @@
                             <label for="type">Плеер</label>
                             <select name="type" id="type">
 	                            <option selected>Текущий плеер <?=$player?></option>
-                                <option current value="js">JS</option>
+                                <option value="js">JS</option>
                                 <option value="viqeo">Viqeo</option>
                             </select>
                         </div>
