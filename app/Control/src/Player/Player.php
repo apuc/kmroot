@@ -17,25 +17,32 @@ class Player {
 	use TDate;
 	
 	public function setPlayer($player) {
-		
 			$query  = ( " UPDATE `options`
  						  SET `value` = '".$player."'
  						  WHERE `key` = 'sys_current_player'
  					 	  ");
 			$this->mysql()->query( $query );
-			
-			
 	}
 	
 	public function selectPlayer() {
 		$arr = [];
-		$query = ( "  SELECT * FROM `options`
+		$query = ( "  SELECT *
+   					  FROM `options`
 					  WHERE `key` = 'sys_current_player'");
 		$result = 	$this->mysql()->query( $query );
-		while( $row = $result->fetch_assoc() ) {
-			$arr[] = $row;
+		if($result->fetch_assoc() == NULL) {
+			$query = ( " INSERT INTO `options` (`key`, `value`)
+					     VALUES ('sys_current_player','js')");
+			$this->mysql()->query( $query );
+		} else {
+			$query = ( "  SELECT *
+   					      FROM `options`
+					      WHERE `key` = 'sys_current_player'");
+			$result = 	$this->mysql()->query( $query );
+			while( $row = $result->fetch_assoc() ) {
+				$arr[] = $row;
+			}
+			return $arr[0]['value'];
 		}
-		return $arr[0]['value'];
 	}
-	
 }
