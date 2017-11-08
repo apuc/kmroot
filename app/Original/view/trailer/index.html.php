@@ -218,7 +218,7 @@ use Kinomania\System\Body\BodyScript;
                                 <div class="trailer-item clear">
                                     <div class="row-trailer-image">
                                         <div class="image-shadow">
-                                            <a href="/film/<?= $list[$i][Trailer::FILM_ID] ?>/trailers/<?= $list[$i][Trailer::ID] ?>/" class="parent play_video_main"  onclick="upToView(<?= $list[$i][Trailer::FILM_ID] ?>);"><img alt="" src="//:0" data-original="<?= $list[$i][Trailer::IMAGE] ?>" class="lazy image-cover">
+                                            <a href="/film/<?= $list[$i][Trailer::FILM_ID] ?>/trailers/<?= $list[$i][Trailer::ID] ?>/" class="parent play_video_main" data-prev="<?= $list[$i][Trailer::IMAGE] ?>"  onclick="upToView(<?= $list[$i][Trailer::FILM_ID] ?>);"><img alt="" src="//:0" data-original="<?= $list[$i][Trailer::IMAGE] ?>" class="lazy image-cover">
                                                 <i class="trailer__play-icon"></i>
                                             </a>
                                         </div>
@@ -232,19 +232,19 @@ use Kinomania\System\Body\BodyScript;
                                                 <?php if (empty($list[$i][Trailer::HD_480])): ?>
                                                     <li><span>HD 480</span></li>
                                                 <?php else: ?>
-                                                    <li><a href="<?= $list[$i][Trailer::HD_480] ?>" onclick="upToView(<?= $list[$i][Trailer::FILM_ID] ?>);" class="play_video"><span>HD 480</span></a></li>
+                                                    <li><a href="<?= $list[$i][Trailer::HD_480] ?>" onclick="upToView(<?= $list[$i][Trailer::FILM_ID] ?>);" data-prev="<?= $list[$i][Trailer::IMAGE] ?>" class="play_video"><span>HD 480</span></a></li>
                                                 <?php endif ?>
 
                                                 <?php if (empty($list[$i][Trailer::HD_720])): ?>
                                                     <li><span>HD 720</span></li>
                                                 <?php else: ?>
-                                                    <li><a href="<?= $list[$i][Trailer::HD_720] ?>" onclick="upToView(<?= $list[$i][Trailer::FILM_ID] ?>);" class="play_video"><span>HD 720</span></a></li>
+                                                    <li><a href="<?= $list[$i][Trailer::HD_720] ?>" onclick="upToView(<?= $list[$i][Trailer::FILM_ID] ?>);" data-prev="<?= $list[$i][Trailer::IMAGE] ?>" class="play_video"><span>HD 720</span></a></li>
                                                 <?php endif ?>
 
                                                 <?php if (empty($list[$i][Trailer::HD_1080])): ?>
                                                     <li><span>HD 1080</span></li>
                                                 <?php else: ?>
-                                                    <li><a href="<?= $list[$i][Trailer::HD_1080] ?>" onclick="upToView(<?= $list[$i][Trailer::FILM_ID] ?>);" class="play_video"><span>HD 1080</span></a></li>
+                                                    <li><a href="<?= $list[$i][Trailer::HD_1080] ?>" onclick="upToView(<?= $list[$i][Trailer::FILM_ID] ?>);" data-prev="<?= $list[$i][Trailer::IMAGE] ?>" class="play_video"><span>HD 1080</span></a></li>
                                                 <?php endif ?>
                                             </ul>
                                         </div>
@@ -317,6 +317,11 @@ use Kinomania\System\Body\BodyScript;
     </div>
 </div>
     <!-- include section/footer.html.php -->
+	<div id="playVideo">
+		<div id="player">
+			<div class="video"></div>
+		</div>
+	</div>
     <!-- include section/scripts.html.php -->
 </div>
 <link rel="stylesheet" href="<?= $static ?>/app/css/videojs.ads.css">
@@ -361,7 +366,7 @@ use Kinomania\System\Body\BodyScript;
                         html +=  '   <div class="trailer-item clear">  '  +
                             '   	<div class="row-trailer-image">  '  +
                             '   		<div class="image-shadow">  '  +
-                            '   			<a href="/film/' + data[key][<?= Trailer::FILM_ID ?>] + '/trailers/' + data[key][<?= Trailer::ID ?>] + '/" class="parent play_video_main" onclick="upToView('+ data[key][<?= Trailer::FILM_ID?>]+');"><img alt="" src="//:0" data-original="' + data[key][<?= Trailer::IMAGE ?>] + '" class="lazy image-cover">  '  +
+                            '   			<a href="/film/' + data[key][<?= Trailer::FILM_ID ?>] + '/trailers/' + data[key][<?= Trailer::ID ?>] + '/" data-prev="' + data[key][<?= Trailer::IMAGE ?>] + '" class="parent play_video_main" onclick="upToView('+ data[key][<?= Trailer::FILM_ID?>]+');"><img alt="" src="//:0" data-original="' + data[key][<?= Trailer::IMAGE ?>] + '" class="lazy image-cover">  '  +
                             '   				<i class="trailer__play-icon"></i>  '  +
                             '   			</a>  '  +
                             '   		</div>  '  +
@@ -375,17 +380,17 @@ use Kinomania\System\Body\BodyScript;
                             if ('' == data[key][<?= Trailer::HD_480 ?>]) {
                                 html += '<li><span>HD 480</span></li>';
                             } else {
-                                html += '<li><a href="' + data[key][<?= Trailer::HD_480 ?>] + '" class="play_video"><span>HD 480</span></a></li>';
+                                html += '<li><a href="' + data[key][<?= Trailer::HD_480 ?>] + '" data-prev="' + data[key][<?= Trailer::IMAGE ?>] + '" class="play_video"><span>HD 480</span></a></li>';
                             }
                             if ('' == data[key][<?= Trailer::HD_720 ?>]) {
                                 html += '<li><span>HD 720</span></li>';
                             } else {
-                                html += '<li><a href="' + data[key][<?= Trailer::HD_720 ?>] + '" class="play_video"><span>HD 720</span></a></li>';
+                                html += '<li><a href="' + data[key][<?= Trailer::HD_720 ?>] + '" data-prev="' + data[key][<?= Trailer::IMAGE ?>] + '" class="play_video"><span>HD 720</span></a></li>';
                             }
                             if ('' == data[key][<?= Trailer::HD_1080 ?>]) {
                                 html += '<li><span>HD 1080</span></li>';
                             } else {
-                                html += '<li><a href="' + data[key][<?= Trailer::HD_1080 ?>] + '" class="play_video"><span>HD 1080</span></a></li>';
+                                html += '<li><a href="' + data[key][<?= Trailer::HD_1080 ?>] + '" data-prev="' + data[key][<?= Trailer::IMAGE ?>] + '"class="play_video"><span>HD 1080</span></a></li>';
                             }
                             html += '</ul>  '  +
                             '   		</div>  '  +
@@ -446,8 +451,10 @@ use Kinomania\System\Body\BodyScript;
 
                 $('.play_video').click(function(e){
                     e = e || window.event;
-
                     var href = $(this).attr('href');
+	                var prev = $(this).attr('data-prev');
+	                startVideo(href, prev);
+	                return false;
 
                     if ('' != href) {
                         if (-1 !== href.indexOf('.mp4')) {
@@ -529,8 +536,11 @@ use Kinomania\System\Body\BodyScript;
 
                 $('.play_video_main').click(function(e){
                     e = e || window.event;
-
                     var href = $(this).parent().parent().parent().find('.trailer-list-view-quality').find('a:last').attr('href');
+	                var prev = $(this).attr('data-prev');
+	                startVideo(href, prev);
+	                return false;
+                    
                     if ('' != href) {
                         if (-1 !== href.indexOf('.mp4')) {
                             $('.war-content').html('<video id="trailer_video" class="video-js vjs-default-skin" controls preload="auto" width="720" data-setup="{}">' +
@@ -738,9 +748,11 @@ use Kinomania\System\Body\BodyScript;
 
         $('.play_video').click(function(e){
             e = e || window.event;
-
             var href = $(this).attr('href');
-
+	        var prev = $(this).attr('data-prev');
+	        startVideo(href, prev);
+	        return false;
+	        
             if ('' != href) {
                 if (-1 !== href.indexOf('.mp4')) {
                     $('.war-content').html('<video id="trailer_video" class="video-js vjs-default-skin" controls preload="auto" width="720" data-setup="{}">' +
@@ -820,8 +832,11 @@ use Kinomania\System\Body\BodyScript;
 
         $('.play_video_main').click(function(e){
             e = e || window.event;
-
             var href = $(this).parent().parent().parent().find('.trailer-list-view-quality').find('a:last').attr('href');
+	        var prev = $(this).attr('data-prev');
+            startVideo(href, prev);
+            return false;
+            
             if ('' != href) {
                 if (-1 !== href.indexOf('.mp4')) {
                     $('.war-content').html('<video id="trailer_video" class="video-js vjs-default-skin" controls preload="auto" width="720" data-setup="{}">' +
