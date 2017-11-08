@@ -3,6 +3,7 @@
  * @var string $static
  * @var array $genre
  * @var $options \Kinomania\System\Options\Options
+ * @var $player
  */
 use Kinomania\Original\Key\Film\Film;
 use Kinomania\Original\Key\Person\Trailer as Trailer;
@@ -453,8 +454,10 @@ use Kinomania\System\Body\BodyScript;
                     e = e || window.event;
                     var href = $(this).attr('href');
 	                var prev = $(this).attr('data-prev');
-	                startVideo(href, prev);
-	                return false;
+	                <?php if($player != 'js'):?>
+		                startVideo(href, prev);
+		                return false;
+		            <?php endif;?>
 
                     if ('' != href) {
                         if (-1 !== href.indexOf('.mp4')) {
@@ -538,10 +541,12 @@ use Kinomania\System\Body\BodyScript;
                     e = e || window.event;
                     var href = $(this).parent().parent().parent().find('.trailer-list-view-quality').find('a:last').attr('href');
 	                var prev = $(this).attr('data-prev');
-	                startVideo(href, prev);
-	                return false;
-                    
-                    if ('' != href) {
+	                <?php if($player != 'js'):?>
+		                startVideo(href, prev);
+		                return false;
+	                <?php endif;?>
+
+	                if ('' != href) {
                         if (-1 !== href.indexOf('.mp4')) {
                             $('.war-content').html('<video id="trailer_video" class="video-js vjs-default-skin" controls preload="auto" width="720" data-setup="{}">' +
                                 '<source src="' + href + '" type=\'video/mp4\'>' +
@@ -750,10 +755,12 @@ use Kinomania\System\Body\BodyScript;
             e = e || window.event;
             var href = $(this).attr('href');
 	        var prev = $(this).attr('data-prev');
-	        startVideo(href, prev);
-	        return false;
-	        
-            if ('' != href) {
+	        <?php if($player != 'js'):?>
+		        startVideo(href, prev);
+		        return false;
+	        <?php endif;?>
+
+	        if ('' != href) {
                 if (-1 !== href.indexOf('.mp4')) {
                     $('.war-content').html('<video id="trailer_video" class="video-js vjs-default-skin" controls preload="auto" width="720" data-setup="{}">' +
                         '<source src="' + href + '" type=\'video/mp4\'>' +
@@ -834,10 +841,12 @@ use Kinomania\System\Body\BodyScript;
             e = e || window.event;
             var href = $(this).parent().parent().parent().find('.trailer-list-view-quality').find('a:last').attr('href');
 	        var prev = $(this).attr('data-prev');
-            startVideo(href, prev);
-            return false;
-            
-            if ('' != href) {
+	        <?php if($player != 'js'):?>
+		        startVideo(href, prev);
+		        return false;
+	        <?php endif;?>
+
+	        if ('' != href) {
                 if (-1 !== href.indexOf('.mp4')) {
                     $('.war-content').html('<video id="trailer_video" class="video-js vjs-default-skin" controls preload="auto" width="720" data-setup="{}">' +
                         '<source src="' + href + '" type=\'video/mp4\'>' +
