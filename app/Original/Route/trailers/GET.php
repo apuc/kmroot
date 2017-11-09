@@ -5,6 +5,7 @@ use Dspbee\Bundle\Debug\Wrap;
 use Kinomania\Original\Controller\DefaultController;
 use Kinomania\Original\Logic\Trailer\Trailer;
 use Kinomania\System\Data\Genre;
+use Kinomania\System\Data\Player;
 use Kinomania\System\Options\Options;
 
 class GET extends DefaultController
@@ -13,6 +14,7 @@ class GET extends DefaultController
     {
         $redis = new \Redis();
         $redisStatus = $redis->connect('127.0.0.1');
+        $player = new Player();
 
         $key = 'trailer';
         if (!Wrap::$debugEnabled && $redisStatus && $redis->exists($key)) {
@@ -29,7 +31,8 @@ class GET extends DefaultController
             'list' => $list,
             'genre' => Genre::RU,
             'yearFrom' => 1888,
-			'options' => new Options()
+			'options' => new Options(),
+	        'player' => $player->selectPlayer(),
         ]);
 
         $this->setTemplate('trailer/index.html.php');

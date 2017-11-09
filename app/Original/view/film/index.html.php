@@ -763,7 +763,7 @@ use Kinomania\System\Body\BodyScript;
                                         <div class="outer-trailer-item">
                                             <div class="">
                                                 <div class="trailer-list-item">
-                                                    <div class="video-prewiew" data-id="<?= $item[Film::TRAILER]['id'] ?>" onclick="upToView(<?= $id ?>);">
+                                                    <div class="video-prewiew" data-prev="<?= $item[Film::TRAILER]['image'] ?>" data-id="<?= $item[Film::TRAILER]['id'] ?>" onclick="upToView(<?= $id ?>);">
                                                         <img alt="" src="<?= $item[Film::TRAILER]['image'] ?>" class="responsive-image video-prewiew__item" >
                                                         </div>
                                                     <div class="head-desc clear">
@@ -962,6 +962,11 @@ use Kinomania\System\Body\BodyScript;
     </div>
 </div>
     <!-- include section/footer.html.php -->
+	<div id="playVideo">
+		<div id="player">
+			<div class="video"></div>
+		</div>
+	</div>
     <!-- include section/scripts.html.php -->
     <link rel="stylesheet" href="<?= $static ?>/app/css/videojs.ads.css">
     <script src="<?= $static ?>/app/js/video.ie8.js"></script>

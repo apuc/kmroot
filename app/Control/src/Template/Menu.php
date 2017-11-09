@@ -94,7 +94,7 @@ class Menu
                     'sys/admin' => 'Администраторы',
                     'sys/group' => 'Группы',
                     'sys/parser' => 'Парсер',
-	                'sys/stat' => 'Статистика',
+	                'sys/player' => 'Видеоплеер',
 	                
                 ]
             ],

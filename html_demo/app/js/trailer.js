@@ -9,4 +9,40 @@ function upToView(idFilm) {
 		}
 	});
 	return false;
-};
+}
+
+function startVideo (film, prev) {
+	var script = document.createElement('script');
+	script.src = "https://cdn.viqeo.tv/js/vq_init_external_player.js?_=" + (+new Date());
+	script.setAttribute('data-profile', 105);
+	$('#player').addClass('active-player').show();
+	$('#playVideo').addClass('active-win').show();
+	$('.video').attr('id', 'slotHorizontal');
+	script.onload = function () {
+		VIQEO.start({
+			players: [{
+				selector: "#slotHorizontal",
+				videoSrc: film,
+				previewSrc: prev
+			}]
+		})
+	};
+	document.head.appendChild(script)
+}
+
+jQuery(document).ready(function($) {
+	$(document).on('click', '#playVideo', function() {
+		$('#playVideo').removeClass('active-win');
+		$('#player').removeClass('active-player');
+		document.getElementById('slotHorizontal').innerHTML = '';
+	});
+	function progressLoad(key) {
+		if(key === 'start'){
+			$('.overlay-ajax-load').fadeIn(300);
+		}
+		if(key === 'end'){
+			$('.overlay-ajax-load').fadeOut(300);
+		}
+	}
+});
+
