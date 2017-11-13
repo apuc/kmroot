@@ -7,6 +7,7 @@
  * @var array $news
  * @var $film_place \Kinomania\System\Options\Options
  * @var $cityId \Kinomania\System\Options\Options
+ * @var $player
  */
 use Kinomania\Original\Key\Film\Film;
 use Kinomania\Original\Key\Film\TV as TV;
@@ -1537,6 +1538,13 @@ use Kinomania\System\Body\BodyScript;
 
             $('.video-prewiew').click(function () {
                 var id = $(this).attr('data-id');
+                var prev = $(this).attr('data-prev');
+	            var href = $(this).parent().parent().parent().parent().find('.dop-download').find('a:last').attr('href');
+	            console.log(prev);
+	            <?php if($player != 'js'):?>
+		            startVideo(href, prev);
+		            return false;
+	            <?php endif;?>
                 $.ajax({
                     url: '/film/?handler=getTrailer&id=' + id,
                     type: "POST",

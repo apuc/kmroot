@@ -4,13 +4,15 @@ namespace Original\Route_film_D_trailers;
 use Dspbee\Bundle\Debug\Wrap;
 use Kinomania\Original\Controller\FilmController;
 use Kinomania\Original\Logic\Film\Trailers;
+use Kinomania\System\Data\Player;
 
 class GET extends FilmController
 {
     public function index()
     {
-        $numList = $this->getNumList();
-
+        $player = new Player();
+    	$numList = $this->getNumList();
+		
         if (0 < $numList[0]) {
             $this->redis = new \Redis();
             $this->redisStatus = $this->redis->connect('127.0.0.1');
@@ -31,7 +33,8 @@ class GET extends FilmController
                     'id' => $numList[0],
                     'list' => $list,
                     'min' => $this->getMin($numList[0]),
-                    'stat' => $this->getStat($numList[0])
+                    'stat' => $this->getStat($numList[0]),
+	                'player' => $player->selectPlayer(),
                 ]);
                 $this->setTemplate('film/trailer/index.html.php');
             }
