@@ -8,6 +8,7 @@ use Kinomania\System\Common\TDate;
 use Kinomania\System\Common\TRepository;
 use Kinomania\System\Config\Path;
 use Kinomania\System\Config\Server;
+use Kinomania\System\Data\Player;
 
 class GET extends FilmController
 {
@@ -16,6 +17,7 @@ class GET extends FilmController
 
     public function index()
     {
+    	$player = new Player();
         $numList = $this->getNumList();
 
         $film = null;
@@ -131,7 +133,8 @@ class GET extends FilmController
                     'item' => $item,
                     'team' => $team,
                     'news' => $news,
-                    'stat' => $this->getStat($numList[0])
+                    'stat' => $this->getStat($numList[0]),
+	                'player' => $player->selectPlayer(),
                 ]);
                 $this->setTemplate('film/index.html.php');
             }

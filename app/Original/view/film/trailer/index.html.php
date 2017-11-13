@@ -4,6 +4,7 @@
  * @var array $min
  * @var array $list
  * @var string $static
+ * @var $player
  */
 use Kinomania\Original\Key\Film\Film;
 use Kinomania\Original\Key\Person\Trailer as Trailer;
@@ -82,7 +83,7 @@ use Kinomania\System\Body\BodyScript;
                                 <div class="outer-trailer-item">
                                     <div class="">
                                         <div class="trailer-list-item">
-                                            <div class="video-prewiew video_top">
+                                            <div class="video-prewiew video_top" onclick="upToView(<?= $list[0][Trailer::FILM_ID] ?>)" data-prev="<?= $list[0][Trailer::IMAGE] ?>">
                                                 <img alt="" src="<?= $list[0][Trailer::IMAGE] ?>" class="responsive-image video-prewiew__item">
                                             </div>
                                             <div class="head-desc clear">
@@ -152,7 +153,7 @@ use Kinomania\System\Body\BodyScript;
                             <div class="trailer-item clear">
                                 <div class="row-trailer-image">
                                     <div class="image-shadow">
-                                        <a href="/film/<?= $list[$i][Trailer::FILM_ID] ?>/trailers/<?= $list[$i][Trailer::ID] ?>/" class="parent play_video_main"><img alt="" src="//:0" data-original="<?= $list[$i][Trailer::IMAGE] ?>" class="lazy image-cover">
+                                        <a href="/film/<?= $list[$i][Trailer::FILM_ID] ?>/trailers/<?= $list[$i][Trailer::ID] ?>/" class="parent play_video_main" onclick="upToView(<?= $list[$i][Trailer::FILM_ID] ?>)" data-prev="<?= $list[$i][Trailer::IMAGE] ?>"><img alt="" src="//:0" data-original="<?= $list[$i][Trailer::IMAGE] ?>" class="lazy image-cover">
                                             <i class="trailer__play-icon"></i>
                                         </a>
                                     </div>
@@ -166,19 +167,19 @@ use Kinomania\System\Body\BodyScript;
                                             <?php if (empty($list[$i][Trailer::HD_480])): ?>
                                                 <li><span>HD 480</span></li>
                                             <?php else: ?>
-                                                <li><a href="<?= $list[$i][Trailer::HD_480] ?>" class="play_video"><span>HD 480</span></a></li>
+                                                <li><a href="<?= $list[$i][Trailer::HD_480] ?>" onclick="upToView(<?= $list[$i][Trailer::FILM_ID] ?>)" class="play_video"><span>HD 480</span></a></li>
                                             <?php endif ?>
 
                                             <?php if (empty($list[$i][Trailer::HD_720])): ?>
                                                 <li><span>HD 720</span></li>
                                             <?php else: ?>
-                                                <li><a href="<?= $list[$i][Trailer::HD_720] ?>" class="play_video"><span>HD 720</span></a></li>
+                                                <li><a href="<?= $list[$i][Trailer::HD_720] ?>" onclick="upToView(<?= $list[$i][Trailer::FILM_ID] ?>)" class="play_video"><span>HD 720</span></a></li>
                                             <?php endif ?>
 
                                             <?php if (empty($list[$i][Trailer::HD_1080])): ?>
                                                 <li><span>HD 1080</span></li>
                                             <?php else: ?>
-                                                <li><a href="<?= $list[$i][Trailer::HD_1080] ?>" class="play_video"><span>HD 1080</span></a></li>
+                                                <li><a href="<?= $list[$i][Trailer::HD_1080] ?>" onclick="upToView(<?= $list[$i][Trailer::FILM_ID] ?>)" class="play_video"><span>HD 1080</span></a></li>
                                             <?php endif ?>
                                         </ul>
                                     </div>
@@ -239,6 +240,11 @@ use Kinomania\System\Body\BodyScript;
     </div>
 </div>
     <!-- include section/footer.html.php -->
+	<div id="playVideo">
+		<div id="player">
+			<div class="video"></div>
+		</div>
+	</div>
     <!-- include section/scripts.html.php -->
 <link rel="stylesheet" href="<?= $static ?>/app/css/videojs.ads.css">
 <script src="<?= $static ?>/app/js/video.ie8.js"></script>
@@ -246,6 +252,7 @@ use Kinomania\System\Body\BodyScript;
 <script src="<?= $static ?>/app/js/videojs.ads.js"></script>
 <script src="<?= $static ?>/app/js/videojs-preroll.js"></script>
 <script type="text/javascript" src="<?= $static ?>/vendor/cms/jquery/jquery.lazyload.min.js"></script>
+<script type="text/javascript" src="<?= $static ?>/app/js/film.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         $("img.lazy").lazyload({
@@ -254,8 +261,12 @@ use Kinomania\System\Body\BodyScript;
 
         $('.play_video').click(function(e){
             e = e || window.event;
-
             var href = $(this).attr('href');
+	        var prev = $(this).attr('data-prev');
+	        <?php if($player != 'js'):?>
+	            startVideo(href, prev);
+	            return false;
+	        <?php endif;?>
 
             if ('' != href) {
                 if (-1 !== href.indexOf('.mp4')) {
@@ -336,8 +347,13 @@ use Kinomania\System\Body\BodyScript;
 
         $('.play_video_main').click(function(e){
             e = e || window.event;
-
             var href = $(this).parent().parent().parent().find('.trailer-list-view-quality').find('a:last').attr('href');
+	        var prev = $(this).attr('data-prev');
+	        <?php if($player != 'js'):?>
+	            startVideo(href, prev);
+	            return false;
+	        <?php endif;?>
+            
             if ('' != href) {
                 href = href.split('file=');
                 href = href[1];
@@ -408,6 +424,13 @@ use Kinomania\System\Body\BodyScript;
 
         $('.video_top').click(function(){
             var href = $(this).parent().parent().parent().parent().find('.dop-download').find('a:last').attr('href');
+//	        var href2 = href.split('=')[1];
+            var prev = $(this).attr('data-prev');
+			<?php if($player != 'js'):?>
+	            startVideo(href, prev);
+	            return false;
+			<?php endif;?>
+            
             if ('' != href) {
                 href = href.split('file=');
                 href = href[1];
