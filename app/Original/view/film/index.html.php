@@ -1053,7 +1053,6 @@ use Kinomania\System\Body\BodyScript;
     <script src="<?= $static ?>/app/js/plugins/mp/jquery.magnific-popup.js"></script>
 <script type="text/javascript" src="https://kassa.rambler.ru/s/widget/js/TicketManager.js"></script>
 <script type="text/javascript" src="<?= $static ?>/vendor/cms/jquery/jquery.lazyload.min.js"></script>
-<script type="text/javascript" src="<?= $static ?>/app/js/film.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             var collectionGet = false;

@@ -169,6 +169,7 @@ use Kinomania\System\Body\BodyScript;
 <!-- Magnific Popup core JS file -->
 <script src="<?= $static ?>/app/js/plugins/mp/jquery.magnific-popup.js"></script>
 <script type="text/javascript" src="<?= $static ?>/vendor/cms/jquery/jquery.lazyload.min.js"></script>
+<script type="text/javascript" src="<?= $static ?>/app/js/film.js"></script>
 <script type="text/javascript">
     function sliderNavigation(){
         var w = window.innerWidth;
