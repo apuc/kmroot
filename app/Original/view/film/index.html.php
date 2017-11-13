@@ -765,6 +765,7 @@ use Kinomania\System\Body\BodyScript;
                                             <div class="">
                                                 <div class="trailer-list-item">
                                                     <div class="video-prewiew" data-prev="<?= $item[Film::TRAILER]['image'] ?>" data-id="<?= $item[Film::TRAILER]['id'] ?>" onclick="upToView(<?= $id ?>);">
+	                                                    
                                                         <img alt="" src="<?= $item[Film::TRAILER]['image'] ?>" class="responsive-image video-prewiew__item" >
                                                         </div>
                                                     <div class="head-desc clear">
@@ -1053,6 +1054,7 @@ use Kinomania\System\Body\BodyScript;
     <script src="<?= $static ?>/app/js/plugins/mp/jquery.magnific-popup.js"></script>
 <script type="text/javascript" src="https://kassa.rambler.ru/s/widget/js/TicketManager.js"></script>
 <script type="text/javascript" src="<?= $static ?>/vendor/cms/jquery/jquery.lazyload.min.js"></script>
+<script type="text/javascript" src="<?= $static ?>/app/js/film.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             var collectionGet = false;
@@ -1535,7 +1537,7 @@ use Kinomania\System\Body\BodyScript;
                 });
             }
 
-            $('.video-prewiew').click(function () {
+            $('.video-prewiew').click(function (event) {
                 var id = $(this).attr('data-id');
                 var prev = $(this).attr('data-prev');
 	            var href = $(this).parent().parent().parent().parent().find('.dop-download').find('a:last').attr('href');
