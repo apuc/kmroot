@@ -45,7 +45,6 @@
                         <ul class="mobile-nav-list clear">
                             <li><a href="/billboard/">СМОТРЕТЬ</a>
                                 <ul class="nav-list-dop">
-                                    <!-- <li><a href="/billboard/">АФИША</a></li> -->
                                     <li><a href="/tv/">ТВ</a></li>
                                     <li><a href="/releases/russia/">СКОРО В КИНО</a></li>
                                     <li><a href="/article/shorts/">SHORTЫ</a></li>
@@ -104,6 +103,8 @@
                                     <li><a href="/genres/films?genre=sc">ФАНТАСТИКА</a></li>
                                 </ul>
 	                        </li>
+	                        <li><a href="/billboard/">АФИША</a></li>
+	                        <ul class="nav-list-dop"></ul>
                         </ul>
                     </div>
                 </div>
