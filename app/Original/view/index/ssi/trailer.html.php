@@ -2,6 +2,7 @@
 /**
  * @var array $list
  * @var string $static
+ * @var $player
  */
 ?>
 <div class="section-black-item section-black-item1 col-xl-8 col-lg-8 col-md-7 col-sm-12 col-xs-12">
@@ -324,7 +325,7 @@
             <div class="inner-list-item" data-type-trailersType="0">
                 <?php foreach ($list['series'] as $k => $item):?>
                     <div class="list-item <?php if (0 == $k): ?> active <?php endif ?>" data-type-trailersTrailer="<?= $k ?>">
-                        <div class="video-prewiew" data-id="<?= $item['id'] ?>">
+                        <div class="video-prewiew" data-id="<?= $item['id'] ?>" data-prev="<?= $item['image'] ?>" onclick="upToView(<?= $item['filmId'] ?>)">
                             <img alt="" src="<?= $item['image'] ?>" class="responsive-image video-prewiew__item" style="width: 100%;">
                         </div>
                         <div class="head-desc clear">
@@ -396,7 +397,7 @@
             <div class="inner-list-item" data-type-trailersType="1">
                 <?php foreach ($list['series_ru'] as $k => $item):?>
                     <div class="list-item <?php if (0 == $k): ?> active <?php endif ?>" data-type-trailersTrailer="<?= $k ?>">
-                        <div class="video-prewiew" data-id="<?= $item['id'] ?>">
+                        <div class="video-prewiew" data-id="<?= $item['id'] ?>"  onclick="upToView(<?= $item['filmId'] ?>)" data-prev="<?= $item['image'] ?>">
                             <img alt="" src="<?= $item['image'] ?>" class="responsive-image video-prewiew__item" style="width: 100%;">
                         </div>
                         <div class="head-desc clear">
@@ -608,10 +609,18 @@
 <script src="http://fs.kinomania.ru/app/js/video.js"></script>
 <script src="http://fs.kinomania.ru/app/js/videojs.ads.js"></script>
 <script src="http://fs.kinomania.ru/app/js/videojs-preroll.js"></script>
+<script type="text/javascript" src="<?= $static ?>/app/js/film.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         $('.video-prewiew').click(function(){
             var id = $(this).attr('data-id');
+	        var prev = $(this).attr('data-prev');
+	        var href = $(this).parent().parent().parent().parent().find('.dop-download').find('a:last').attr('href');
+	        console.log(prev);
+	        <?php if($player != 'js'):?>
+		        startVideo(href, prev);
+		        return false;
+	        <?php endif;?>
             $.ajax({
                 url: '/film/?handler=getTrailer&id=' + id,
                 type: "POST",

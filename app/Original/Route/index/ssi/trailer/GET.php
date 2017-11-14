@@ -7,6 +7,7 @@ use Kinomania\System\Common\TRepository;
 use Kinomania\System\Config\Path;
 use Kinomania\System\Config\Server;
 use Kinomania\System\Data\Country;
+use Kinomania\System\Data\Player;
 
 class GET extends DefaultController
 {
@@ -15,7 +16,8 @@ class GET extends DefaultController
 
     public function index()
     {
-        header('Cache-Control: public, max-age=1800');
+        $player = new Player();
+    	header('Cache-Control: public, max-age=1800');
         
         $list = [];
 
@@ -369,7 +371,8 @@ class GET extends DefaultController
         }
 
         $this->addData([
-            'list' => $list
+            'list' => $list,
+	        'player'=> $player->selectPlayer(),
         ]);
 
         $this->setTemplate('index/ssi/trailer.html.php');
