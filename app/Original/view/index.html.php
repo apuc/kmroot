@@ -164,6 +164,11 @@ use Kinomania\System\Body\BodyScript;
     </div>
 </div>
 <!-- include section/footer.html.php -->
+<div id="playVideo">
+	<div id="player">
+		<div class="video"></div>
+	</div>
+</div>
 <!-- include section/scripts.html.php -->
 
 <!-- Magnific Popup core JS file -->

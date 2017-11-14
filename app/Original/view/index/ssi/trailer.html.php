@@ -35,7 +35,7 @@
             <div class="inner-list-item active" data-type-trailersType="0">
                 <?php foreach ($list['new'] as $k => $item):?>
                     <div class="list-item <?php if (0 == $k): ?> active <?php endif ?>" data-type-trailersTrailer="<?= $k ?>">
-                        <div class="video-prewiew" data-id="<?= $item['id'] ?>">
+                        <div class="video-prewiew" data-id="<?= $item['id'] ?>" onclick="upToView(<?= $item['id'] ?>)" data-prev="<?= $item['image'] ?>">
                             <img alt="" src="<?= $item['image'] ?>" class="responsive-image video-prewiew__item" style="width: 100%;">
                         </div>
                         <div class="head-desc clear">
@@ -107,7 +107,7 @@
             <div class="inner-list-item" data-type-trailersType="1">
                 <?php foreach ($list['popular'] as $k => $item):?>
                     <div class="list-item <?php if (0 == $k): ?> active <?php endif ?>" data-type-trailersTrailer="<?= $k ?>">
-                        <div class="video-prewiew" data-id="<?= $item['id'] ?>">
+                        <div class="video-prewiew" data-id="<?= $item['id'] ?>" onclick="upToView(<?= $item['id'] ?>)" data-prev="<?= $item['image'] ?>">
                             <img alt="" src="<?= $item['image'] ?>" class="responsive-image video-prewiew__item" style="width: 100%;">
                         </div>
                         <div class="head-desc clear">
@@ -179,7 +179,7 @@
             <div class="inner-list-item" data-type-trailersType="2">
                 <?php foreach ($list['comment'] as $k => $item):?>
                     <div class="list-item <?php if (0 == $k): ?> active <?php endif ?>" data-type-trailersTrailer="<?= $k ?>">
-                        <div class="video-prewiew" data-id="<?= $item['id'] ?>">
+                        <div class="video-prewiew" data-id="<?= $item['id'] ?>" onclick="upToView(<?= $item['id'] ?>)" data-prev="<?= $item['image'] ?>">
                             <img alt="" src="<?= $item['image'] ?>" class="responsive-image video-prewiew__item" style="width: 100%;">
                         </div>
                         <div class="head-desc clear">
@@ -251,7 +251,7 @@
             <div class="inner-list-item" data-type-trailersType="3">
                 <?php foreach ($list['local'] as $k => $item):?>
                     <div class="list-item <?php if (0 == $k): ?> active <?php endif ?>" data-type-trailersTrailer="<?= $k ?>">
-                        <div class="video-prewiew" data-id="<?= $item['id'] ?>">
+                        <div class="video-prewiew" data-id="<?= $item['id'] ?>" onclick="upToView(<?= $item['id'] ?>)" data-prev="<?= $item['image'] ?>">
                             <img alt="" src="<?= $item['image'] ?>" class="responsive-image video-prewiew__item" style="width: 100%;">
                         </div>
                         <div class="head-desc clear">
