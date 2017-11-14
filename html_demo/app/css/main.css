@@ -565,6 +565,9 @@ img.load-ajax {
     top:50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: none; width: 700px; margin: auto;
+    display: none;
+    width:100%;
+    max-width: 700px;
+    margin: auto;
 }
 
