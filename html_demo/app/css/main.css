@@ -453,6 +453,11 @@ img.load-ajax {
     float: right;
     margin-top: 0px;
 }
+@media (max-width: 600px) {
+    .cinemas {
+        width: 100%;
+    }
+}
 .cinemas strong {
     margin-left: 10px;
 }
@@ -478,8 +483,19 @@ img.load-ajax {
 .film-session {
     width: 150px;
 }
+@media (max-width: 900px) {
+    .film-session {
+        width: 60px;
+    }
+}
 .film-block{
   margin: 10px;
+}
+@media (max-width: 600px) {
+    .film-block{
+        display: flex;
+        flex-direction: column;
+    }
 }
 .cinema-img {
     width: 230px;
