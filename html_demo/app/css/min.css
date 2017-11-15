@@ -5358,3 +5358,25 @@ img.load-ajax {
 .film__table tr:hover {
     background: #f2f2f2;
 }
+/*afisha film*/
+@media (max-width: 600px) {
+    .block__film{
+        width: 100%;
+    }
+}
+@media (max-width: 600px) {
+    .cinemas {
+        width: 100%;
+    }
+}
+@media (max-width: 900px) {
+    .film-session {
+        width: 60px;
+    }
+}
+@media (max-width: 600px) {
+    .film-block{
+        display: flex;
+        flex-direction: column;
+    }
+}
