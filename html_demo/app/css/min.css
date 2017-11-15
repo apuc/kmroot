@@ -5375,5 +5375,27 @@ img.load-ajax {
     top:50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: none; width: 700px; margin: auto;
+    display: none;
+    width:100%;
+    max-width: 700px;
+    margin: auto;
+}
+
+@media (max-width: 600px) {
+    .cinemas {
+        width: 100%;
+    }
+}
+
+@media (max-width: 900px) {
+    .film-session {
+        width: 60px;
+    }
+}
+
+@media (max-width: 600px) {
+    .film-block{
+        display: flex;
+        flex-direction: column;
+    }
 }
