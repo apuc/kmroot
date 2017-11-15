@@ -17,6 +17,7 @@
                         <input type="submit" value="Сбросить" class="btn btn-warning" />
                         <input type="hidden" name="handler" value="reset" />
                     </form>
+	                <br>
 	                <form method="post" class="form-horizontal">
 		                <input type="submit" value="Обновить" class="btn btn-warning" />
 		                <input type="hidden" name="handler" value="parse" />
