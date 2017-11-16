@@ -615,17 +615,19 @@
         $('.video-prewiew').click(function(){
             var id = $(this).attr('data-id');
 	        var prev = $(this).attr('data-prev');
-	        var href = $(this).parent().parent().parent().parent().find('.dop-download').find('a:last').attr('href');
-	        console.log(prev);
-	        <?php if($player != 'js'):?>
-		        startVideo(href, prev);
-		        return false;
-	        <?php endif;?>
+//	        var href = $(this).parent().parent().parent().parent().find('.dop-download').find('a:last').attr('href');
+//	        console.log(prev);
             $.ajax({
                 url: '/film/?handler=getTrailer&id=' + id,
                 type: "POST",
                 success: function (data) {
-                    data = JSON.parse(data);
+	                data = JSON.parse(data);
+	                console.log(data.src);
+	                <?php if($player != 'js'):?>
+	                    startVideo(data.src, prev);
+	                return false;
+	                <?php endif;?>
+                    
                     if ('' != data.src) {
                         $('.war-content').html('<video id="trailer_video" class="video-js vjs-default-skin" controls preload="auto" width="720" data-setup="{}">' +
                             '<source src="' + data.src + '" type=\'video/mp4\'>' +
