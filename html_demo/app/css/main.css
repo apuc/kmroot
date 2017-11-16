@@ -592,3 +592,7 @@ img.load-ajax {
         width: 100%;
     }
 }
+
+.video_top {
+    cursor: pointer;
+}
