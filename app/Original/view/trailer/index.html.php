@@ -31,7 +31,7 @@ use Kinomania\System\Body\BodyScript;
 
     <!-- include section/head.html.php -->
 </head>
-<body>
+<>
 <div class="my-overlay">
     <div class="my-overlay-item overlay-trailer-item">
         <div class="my-overlay-bg"></div>
@@ -318,7 +318,7 @@ use Kinomania\System\Body\BodyScript;
     </div>
 </div>
     <!-- include section/footer.html.php -->
-	<div id="playVideo">
+	<div id="playVideo" onclick="closeVideo()">
 		<div id="player">
 			<div class="video"></div>
 		</div>

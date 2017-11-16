@@ -104,7 +104,6 @@
                                 </ul>
 	                        </li>
 	                        <li><a href="/billboard/">АФИША</a></li>
-	                        <ul class="nav-list-dop"></ul>
                         </ul>
                     </div>
                 </div>

@@ -964,7 +964,7 @@ use Kinomania\System\Body\BodyScript;
     </div>
 </div>
     <!-- include section/footer.html.php -->
-	<div id="playVideo">
+	<div id="playVideo" onclick="closeVideo()">
 		<div id="player">
 			<div class="video"></div>
 		</div>
