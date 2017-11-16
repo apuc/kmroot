@@ -625,7 +625,7 @@
 	                console.log(data.src);
 	                <?php if($player != 'js'):?>
 	                    startVideo(data.src, prev);
-	                return false;
+	                    return false;
 	                <?php endif;?>
 
                     if ('' != data.src) {
