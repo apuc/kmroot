@@ -5380,3 +5380,7 @@ img.load-ajax {
         flex-direction: column;
     }
 }
+
+.video_top {
+    cursor: pointer;
+}

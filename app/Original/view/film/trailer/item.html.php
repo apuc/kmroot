@@ -95,9 +95,15 @@ use Kinomania\System\Body\BodyScript;
                                 <div class="outer-trailer-item">
                                     <div class="">
                                         <div class="trailer-list-item">
-                                            <div class="video-prewiew video_top" onclick="upToView(<?= $list['item'][Trailer::FILM_ID] ?>)" data-prev="<?= $list['item'][Trailer::IMAGE] ?>" ontouchstart="touchStart(event);">
-                                                <img alt="" src="<?= $list['item'][Trailer::IMAGE] ?>" class="responsive-image video-prewiew__item">
-                                            </div>
+                                            <?php if(isset($player)):?>
+		                                        <div class="video-prewiew video_top" onclick="upToView(<?= $list['item'][Trailer::FILM_ID] ?>); playVideo()" data-prev="<?= $list['item'][Trailer::IMAGE] ?>">
+	                                                <img alt="" src="<?= $list['item'][Trailer::IMAGE] ?>" class="responsive-image video-prewiew__item">
+	                                            </div>
+	                                        <?php else:?>
+	                                            <div class="video-prewiew video_top" onclick="upToView(<?= $list['item'][Trailer::FILM_ID] ?>);" >
+		                                            <img alt="" src="<?= $list['item'][Trailer::IMAGE] ?>" class="responsive-image video-prewiew__item">
+	                                            </div>
+	                                        <?php endif;?>
                                             <div class="head-desc clear">
                                                 <div class="trailer__title">
                                                     <p class="create__trailer-date">Добавлен: <?= $list['item'][Trailer::DATE] ?></p>
@@ -228,7 +234,7 @@ use Kinomania\System\Body\BodyScript;
             range.select();
         }
     }
-
+    
     $(document).ready(function(){
         $("img.lazy").lazyload({
             effect : "fadeIn"
@@ -584,18 +590,10 @@ use Kinomania\System\Body\BodyScript;
             });
         }
 
-	    $('.video_top').click('touchstart', function () {
-		    alert('this work');
-		    return false;
-	    });
-        
-        
-        $('.video_top').click(function(){
+        $('.video_top').on('click',(function(){
             var href = $(this).parent().parent().parent().parent().find('.dop-download').find('a:last').attr('href');
-	        var prev = $(this).attr('data-prev');
 	        <?php if($player != 'js'):?>
-		        startVideo(href, prev);
-		        return false;
+	            return false;
 	        <?php endif;?>
             if ('' != href) {
                 href = href.split('file=');
@@ -655,7 +653,7 @@ use Kinomania\System\Body\BodyScript;
             }
             $('.my-overlay').addClass('active');
             $('.my-overlay .overlay-trailer-item').addClass('active');
-        });
+        }));
 
 
         $('.my-overlay-bg').click(function(event) {
