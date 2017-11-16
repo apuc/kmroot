@@ -627,7 +627,7 @@
 	                    startVideo(data.src, prev);
 	                return false;
 	                <?php endif;?>
-                    
+
                     if ('' != data.src) {
                         $('.war-content').html('<video id="trailer_video" class="video-js vjs-default-skin" controls preload="auto" width="720" data-setup="{}">' +
                             '<source src="' + data.src + '" type=\'video/mp4\'>' +
