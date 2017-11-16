@@ -5381,6 +5381,13 @@ img.load-ajax {
     margin: auto;
 }
 
+/*afisha film*/
+@media (max-width: 600px) {
+    .block__film{
+        width: 100%;
+    }
+}
+
 @media (max-width: 600px) {
     .cinemas {
         width: 100%;

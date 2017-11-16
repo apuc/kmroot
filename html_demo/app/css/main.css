@@ -586,3 +586,9 @@ img.load-ajax {
     max-width: 700px;
     margin: auto;
 }
+/*afisha film*/
+@media (max-width: 600px) {
+    .block__film{
+        width: 100%;
+    }
+}
