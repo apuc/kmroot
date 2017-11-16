@@ -5,6 +5,7 @@
  * @var array $min
  * @var array $list
  * @var string $static
+ * @var $player
  */
 use Kinomania\Original\Key\Film\Film;
 use Kinomania\Original\Key\Person\Trailer as Trailer;
@@ -94,7 +95,7 @@ use Kinomania\System\Body\BodyScript;
                                 <div class="outer-trailer-item">
                                     <div class="">
                                         <div class="trailer-list-item">
-                                            <div class="video-prewiew video_top">
+                                            <div class="video-prewiew video_top" onclick="upToView(<?= $list['item'][Trailer::FILM_ID] ?>)" data-prev="<?= $list['item'][Trailer::IMAGE] ?>" ontouchstart="touchStart(event);">
                                                 <img alt="" src="<?= $list['item'][Trailer::IMAGE] ?>" class="responsive-image video-prewiew__item">
                                             </div>
                                             <div class="head-desc clear">
@@ -199,6 +200,11 @@ use Kinomania\System\Body\BodyScript;
     </div>
 </div>
     <!-- include section/footer.html.php -->
+	<div id="playVideo" onclick="closeVideo()">
+		<div id="player">
+			<div class="video"></div>
+		</div>
+	</div>
     <!-- include section/scripts.html.php -->
 <link rel="stylesheet" href="<?= $static ?>/app/css/videojs.ads.css">
 <script src="<?= $static ?>/app/js/video.ie8.js"></script>
@@ -206,6 +212,8 @@ use Kinomania\System\Body\BodyScript;
 <script src="<?= $static ?>/app/js/videojs.ads.js"></script>
 <script src="<?= $static ?>/app/js/videojs-preroll.js"></script>
 <script type="text/javascript" src="<?= $static ?>/vendor/cms/jquery/jquery.lazyload.min.js"></script>
+<script type="text/javascript" src="<?= $static ?>/app/js/film.js"></script>
+<script type="text/javascript" src="<?= $static ?>/app/js/jquery.tap.js"></script>
 <script type="text/javascript">
     function setSelectionRange(input, selectionStart, selectionEnd) {
         if (input.setSelectionRange) {
@@ -576,8 +584,19 @@ use Kinomania\System\Body\BodyScript;
             });
         }
 
+	    $('.video_top').click('touchstart', function () {
+		    alert('this work');
+		    return false;
+	    });
+        
+        
         $('.video_top').click(function(){
             var href = $(this).parent().parent().parent().parent().find('.dop-download').find('a:last').attr('href');
+	        var prev = $(this).attr('data-prev');
+	        <?php if($player != 'js'):?>
+		        startVideo(href, prev);
+		        return false;
+	        <?php endif;?>
             if ('' != href) {
                 href = href.split('file=');
                 href = href[1];

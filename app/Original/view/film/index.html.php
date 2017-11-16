@@ -765,7 +765,6 @@ use Kinomania\System\Body\BodyScript;
                                             <div class="">
                                                 <div class="trailer-list-item">
                                                     <div class="video-prewiew" data-prev="<?= $item[Film::TRAILER]['image'] ?>" data-id="<?= $item[Film::TRAILER]['id'] ?>" onclick="upToView(<?= $id ?>);">
-	                                                    
                                                         <img alt="" src="<?= $item[Film::TRAILER]['image'] ?>" class="responsive-image video-prewiew__item" >
                                                         </div>
                                                     <div class="head-desc clear">
@@ -1537,7 +1536,17 @@ use Kinomania\System\Body\BodyScript;
                 });
             }
 
-            $('.video-prewiew').click(function (event) {
+	       
+            /*$(function() {
+		        $('.btn').on('click touchstart', openmenu);
+	        });
+
+	        function openmenu() {
+		        alert("THANK YOU");
+	        }*/
+            
+
+            $('.video-prewiew').on ('click', (function (event) {
                 var id = $(this).attr('data-id');
                 var prev = $(this).attr('data-prev');
 	            var href = $(this).parent().parent().parent().parent().find('.dop-download').find('a:last').attr('href');
@@ -1619,7 +1628,7 @@ use Kinomania\System\Body\BodyScript;
                     },
                     timeout: 5000
                 });
-            });
+            }));
 
             $(window).scroll(function() {
                 if (undefined !== $('#frameBlock').offset()) {
