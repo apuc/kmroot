@@ -125,3 +125,9 @@ function startVideo (film, prev) {
 	};
 	document.head.appendChild(script)
 }
+function closeVideo() {
+	event.preventDefault();
+	$('#playVideo').removeClass('active-win');
+	$('#player').removeClass('active-player');
+	document.getElementById('slotHorizontal').innerHTML = '';
+}
