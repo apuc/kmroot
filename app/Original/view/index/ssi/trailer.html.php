@@ -609,6 +609,7 @@
 <script src="http://fs.kinomania.ru/app/js/video.js"></script>
 <script src="http://fs.kinomania.ru/app/js/videojs.ads.js"></script>
 <script src="http://fs.kinomania.ru/app/js/videojs-preroll.js"></script>
+<script type="text/javascript" src="<?= $static ?>/app/js/film.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         $('.video-prewiew').click(function(){
