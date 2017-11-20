@@ -130,6 +130,8 @@ function closeVideo() {
 	$('#playVideo').removeClass('active-win');
 	$('#player').removeClass('active-player');
 	document.getElementById('slotHorizontal').innerHTML = '';
+	var player = VIQEO.getPlayerBy('slotHorizontal');
+	player.pause();
 }
 
 function playVideo() {

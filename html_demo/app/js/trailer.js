@@ -15,6 +15,7 @@ function startVideo (film, prev) {
 	var script = document.createElement('script');
 	script.src = "https://cdn.viqeo.tv/js/vq_init_external_player.js?_=" + (+new Date());
 	script.setAttribute('data-profile', 105);
+	// $("#player").append("<div class='video'></div>");
 	$('#player').addClass('active-player').show();
 	$('#playVideo').addClass('active-win').show();
 	$('.video').attr('id', 'slotHorizontal');
@@ -34,6 +35,7 @@ function closeVideo() {
 	$('#playVideo').removeClass('active-win');
 	$('#player').removeClass('active-player');
 	document.getElementById('slotHorizontal').innerHTML = '';
+	// $('.video').remove();
 }
 jQuery(document).ready(function($) {
 	event.preventDefault();
