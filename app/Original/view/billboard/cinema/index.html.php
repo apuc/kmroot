@@ -7,6 +7,8 @@
  * @var $location \Kinomania\System\GeoLocation\IpGeoBase;
  */
 use Kinomania\System\Body\BodyScript;
+use Kinomania\System\Render\Parser;
+
 ?>
 <!doctype html>
 <html lang="ru">
@@ -14,8 +16,14 @@ use Kinomania\System\Body\BodyScript;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title><?= $options->get('seo_billboard_title') ?></title>
-    <meta name="description" content="<?= $options->get('seo_billboard_description') ?>"/>
+    <title><?= Parser::parseText($options->get('seo_poster_pages_cinema_title'),[
+            'city' => \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo()['city'],
+            'cinema' => $cinema->Name
+        ]) ?></title>
+    <meta name="description" content="<?= Parser::parseText($options->get('seo_poster_pages_cinema_description'),[
+        'city' => \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo()['city'],
+        'cinema' => $cinema->Name,
+    ]) ?>"/>
 
 	<link rel="canonical" href="http://www.kinomania.ru/billboard"/>
 
@@ -26,6 +34,11 @@ use Kinomania\System\Body\BodyScript;
     <meta property="og:description" content="Афиша Москвы - все кинотеатры, расписание, фильмы"/>
 
     <!-- include section/head.html.php -->
+    <style>
+        .description p {
+            color: #000!important;
+        }
+    </style>
 </head>
 <body>
   <!--#include virtual="/design/ssi/top" -->
@@ -40,9 +53,15 @@ use Kinomania\System\Body\BodyScript;
                   <!-- Контент -->
                   <content class="page-section-content section-content content-outer col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                       <div class="row-page">
-                          <h1 class="pagetitle">АФИША</h1>
+                          <h1 class="pagetitle"><?= Parser::parseText($options->get('seo_poster_pages_cinema_h1'),[
+                                  'city' => \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo()['city'],
+                                  'cinema' => $cinema->Name,
+                              ]) ?></h1>
                           <div class="description">
-                              Афиша «Киномании» точно знает, в каких кинотеатрах и во сколько идет лучшее кино. Выбирайте ваш город — и мы покажем самые удобные сеансы. Всего пара кликов — и билет у вас в кармане, здесь и сейчас. Приятного просмотра!
+                              <?= Parser::parseText($options->get('seo_poster_pages_cinema_text'),[
+                                  'city' => \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo()['city'],
+                                  'cinema' => $cinema->Name,
+                              ]) ?>
                           </div>
                           <!--Start Ticket widget-->
                           <rb:inline key="1a2cbeaf-d285-45e9-90d7-a66078c15365" classType="place" objectID="<?= $cinema->ObjectID ?>" cityID="" locale="" xmlns:rb="http://kassa.rambler.ru"></rb:inline>

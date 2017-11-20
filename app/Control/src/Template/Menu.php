@@ -84,6 +84,7 @@ class Menu
                 'items' => [
                 	'seo/list' => 'Основные',
                     'seo/genre/single' => 'Страницы жанров',
+                    'seo/poster_pages' => 'Страницы афиш',
 				],
             ],
             'sys' => [

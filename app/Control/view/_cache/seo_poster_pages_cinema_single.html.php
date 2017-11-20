@@ -263,13 +263,15 @@
         <div class="content-wrapper animated fadeInLeft">
             <?php
 /**
- * @var \Dspbee\Core\Request $request
- * @var \Dspbee\Bundle\Common\Bag\GetBag $get
+ * Created by PhpStorm.
+ * User: apuc0
+ * Date: 09.08.2017
+ * Time: 22:23
+ * @var $options \Kinomania\System\Options\Options
+ * @var $get array
  */
-use Kinomania\System\Config\Path;
-use Kinomania\System\Config\Server;
+use Kinomania\System\Data\Genre;
 ?>
-
 
 <link rel="stylesheet" href="/vendor/cms/datatable-bootstrap/css/dataTables.alternative.min.css">
 <style>
@@ -277,11 +279,13 @@ use Kinomania\System\Config\Server;
         position: relative;
         top: 1px;
     }
+    .dataTables_wrapper table tr td {
+        border: 0;
+    }
 </style>
 
 <div class="content-heading">
-    Фильмы
-    <button type="button" id="modalBtn" data-toggle="modal" data-target="#modalWindow" class="btn btn-primary btn-sm margin20">Добавить</button>
+    Настройка СЕО для страницы списка кинотеатров города
 </div>
 
 <div class="row">
@@ -289,373 +293,100 @@ use Kinomania\System\Config\Server;
         <div class="panel panel-default">
             <div class="panel-wrapper">
                 <div class="panel-body">
-                    <div class="dataTables_wrapper">
-                        <form method="get">
-                            <div class="form-group">
-                                <label for="year">Год</label>
-                                <input type="text" name="year" value="<?= $get->fetch('year') ?>" id="year" class="form-control" placeholder="Введите год фильма" />
-                            </div>
-
-                            <input type="submit" value="Найти" class="btn btn-primary" />
-                        </form>
-                        <br />
-                        <table id="dataTable" class="table table-striped table-bordered">
-                            <colgroup>
-                                <col width="120px" />
-                                <col width="90px" />
-                                <col width="90px" />
-                                <col width="auto" />
-                                <col width="90px" />
-                                <col width="300px" />
-                            </colgroup>
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th></th>
-                                <th>Год</th>
-                                <th>Название</th>
-                                <th>Вывод</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
+                    <div>
+                        {city} - текущий город пользователя
                     </div>
+                    <div>
+                        {cinema} - название кинотеатра
+                    </div>
+                    <form method="post">
+                        <div class="dataTables_wrapper">
+                            <table class="table table-responsive">
+                                <colgroup>
+                                    <col width="50px">
+                                    <col width="auto">
+                                </colgroup>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <td>Title</td>
+                                    <td>
+                                        <input type="text" name="title" value="<?= $options->get('seo_poster_pages_cinema_title') ?>" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Description</td>
+                                    <td>
+                                        <input type="text" name="description" value="<?= $options->get('seo_poster_pages_cinema_description') ?>" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Keywords</td>
+                                    <td>
+                                        <input type="text" name="keywords" value="<?= $options->get('seo_poster_pages_cinema_keywords') ?>" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>H1</td>
+                                    <td>
+                                        <input type="text" name="h1" value="<?= $options->get('seo_poster_pages_cinema_h1') ?>" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Text</td>
+                                    <td>
+                                        <textarea name="text" id="text" class="htmlEdit_text form-control"><?= $options->get('seo_poster_pages_cinema_text') ?></textarea>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <br />
+                        <input type="hidden" name="handler" value="save" />
+                        <input type="submit" class="btn btn-primary" value="Сохранить" />
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script src="/vendor/cms/_js/jquery.validate.min.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#modalBtn').click(function(){
-            $.ajax({
-                url : '<?= $request->makeUrl('film/add') ?>',
-                type: "GET",
-                success:function(data) {
-                    $('#modalWindow').html(data).modal({});
-                    $(':file').filestyle();
-                    (function(window, document, $, undefined){
-                        $(function(){
-                            $('select').chosen({disable_search_threshold: 10});
-                        });
-                    })(window, document, window.jQuery);
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.log("Error: " + textStatus + ' ' + errorThrown);
-                }
-            });
-        });
-    });
-</script>
-
-<script src="/vendor/cms/datatables/media/js/jquery.dataTables.min.js"></script>
-<script src="/vendor/cms/datatables-colvis/js/dataTables.colVis.js"></script>
-<script src="/vendor/cms/datatable-bootstrap/js/dataTables.bootstrap.js"></script>
-<script src="/vendor/cms/datatable-bootstrap/js/dataTables.bootstrapPagination.js"></script>
+<script src="/vendor/cms/_js/tinymce/tinymce.min.js"></script>
 <script>
-    function activeConfirmInit()
-{
-    $('.activeConfirm').on('click', function(e) {
-        window.delConfirmE = this;
-        e.preventDefault();
-
-        var title = $(this).attr('data-title');
-        var text = $(this).attr('data-text');
-
-        swal({
-            title: title,
-            text: text,
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Да",
-            cancelButtonText: "Отмена",
-            closeOnConfirm: true,
-            closeOnCancel: true
-        }, function (isConfirm) {
-            if (isConfirm) {
-                $(window.delConfirmE).parent().submit();
+    $(document).ready(function(){
+        tinymce.init({
+            selector: ".htmlEdit_text",
+            theme: "modern",
+            menubar:false,
+            statusbar: false,
+            plugins: [
+                "advlist autolink lists link charmap hr anchor pagebreak",
+                "searchreplace wordcount visualblocks visualchars code fullscreen",
+                "insertdatetime media nonbreaking save table contextmenu directionality",
+                "paste textcolor"
+            ],
+            toolbar1: "undo redo | pastetext | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link code ",
+            height: 300,
+            language:'ru',
+            extended_valid_elements: 'span[*],div[*],p[*],areatext[*],',
+            setup:function(ed) {
+                ed.on('change', function(e) {
+                    window.unsaved = true;
+                });
             }
+        });
+
+        $(document).on('focusin', function(e) {
+            if ($(e.target).closest(".mce-window").length) {
+                e.stopImmediatePropagation();
+            }
+        });
+
+        $('.modalBtn').click(function(){
+            callCrop();
         });
     });
-}
-
-$.fn.dataTable.pipeline = function ( opts ) {
-    // Configuration options
-    var conf = $.extend( {
-        pages: 5,     // number of pages to cache
-        url: '',      // script url
-        data: null,   // function or object with parameters to send to the server
-                      // matching how `ajax.data` works in DataTables
-        method: 'GET' // Ajax HTTP method
-    }, opts );
-
-    // Private variables for storing the cache
-    var cacheLower = -1;
-    var cacheUpper = null;
-    var cacheLastRequest = null;
-    var cacheLastJson = null;
-
-    return function ( request, drawCallback, settings ) {
-        var ajax          = false;
-        var requestStart  = request.start;
-        var drawStart     = request.start;
-        var requestLength = request.length;
-        var requestEnd    = requestStart + requestLength;
-
-        if ( settings.clearCache ) {
-            // API requested that the cache be cleared
-            ajax = true;
-            settings.clearCache = false;
-        }
-        else if ( cacheLower < 0 || requestStart < cacheLower || requestEnd > cacheUpper ) {
-            // outside cached data - need to make a request
-            ajax = true;
-        }
-        else if ( JSON.stringify( request.order )   !== JSON.stringify( cacheLastRequest.order ) ||
-            JSON.stringify( request.columns ) !== JSON.stringify( cacheLastRequest.columns ) ||
-            JSON.stringify( request.search )  !== JSON.stringify( cacheLastRequest.search )
-        ) {
-            // properties changed (ordering, columns, searching)
-            ajax = true;
-        }
-
-        // Store the request for checking next time around
-        cacheLastRequest = $.extend( true, {}, request );
-
-        if ( ajax ) {
-            // Need data from the server
-            if ( requestStart < cacheLower ) {
-                requestStart = requestStart - (requestLength*(conf.pages-1));
-
-                if ( requestStart < 0 ) {
-                    requestStart = 0;
-                }
-            }
-
-            cacheLower = requestStart;
-            cacheUpper = requestStart + (requestLength * conf.pages);
-
-            request.start = requestStart;
-            request.length = requestLength*conf.pages;
-
-            // Provide the same `data` options as DataTables.
-            if ( $.isFunction ( conf.data ) ) {
-                // As a function it is executed with the data object as an arg
-                // for manipulation. If an object is returned, it is used as the
-                // data object to submit
-                var d = conf.data( request );
-                if ( d ) {
-                    $.extend( request, d );
-                }
-            }
-            else if ( $.isPlainObject( conf.data ) ) {
-                // As an object, the data given extends the default
-                $.extend( request, conf.data );
-            }
-
-            settings.jqXHR = $.ajax( {
-                "type":     conf.method,
-                "url":      conf.url,
-                "data":     request,
-                "dataType": "json",
-                "cache":    false,
-                "success":  function ( json ) {
-                    cacheLastJson = $.extend(true, {}, json);
-
-                    if ( cacheLower != drawStart ) {
-                        json.data.splice( 0, drawStart-cacheLower );
-                    }
-                    json.data.splice( requestLength, json.data.length );
-
-                    drawCallback( json );
-                    setTimeout(function(){
-                        activeConfirmInit();
-                        $('[data-toggle="tooltip"]').tooltip({
-                            container: 'body'
-                        });
-                        if (typeof dataTableCallback === "function") {
-                            dataTableCallback();
-                        }
-                    }, 500);
-                }
-            } );
-        } else {
-            json = $.extend( true, {}, cacheLastJson );
-            json.draw = request.draw; // Update the echo for each response
-            json.data.splice( 0, requestStart-cacheLower );
-            json.data.splice( requestLength, json.data.length );
-
-            drawCallback(json);
-            setTimeout(function(){
-                activeConfirmInit();
-                $('[data-toggle="tooltip"]').tooltip({
-                    container: 'body'
-                });
-                if (typeof dataTableCallback === "function") {
-                    dataTableCallback();
-                }
-            }, 500);
-        }
-    }
-};
-
-// Register an API method that will empty the pipelined data, forcing an Ajax
-// fetch on the next draw (i.e. `table.clearPipeline().draw()`)
-$.fn.dataTable.Api.register( 'clearPipeline()', function () {
-    return this.iterator( 'table', function ( settings ) {
-        settings.clearCache = true;
-    } );
-} );
-jQuery.fn.dataTableExt.oApi.fnSetFilteringDelay = function ( oSettings, iDelay ) {
-    var _that = this;
-
-    if ( iDelay === undefined ) {
-        iDelay = 250;
-    }
-
-    this.each( function ( i ) {
-        $.fn.dataTableExt.iApiIndex = i;
-        var
-            oTimerId = null,
-            sPreviousSearch = null,
-            anControl = $( 'input', _that.fnSettings().aanFeatures.f );
-
-        anControl.unbind( 'keyup search input' ).bind( 'keyup search input', function() {
-
-            if (sPreviousSearch === null || sPreviousSearch != anControl.val()) {
-                window.clearTimeout(oTimerId);
-                sPreviousSearch = anControl.val();
-                oTimerId = window.setTimeout(function() {
-                    $.fn.dataTableExt.iApiIndex = i;
-                    _that.fnFilter( anControl.val() );
-                }, iDelay);
-            }
-        });
-
-        return this;
-    } );
-    return this;
-};
-</script>
-
-<script type="text/javascript">
-    var dTable = $('#dataTable').dataTable({
-        "paging":   true,
-        "ordering": true,
-        "order": [[0, "desc"]],
-        "bFilter": true,
-        "aoColumns": [
-            {
-                "mRender": function (data, type, full) {
-                    return '<a href="<?= Server::DEMO ?>/film/' + full[0] + '/" target="_blank" class="link"><em class="fa fa-external-link"></em></a> &nbsp; ' + full[0]
-                }
-            },
-            {
-                "orderable": false,
-                "mRender": function (data, type, full) {
-                    if ('' == full[1]) {
-                        return '';
-                    }
-                    return '<img width="50px;" src="' + full[1] + '" />'
-                }
-            },
-            {
-                "orderable": true
-            },
-            {
-                "orderable": false
-            },
-            {
-                "orderable": false,
-                "mRender": function (data, type, full) {
-                    switch (full[4]) {
-                        case 'show':
-                            return '<span class="label bg-success">да</span>';
-                            break;
-                        case 'new':
-                            return '<span class="label bg-purple">скрыт (новый)</span>';
-                            break;
-                        default:
-                            return '<span class="label bg-yellow">скрыт</span>';
-                    }
-                }
-            },
-            {
-                "orderable": false,
-                "mRender": function(data, type, full) {
-                    full[3] = full[3].replace('<br />', ' ');
-                    var content = '<a class="btn btn-info btn-xs" href="<?= $request->makeUrl('film/edit?id=') ?>' + full[0] + '/">Подробнее</a> &nbsp;' +
-                        '<form method="post" style="display: inline-block;">' +
-                        '<button type="submit" class="btn btn-danger btn-xs activeConfirm" data-title="Удалить фильм `' + full[3] + '`?">Удалить</button>' +
-                        '<input type="hidden" name="id" value="' + full[0] + '" />' +
-                        '<input type="hidden" name="handler" value="delete" />' +
-                        '</form> &nbsp;&nbsp;';
-
-                    return content;
-                }
-            }
-        ],
-        "info":     true,
-        "processing": true,
-        "serverSide": true,
-        "footerCallback": function ( row, data, start, end, display ) {
-            var api = this.api(), data;
-
-            // Remove the formatting to get integer data for summation
-            var intVal = function ( i ) {
-                return typeof i === 'string' ?
-                i.replace(/[\$,]/g, '')*1 :
-                    typeof i === 'number' ?
-                        i : 0;
-            };
-
-            // Total over all pages
-            total = api
-                .column( 0 )
-                .data()
-                .reduce( function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0 );
-
-            // Total over this page
-            pageTotal = api
-                .column( 0, { page: 'current'} )
-                .data()
-                .reduce( function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0 );
-
-            // Update footer
-            $( api.column( 0 ).footer() ).html(
-                '$'+pageTotal +' ( $'+ total +' total)'
-            );
-        },
-        "ajax": $.fn.dataTable.pipeline( {
-            url: '?handler=getList&year=<?= $get->fetch('year') ?>',
-            pages: 5 // number of pages to cache
-        }),
-        "autoWidth": false,
-        oLanguage: {
-            sSearch:      'ID или название:',
-            sZeroRecords:      'Ничего не найдено',
-            sInfo:      'Показано с _START_ по _END_, всего _TOTAL_',
-            sLengthMenu:  '_MENU_',
-            sProcessing: '<div class="ball-clip-rotate-multiple" style="margin-top: 60px;"><div></div><div></div></div>'
-        }
-    }).fnSetFilteringDelay(1000);
-
-    function dataTableCallback(){
-        var info = dTable.api().page.info();
-        if (info['page'] > info['pages']) {
-            dTable.api().page('first');
-            dTable.fnDraw();
-        }
-    }
 </script>
         </div>
     </section>

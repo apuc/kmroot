@@ -11,6 +11,7 @@
  */
 use Kinomania\System\Body\BodyScript;
 use Kinomania\System\GeoLocation\IpGeoBase;
+use Kinomania\System\Render\Parser;
 
 ?>
 <!doctype html>
@@ -19,8 +20,12 @@ use Kinomania\System\GeoLocation\IpGeoBase;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title><?= $options->get('seo_billboard_title') ?></title>
-    <meta name="description" content="<?= $options->get('seo_billboard_description') ?>"/>
+    <title><?= Parser::parseText($options->get('seo_poster_pages_cinema_list_title'),[
+            'city' => \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo()['city']
+        ]) ?></title>
+    <meta name="description" content="<?= Parser::parseText($options->get('seo_poster_pages_cinema_list_description'),[
+        'city' => \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo()['city']
+    ]) ?>"/>
 
     <link rel="canonical" href="http://www.kinomania.ru/billboard"/>
 
@@ -31,6 +36,11 @@ use Kinomania\System\GeoLocation\IpGeoBase;
     <meta property="og:description" content="Афиша Москвы - все кинотеатры, расписание, фильмы"/>
 
     <!-- include section/head.html.php -->
+    <style>
+        .description p {
+            color: #000!important;
+        }
+    </style>
 </head>
 <body>
 <div class="overlay-ajax-load" style="position: absolute;z-index: 100; width: 0px; height: 0px;">
@@ -49,11 +59,13 @@ use Kinomania\System\GeoLocation\IpGeoBase;
                 <content
                         class="page-section-content section-content content-outer col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="row-page">
-                        <h1 class="pagetitle"><?= $options->get('seo_billboard_h1') ?></h1>
+                        <h1 class="pagetitle"><?= Parser::parseText($options->get('seo_poster_pages_cinema_list_h1'),[
+                                'city' => \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo()['city']
+                            ]) ?></h1>
                         <div class="description">
-                            Афиша «Киномании» точно знает, в каких кинотеатрах и во сколько идет лучшее кино. Выбирайте
-                            ваш город — и мы покажем самые удобные сеансы. Всего пара кликов — и билет у вас в кармане,
-                            здесь и сейчас. Приятного просмотра!
+                            <?= Parser::parseText($options->get('seo_poster_pages_cinema_list_text'),[
+                                'city' => \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo()['city']
+                            ]) ?>
                             <!--<a href='javascript:ticketManager.hallPlanV2(229,62172,"21-10-2017-0105");'>Купить</a>-->
                             <!--<a href='javascript:ticketManager.richSession(31439310)'>Купить билет на сеанс</a>-->
                             <script type="text/javascript"
@@ -69,8 +81,8 @@ use Kinomania\System\GeoLocation\IpGeoBase;
                         </div>
                         <div id="result"></div>
                         <div id="block_index_afisha">
-                            <strong style="font-size: 34px;">Кинотеатры г.
-                                <?= \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo()['city'] ?>
+                            <strong style="font-size: 34px;">Кинотеатры
+                                <?//= \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo()['city'] ?>
                             </strong>
                             <div id="block">
                                 <table class="table">

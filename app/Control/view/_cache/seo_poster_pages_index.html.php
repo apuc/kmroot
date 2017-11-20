@@ -263,61 +263,67 @@
         <div class="content-wrapper animated fadeInLeft">
             <?php
 /**
- * @var \Dspbee\Core\Request $request
- * @var array $list
- * @var \Kinomania\Control\Tv\Chanel $item
+ * Created by PhpStorm.
+ * User: apuc0
+ * Date: 09.08.2017
+ * Time: 22:23
+ * @var $options \Kinomania\System\Options\Options
  */
+use Kinomania\Control\Template\Menu;
+use Kinomania\System\SEO\SeoList;
+
 ?>
 
+<link rel="stylesheet" href="/vendor/cms/datatable-bootstrap/css/dataTables.alternative.min.css">
+<style>
+    .link {
+        position: relative;
+        top: 1px;
+    }
 
-<div class="content-heading">TV программа, <?= $item->chanel() ?>, <?= $item->date() ?></div>
+    .dataTables_wrapper table tr td {
+        border: 0;
+    }
+</style>
+
+<div class="content-heading">
+    Выберите страницу
+</div>
 
 <div class="row">
     <div class="col-lg-10 col-sm-12 col-xs-12">
         <div class="panel panel-default">
             <div class="panel-wrapper">
                 <div class="panel-body">
-                    <div class="dataTables_wrapper">
-                        <table class="table table-striped table-responsive">
-                            <tr>
-                                <th>Время</th>
-                                <th>Название</th>
-                                <th></th>
-                            </tr>
-                            <?php
-                            /**
-                             * @var \Kinomania\Control\Tv\Program $item
-                             */
-                            ?>
-                            <?php foreach ($list as $item): ?>
+                    <form method="post">
+                        <div class="dataTables_wrapper">
+                            <table class="table table-responsive">
                                 <tr>
-                                    <td><?= $item->time() ?></td>
-                                    <td><?= $item->name() ?></td>
-                                    <td>
-                                        <?php if (0 < $item->filmId()): ?>
-                                            <a href="<?= $request->makeUrl('film/edit?id=' . $item->filmId()) ?>/"><em class="fa fa-external-link"></em></a>
-                                            <br />
-                                        <?php endif; ?>
-                                        <form method="post" class="saveScrollPosition">
-                                            <div class="input-group">
-                                                <input type="text" name="filmId" class="form-control" placeholder="ID фильма" <?php if (0 < $item->filmId()): ?> value="<?= $item->filmId() ?>" <?php endif ?>>
-                                                    <span class="input-group-btn">
-                                                        <button type="submit" class="btn btn-default">Сохранить</button>
-                                                    </span>
-                                            </div>
-                                            <input type="hidden" name="id" value="<?= $item->id() ?>" />
-                                            <input type="hidden" name="handler" value="editFilmId" />
-                                        </form>
-                                    </td>
+                                    <th>#</th>
+                                    <th>Название</th>
+                                    <th>Действия</th>
                                 </tr>
-                            <?php endforeach; ?>
-                        </table>
-                    </div>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Список кинотеатров города</td>
+                                    <td><a href="/control/seo/poster_pages/cinema_list"
+                                           class="btn btn-info">Редактировать</a></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Страница одного кинотеатра</td>
+                                    <td><a href="/control/seo/poster_pages/cinema"
+                                           class="btn btn-info">Редактировать</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
         </div>
     </section>
 
