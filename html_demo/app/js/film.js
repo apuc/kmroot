@@ -127,11 +127,11 @@ function startVideo (film, prev) {
 }
 function closeVideo() {
 	event.preventDefault();
+	var player = VIQEO.playersManager.getPlayerBy(document.getElementsByClassName('video')[0]);
+	player.pause();
 	$('#playVideo').removeClass('active-win');
 	$('#player').removeClass('active-player');
 	document.getElementById('slotHorizontal').innerHTML = '';
-	var player = VIQEO.getPlayerBy('slotHorizontal');
-	player.pause();
 }
 
 function playVideo() {
