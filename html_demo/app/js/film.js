@@ -135,8 +135,17 @@ function closeVideo() {
 }
 
 function playVideo() {
-	var href = $('.video_top').parent().parent().parent().parent().find('.dop-download').find('a:last').attr('href');
-	var prev = $('.video_top').attr('data-prev');
-	startVideo(href,prev);
-	return false;
+	if($('*').is('.video-prewiew')){
+		var href = $('.video-prewiew').parent().parent().parent().parent().find('.dop-download').find('a:last').attr('href');
+		var prev = $('.video-prewiew').attr('data-prev');
+		startVideo(href,prev);
+		return false;
+	}
+
+	if($('*').is('.video_top')){
+		var href = $('.video_top').parent().parent().parent().parent().find('.dop-download').find('a:last').attr('href');
+		var prev = $('.video_top').attr('data-prev');
+		startVideo(href,prev);
+		return false;
+	}
 }

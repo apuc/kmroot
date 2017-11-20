@@ -764,9 +764,10 @@ use Kinomania\System\Body\BodyScript;
                                         <div class="outer-trailer-item">
                                             <div class="">
                                                 <div class="trailer-list-item">
-                                                    <div class="video-prewiew" data-prev="<?= $item[Film::TRAILER]['image'] ?>" data-id="<?= $item[Film::TRAILER]['id'] ?>" onclick="upToView(<?= $id ?>);">
+                                                    <div class="video-prewiew" data-prev="<?= $item[Film::TRAILER]['image'] ?>" data-id="<?= $item[Film::TRAILER]['id'] ?>" onclick="upToView(<?= $id ?>);
+                                                    <?=(isset($player)) ? 'playVideo();' : ''?>">
                                                         <img alt="" src="<?= $item[Film::TRAILER]['image'] ?>" class="responsive-image video-prewiew__item" >
-                                                        </div>
+                                                    </div>
                                                     <div class="head-desc clear">
                                                             <div class="trailer__title">
                                                                <p class="title"><a href="/film/<?= $id ?>/trailers/<?= $item[Film::TRAILER]['id'] ?>/"><?= $item[Film::TRAILER]['name'] ?></a></p>
@@ -1552,7 +1553,7 @@ use Kinomania\System\Body\BodyScript;
 	            var href = $(this).parent().parent().parent().parent().find('.dop-download').find('a:last').attr('href');
 	            console.log(prev);
 	            <?php if($player != 'js'):?>
-		            startVideo(href, prev);
+//		            startVideo(href, prev);
 		            return false;
 	            <?php endif;?>
                 $.ajax({

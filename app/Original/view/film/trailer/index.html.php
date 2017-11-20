@@ -83,13 +83,13 @@ use Kinomania\System\Body\BodyScript;
                                 <div class="outer-trailer-item">
                                     <div class="">
                                         <div class="trailer-list-item">
-                                            <div class="video-prewiew video_top" onclick="upToView(<?= $list[0][Trailer::FILM_ID] ?>)" data-prev="<?= $list[0][Trailer::IMAGE] ?>">
+	                                        <div class="video-prewiew video_top" onclick="upToView(<?= $list[0][Trailer::FILM_ID] ?>)" data-prev="<?= $list[0][Trailer::IMAGE] ?>">
                                                 <img alt="" src="<?= $list[0][Trailer::IMAGE] ?>" class="responsive-image video-prewiew__item">
                                             </div>
                                             <div class="head-desc clear">
                                                 <div class="trailer__title">
                                                     <p class="title"><a href="/film/<?= $list[0][Trailer::FILM_ID] ?>/trailers/<?= $list[0][Trailer::ID] ?>/"><?= $list[0][Trailer::NAME] ?></a></p>
-                                                    <p class="create__trailer-date">Добавлен: <?= $list[0][Trailer::DATE] ?></p>
+                                                    <p class="create__trailer-date">Добавлен:  <?= $list[0][Trailer::DATE] ?></p>
                                                 </div>
 
                                                 <div class="item item2">
@@ -153,14 +153,14 @@ use Kinomania\System\Body\BodyScript;
                             <div class="trailer-item clear">
                                 <div class="row-trailer-image">
                                     <div class="image-shadow">
-                                        <a href="/film/<?= $list[$i][Trailer::FILM_ID] ?>/trailers/<?= $list[$i][Trailer::ID] ?>/" class="parent play_video_main" onclick="upToView(<?= $list[$i][Trailer::FILM_ID] ?>) alert('hello')" data-prev="<?= $list[$i][Trailer::IMAGE] ?>"><img alt="" src="//:0" data-original="<?= $list[$i][Trailer::IMAGE] ?>" class="lazy image-cover">
+                                        <a href="/film/<?= $list[$i][Trailer::FILM_ID] ?>/trailers/<?= $list[$i][Trailer::ID] ?>/" class="parent play_video_main" onclick="upToView(<?= $list[$i][Trailer::FILM_ID] ?>)" data-prev="<?= $list[$i][Trailer::IMAGE] ?>"><img alt="" src="//:0" data-original="<?= $list[$i][Trailer::IMAGE] ?>" class="lazy image-cover">
                                             <i class="trailer__play-icon"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="row-trailer-text">
                                     <div class="trailer-list-title"><a href="/film/<?= $list[$i][Trailer::FILM_ID] ?>/trailers/<?= $list[$i][Trailer::ID] ?>/"><?= $list[$i][Trailer::NAME] ?></a></div>
-                                    <div class="trailer-list-add">Добавлен: <?= $list[$i][Trailer::DATE] ?></div>
+                                    <div class="trailer-list-add">Добавлен:  <?= $list[$i][Trailer::DATE] ?></div>
                                     <div class="trailer-list-view">
                                         Смотреть онлайн:
                                         <ul class="trailer-list-view-quality trailer-view-quality-display">
