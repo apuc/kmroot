@@ -20,30 +20,36 @@ function startVideo (film, prev) {
 	$('#playVideo').addClass('active-win').show();
 	$('.video').attr('id', 'slotHorizontal');
 	script.onload = function () {
-		VIQEO.start({
+
+		var test = VIQEO.start({
 			players: [{
 				selector: "#slotHorizontal",
 				videoSrc: film,
 				previewSrc: prev
 			}]
 		})
+		console.log(test);
+
 	};
 	document.head.appendChild(script)
 }
 function closeVideo() {
 	event.preventDefault();
+	var player = VIQEO.playersManager.getPlayerBy(document.getElementsByClassName('video')[0]);
+	player.pause();
 	$('#playVideo').removeClass('active-win');
 	$('#player').removeClass('active-player');
 	document.getElementById('slotHorizontal').innerHTML = '';
+	// player.pause()
 	// $('.video').remove();
 }
 jQuery(document).ready(function($) {
-	event.preventDefault();
-	$(document).on('click', '#playVideo', function() {
-		$('#playVideo').removeClass('active-win');
-		$('#player').removeClass('active-player');
-		document.getElementById('slotHorizontal').innerHTML = '';
-	});
+	// $(document).on('click', '#playVideo', function() {
+	// 	closeVideo();
+	// 	$('#playVideo').removeClass('active-win');
+	// 	$('#player').removeClass('active-player');
+	// 	document.getElementById('slotHorizontal').innerHTML = '';
+	// });
 	function progressLoad(key) {
 		if(key === 'start'){
 			$('.overlay-ajax-load').fadeIn(300);
