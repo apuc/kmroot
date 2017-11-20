@@ -263,61 +263,128 @@
         <div class="content-wrapper animated fadeInLeft">
             <?php
 /**
- * @var \Dspbee\Core\Request $request
- * @var array $list
- * @var \Kinomania\Control\Tv\Chanel $item
+ * Created by PhpStorm.
+ * User: apuc0
+ * Date: 09.08.2017
+ * Time: 22:23
+ * @var $options \Kinomania\System\Options\Options
+ * @var $get array
  */
+use Kinomania\System\Data\Genre;
 ?>
 
+<link rel="stylesheet" href="/vendor/cms/datatable-bootstrap/css/dataTables.alternative.min.css">
+<style>
+    .link {
+        position: relative;
+        top: 1px;
+    }
+    .dataTables_wrapper table tr td {
+        border: 0;
+    }
+</style>
 
-<div class="content-heading">TV программа, <?= $item->chanel() ?>, <?= $item->date() ?></div>
+<div class="content-heading">
+    Настройка СЕО для страницы списка кинотеатров города
+</div>
 
 <div class="row">
     <div class="col-lg-10 col-sm-12 col-xs-12">
         <div class="panel panel-default">
             <div class="panel-wrapper">
                 <div class="panel-body">
-                    <div class="dataTables_wrapper">
-                        <table class="table table-striped table-responsive">
-                            <tr>
-                                <th>Время</th>
-                                <th>Название</th>
-                                <th></th>
-                            </tr>
-                            <?php
-                            /**
-                             * @var \Kinomania\Control\Tv\Program $item
-                             */
-                            ?>
-                            <?php foreach ($list as $item): ?>
+                    <div>
+                        {city} - текущий город пользователя
+                    </div>
+                    <form method="post">
+                        <div class="dataTables_wrapper">
+                            <table class="table table-responsive">
+                                <colgroup>
+                                    <col width="50px">
+                                    <col width="auto">
+                                </colgroup>
                                 <tr>
-                                    <td><?= $item->time() ?></td>
-                                    <td><?= $item->name() ?></td>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <td>Title</td>
                                     <td>
-                                        <?php if (0 < $item->filmId()): ?>
-                                            <a href="<?= $request->makeUrl('film/edit?id=' . $item->filmId()) ?>/"><em class="fa fa-external-link"></em></a>
-                                            <br />
-                                        <?php endif; ?>
-                                        <form method="post" class="saveScrollPosition">
-                                            <div class="input-group">
-                                                <input type="text" name="filmId" class="form-control" placeholder="ID фильма" <?php if (0 < $item->filmId()): ?> value="<?= $item->filmId() ?>" <?php endif ?>>
-                                                    <span class="input-group-btn">
-                                                        <button type="submit" class="btn btn-default">Сохранить</button>
-                                                    </span>
-                                            </div>
-                                            <input type="hidden" name="id" value="<?= $item->id() ?>" />
-                                            <input type="hidden" name="handler" value="editFilmId" />
-                                        </form>
+                                        <input type="text" name="title" value="<?= $options->get('seo_poster_pages_cinema_list_title') ?>" class="form-control">
                                     </td>
                                 </tr>
-                            <?php endforeach; ?>
-                        </table>
-                    </div>
+                                <tr>
+                                    <td>Description</td>
+                                    <td>
+                                        <input type="text" name="description" value="<?= $options->get('seo_poster_pages_cinema_list_description') ?>" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Keywords</td>
+                                    <td>
+                                        <input type="text" name="keywords" value="<?= $options->get('seo_poster_pages_cinema_list_keywords') ?>" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>H1</td>
+                                    <td>
+                                        <input type="text" name="h1" value="<?= $options->get('seo_poster_pages_cinema_list_h1') ?>" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Text</td>
+                                    <td>
+                                        <textarea name="text" id="text" class="htmlEdit_text form-control"><?= $options->get('seo_poster_pages_cinema_list_text') ?></textarea>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <br />
+                        <input type="hidden" name="handler" value="save" />
+                        <input type="submit" class="btn btn-primary" value="Сохранить" />
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script src="/vendor/cms/_js/tinymce/tinymce.min.js"></script>
+<script>
+    $(document).ready(function(){
+        tinymce.init({
+            selector: ".htmlEdit_text",
+            theme: "modern",
+            menubar:false,
+            statusbar: false,
+            plugins: [
+                "advlist autolink lists link charmap hr anchor pagebreak",
+                "searchreplace wordcount visualblocks visualchars code fullscreen",
+                "insertdatetime media nonbreaking save table contextmenu directionality",
+                "paste textcolor"
+            ],
+            toolbar1: "undo redo | pastetext | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link code ",
+            height: 300,
+            language:'ru',
+            extended_valid_elements: 'span[*],div[*],p[*],areatext[*],',
+            setup:function(ed) {
+                ed.on('change', function(e) {
+                    window.unsaved = true;
+                });
+            }
+        });
+
+        $(document).on('focusin', function(e) {
+            if ($(e.target).closest(".mce-window").length) {
+                e.stopImmediatePropagation();
+            }
+        });
+
+        $('.modalBtn').click(function(){
+            callCrop();
+        });
+    });
+</script>
         </div>
     </section>
 

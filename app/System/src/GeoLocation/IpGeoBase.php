@@ -41,8 +41,8 @@ class IpGeoBase
      */
     public function getLocation($asArray = true)
     {
-        $ip = '217.118.81.17';
-        //$ip = '195.218.132.1';
+        //$ip = '217.118.81.17';
+        $ip = '195.218.132.1';
         //$ip = self::getRealIpAddr();
         if ($this->useLocalDB) {
             $ipDataArray = $this->fromDB($ip) + ['ip' => $ip];
