@@ -65,7 +65,12 @@
     <div class="wrap">
         <div class="inner-footer">
             <a href="/casting/" class="footer-sticker button button2">КАСТИНГ-БАЗА</a>
-            <div class="copy-paste">ИСПОЛЬЗОВАНИЕ МАТЕРИАЛОВ САЙТА ВОЗМОЖНО ТОЛЬКО С РАЗРЕШЕНИЯ РЕДАКЦИИ. ГИПЕРССЫЛКА НА
+            <div class="copy-paste">
+	            Эксклюзивный cеллер рекламы на Kinomania.ru для агентства и клиентов (Кроме рекламодателей категории Кино и ТВ):           <br>
+	            <div class="mail">
+		            TERRA Creativa Sales House <a href="mailto:INFO@KINOMANIA.RU/">go@terracreativa.ru</a>  +7(495)233-32-82
+	            </div>
+	            ИСПОЛЬЗОВАНИЕ МАТЕРИАЛОВ САЙТА ВОЗМОЖНО ТОЛЬКО С РАЗРЕШЕНИЯ РЕДАКЦИИ. ГИПЕРССЫЛКА НА
                 САЙТ ОБЯЗАТЕЛЬНА
             </div>
             <div class="mail"><a href="mailto:INFO@KINOMANIA.RU/">INFO@KINOMANIA.RU</a></div>
