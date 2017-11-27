@@ -27,13 +27,14 @@
 		<?php else:?>
 			<span><b>Нет фото</b></span>
 		<?php endif;?>
-			<p><b>Год выпуска:</b> <?= ($film['Year']) ? $film['Year'] : '' ?></p>
-			<p><b>Страна:</b> <?= ($film['Country']) ? $film['Country'] : ''?></p>
-			<p><b>Жанр:</b> <?= ($film['Genre']) ? $film['Genre'] : ''  ?></p>
+		<?php ?>
+			<p><?= ($film['Year']) ? "<b>Год выпуска: </b>".  $film['Year'] : '' ?></p>
+			<p><?= ($film['Country']) ? "<b>Страна: </b>". $film['Country'] : ''?></p>
+			<p><?= ($film['Genre']) ? "<b>Жанр:</b>". $film['Genre'] : ''  ?></p>
 <!--			<p><b>Актеры:</b> --><?//= ($film['Cast']) ? $film['Cast'] : '' ?><!--</p>-->
-			<p><b>Описание:</b> <?= ($film['Description']) ? $film['Description'] : '' ?></p>
-			<p><b>Продолжительность:</b> <?= ($film['Duration']) ? $film['Duration'] : '' ?></p>
-			<p><b>Премьера(РФ):</b> <?= ($film['ReleaseDate']) ? $film['ReleaseDate'] : ''?></p>
+			<p><?= ($film['Description']) ? "<b>Описание: </b>". $film['Description'] : '' ?></p>
+			<p><?= ($film['Duration']) ? "<b>Продолжительность: </b>". $film['Duration'] : '' ?></p>
+			<p><?= ($film['ReleaseDate']) ? "<b>Премьера(РФ): </b>". $film['ReleaseDate'] : ''?></p>
 	</div>
 	<div class="cinemas" data-date="<?=$curDate?>">
 		<strong>Кинотеатры:</strong>

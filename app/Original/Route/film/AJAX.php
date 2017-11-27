@@ -23,6 +23,7 @@ class AJAX extends DefaultController
      */
     public function getTrailer()
     {
+    	Debug::prn('1231312');
         $data = ['src' => ''];
         $get = new GetBag();
         $id = $get->fetchInt('id');
@@ -40,9 +41,11 @@ class AJAX extends DefaultController
                     $data['src'] = $row['hd480'];
                 }
             }
+	        Debug::prn($result);
         }
 
         $this->setContent(json_encode($data));
+        
     }
 
     /**

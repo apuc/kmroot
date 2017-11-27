@@ -72,7 +72,7 @@ $(document).ready(function () {
         return false;
     });
 
-    $(document).on('click', '.__close', function () {
+    $(document).on('click', '.__close, .modal', function () {
         var city_id = $('input.search-location').attr('data-id');
         city_name = $('input.search-location').val();
         $.ajax({
@@ -93,7 +93,6 @@ $(document).ready(function () {
         });
         return false;
     });
-
 
     $(document).on('click', '.change-location', function () {
         $('input.search-location').val($(this).text() + '(' + $(this).attr('data-region') + ')');
