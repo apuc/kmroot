@@ -5410,3 +5410,19 @@ img.load-ajax {
 .video_top {
     cursor: pointer;
 }
+
+/*search film mobile*/
+.search-film{
+    display: none;
+}
+@media (max-width: 767px) {
+    .search-film {
+        display: block;
+        text-decoration: none;
+
+    }
+}
+.search-form {
+    display: none;
+}
+/*end*/

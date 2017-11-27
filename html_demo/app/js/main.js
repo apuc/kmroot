@@ -722,4 +722,12 @@ $(document).ready(function () {
         $('[data-news-element]').removeClass('active');
         $('[data-news-element=' + elem + ']').addClass('active');
     });
+
+
+    /*for header*/
+    $(document).on('click', '.search-film', function () {
+        $('div .search-form').show();
+        return false;
+    });
+
 });

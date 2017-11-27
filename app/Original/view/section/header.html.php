@@ -111,13 +111,34 @@
             <div class="autorization-outer col-xl-3 col-lg-3 col-md-7 col-sm-12 col-xs-12">
                 <div class="autorization">
                     <ul class="autorization-list authorizationContent">
-                        <?php $city = \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo(); ?>
+	                    <li><a href="#" class="search-film"><img src="<?= $static ?>/app/img/search/zoom.ico"></a></li>
+	                    <?php $city = \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo(); ?>
                         <li><a href="#" class="change-location" data-region="<?= $city['region'] ?>" data-city_id="<?= $city['city_id'] ?>"><span><?= $city['city'] ?></span></a></li>
                         <li><a href="/login/"><span>ВХОД</span></a></li>
                         <li><a href="/registration_/"><span>РЕГИСТРАЦИЯ</span></a></li>
                     </ul>
                 </div>
             </div>
+	        <div class="search-form">
+		        <form method="get" action="/search" id="search_form">
+			        <div class="row-search__input">
+				        <input name="q" type="text" class="search__input" value="<?= $q ?? ''; ?>" autocomplete="off" placeholder="Поиск">
+				        <div class="row-search-result">
+					        <div class="search-input-result-content">
+						        <div class="search-loader">
+							        <div class="ball-clip-rotate-multiple"><div></div><div></div></div>
+						        </div>
+					        </div>
+					        <div class="search-result_data">
+
+					        </div>
+				        </div>
+			        </div>
+			        <div class="search__button-outer">
+				        <a href="#" class="search__button button button1">Найти</a>
+			        </div>
+		        </form>
+	        </div>
         </div>
         <nav class="nav col-xl-12 clear">
             <ul class="nav-list clear">

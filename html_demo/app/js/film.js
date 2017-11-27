@@ -108,7 +108,6 @@ function upToView(idFilm) {
 };
 
 function startVideo (film, prev) {
-	alert('esfsdfsd'); return false;
 	var script = document.createElement('script');
 	script.src = "https://cdn.viqeo.tv/js/vq_init_external_player.js?_=" + (+new Date());
 	script.setAttribute('data-profile', 105);
