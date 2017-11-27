@@ -5419,7 +5419,10 @@ img.load-ajax {
     .search-film {
         display: block;
         text-decoration: none;
-
+    }
+    .search-film img {
+        width: 20px;
+        height: 20px;
     }
 }
 .search-form {
