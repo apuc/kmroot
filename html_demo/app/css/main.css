@@ -615,3 +615,22 @@ img.load-ajax {
     display: none;
 }
 /*end*/
+
+/*main index*/
+@media (max-width: 767px) {
+    .section-news .bx-wrapper .bx-pager, .bx-wrapper .bx-controls-auto {
+        width: 500px;
+        height: 100px;
+    }
+}
+/*end*/
+
+/*full or mobile version*/
+.load-version {
+    display: none;
+}
+@media (max-width: 767px) {
+    .load-version{
+        display: block;
+    }
+}

@@ -74,7 +74,16 @@
                 САЙТ ОБЯЗАТЕЛЬНА
             </div>
             <div class="mail"><a href="mailto:INFO@KINOMANIA.RU/">INFO@KINOMANIA.RU</a></div>
-            <div class="footer-nav">
+	        <?php \Kinomania\System\Helper\Helper::getVersion($_GET);?>
+	        <div class="load-version" style="<?= (isset($_COOKIE['full_cookie']))? 'display:block' : ''?>">
+	            <p>
+			        <a href="<?= (isset($_COOKIE['full_cookie']))? '?mobile' : '?full'?>" class="button button2">
+				        <?= (isset($_COOKIE['full_cookie']))? "МОБИЛЬНАЯ ВЕРСИЯ" : "ПОЛНАЯ ВЕРСИЯ"?>
+			        </a>
+		        </p>
+		    </div>
+	        
+	        <div class="footer-nav">
                 <div class="outer-footer-nav-list">
                     <a href="/billboard/">СМОТРЕТЬ</a>
                     <ul class="footer-nav-list">
@@ -126,7 +135,6 @@
 	            <div class="outer-footer-nav-list">
 		            <a href="/billboard/">АФИША</a>
 	            </div>
-		           
             </div>
             <div class="outer-social clear">
                 <ul class="social-list social-list--horizontal">

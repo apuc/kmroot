@@ -111,7 +111,7 @@
             <div class="autorization-outer col-xl-3 col-lg-3 col-md-7 col-sm-12 col-xs-12">
                 <div class="autorization">
                     <ul class="autorization-list authorizationContent">
-	                    <li><a href="#" class="search-film"><img src="<?= $static ?>/app/img/search/glass.png"></a></li>
+	                    <li><a href="#" class="search-film" onclick="searchFilm()"><img src="<?= $static ?>/app/img/search/glass.png"></a></li>
 	                    <?php $city = \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo(); ?>
                         <li><a href="#" class="change-location" data-region="<?= $city['region'] ?>" data-city_id="<?= $city['city_id'] ?>"><span><?= $city['city'] ?></span></a></li>
                         <li><a href="/login/"><span>ВХОД</span></a></li>
@@ -218,3 +218,10 @@
         </nav>
     </header>
 </div>
+<script>
+	/*for header*/
+	function searchFilm() {
+		$('div .search-form').show();
+		return false;
+	}
+</script>

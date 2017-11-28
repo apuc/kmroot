@@ -6,6 +6,11 @@
     <?php if (empty($static)): ?>
         <meta name="robots" content="noindex">
     <?php endif; ?>
+	<?php if(isset($_GET['full']) || isset($_COOKIE['full_cookie'])):?>
+		<meta name="viewport" content="width=device-width, initial-scale=0">
+	<?php else:?>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php endif;?>
     <meta name="geo_locale" content="RU">
     <link rel="shortcut icon" href="<?= $static ?>/favicon.ico" type="image/png"/>
     <!--[if lt IE 9]>
