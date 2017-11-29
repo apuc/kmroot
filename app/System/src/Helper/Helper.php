@@ -11,12 +11,19 @@ use Kinomania\System\Debug\Debug;
 
 class Helper {
 	
-	public static function getVersion($get) {
-		if(isset($get['full'])) {
+	public static function getVersion($param) {
+		if(isset($param['full'])) {
 	        SetCookie("full_cookie","full",time()+3600);
+			$location = "Location: ".$_SERVER["REQUEST_URI"];
+			$location = explode('?', $location);
+			header($location[0]);
         }
-        if(isset($get['mobile'])){
-	        SetCookie("full_cookie","");
+        if(isset($param['mobile'])){
+	        SetCookie("full_cookie","",  time() - 3600);
+	        $location = "Location: ".$_SERVER["REQUEST_URI"];
+	        $location = explode('?', $location);
+	        header($location[0]);
         }
+        return false;
 	}
 }

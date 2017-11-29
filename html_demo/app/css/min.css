@@ -5438,3 +5438,14 @@ img.load-ajax {
     }
 }
 /*end*/
+
+/*full or mobile version*/
+.load-version {
+    display: none;
+}
+@media (max-width: 767px) {
+    .load-version{
+        display: block;
+    }
+}
+/*end*/
