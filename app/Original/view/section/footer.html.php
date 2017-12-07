@@ -183,7 +183,7 @@
                 <?php $city = \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo(); ?>
                 <div class="new__class" >Ваш город - <?= $city['city'] ?>?</div>
                 <input type="text" data-id="<?= $city['city_id'] ?>" id="city" class="search-location"
-                       value="<?= $city['city'] ?>">
+                       value="<?= $city['city'] ?>" autocomplete="off">
                 <input type="submit" id="find-city" class="button-location" value="Сохранить">
             </div>
             <div class="cities">

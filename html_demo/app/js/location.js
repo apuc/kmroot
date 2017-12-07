@@ -32,7 +32,7 @@ $(document).ready(function () {
         return false;
     });
 
-    $(document).on('click', '.button-location', function () {
+    $(document).on('click', '.button-location, .__close', function () {
         var city_id = $('input.search-location').attr('data-id');
         city_name = $('input.search-location').val();
         progressLoad('start');
@@ -72,7 +72,7 @@ $(document).ready(function () {
         return false;
     });
 
-    $(document).on('click', '.__close, .modal', function () {
+    $(document).on('click', '.__close', function () {
         var city_id = $('input.search-location').attr('data-id');
         city_name = $('input.search-location').val();
         $.ajax({

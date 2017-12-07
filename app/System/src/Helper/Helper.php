@@ -10,7 +10,7 @@ namespace Kinomania\System\Helper;
 use Kinomania\System\Debug\Debug;
 
 class Helper {
-	public $one;
+	
 	public static function getVersion($param) {
 		if(isset($param['full'])) {
 			SetCookie("full_cookie","full", time()+3600, "/");
@@ -25,11 +25,5 @@ class Helper {
 	        header($location[0]);
         }
         return false;
-	}
-	public static function getCookie() {
-		if(isset($_COOKIE['full_cookie'])){
-			return 0;
-		}
-		return 1;
 	}
 }
