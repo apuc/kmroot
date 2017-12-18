@@ -69,7 +69,7 @@ class AJAX extends DefaultController
         }
 
         if(!empty($cities)){
-            if(setcookie('city', serialize($cities), time() + strtotime("+2 month"), '/')){
+        	if(setcookie('city', serialize($cities), time() + strtotime("+2 month"), '/')){
                 $this->setContent(json_encode($cities));
             }
         } else {

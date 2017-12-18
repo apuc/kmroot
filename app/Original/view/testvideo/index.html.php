@@ -44,7 +44,7 @@ use Kinomania\System\Body\BodyScript;
         </div>
     </div>
 </div>
-  <!--#include virtual="/design/ssi/top" -->
+
 <div class="outer">
     <div class="wrap">
         <!-- include section/header.html.php -->
@@ -55,239 +55,21 @@ use Kinomania\System\Body\BodyScript;
             <section class="outer-section clear outer-content">
                 <!-- Контент -->
                 <content class="page-section-content section-content content-outer outer-vert col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                    <h1 class="pagetitle trailers-pagetitle"><?=$options->get('seo_trailers_h1');?></h1>
-                    <div class="outer-selection-trailers">
-                        <div data-type-openclose-button="open_close" data-type-openclose-class="active" class="button__selection-trailers"><span>Подбор по параметрам</span></div>
-                        <div class="selection-trailers">
-                            <div class="row-selection-hide" data-type-openclose-element="open_close">
-                                <div class="selection-trailers-item clear">
-                                    <div class="item ganre">
-                                        <div class="selection-trailers__name">Жанр:</div>
-                                        <div class="selection-trailers__value">
-                                            <ul class="selection-trailers__value-list">
-                                                <?php foreach ($genre as $code => $name): ?>
-                                                    <li><a href="#" data-value="<?= $code ?>" class="filter genre"><?= $name ?></a></li>
-                                                <?php endforeach; ?>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="item language">
-                                        <div class="selection-trailers__name">Язык:</div>
-                                        <div class="selection-trailers__value">
-                                            <ul class="selection-trailers__value-list">
-                                                <li><a href="#" data-value="no" class="filter local">оригинальный</a></li>
-                                                <li><a href="#" data-value="yes" class="filter local">локализованный</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="item type">
-                                        <div class="selection-trailers__name">Тип:</div>
-                                        <div class="selection-trailers__value">
-                                            <ul class="selection-trailers__value-list">
-                                                <li><a href="#" data-value="трейлер" class="filter type">трейлер</a></li>
-                                                <li><a href="#" data-value="тизер" class="filter type">тизер</a></li>
-                                                <li><a href="#" data-value="телеролик" class="filter type">телеролик</a></li>
-                                                <li><a href="#" data-value="эпизод" class="filter type">эпизод</a></li>
-                                                <li><a href="#" data-value="репортаж" class="filter type">репортаж</a></li>
-                                                <li><a href="#" data-value="клип" class="filter type">клип</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="selection-trailers-item clear">
-                                    <div class="item years" data-type="slider" data-type-slider-min="1888" data-type-slider-max="2020">
-                                        <div class="selection-trailers__name">Года:</div>
-                                        <div class="selection-trailers__value">
-                                            <div class="outer-time-bar clear">
-                                                <div class="time-bar-years">
-                                                    <ul>
-                                                        <li>1930</li>
-                                                        <li>1970</li>
-                                                        <li>2020</li>
-                                                    </ul>
-                                                </div>
-                                                <div class="time-bar-slide">
-                                                    <div class="slide-bar-bottom" data-type-slider="bg">
-                                                        <div class="slide-bar-top" data-type-slider="fr" style="left: 0px; width: 100px;"></div>
-                                                        <div class="slide-bar-controls">
-                                                            <div class="slide-bar-controls__item slide-bar-controls__left" data-type-slider="left_controller" style="left: 0px;"></div>
-                                                            <div class="slide-bar-controls__item slide-bar-controls__right" data-type-slider="right_controller" style="left: 100px;"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="outer-time-value clear">
-                                                <span>с</span>
-                                                <input type="text" id="yearFrom" name="yearFrom" class="time-value-after" data-type-slider="input_left" value="1888">
-                                                <span>по</span>
-                                                <input type="text" id="yearTo" name="yearTo"  class="time-value-before" data-type-slider="input_right" value="2020">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="selection-trailers-item">
-                                <div class="item letters">
-                                    <div class="letters-select">
-                                        <ul class="tab-list clear">
-                                            <li class="active" data-type-slidergroup="lang" data-type-sliderbutton="ru">RU</li>
-                                            <li class="default" data-type-slidergroup="lang" data-type-sliderbutton="eng">ENG</li>
-                                        </ul>
-                                    </div>
-                                    <div class="letters-text">
-                                        <ul class="letters-text-list active filter" data-type-slidergroup="lang" data-type-sliderelem="ru">
-                                            <li>А</li>
-                                            <li>Б</li>
-                                            <li>В</li>
-                                            <li>Г</li>
-                                            <li>Д</li>
-                                            <li>Е</li>
-                                            <li>Ё</li>
-                                            <li>Ж</li>
-                                            <li>З</li>
-                                            <li>И</li>
-                                            <li>Й</li>
-                                            <li>К</li>
-                                            <li>Л</li>
-                                            <li>М</li>
-                                            <li>Н</li>
-                                            <li>О</li>
-                                            <li>П</li>
-                                            <li>Р</li>
-                                            <li>С</li>
-                                            <li>Т</li>
-                                            <li>У</li>
-                                            <li>Ф</li>
-                                            <li>Х</li>
-                                            <li>Ц</li>
-                                            <li>Ч</li>
-                                            <li>Ш</li>
-                                            <li>Щ</li>
-                                            <li>Ъ</li>
-                                            <li>Ы</li>
-                                            <li>Ь</li>
-                                            <li>Э</li>
-                                            <li>Ю</li>
-                                            <li>Я</li>
-                                        </ul>
-                                        <ul class="letters-text-list filter" data-type-slidergroup="lang" data-type-sliderelem="eng">
-                                            <li>A</li>
-                                            <li>B</li>
-                                            <li>C</li>
-                                            <li>D</li>
-                                            <li>E</li>
-                                            <li>F</li>
-                                            <li>G</li>
-                                            <li>H</li>
-                                            <li>I</li>
-                                            <li>J</li>
-                                            <li>K</li>
-                                            <li>L</li>
-                                            <li>M</li>
-                                            <li>N</li>
-                                            <li>O</li>
-                                            <li>P</li>
-                                            <li>Q</li>
-                                            <li>R</li>
-                                            <li>S</li>
-                                            <li>T</li>
-                                            <li>U</li>
-                                            <li>V</li>
-                                            <li>W</li>
-                                            <li>X</li>
-                                            <li>Y</li>
-                                            <li>Z</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <h1 class="pagetitle trailers-pagetitle">
+	                    ТЕСТ ВИДЕО
+                    </h1>
                     <div class="content-list">
-                        <div class="content-page__titile">
-                            <h1>НОВЫЕ ТРЕЙЛЕРЫ</h1>
-                        </div>
-                        <ul class="tab-list film_type clear">
-                            <li class="active" data-type="ru" data-type-slidergroup="new_trailers" data-type-sliderbutton="1">ФИЛЬМЫ</li>
-                            <li class="default" data-type="eng" data-type-slidergroup="new_trailers" data-type-sliderbutton="2">ЗАРУБЕЖНЫЕ СЕРИАЛЫ</li>
-                            <li class="default" data-type="eng" data-type-slidergroup="new_trailers" data-type-sliderbutton="3">РОССИЙСКИЕ СЕРИАЛЫ</li>
-                        </ul>
+
                         <div class="result-list-content active trailer_content_1" data-type-slidergroup="new_trailers" data-type-sliderelem="1">
-                            <?php $count = count($list); ?>
-                            <?php for ($i = 0; $i < $count; $i++): ?>
-                                <?php if (!isset($list[$i])) { break; } ?>
                                 <div class="trailer-item clear">
                                     <div class="row-trailer-image">
                                         <div class="image-shadow">
-                                            <a href="/film/<?= $list[$i][Trailer::FILM_ID] ?>/trailers/<?= $list[$i][Trailer::ID] ?>/" class="parent play_video_main" data-prev="<?= $list[$i][Trailer::IMAGE] ?>"  onclick="upToView(<?= $list[$i][Trailer::FILM_ID] ?>);"><img alt="" src="//:0" data-original="<?= $list[$i][Trailer::IMAGE] ?>" class="lazy image-cover">
+                                            <a href="/film/801301/trailers/52289/" class="parent play_video_main" data-prev="//fs.kinomania.ru/image/file/film_trailer/c/ad/cad238d1a08f7e900773636d4f9e53b1.750.425.jpeg"  ><img alt="" src="//fs.kinomania.ru/image/file/film_trailer/c/ad/cad238d1a08f7e900773636d4f9e53b1.750.425.jpeg" data-original="//fs.kinomania.ru/image/file/film_trailer/c/ad/cad238d1a08f7e900773636d4f9e53b1.750.425.jpeg" class="lazy image-cover">
                                                 <i class="trailer__play-icon"></i>
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="row-trailer-text">
-                                        <div class="trailer-list-title"><a href="/film/<?= $list[$i][Trailer::FILM_ID] ?>/trailers/<?= $list[$i][Trailer::ID] ?>/"><?= $list[$i][Trailer::FILM_NAME] ?></a> &nbsp; <?= $list[$i][Trailer::NAME] ?></div>
-                                        <div class="trailer-list-add">Добавлен: <?= $list[$i][Trailer::DATE] ?></div>
-                                        <div class="trailer-list-view">
-                                            Смотреть онлайн:
-                                            <ul class="trailer-list-view-quality trailer-view-quality-display">
-                                                <?php if (empty($list[$i][Trailer::HD_480])): ?>
-                                                    <li><span>HD 480</span></li>
-                                                <?php else: ?>
-                                                    <li><a href="<?= $list[$i][Trailer::HD_480] ?>" onclick="upToView(<?= $list[$i][Trailer::FILM_ID] ?>);" data-prev="<?= $list[$i][Trailer::IMAGE] ?>" class="play_video"><span>HD 480</span></a></li>
-                                                <?php endif ?>
-
-                                                <?php if (empty($list[$i][Trailer::HD_720])): ?>
-                                                    <li><span>HD 720</span></li>
-                                                <?php else: ?>
-                                                    <li><a href="<?= $list[$i][Trailer::HD_720] ?>" onclick="upToView(<?= $list[$i][Trailer::FILM_ID] ?>);" data-prev="<?= $list[$i][Trailer::IMAGE] ?>" class="play_video"><span>HD 720</span></a></li>
-                                                <?php endif ?>
-
-                                                <?php if (empty($list[$i][Trailer::HD_1080])): ?>
-                                                    <li><span>HD 1080</span></li>
-                                                <?php else: ?>
-                                                    <li><a href="<?= $list[$i][Trailer::HD_1080] ?>" onclick="upToView(<?= $list[$i][Trailer::FILM_ID] ?>);" data-prev="<?= $list[$i][Trailer::IMAGE] ?>" class="play_video"><span>HD 1080</span></a></li>
-                                                <?php endif ?>
-                                            </ul>
-                                        </div>
-                                        <div class=" clear">
-                                            <div class="trailer-list-download--left">
-                                                или
-                                                <div class="trailer-list-download"><span class="trailer-list-download__link">скачать</span>
-                                                    <i class="trailer-list-download__icon"></i>
-                                                    <div class="row-trailer-list-download">
-                                                        <div class="row-hover-trailer-list">
-                                                            <ul class="trailer-list-view-quality ">
-                                                                <?php if (empty($list[$i][Trailer::HD_480])): ?>
-                                                                    <li><span>HD 480</span></li>
-                                                                <?php else: ?>
-                                                                    <li><a href="/load/n?file=<?= $list[$i][Trailer::HD_480] ?>"><span>HD 480</span></a></li>
-                                                                <?php endif ?>
-
-                                                                <?php if (empty($list[$i][Trailer::HD_720])): ?>
-                                                                    <li><span>HD 720</span></li>
-                                                                <?php else: ?>
-                                                                    <li><a href="/load/n?file=<?= $list[$i][Trailer::HD_720] ?>"><span>HD 720</span></a></li>
-                                                                <?php endif ?>
-
-                                                                <?php if (empty($list[$i][Trailer::HD_1080])): ?>
-                                                                    <li><span>HD 1080</span></li>
-                                                                <?php else: ?>
-                                                                    <li><a href="/load/n?file=<?= $list[$i][Trailer::HD_1080] ?>"><span>HD 1080</span></a></li>
-                                                                <?php endif ?>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="section-video">
-                                                <div class="trailer-list-download--right">
-                                                    <span class="button button3" onclick="document.location='/film/<?= $list[$i][Trailer::FILM_ID] ?>/trailers/<?= $list[$i][Trailer::ID] ?>#commentList'"><i class="item__icon sprite"></i><span class="number"><?= $list[$i][Trailer::COMMENT] ?></span>Комментировать</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
-                            <?php endfor; ?>
                         </div>
                         <div class="result-list-content active trailer_content_2" data-type-slidergroup="new_trailers" data-type-sliderelem="2">
 
@@ -300,7 +82,6 @@ use Kinomania\System\Body\BodyScript;
                         <div class="center-loader" style="display: none;">
                             <div class="ball-clip-rotate-multiple"><div></div><div></div></div>
                         </div>
-                        <span class="pagelist-more sprite-before" data-type-openclose-button="hide-text"><span class="pagelist-more__text" id="more">Еще</span></span>
                     </div>
                     <div class="pagelist-social">
                         <div class="outer-social clear">
@@ -539,7 +320,7 @@ use Kinomania\System\Body\BodyScript;
 
                 $('.play_video_main').click(function(e){
                     e = e || window.event;
-                    var href = $(this).parent().parent().parent().find('.trailer-list-view-quality').find('a:last').attr('href');
+	                var href = '//fs.kinomania.ru/media/video/c/ad/cad238d1a08f7e900773636d4f9e53b1.1080.mp4';
 	                var prev = $(this).attr('data-prev');
 	                <?php if($player != 'js'):?>
 		                startVideo(href, prev);
@@ -839,8 +620,7 @@ use Kinomania\System\Body\BodyScript;
 
         $('.play_video_main').click(function(e){
             e = e || window.event;
-            var href = $(this).parent().parent().parent().find('.trailer-list-view-quality').find('a:last').attr('href');
-            console.log(href);
+            var href = '//fs.kinomania.ru/media/video/c/ad/cad238d1a08f7e900773636d4f9e53b1.1080.mp4';
 	        var prev = $(this).attr('data-prev');
 	        <?php if($player != 'js'):?>
 		        startVideo(href, prev);

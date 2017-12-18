@@ -11,6 +11,7 @@
     <?php if (empty($static)): ?>
         <meta name="robots" content="noindex">
     <?php endif; ?>
+	<?php Kinomania\System\Helper\Helper::getRedirect($_SERVER['REQUEST_URI']);?>
     <meta name="geo_locale" content="RU">
     <link rel="shortcut icon" href="<?= $static ?>/favicon.ico" type="image/png"/>
     <!--[if lt IE 9]>

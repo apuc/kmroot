@@ -1,4 +1,11 @@
 Options -Indexes
 RewriteEngine On
+
+#my code
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_URI} ^(.+)/$
+#RewriteRule ^(.+)/$ /$1 [R=301,L]
+#end my code
+
 RewriteRule ^(.*)$ html_demo/$1 [L,QSA]
 

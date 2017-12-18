@@ -26,4 +26,16 @@ class Helper {
         }
         return false;
 	}
+	
+	public static function getRedirect ($url) {
+		//	$url = preg_replace("#/$#", "", $url);
+		//$url = $_SERVER['REQUEST_URI'];
+		if($url){
+			if (substr($url, strlen($url)-1) == "/") {
+				$url = substr($url,0,strlen($url)-1);
+				header('Location:'.$url);
+			}
+		}
+		return false;
+	}
 }

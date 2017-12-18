@@ -229,6 +229,7 @@ img.load-ajax {
 
 .content__title {
     text-align: center;
+    margin-bottom: -20px;
 }
 
 .content__title h2 {
@@ -267,6 +268,7 @@ img.load-ajax {
 
 #find-city {
     width: 25%;
+    margin-top: 20px;
     padding: 5px 0;
     font-weight: 700;
     font-size: 14px;
@@ -632,6 +634,21 @@ img.load-ajax {
 @media (max-width: 767px) {
     .load-version{
         display: block;
+    }
+}
+/*end*/
+
+/*header*/
+.nav-list>li a:last-child{
+    background-color: #fff;
+    color: #000;
+}
+/*end header*/
+/*button local*/
+@media (max-width: 767px){
+    #find-city {
+        width: 35%;
+        margin-top: 20px;
     }
 }
 /*end*/
