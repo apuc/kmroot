@@ -1,5 +1,5 @@
 <?php
-namespace Control\Route_sys_check;
+namespace Control\Route_sys_ssi_cache;
 
 use Kinomania\Control\Check\Check;
 use Kinomania\Control\Controller\AdminController;
@@ -16,6 +16,6 @@ class GET extends AdminController
             'staticServer' => implode(',', Server::STATIC),
         ]);
         $this->setTitle('Проверка системы');
-        $this->setTemplate('sys/check/index.html.php');
+        $this->setTemplate('sys/ssi_cache/index.html.php');
     }
 }

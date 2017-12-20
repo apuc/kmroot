@@ -30,10 +30,15 @@ class Helper {
 	public static function getRedirect ($url) {
 		//	$url = preg_replace("#/$#", "", $url);
 		//$url = $_SERVER['REQUEST_URI'];
+		if($url == "/" ){
+			return false;
+		}
 		if($url){
 			if (substr($url, strlen($url)-1) == "/") {
 				$url = substr($url,0,strlen($url)-1);
+				header("HTTP/1.1 301 Moved Permanently");
 				header('Location:'.$url);
+				exit();
 			}
 		}
 		return false;
