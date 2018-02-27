@@ -197,39 +197,75 @@
                         <div class="page-two-head">
                             <h1 class="pagetitle mini__pagetitle">Ошибка 404, страница не найдена</h1>
                         </div>
+	                    <p>
+		                    К сожалению, запрашиваемая страница недоступна на KINOMANIA. Возможно, она была перемещена, или вы просто неверно указали адрес страницы.
+
+		                    Для поиска необходимой информации используйте карту сайта или обратитесь в службу поддержки.
+		                </p>
                         <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
+	                    <table  class="site-map" cellspacing="0" cellpadding="0" width="100%" border="0">
+		                    <tbody>
+		                    <tr>
+			                    <td class="site-map-cell" colspan="2">
+				                    <b>Карта сайта KINOMANIA</b>
+			                    </td>
+		                    </tr>
+		                    <tr>
+			                    <td style="margin: 18px 0;
+    padding-left: 40px;">
+				                    <dl class="site-map-menuError">
+					                    <li class="site-map-last"><a href="/">Главная</a></li>
+					                    <dt>Смотреть</dt>
+					                    <li><a href="/tv/">ТВ</a></li>
+					                    <li><a href="/releases/russia/">Скоро в кино</a></li>
+					                    <li class="site-map-last"><a href="/article/shorts/">Shortы</a></li>
+					                    <dt>Читать</dt>
+					                    <li><a href="/news/">Новости</a></li>
+					                    <li><a href="/article/interview/">Интервью</a></li>
+					                    <li><a href="/reviews/">Рецензии</a></li>
+					                    <li><a href="/article/press_review/">Пресса</a></li>
+					                    <li><a href="/article/anticipation/">Ожидания</a></li>
+					                    <li><a href="/article/inside/">Инсайд</a></li>
+					                    <li><a href="/article/reason/">Был бы повод</a></li>
+					                    <li><a href="/article/in_ten/">В десятку</a></li>
+					                    <li class="site-map-last"><a href="http://forum.kinomania.ru/">Форум</a></li>
+					                    <dt>Арткиномания</dt>
+					                    <li><a href="/awards/">Фестивали и премии</a></li>
+					                    <li><a href="/article/movie_memorial/">Boom!!</a></li>
+					                    <li class="site-map-last"><a href="/scripts/">Сценарии</a></li>
+					                    <dt>Медиа</dt>
+					                    <li><a href="/trailers/">Трейлеры</a></li>
+					                    <li><a href="/posters/">Постеры</a></li>
+					                    <li><a href="/soundtracks/">Саундтреки</a></li>
+					                    <li><a href="/photos/">Фото</a></li>
+					                    <li><a href="/wallpapers/films/">Обои (фильмы)</a></li>
+					                    <li><a href="/wallpapers/actors/">Обои (актеры)</a></li>
+					                    <li class="site-map-last"><a href="/wallpapers/actresses/">Обои (актрисы)</a></li>
+					                </dl>
+			                    </td>
+			                    <td>
+				                    <dl class="site-map-menuError">
+					                    <dt>Лучшие фильмы</dt>
+					                    <li><a href="/top/films/">Рейтинг киномании</a></li>
+					                    <li><a href="/top/">Подборки</a></li>
+					                    <li class="site-map-last"><a href="/article/boxoffice/">Бокс-офис</a></li>
+					                    <dt>Жанры</dt>
+					                    <li><a href="/genres/films?genre=ro">Мелодрама</a></li>
+					                    <li><a href="/genres/films?genre=co">Комедии</a></li>
+					                    <li><a href="/genres/films?genre=th">Триллер</a></li>
+					                    <li><a href="/genres/films?genre=fa">Фэнтези</a></li>
+					                    <li><a href="/genres/films?genre=dr">Драма</a></li>
+					                    <li><a href="/genres/films?genre=ho">Ужасы</a></li>
+					                    <li><a href="/genres/films?genre=ad">Приключения</a></li>
+					                    <li><a href="/genres/films?genre=ac">Боевик</a></li>
+					                    <li><a href="/genres/films?genre=my">Детектив</a></li>
+					                    <li class="site-map-last"><a href="/genres/films?genre=sc">Фантастика</a></li>
+					                    <dt>Афиша</dt>
+					                    <li class="site-map-last"><a href="/billboard/">Кинотеатры</a></li>
+				                    </dl>
+			                    </td>
+		                    </tr>
+		                    </tbody></table>
                     </div>
                 </content>
             </section>

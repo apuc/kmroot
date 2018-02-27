@@ -30,20 +30,24 @@ class KPFilm
         $this->error = '';
 
         $kpId = intval($kpId);
-
+	    
         if (1 > $kpId) {
             $this->error = self::BAD_ID;
             return $this->film;
         }
 
         $url = 'https://www.kinopoisk.ru/film/' . $kpId . '/';
-
+	   
         if (false === filter_var($url, FILTER_VALIDATE_URL)) {
             $this->error = self::URL_ERROR;
+	        
             return $this->film;
         }
-
+	
+	    
         $data = $this->loadPage($url);
+	    
+	    
         if (!empty($this->error)) {
             return $this->film;
         }
@@ -53,7 +57,7 @@ class KPFilm
          * Start parsing.
          */
         $this->film['kpId'] = $kpId;
-
+		
         /**
          * Name.
          */

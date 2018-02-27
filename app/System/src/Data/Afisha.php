@@ -10,6 +10,8 @@ namespace Kinomania\System\Data;
 
 use Kinomania\System\Common\TDate;
 use Kinomania\System\Common\TRepository;
+use Kinomania\System\Db\Db;
+use Kinomania\System\Debug\Debug;
 
 
 class Afisha {
@@ -44,7 +46,23 @@ class Afisha {
 	}
 	
 	public function insertDB( $values ) {
-		$query = " INSERT INTO `afisha` (`OriginalName`, `Genre`, `Country`,
+		
+		$ar = new Db();
+		$keys = '`OriginalName`, `Genre`, `Country`,
+			`ViewCountDaily`, `AgeRestriction` ,
+			`Thumbnail`, `Cast`, `Description`,
+			`Director`, `CreatorName`,
+			`CreatorObjectID`, `Year`,
+			`Duration`, `HorizonalThumbnail`,
+			`IsNonStop`,
+			`Rating`, `Trailers`,
+			`Frames`, `ReleaseDate`,
+			`ObjectID`, `ClassType`,
+			`Name`';
+		$values = implode( ',',$values );
+		$ar->insert_v( $keys, 'afisha', $values );
+		
+		/*$query = " INSERT INTO `afisha` (`OriginalName`, `Genre`, `Country`,
  										`ViewCountDaily`, `AgeRestriction`,
  										`Thumbnail`, `Cast`, `Description`,
 		                   				`Director`, `CreatorName`,
@@ -55,18 +73,23 @@ class Afisha {
 		                   				`Frames`, `ReleaseDate`,
 		                   				`ObjectID`, `ClassType`,
 		                   				`Name`) VALUES " . implode( ',',$values );
-		$this->mysql()->query( $query );
+		$this->mysql()->query( $query );*/
 	}
 	
 	public function selectFilm( $id ) {
+		$ar = new Db();
 		if ( $id ) {
-			$query  = ( "  SELECT * FROM `afisha` WHERE `ObjectID` = '$id'" );
-			$result = $this->mysql()->query( $query );
-			while( $row = $result->fetch_assoc() ) {
-				return $row;
-			}
+			$row = $ar->
+						find('`afisha`', '*')->
+						where(['`ObjectID`' => $id])->
+						one();
+			return $row;
 		}
 		return false;
+//			$query  = ( "  SELECT * FROM `afisha` WHERE `ObjectID` = '$id'" );
+//			$result = $this->mysql()->query( $query );
+//			while( $row = $result->fetch_assoc() ) {
+//				return $row;
+//			}
 	}
-	
 }

@@ -17,7 +17,6 @@
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
 <?php if (!empty($static)): ?>
     <link rel="stylesheet" href="<?= $static ?>/app/css/min.css?v=1.0.3">
 <?php else: ?>
@@ -32,3 +31,29 @@
 	
 
     <!--#include virtual="/design/ssi/include" -->
+
+<!--<script src="https://yastatic.net/pcode/adfox/loader.js" crossorigin="anonymous"></script>-->
+<!---->
+<!--<!--AdFox START-->-->
+<!--<!--Terracreativaru-->-->
+<!--<!--Площадка: kinomania.ru / kinomania / Шапка-->-->
+<!--<!--Категория: Cinema-->-->
+<!--<!--Баннер: Cinema-->-->
+<!--<!--Тип баннера: Шапка-->-->
+<!--<div id="adfox_15161920655562407" class="adfox_video"></div>-->
+<!--<script>-->
+<!--	window.Ya.adfoxCode.create({-->
+<!--		ownerId: 201987,-->
+<!--		containerId: 'adfox_15161920655562407',-->
+<!--		params: {-->
+<!--			p1: 'bzcgw',-->
+<!--			p2: 'fuen',-->
+<!--			pfc: 'bqxjo',-->
+<!--			pfb: 'fenac',-->
+<!--			puid1: ''-->
+<!--		}-->
+<!--	});-->
+<!--	// var href = 'https://rec.datalock.ru/rec/WT_30_10Mb.mp4';-->
+<!--	// var prev = 'http://banners.adfox.ru/180117/adfox/753988/2363974_4.jpg';-->
+<!--	// startVideo(href, prev);-->
+<!--</script>-->

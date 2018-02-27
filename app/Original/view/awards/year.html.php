@@ -60,7 +60,7 @@ use Kinomania\System\Body\BodyScript;
                                 <?php foreach ($list['award'] as $item): ?>
                                     <div class="row-main-items">
                                         <div class="row-main-item-title">
-                                            <div class="main-item-title title-black"><?= $item[0][Nominee::NAME_RU] ?></div>
+                                            <div class="main-item-title title-black"><?= $item[0][Nominee::NAME_RU] ?>/</div>
                                             <div class="main-item-longtitle title-bold"><?= $item[0][Nominee::NAME_EN] ?></div>
                                         </div>
                                         <?php if ('film' == $item[0][Nominee::TYPE]): ?>
@@ -77,9 +77,9 @@ use Kinomania\System\Body\BodyScript;
                                                     </div>
                                                     <div class="main-item-all main-item__content">
                                                         <?php if ('' == $item[0][Nominee::FILM_RU]): ?>
-                                                            <div class="main-item__content-title "><a href="/film/<?= $item[0][Nominee::FILM_ID] ?>/"><?= $item[0][Nominee::FILM_ORIGIN] ?></a></div>
+                                                            <div class="main-item__content-title "><a href="/film/<?= $item[0][Nominee::FILM_ID] ?>/"><?= $item[0][Nominee::FILM_ORIGIN] ?></a>/</div>
                                                         <?php else: ?>
-                                                            <div class="main-item__content-title "><a href="/film/<?= $item[0][Nominee::FILM_ID] ?>/"><?= $item[0][Nominee::FILM_RU] ?></a></div>
+                                                            <div class="main-item__content-title "><a href="/film/<?= $item[0][Nominee::FILM_ID] ?>/"><?= $item[0][Nominee::FILM_RU] ?></a>/</div>
                                                             <div class="main-item__content-title-eng"><?= $item[0][Nominee::FILM_ORIGIN] ?></div>
                                                         <?php endif ?>
                                                         <div class="main-item__content-info">
@@ -129,6 +129,7 @@ use Kinomania\System\Body\BodyScript;
                                             <div class="row-all-items-list row-all-items-list-tile clear">
                                                 <ul class="all-items-list all-items-list-tile">
                                                     <?php $cnt = 0 ?>
+	                                                
                                                     <?php foreach ($item as $member): ?>
                                                         <?php $cnt++; if (1 == $cnt) { continue; } ?>
                                                         <?php if ('film' == $member[Nominee::TYPE]): ?>

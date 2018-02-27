@@ -86,6 +86,11 @@
                             <li><a href="/top/films/">ЛУЧШИЕ ФИЛЬМЫ</a>
 		                        <ul class="nav-list-dop">
 			                        <li><a href="/top/films/">РЕЙТИНГ КИНОМАНИИ</a></li>
+			                        <li><a href="/top/series/">ЛУЧШИЕ СЕРИАЛЫ</a></li>
+			                        <li><a href="/top/comedies/">ЛУЧШИЕ КОМЕДИИ</a></li>
+			                        <li><a href="/top/action/">ЛУЧШИЕ БОЕВИКИ</a></li>
+			                        <li><a href="/top/melodrama/">ЛУЧШИЕ МЕЛОДРАМЫ</a></li>
+			                        <li><a href="/top/horrors/">ЛУЧШИЕ ФИЛЬМЫ УЖАСОВ</a></li>
 			                        <li><a href="/top/">ПОДБОРКИ</a></li>
 			                        <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
 		                        </ul>
@@ -187,6 +192,11 @@
                 <li><a href="/top/films/">ЛУЧШИЕ ФИЛЬМЫ</a>
                     <ul class="nav-list-dop">
                         <li><a href="/top/films/">РЕЙТИНГ КИНОМАНИИ</a></li>
+                        <li><a href="/top/series/">ЛУЧШИЕ СЕРИАЛЫ</a></li>
+                        <li><a href="/top/comedies/">ЛУЧШИЕ КОМЕДИИ</a></li>
+                        <li><a href="/top/action/">ЛУЧШИЕ БОЕВИКИ</a></li>
+                        <li><a href="/top/melodrama/">ЛУЧШИЕ МЕЛОДРАМЫ</a></li>
+                        <li><a href="/top/horrors/">ЛУЧШИЕ ФИЛЬМЫ УЖАСОВ</a></li>
                         <li><a href="/top/">ПОДБОРКИ</a></li>
                         <li><a href="/article/boxoffice/">БОКС-ОФИС</a></li>
                     </ul>

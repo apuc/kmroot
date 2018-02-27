@@ -26,7 +26,7 @@ class GET extends DefaultController
 
         $this->addData([
             'list' => $list,
-            'options' => new Options()
+            'options' => new Options(),
         ]);
 
         $this->setTemplate('news/index.html.php');

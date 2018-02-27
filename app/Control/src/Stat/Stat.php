@@ -71,4 +71,58 @@ class Stat {
 		              ->fetch_assoc();
 		return $count;
 	}
+	
+	public function selectNewsViewByDate( $data, $offset, $category = NULL) {
+		if ( $data != null ) {
+			$arr    = [];
+			$query  =  " SELECT `id`, `view`, `title`, `publish`, `category`
+  						  FROM `news`
+  						  WHERE  `publish` <= '".$data."'";
+  			if($category){
+  			    $query .= " AND `category` = '".$category."'";
+  			}
+             $query .=   " ORDER BY `publish` DESC
+  						   LIMIT 10 OFFSET $offset ";
+			$result = $this->mysql()->query( $query );
+			
+			while( $row = $result->fetch_assoc() ) {
+				;
+				$arr[] = $row;
+			}
+			
+			return $arr;
+		}
+		return false;
+	}
+	
+	public function selectNewView($category = null, $id = null) {
+		if($category != null) {
+			$arr = [];
+			$query  = ( " SELECT * FROM `news`
+  						  WHERE UPPER (`title`) LIKE  UPPER ('".$category."%') LIMIT 1"  );
+			$result = $this->mysql()->query( $query );
+			while( $row = $result->fetch_assoc() ) {
+				$arr[] = $row;
+			}
+			return $arr;
+		}
+		if($id != null) {
+			$arr = [];
+			$query  = ( " SELECT * FROM `news`
+  						  WHERE `id` = '".$id."' LIMIT 1" );
+			$result = $this->mysql()->query( $query );
+			while( $row = $result->fetch_assoc() ) {
+				$arr[] = $row;
+			}
+			return $arr;
+		}
+		return false;
+	}
+	
+	public function countNews() {
+		$count = $this->mysql()
+		              ->query("SELECT COUNT(*) as count  FROM `news`")
+		              ->fetch_assoc();
+		return $count;
+	}
 }

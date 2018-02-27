@@ -80,7 +80,7 @@
                         <?php foreach ($list as $item): ?>
                             <fieldset id="set_<?= $item->id() ?>">
                                 <legend>
-                                    <?= $item->name_ru() ?>
+                                    <?= $item->name_ru() ?> /
                                     <br />
                                     <small><?= $item->name_en() ?></small>
                                 </legend>

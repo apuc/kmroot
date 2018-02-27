@@ -8,6 +8,7 @@ use Kinomania\System\Common\TRepository;
 use Kinomania\System\Config\Path;
 use Kinomania\System\Config\Server;
 use Kinomania\System\Data\Country;
+use Kinomania\System\Debug\Debug;
 
 /**
  * Class News
@@ -363,6 +364,11 @@ class News
                 $default = Server::STATIC[0] . '/app/img/content/nni.jpg';
                 $type = 'review';
                 break;
+	        case 'Рецензии к сериалам':
+		        $dimension = '263.261';
+		        $default = Server::STATIC[0] . '/app/img/content/nni.jpg';
+		        $type = 'review_series';
+		        break;
             case 'Рецензии ART':
                 $dimension = '263.261';
                 $default = Server::STATIC[0] . '/app/img/content/nni.jpg';
@@ -439,7 +445,6 @@ class News
 
         $page = intval($page);
         $authorId = intval($authorId);
-        
         if ('' != $category && 0 < $page) {
             $offset = ($page - 1) * 12;
 
@@ -469,13 +474,35 @@ class News
                 /**
                  * Review query.
                  */
-                $query = "SELECT 
-                            t1.`id`, t1.`image`, t1.`publish`, t1.`filmId`, t2.`s`, t2.`image`, t2.`name_origin`, t2.`name_ru`, t2.`country`, t2.`year`, t3.`comment`, t4.`login`, t4.`name`, t4.`surname`
-                            FROM `news` AS `t1` JOIN (SELECT `id` FROM `news` WHERE `status` = 'show' AND `category` = 'Рецензии' ORDER BY `publish` DESC LIMIT {$offset}, 12) as `t` ON t1.`id` = t.`id`
-                            JOIN `film` AS `t2` ON t1.`filmId` = t2.`id` 
+                $query = "SELECT t1.`id`, t1.`image`, t1.`publish`, t1.`filmId`, t2.`s`, t2.`image`, t2.`name_origin`, t2.`name_ru`, t2.`country`, t2.`year`, t3.`comment`, t4.`login`, t4.`name`, t4.`surname`, t2.`type`
+                            FROM `news` AS `t1`
+                            JOIN (SELECT `id`
+                            FROM `news`
+                            WHERE `status` = 'show'
+                            AND `category` = 'Рецензии') as `t` ON t1.`id` = t.`id`
+                            JOIN `film` AS `t2` ON t1.`filmId` = t2.`id`
                             LEFT JOIN `news_stat` AS `t3` ON t1.`id` = t3.`newsId`
-                            LEFT JOIN `user` AS `t4` ON t1.`authorId` = t4.`id` WHERE 
-                            t2.`status` = 'show'";
+                            LEFT JOIN `user` AS `t4` ON t1.`authorId` = t4.`id`
+                            WHERE t2.`status` = 'show'
+                            AND t2.`type` =''
+                            ORDER BY t1.`publish`
+                            DESC LIMIT {$offset}, 12";
+            } else if ('review_series' == $type) {
+	            /**
+	             * Review query.
+	             */
+	            $query = "SELECT
+                            t1.`id`, t1.`image`, t1.`publish`, t1.`filmId`, t2.`s`, t2.`image`, t2.`type`, t2.`name_origin`, t2.`name_ru`, t2.`country`, t2.`year`, t3.`comment`, t4.`login`, t4.`name`, t4.`surname`
+                            FROM `news` AS `t1`
+                            JOIN (SELECT `id`
+                            FROM `news`
+                            WHERE `status` = 'show'
+                            AND `category` = 'Рецензии' ) as `t` ON t1.`id` = t.`id`
+                            JOIN `film` AS `t2` ON t1.`filmId` = t2.`id`
+                            LEFT JOIN `news_stat` AS `t3` ON t1.`id` = t3.`newsId`
+                            LEFT JOIN `user` AS `t4` ON t1.`authorId` = t4.`id`
+                            WHERE t2.`status` = 'show'
+                            AND t2.`type` != '' ORDER BY `publish` DESC LIMIT {$offset}, 12" ;
             } else if ('review_art' == $type) {
                 /**
                  * Review ART query.
@@ -510,11 +537,12 @@ class News
                             t1.`status` = 'show' AND t1.`category` = 'Блог' AND t1.`authorId` = {$authorId}
                             ORDER BY t1.`publish` DESC LIMIT {$offset}, 12";
             }
-
+	
+	       
             $result = $this->mysql()->query($query);
             if($result){
                 while ($row = $result->fetch_assoc()) {
-                    if ('review' == $type || 'review_art' == $type) {
+                    if ('review' == $type || 'review_art' == $type || 'review_series' == $type) {
                         if ('' != $row['image']) {
                             $imageName = md5($row['filmId']);
                             $row['image'] = Server::STATIC[$row['s']] . '/image' . Path::FILM . substr($imageName, 0, 1) . '/' . substr($imageName, 1, 2) . '/' . $imageName . '.' . $dimension . '.' . $row['image'];
@@ -590,7 +618,7 @@ class News
                             Preview::NAME => $row['name'],
                             Preview::AVATAR => $row['avatar'],
                         ];
-                    } else if ('review' == $type || 'review_art' == $type) {
+                    } else if ('review' == $type || 'review_art' == $type || 'review_series' == $type) {
                         /**
                          * Review item.
                          */
@@ -660,7 +688,6 @@ class News
             }
 
         }
-        
         return $list;
     }
 
@@ -711,4 +738,29 @@ class News
         
         return $text;
     }
+
+	public function saveView( $data ) {
+    	$query = " SELECT `view` FROM `news` WHERE `id` = 1";
+    	if(!$this->mysql()->query( $query )){
+    	    $query = "ALTER TABLE `news` ADD `view` INT(10) UNSIGNED NULL DEFAULT NULL AFTER `filmId`";
+		    $this->mysql()->query( $query );
+	    }
+		if($data){
+			$views = ($this->selectNewsView($data)) + 1;
+			$query = " UPDATE `news` SET `view`= '".$views."' WHERE `id` = '".$data."'";
+			$this->mysql()->query( $query );
+		}
+		return false;
+	}
+	
+	public function selectNewsView( $data ) {
+		if ( $data ) {
+			$query  = ( " SELECT * FROM `news` WHERE `id` = '".$data."'" );
+			$result = $this->mysql()->query( $query );
+			while( $row = $result->fetch_assoc() ) {
+				return $row['view'];
+			}
+		}
+		return false;
+	}
 }

@@ -27,7 +27,6 @@ class GET extends DefaultController
 	        }
         }
         
-        Debug::prn('123');
         $films = $api->getListFromType($city['city'])->List;
         $afilms = $api->getListFromType(' ')->List;
 	    $afisha->saveFilmsDB($afilms);

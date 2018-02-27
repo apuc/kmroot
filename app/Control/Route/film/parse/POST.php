@@ -7,6 +7,7 @@ use Kinomania\Control\Controller\AdminController;
 use Kinomania\Control\Film\Boxoffice\Boxoffice;
 use Kinomania\Control\Film\Film;
 use Kinomania\Control\Film\Parse\Parse;
+use Kinomania\System\Debug\Debug;
 
 class POST extends AdminController
 {
@@ -22,7 +23,11 @@ class POST extends AdminController
             $parse = new Parse($this->mysql());
 
             $post = new PostBag();
-            $id = $post->fetchInt('id');
+            if($_POST['id'][0] == '0'){
+            	$id = $_POST['id'];
+            }else{
+	            $id = $post->fetchInt('id');
+            }
             $type = $post->fetch('type');
 
             $source = $parse->source($item->id(), $type);
@@ -41,6 +46,7 @@ class POST extends AdminController
     
     public function edit()
     {
+    	
         $parse = new Parse($this->mysql());
         if ($parse->save()) {
             $this->successMessage('Изменения сохранены');

@@ -1,5 +1,7 @@
 <?php
 namespace Kinomania\System\Db;
+use Kinomania\System\Debug\Debug;
+
 /**
  * Created by PhpStorm.
  * User: apuc0
@@ -142,6 +144,23 @@ class Db
             return false;
         }
     }
+	
+	public function insert_v($keys, $table, $values)
+	{
+		if (!empty($keys) && !empty($values)) {
+			$query = "INSERT INTO `$table` ";
+			$key = "(";
+			$key .= $keys.")";
+			$query .= $key . 'VALUES' . $values;
+			if ($this->rawQuery($query)) {
+				return mysqli_insert_id($this->connect);
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
 
     /**
      * @param $data array данные которые необходимо обновить

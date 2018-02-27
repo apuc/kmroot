@@ -4,6 +4,7 @@ namespace Kinomania\System\Parser\Film;
 use DiDom\Document;
 use DiDom\Element;
 use Kinomania\System\Common\TError;
+use Kinomania\System\Debug\Debug;
 use Kinomania\System\Parser\Curl\Curl;
 use Kinomania\System\Text\TText;
 
@@ -30,21 +31,24 @@ class ImdbFilm
     {
         $this->init();
         $this->error = '';
-
+        
+	    $imdbIdStr = $this->getClearFilmIdCustom($imdbId);
         $imdbId = $this->getClearFilmId($imdbId);
-
+        
+        
+        
         if (1 > $imdbId) {
             $this->error = self::BAD_ID;
             return $this->film;
         }
 
-        $url = 'http://www.imdb.com/title/tt' . $imdbId . '/';
-
+        $url = 'http://www.imdb.com/title/tt' . $imdbIdStr . '/';
+	   
         if (false === filter_var($url, FILTER_VALIDATE_URL)) {
             $this->error = self::URL_ERROR;
             return $this->film;
         }
-
+	    
         if ($local) {
             $data = '';
             $path = dirname(__FILE__) . '/data.html';
@@ -114,7 +118,7 @@ class ImdbFilm
             $year = trim(preg_replace('/\s+/', ' ', $year));
             $this->film['year'] = intval($year);
         }
-
+	    
         /**
          * Type.
          */
@@ -262,18 +266,21 @@ class ImdbFilm
         } else {
             $this->parseBoxoffice($imdbId, $local);
         }
-
+	   
         /**
          * Release.
          */
-        $this->parseRelease($imdbId, $local);
-
+//        $this->parseRelease($imdbId, $local);
+        $this->parseRelease($imdbIdStr, $local);
+	   
         /**
          * Crew and cast.
          */
-        $this->parseCredits($imdbId, $local);
-
-        
+	    
+//        $this->parseCredits($imdbId, $local);
+        $this->parseCredits($imdbIdStr, $local);
+	    
+	    
         return $this->film;
     }
 
@@ -291,6 +298,16 @@ class ImdbFilm
             $imdbId = str_replace('tt', '', $imdbId);
         }
         return intval($imdbId);
+    }
+    
+    public function getClearFilmIdCustom($imdbId) {
+	    if (!filter_var($imdbId, FILTER_VALIDATE_URL) === false) {
+		    $imdbId = explode('tt', $imdbId)[1] ?? '';
+		    $imdbId = explode('/', $imdbId)[0];
+	    } else {
+		    $imdbId = str_replace('tt', '', $imdbId);
+	    }
+	    return $imdbId;
     }
 
     /**
@@ -371,16 +388,17 @@ class ImdbFilm
     private function parseRelease($imdbId, $local)
     {
         $this->error = '';
-
+	
+	    $imdbIdStr = $this->getClearFilmIdCustom($imdbId);
         $imdbId = $this->getClearFilmId($imdbId);
-
+	    
         if (1 > $imdbId) {
             $this->error = self::BAD_ID;
             return $this->film;
         }
 
-        $url = 'http://www.imdb.com/title/tt' . $imdbId . '/releaseinfo';
-
+        $url = 'http://www.imdb.com/title/tt' . $imdbIdStr . '/releaseinfo';
+	    
         if (false === filter_var($url, FILTER_VALIDATE_URL)) {
             $this->error = self::URL_ERROR;
             return $this->film;
@@ -440,14 +458,15 @@ class ImdbFilm
                 }
             }
         }
-
         return $this->film;
     }
 
     private function parseCredits($imdbId, $local)
     {
+	    
         $this->error = '';
 
+        $imdbIdStr = $this->getClearFilmIdCustom($imdbId);
         $imdbId = $this->getClearFilmId($imdbId);
 
         if (1 > $imdbId) {
@@ -455,7 +474,7 @@ class ImdbFilm
             return $this->film;
         }
 
-        $url = 'http://www.imdb.com/title/tt' . $imdbId . '/fullcredits';
+        $url = 'http://www.imdb.com/title/tt' . $imdbIdStr . '/fullcredits';
 
         if (false === filter_var($url, FILTER_VALIDATE_URL)) {
             $this->error = self::URL_ERROR;

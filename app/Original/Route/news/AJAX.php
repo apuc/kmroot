@@ -38,4 +38,5 @@ class AJAX extends DefaultController
 
         $this->setContent(json_encode($list));
     }
+    
 }

@@ -16,6 +16,11 @@ class SeoList
 		'seo/billboard' => 'Афиша',
         'seo/news' => 'Новости',
         'seo/top/films' => 'Топ фильмов',
+        'seo/top/series' => 'Топ сериалов',
+        'seo/top/comedies' => 'Топ комедий',
+        'seo/top/action' => 'Топ боевиков',
+        'seo/top/melodrama' => 'Топ мелодрам',
+        'seo/top/horrors' => 'Топ фильмов ужаса',
         'seo/trailers' => 'Трейлеры',
         'seo/tv' => 'ТВ',
         'seo/releases/russia' => 'График премьер РФ',
@@ -70,6 +75,31 @@ class SeoList
 			'urlAdmin' => 'seo/top/films',
 			'label' => 'Топ фильмов',
 		],
+	    [
+		    'url' => '/top/series',
+		    'urlAdmin' => 'seo/top/series',
+		    'label' => 'Топ сериалов',
+	    ],
+	    [
+		    'url' => '/top/comedies',
+		    'urlAdmin' => 'seo/top/comedies',
+		    'label' => 'Топ комедий',
+	    ],
+	    [
+		    'url' => '/top/action',
+		    'urlAdmin' => 'seo/top/action',
+		    'label' => 'Топ боевиков',
+	    ],
+	    [
+		    'url' => '/top/melodrama',
+		    'urlAdmin' => 'seo/top/melodrama',
+		    'label' => 'Топ мелодрам',
+	    ],
+	    [
+		    'url' => '/top/horrors',
+		    'urlAdmin' => 'seo/top/horrors',
+		    'label' => 'Топ фильмов ужаса',
+	    ],
 		[
 			'url' => '/trailers',
 			'urlAdmin' => 'seo/trailers',

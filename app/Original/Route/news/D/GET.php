@@ -4,14 +4,17 @@ namespace Original\Route_news_D;
 use Dspbee\Bundle\Debug\Wrap;
 use Kinomania\Original\Controller\NewsController;
 use Kinomania\Original\Logic\News\News;
+use Kinomania\System\Debug\Debug;
 
 class GET extends NewsController
 {
     public function index()
     {
+    	
         $numList = $this->getNumList();
-
         $item = [];
+	    $views = new News();
+	    $views->saveView($numList[0]);
 
         if (0 < $numList[0]) {
             $key = 'news:' . $numList[0];
@@ -30,6 +33,7 @@ class GET extends NewsController
         }
 
         if ([] != $item) {
+	        
             $this->addData([
                 'id' => $numList[0],
                 'newsId' => $numList[0],

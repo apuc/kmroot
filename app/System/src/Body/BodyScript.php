@@ -15,7 +15,7 @@ class BodyScript {
 		<?php if($mobile->isMobile()):?>
 			<script src="//static.videonow.ru/vn_init.js?profileId=2785734" defer></script><!--mobile-->
 		<?php else:?>
-			<script src="//data.videonow.ru/?profile_id=103919&format=vast.."></script>
+<!--		<script src="//data.videonow.ru/?profile_id=103919&format=vast.."></script>-->
 			<script src="//static.videonow.ru/vn_init.js?profileId=2786448" defer></script>
 		<?php endif;?>
 <?php

@@ -19,7 +19,6 @@ use Kinomania\System\Render\Parser;
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title><?= Parser::parseText($options->get('seo_poster_pages_cinema_list_title'),[
             'city' => \Kinomania\System\GeoLocation\IpGeoBase::getCityInfo()['city']
         ]) ?></title>

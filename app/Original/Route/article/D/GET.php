@@ -13,6 +13,8 @@ class GET extends NewsController
 
         $item = [];
         $news = null;
+	    $views = new News();
+	    $views->saveView($numList[0]);
 
         if (0 < $numList[0]) {
             $key = 'news:' . $numList[0];

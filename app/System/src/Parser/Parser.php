@@ -1,6 +1,7 @@
 <?php
 namespace Kinomania\System\Parser;
 
+use Kinomania\System\Debug\Debug;
 use Kinomania\System\Parser\Boxoffice\Kinometro;
 use Kinomania\System\Parser\Boxoffice\Mojo;
 use Kinomania\System\Parser\Film\ImdbFilm;

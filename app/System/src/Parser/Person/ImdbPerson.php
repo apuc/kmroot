@@ -29,7 +29,7 @@ class ImdbPerson
     {
         $this->init();
         $this->error = '';
-
+	   
         $imdbId = $this->getClearPersonId($imdbId);
 
         if (1 > $imdbId) {

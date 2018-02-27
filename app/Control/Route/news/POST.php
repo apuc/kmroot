@@ -3,6 +3,7 @@ namespace Control\Route_news;
 
 use Kinomania\Control\Controller\AdminController;
 use Kinomania\Control\News\News;
+use Kinomania\System\Debug\Debug;
 
 class POST extends AdminController
 {
@@ -12,7 +13,7 @@ class POST extends AdminController
     public function add()
     {
         $news = new News($this->mysql());
-
+        
         if ($news->add($this->admin()->id())) {
             $this->successMessage('Статья добавлена');
             $this->setRedirect($this->request->makeUrl('news/edit?id=' . $news->getInsertId()));

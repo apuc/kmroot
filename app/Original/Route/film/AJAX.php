@@ -23,7 +23,6 @@ class AJAX extends DefaultController
      */
     public function getTrailer()
     {
-    	Debug::prn('1231312');
         $data = ['src' => ''];
         $get = new GetBag();
         $id = $get->fetchInt('id');

@@ -652,3 +652,28 @@ img.load-ajax {
     }
 }
 /*end*/
+/*site map*/
+.site-map-cell {
+    border-bottom:2px solid #1c9edc;
+    height: 20px;
+}
+.site-map-menuError {
+    margin: 18px 0;
+    padding-left: 40px
+}.site-map-menuError dt{
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+.site-map-last {
+    margin-bottom: 38px;
+}
+/*end*/
+/*news item*/
+.page-content-text img {
+    width: 100%;
+    height: 100%;
+}
+/*end*/
+.adfox_video > * {
+    width: 100% !important;
+}

@@ -76,7 +76,8 @@ class Menu
 	            'icon' => 'fa fa-gears',
 	            'items' => [
 		             'stat/trailers' => 'Трейлеры',
-	            ]
+		            'stat/news' => 'Публикации',
+	            ],
             ],
             'seo' => [
                 'title' => 'SEO',

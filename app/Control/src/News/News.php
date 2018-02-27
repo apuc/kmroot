@@ -11,6 +11,7 @@ use Kinomania\System\Common\TDate;
 use Kinomania\System\Common\TRepository;
 use Kinomania\System\Config\Path;
 use Kinomania\System\Config\Server;
+use Kinomania\System\Debug\Debug;
 use Kinomania\System\Text\TText;
 
 /**
@@ -237,11 +238,13 @@ class News extends DB
 
         $title = $this->clearText($post->fetch('title'));
         $title = $this->db->real_escape_string($title);
+        
         if (!empty($title)) {
             /**
              * Title must be unique.
              */
             $result = $this->db->query("SELECT 1 FROM `news` WHERE `title` = '{$title}' LIMIT 1");
+	        
             if (1 == $result->num_rows) {
                 $this->error = self::TITLE_EXIST;
                 return false;
@@ -260,12 +263,22 @@ class News extends DB
             $category = $post->fetchEscape('category', $this->db);
 
             $publish = strtotime('now');
-
-            $this->db->query("INSERT INTO `news` SET `s` = 0, `image` = '',
-                              `status` = 'hide', `category` = '{$category}', `center` = 'no', `popular` = 'no', `publish` = FROM_UNIXTIME('{$publish}'),
-                              `authorId` = {$authorId}, `title` = '{$title}', `title_html` = '', `title_short` = '', `text`  = '', `text_short` = '', `anons` ='', `filmId` = 0
+            
+            $this->db->query("INSERT INTO `news`
+									SET `s` = 0, `image` = '',
+                              		`status` = 'hide', `category` = '{$category}',
+                              		`center` = 'no', `popular` = 'no',
+                              		`publish` = FROM_UNIXTIME('{$publish}'),
+                              		`authorId` = '{$authorId}',
+                              		`title` = '{$title}',
+                              		`title_html` = '',
+                              		`title_short` = '', `text`  = '', `text_short` = '',
+                              		`anons` ='', `filmId` = 0,
+                              		`meta_description` = ''
                               ");
+            
             if (!empty($this->db->error)) {
+	            
                 $this->error = $this->db->error;
                 return false;
             }
@@ -287,7 +300,6 @@ class News extends DB
     public function renderTable()
     {
         $get = new GetBag();
-
         $category = $get->fetchEscape('category', $this->db);
 
         $useSphinx = false;

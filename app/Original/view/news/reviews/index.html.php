@@ -27,7 +27,10 @@ use Kinomania\System\Body\BodyScript;
 
     <!-- include section/head.html.php -->
 </head>
-<body>
+<>
+<div class="overlay-ajax-load" style="position: absolute;z-index: 100; width: 0px; height: 0px;">
+	<img class="load-ajax" src="<?= $static ?>/app/img/design/load.gif" style="align-self: center">
+</div>
   <!--#include virtual="/design/ssi/top" -->
 <div class="outer">
     <div class="wrap">
@@ -41,79 +44,92 @@ use Kinomania\System\Body\BodyScript;
                     <h1 class="pagetitle"><?= $options->get('seo_reviews_h1') ?></h1>
                     <div class="description">
                         Мнения авторитетных критиков и постоянных авторов «Киномании» о новинках проката. Рецензии на самое важное кино этой недели, которое можно посмотреть в кинотеатрах прямо сейчас.
+	                    <p>
+		                    <br>
+	                    <ul class="selectListType">
+		                    <li class="slta"><a href="#" id="films">Фильмы</a></li>
+		                    <li><a href="#" id="series">Сериалы</a></li>
+	                    </ul>
+	                    <br>
+	                    </p>
                     </div>
-                    <div class="outer-pagelist-item clear">
-                        <?php foreach ($list as $item): ?>
-                            <section class="pagelist-item clear">
-                                <div class="pagelist-item-image all-pagelist-item-image  col-xl-5 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                    <div class=" image-shadow ">
-                                        <a href="/article/<?= $item[News::ID] ?>/"><img width="263" height="261" alt="" src="//:0" data-original="<?= $item[News::IMAGE] ?>" class="lazy image-prewiew"></a>
-                                    </div>
-                                </div>
-                                <div class="pagelist-item-content all-pagelist-item-content pagelist-item-content col-xl-7 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                    <?php if (empty($item[News::NAME_RU])): ?>
-                                        <div class="pagelist-item-title reviews-pagelist-item-title">
-                                            <a href="/film/<?= $item[News::FILM_ID] ?>">
-                                                <?= $item[News::NAME_ORIGIN] ?>
-                                            </a>
-                                        </div>
-                                        <div class="reviews-pagelist-dop-title">
-                                            <span></span>
-                                        </div>
-                                    <?php else :?>
-                                        <div class="pagelist-item-title reviews-pagelist-item-title">
-                                            <a href="/film/<?= $item[News::FILM_ID] ?>">
-                                                <?= $item[News::NAME_RU] ?>
-                                            </a>
-                                        </div>
-                                        <div class="reviews-pagelist-dop-title">
-                                            <span><?= $item[News::NAME_ORIGIN] ?></span>
-                                        </div>
-                                    <?php endif ?>
-
-                                    <ul class="reviews-list">
-                                        <li class="city">
-                                            <?= $item[News::COUNTRY] ?>
-                                            <?php if (!empty($item[News::YEAR])): ?>
-                                                <?= $item[News::YEAR] ?>
-                                            <?php endif ?>
-                                        </li>
-                                        <?php if (count($item[News::DIRECTOR])): ?>
-                                            <li class="producer">Режиссер: <span class="producer__result">
-                                                <?php foreach ($item[News::DIRECTOR] as $person): ?>
-                                                    <a href="/people/<?= $person[0] ?>/"><?= $person[1] ?></a>
-                                                <?php endforeach; ?>
-                                            </span></li>
-                                        <?php endif ?>
-                                        <?php if (count($item[News::CAST])): ?>
-                                            <li class="role">В ролях: <span class="producer__result">
-                                                <?php foreach ($item[News::CAST] as $person): ?>
-                                                    <a href="/people/<?= $person[0] ?>/"><?= $person[1] ?></a>
-                                                <?php endforeach; ?>
-                                            </span></li>
-                                        <?php endif ?>
-                                    </ul>
-                                    <div class="pagelist-info">
-                                        <?php if (!empty($item[News::LOGIN])): ?>
-                                            <span class="pagelist__author"><a href="/user/<?= $item[News::LOGIN] ?>/"><?= $item[News::NAME] ?></a></span>,
-                                        <?php endif; ?>
-                                        <span class="date__month"><?= $item[News::PUBLISH] ?></span>
-                                        <?php if (!empty($item[News::COMMENT])): ?>
-                                            <a href="/article/<?= $item[News::ID] ?>#commentList/" class="pagelist__comments"><?= $item[News::COMMENT] ?></a>
-                                        <?php endif ?>
-                                    </div>
-                                    <a href="/article/<?= $item[News::ID] ?>/" class="pagelist__link">Подробнее</a>
-                                </div>
-                            </section>
-                        <?php endforeach; ?>
-                    </div>
+	                <div id="result"></div>
+	                <div id="block_index_reviews">
+	                    <div class="outer-pagelist-item clear">
+	                        <?php foreach ($list as $item): ?>
+	                            <section class="pagelist-item clear">
+	                                <div class="pagelist-item-image all-pagelist-item-image  col-xl-5 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+	                                    <div class=" image-shadow ">
+	                                        <a href="/article/<?= $item[News::ID] ?>/"><img width="263" height="261" alt="" src="//:0" data-original="<?= $item[News::IMAGE] ?>" class="lazy image-prewiew"></a>
+	                                    </div>
+	                                </div>
+	                                <div class="pagelist-item-content all-pagelist-item-content pagelist-item-content col-xl-7 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+	                                    <?php if (empty($item[News::NAME_RU])): ?>
+	                                        <div class="pagelist-item-title reviews-pagelist-item-title">
+	                                            <a href="/film/<?= $item[News::FILM_ID] ?>">
+	                                                <?= $item[News::NAME_ORIGIN] ?>
+	                                            </a>
+	                                        </div>
+	                                        <div class="reviews-pagelist-dop-title">
+	                                            <span></span>
+	                                        </div>
+	                                    <?php else :?>
+	                                        <div class="pagelist-item-title reviews-pagelist-item-title">
+	                                            <a href="/film/<?= $item[News::FILM_ID] ?>">
+	                                                <?= $item[News::NAME_RU] ?>
+	                                            </a>
+	                                        </div>
+	                                        <div class="reviews-pagelist-dop-title">
+	                                            <span><?= $item[News::NAME_ORIGIN] ?></span>
+	                                        </div>
+	                                    <?php endif ?>
+	
+	                                    <ul class="reviews-list">
+	                                        <li class="city">
+	                                            <?= $item[News::COUNTRY] ?>
+	                                            <?php if (!empty($item[News::YEAR])): ?>
+	                                                <?= $item[News::YEAR] ?>
+	                                            <?php endif ?>
+	                                        </li>
+	                                        <?php if (count($item[News::DIRECTOR])): ?>
+	                                            <li class="producer">Режиссер: <span class="producer__result">
+	                                                <?php foreach ($item[News::DIRECTOR] as $person): ?>
+	                                                    <a href="/people/<?= $person[0] ?>/"><?= $person[1] ?></a>
+	                                                <?php endforeach; ?>
+	                                            </span></li>
+	                                        <?php endif ?>
+	                                        <?php if (count($item[News::CAST])): ?>
+	                                            <li class="role">В ролях: <span class="producer__result">
+	                                                <?php foreach ($item[News::CAST] as $person): ?>
+	                                                    <a href="/people/<?= $person[0] ?>/"><?= $person[1] ?></a>
+	                                                <?php endforeach; ?>
+	                                            </span></li>
+	                                        <?php endif ?>
+	                                    </ul>
+	                                    <div class="pagelist-info">
+	                                        <?php if (!empty($item[News::LOGIN])): ?>
+	                                            <span class="pagelist__author"><a href="/user/<?= $item[News::LOGIN] ?>/"><?= $item[News::NAME] ?></a></span>,
+	                                        <?php endif; ?>
+	                                        <span class="date__month"><?= $item[News::PUBLISH] ?></span>
+	                                        <?php if (!empty($item[News::COMMENT])): ?>
+	                                            <a href="/article/<?= $item[News::ID] ?>#commentList/" class="pagelist__comments"><?= $item[News::COMMENT] ?></a>
+	                                        <?php endif ?>
+	                                    </div>
+	                                    <a href="/article/<?= $item[News::ID] ?>/" class="pagelist__link">Подробнее</a>
+	                                </div>
+	                            </section>
+	                        <?php endforeach; ?>
+	                    </div>
+		            </div>
                 </div>
-                <div class="outer-pagelist-more">
-                    <div class="center-loader" style="display: none;">
-                        <div class="ball-clip-rotate-multiple"><div></div><div></div></div>
-                    </div>
-                    <span class="pagelist-more sprite-before" data-type-openclose-button="hide-text"><span class="pagelist-more__text" id="more">Еще</span></span>
-                </div>
+	            <div id="films_block">
+	                <div class="outer-pagelist-more">
+	                    <div class="center-loader" style="display: none;">
+	                        <div class="ball-clip-rotate-multiple"><div></div><div></div></div>
+	                    </div>
+	                    <span class="pagelist-more sprite-before" data-type-openclose-button="hide-text"><span class="pagelist-more__text" id="more">Еще</span></span>
+	                </div>
+	            </div>
                 <div class="pagelist-social">
                     <div class="outer-social clear">
                         <ul class="social-list social-list--horizontal">
@@ -135,6 +151,7 @@ use Kinomania\System\Body\BodyScript;
     <!-- include section/footer.html.php -->
     <!-- include section/scripts.html.php -->
     <script type="text/javascript" src="<?= $static ?>/vendor/cms/jquery/jquery.lazyload.min.js"></script>
+	<script type="text/javascript" src="<?= $static ?>/app/js/reviews.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             $("img.lazy").lazyload({
@@ -155,7 +172,7 @@ use Kinomania\System\Body\BodyScript;
                 var page = window.page;
 
                 $("img.lazy").attr('proc', 'true');
-
+		   
                 $.ajax({
                     "type": "post",
                     "url": "?handler=get&page=" + page,

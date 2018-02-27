@@ -101,5 +101,7 @@ class GET extends DefaultController
         } else {
             $this->setTemplate('auth/soc.fail.confirm.html.php');
         }
+		var_dump($userInfo);
+	   
     }
 }
